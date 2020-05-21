@@ -42,6 +42,7 @@ public class ProtoSchemaBuilder {
         initializeNamespaces();
         initializeSchemaList();
         processAllSchemas();
+        buildProtoBySchema();
     }
 
     // Namespace mapper stores Prefix <-> Uri mapping - use for types
@@ -117,5 +118,25 @@ public class ProtoSchemaBuilder {
         }
 
         return enumCandidate;
+    }
+
+    private String buildProtoBySchema() {
+        String protoString = "syntax = \"proto2\";\npackage avs;\n";
+
+        for (EntryCandidate cand : candidates) {
+            if (cand instanceof EnumCandidate) {
+                if (cand.getNamespace().equals("avs")) {
+                    int counter = 0;
+                    protoString += "enum " + cand.getTitle() + " {\n";
+                    for (ProtoField field : cand.getFields()) {
+                        protoString += "\t" + field.getFieldValue() + " = " + counter++ + ";\n";
+                    }
+                    protoString += "}\n";
+                }
+            }
+        }
+
+        System.out.println(protoString);
+        return protoString;
     }
 }

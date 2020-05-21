@@ -1,5 +1,5 @@
 public class EnumCandidate extends EntryCandidate {
-    public EnumCandidate(String enumTitle, String enumNamespace) {
-        super(enumTitle, enumNamespace);
+    public EnumCandidate(String title, String namespace) {
+        super(title, namespace);
     }
 }
