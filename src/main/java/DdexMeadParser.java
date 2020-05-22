@@ -1,11 +1,12 @@
 import java.io.IOException;
 
 public class DdexMeadParser {
-    public static void main(String args[]) throws IOException {
-        System.out.println("Launched XSD parse tester");
+  public static void main(String args[]) throws IOException {
+    System.out.println("Launched XSD parse tester");
 
-        ProtoSchemaBuilder protoBuilder = new ProtoSchemaBuilder(/* Options from cmd line */);
-        protoBuilder.ingestXsdFromPath("src/main/resources/meadex.xsd" /* Definitely take this as input from cmd line */);
-        protoBuilder.generateProto();
-    }
+    ProtoSchemaBuilder protoBuilder = new ProtoSchemaBuilder(/* Options from cmd line */ );
+    protoBuilder.ingestXsdFromPath(
+        "src/main/resources/meadex.xsd" /* Definitely take this as input from cmd line */);
+    protoBuilder.generateProto();
+  }
 }
