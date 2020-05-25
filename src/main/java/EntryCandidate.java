@@ -3,12 +3,12 @@ import java.util.List;
 
 public abstract class EntryCandidate {
   String title;
-  String namespace;
+  String namespacePrefix;
   List<ProtoField> fields;
 
-  public EntryCandidate(String entryTitle, String entryNamespace) {
+  public EntryCandidate(String entryTitle, String entryNamespacePrefix) {
     title = entryTitle;
-    namespace = entryNamespace;
+    namespacePrefix = entryNamespacePrefix;
     fields = new ArrayList<>();
   }
 
@@ -20,11 +20,14 @@ public abstract class EntryCandidate {
     return title;
   }
 
-  public String getNamespace() {
-    return namespace;
+  public String getNamespacePrefix() {
+    return namespacePrefix;
   }
 
   public List<ProtoField> getFields() {
     return fields;
   }
+
+  public boolean isEnum() { return false; }
+  public boolean isMessage() { return false; }
 }

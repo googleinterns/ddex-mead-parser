@@ -1,25 +1,29 @@
 import org.apache.ws.commons.schema.*;
 import org.apache.ws.commons.schema.utils.NamespacePrefixList;
 
+import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ProtoSchemaBuilder {
-  // Data containers
-  private NamespaceManager namespaces;
-  private XmlSchema baseSchema;
-  private List<WrappedXmlSchema> allSchemas;
-  private List<EntryCandidate> candidates;
+  private final NamespaceManager namespaces;
+  private final List<XmlSchema> schemaSet;
+  private final List<WrappedXmlSchema> wrappedSchemaSet;
+  private final CandidateContainer candidateContainer;
 
-  // Flags
+  private XmlSchema baseSchema;
+
   private boolean xsdIngested;
 
   public ProtoSchemaBuilder() {
     namespaces = new NamespaceManager();
-    allSchemas = new ArrayList<>();
-    candidates = new ArrayList<>();
+    candidateContainer = new CandidateContainer();
+    schemaSet = new ArrayList<>();
+    wrappedSchemaSet = new ArrayList<>();
+
     xsdIngested = false;
   }
 
@@ -30,6 +34,7 @@ public class ProtoSchemaBuilder {
     XmlSchemaCollection schemaCol = new XmlSchemaCollection();
 
     baseSchema = schemaCol.read(new StreamSource(xsdFile));
+    schemaSet.add(baseSchema);
     xsdIngested = true;
   }
 
@@ -39,111 +44,147 @@ public class ProtoSchemaBuilder {
       return;
     }
 
-    initializeNamespaces();
-    initializeSchemaList();
-    processAllSchemas();
+    initializeSchemaSet();
+    processSchemaSet();
     buildProtoBySchema();
   }
 
-  // Namespace mapper stores Prefix <-> Uri mapping - use for types
-  private void initializeNamespaces() {
-    namespaces = new NamespaceManager();
-    NamespacePrefixList nsPrefixes = baseSchema.getNamespaceContext();
-    namespaces.populateFromContext(nsPrefixes);
-    namespaces.printMappings();
-  }
-
   // TODO fix the import/include not being fully recursive
-  private void initializeSchemaList() {
-    List<XmlSchema> linkedSchemas = new ArrayList<>();
-    List<XmlSchemaObject> baseSchemaItems = baseSchema.getItems();
+  private void initializeSchemaSet() {
+    List<XmlSchemaExternal> schemaExternals = baseSchema.getExternals();
 
-    for (XmlSchemaObject item : baseSchemaItems) {
-      if (item instanceof XmlSchemaImport) {
-        XmlSchema importedSchema = ((XmlSchemaImport) item).getSchema();
-        linkedSchemas.add(importedSchema);
-      } else if (item instanceof XmlSchemaInclude) {
-        XmlSchema includedSchema = ((XmlSchemaInclude) item).getSchema();
-        linkedSchemas.add(includedSchema);
+    for (XmlSchemaExternal external : schemaExternals) {
+      if (external instanceof XmlSchemaImport) {
+        XmlSchema importedSchema = ((XmlSchemaImport) external).getSchema();
+        schemaSet.add(importedSchema);
+      } else if (external instanceof XmlSchemaInclude) {
+        XmlSchema includedSchema = ((XmlSchemaInclude) external).getSchema();
+        schemaSet.add(includedSchema);
+      } else if (external instanceof XmlSchemaRedefine) {
+        XmlSchema redefinedSchema = ((XmlSchemaRedefine) external).getSchema();
+        // TODO handle redefines? May not be needed for MEAD specifically
       }
     }
 
-    // Add all schemas to WrapperSchema list
-    linkedSchemas.add(baseSchema);
-    for (XmlSchema schema : linkedSchemas) {
+    // Set namespace map
+    for (XmlSchema schema : schemaSet) {
+      NamespacePrefixList prefixes = schema.getNamespaceContext();
+      namespaces.populateFromContext(prefixes);
+    }
+
+    // Add all schemas to the wrapped schema set to preserve their namespace
+    for (XmlSchema schema : schemaSet) {
       String targetNamespace = schema.getTargetNamespace();
-      allSchemas.add(
-          new WrappedXmlSchema(
-              namespaces.getUri(targetNamespace), namespaces.getPrefix(targetNamespace), schema));
-      System.out.println(
-          "Added schema uri: "
-              + namespaces.getUri(targetNamespace)
-              + "  - pref  "
-              + namespaces.getPrefix(targetNamespace));
+      WrappedXmlSchema wSchema = new WrappedXmlSchema(namespaces.getUri(targetNamespace), namespaces.getPrefix(targetNamespace), schema);
+      wrappedSchemaSet.add(wSchema);
     }
   }
 
-  private void processAllSchemas() {
-    for (WrappedXmlSchema wSchema : allSchemas) {
-      processSingleSchema(wSchema);
+  private void processSchemaSet() {
+    for (WrappedXmlSchema wSchema : wrappedSchemaSet) {
+      System.out.println("Processing wrapped schema -> " + wSchema.getPrefix() + " " + wSchema.getUri());
+      processSchema(wSchema);
     }
   }
 
-  private void processSingleSchema(WrappedXmlSchema wSchema) {
-    String currentSchemaPrefix = wSchema.getPrefix();
+  private void processSchema(WrappedXmlSchema wSchema) {
+    String nsPrefix = wSchema.getPrefix();
     List<XmlSchemaObject> schemaItems = wSchema.getSchema().getItems();
 
     for (XmlSchemaObject item : schemaItems) {
-      System.out.println(item.getClass() + " - " + currentSchemaPrefix);
       if (item instanceof XmlSchemaSimpleType) {
-        candidates.add(buildSimpleType((XmlSchemaSimpleType) item, currentSchemaPrefix));
+        processSimple((XmlSchemaSimpleType) item, null, nsPrefix);
       } else if (item instanceof XmlSchemaComplexType) {
-        // candidates.add(buildComplexType((XmlSchemaComplexType)item));
+        processComplex((XmlSchemaComplexType) item, null, nsPrefix);
       } else if (item instanceof XmlSchemaElement) {
-        // candidates.add(buildElement((XmlSchemaElement)item));
+        processElement((XmlSchemaElement) item, null, nsPrefix);
       }
     }
   }
 
-  private EnumCandidate buildSimpleType(XmlSchemaSimpleType simpleNode, String nsPrefix) {
-    String enumName = simpleNode.getName();
+  private void processSimple(XmlSchemaSimpleType simpleItem, String candidateName, String nsPrefix) {
+    if (candidateName != null) {
+      // System.out.println(candidateName);
+    } else if (simpleItem.getName() != null) {
+      candidateName = simpleItem.getName();
+      // System.out.println(simpleItem.getName() + " " + simpleItem.getQName());
+    } else {
+      // TODO ERROR?
+      System.out.println("NO NAME??");
+    }
 
-    EnumCandidate enumCandidate = new EnumCandidate(enumName, nsPrefix);
+    XmlSchemaSimpleTypeRestriction restriction = (XmlSchemaSimpleTypeRestriction) simpleItem.getContent();
+    QName restrictionQName = restriction.getBaseTypeName();
+    List<XmlSchemaFacet> facets = restriction.getFacets();
 
-    XmlSchemaSimpleTypeContent content = simpleNode.getContent();
-    if (content instanceof XmlSchemaSimpleTypeRestriction) {
-      XmlSchemaSimpleTypeRestriction r = (XmlSchemaSimpleTypeRestriction) content;
-      for (XmlSchemaFacet facet : r.getFacets()) {
+    if (isEnumFacetList(facets)) {
+      EnumCandidate enumCandidate = new EnumCandidate(candidateName, nsPrefix);
+      for (XmlSchemaFacet facet : facets) {
         ProtoField field = new ProtoField(facet.getValue().toString());
         enumCandidate.addField(field);
       }
-    } else {
-      System.err.println("Unable to parse a SimpleType");
+      candidateContainer.addCandidate(enumCandidate);
     }
+  }
 
-    return enumCandidate;
+  // TODO move to utils
+  private boolean isEnumFacetList(List<XmlSchemaFacet> facets) {
+    if (facets.size() <= 0) {
+      return false;
+    }
+    for (XmlSchemaFacet facet : facets) {
+      if (!(facet instanceof XmlSchemaEnumerationFacet)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private void processComplex(XmlSchemaComplexType complexItem, String candidateName, String nsPrefix) {
+    if (candidateName != null) {
+      // System.out.println(candidateName);
+    } else if (complexItem.getName() != null) {
+      candidateName = complexItem.getName();
+      // System.out.println(complexItem.getName() + " " + complexItem.getQName());
+    } else {
+      // TODO ERROR?
+      System.out.println("NO NAME??");
+    }
+  }
+
+  private void processElement(XmlSchemaElement elementItem, String candidateName, String nsPrefix) {
+    if (elementItem.getSchemaType() instanceof XmlSchemaComplexType) {
+      processComplex((XmlSchemaComplexType) elementItem.getSchemaType(), elementItem.getName(), nsPrefix);
+    } else if (elementItem.getSchemaType() instanceof XmlSchemaSimpleType) {
+      processSimple((XmlSchemaSimpleType) elementItem.getSchemaType(), elementItem.getName(), nsPrefix);
+    } else {
+      System.err.println("Did not process an element");
+    }
   }
 
   // TODO redo the function, maybe need a structure map to figure out the steps to take this is a
   // hack
   private String buildProtoBySchema() {
-    String protoString = "syntax = \"proto2\";\npackage avs;\n";
+    List<String> namespaces = candidateContainer.getNamespacePrefixes();
+    Map<String, List<EntryCandidate>> namespaceMap =
+        candidateContainer.getNamespacePrefixCandidateMap();
 
-    for (EntryCandidate cand : candidates) {
-      if (cand instanceof EnumCandidate) {
-        if (cand.getNamespace().equals("avs")) {
-          int counter = 0;
-          protoString += "enum " + cand.getTitle() + " {\n";
-          for (ProtoField field : cand.getFields()) {
-            protoString += "\t" + field.getFieldValue() + " = " + counter++ + ";\n";
-          }
-          protoString += "}\n";
+    for (String name : namespaces) {
+      System.out.println("Serialize .proto for " + name);
+      String protoString = "syntax = \"proto2\";\npackage " + name + ";\n";
+
+      for (EntryCandidate cand : namespaceMap.get(name)) {
+        int counter = 0;
+        protoString += "enum " + cand.getTitle() + " {\n";
+        for (ProtoField field : cand.getFields()) {
+          protoString += "\t" + field.getFieldValue() + " = " + counter++ + ";\n";
         }
+        protoString += "}\n";
       }
-    }
 
-    System.out.println(protoString);
-    return protoString;
+      System.out.println(protoString);
+    }
+    return "";
   }
 }
 
@@ -155,4 +196,12 @@ public class ProtoSchemaBuilder {
     - Go over all the schemas and for each (schema/namespace?) store the candidates (enum/message)
         - Store in maps -> keep track of which file stores what, and store remember dependencies for the output
     -
+
+    - For ENUM - SimpleType -> Containing an Enumeration
+    - For MESSAGE - ComplexType -> Sequence -> Elements
+                  - ComplexType -> SimpleContent -> Attributes
+                  - Element -> ComplexType -> Choice / Sequence
+    - Edge cases include
+        - AnyAttribute and Any
+        - Choices
  */
