@@ -1,5 +1,6 @@
 import org.apache.ws.commons.schema.*;
 import org.apache.ws.commons.schema.utils.NamespacePrefixList;
+import org.apache.ws.commons.schema.utils.XmlSchemaObjectBase;
 import org.w3c.dom.Attr;
 
 import javax.xml.namespace.QName;
@@ -115,11 +116,15 @@ public class ProtoSchemaBuilder {
 
     if (isEnumFacetList(facets)) {
       EnumCandidate enumCandidate = new EnumCandidate(candidateName, nsPrefix);
+
       for (XmlSchemaFacet facet : facets) {
         ProtoField field = new ProtoField(facet.getValue().toString());
         enumCandidate.addField(field);
       }
-      candidateContainer.addCandidate(enumCandidate);
+
+      if (enumCandidate.hasFields()) {
+        candidateContainer.addCandidate(enumCandidate);
+      }
     }
   }
 
@@ -130,16 +135,11 @@ public class ProtoSchemaBuilder {
     candidateName = candidateName != null ? candidateName : complexItem.getName();
     System.out.println(candidateName);
 
-    List<XmlSchemaAttributeOrGroupRef> attributeList = complexItem.getAttributes();
-    XmlSchemaAnyAttribute anyAttribute = complexItem.getAnyAttribute();
-    XmlSchemaParticle particle = complexItem.getParticle();
-    XmlSchemaContentModel contentModel = complexItem.getContentModel();
-
     MessageCandidate messageCandidate = new MessageCandidate(candidateName, nsPrefix);
 
-    processAttributes(attributeList, anyAttribute, messageCandidate);
-    processParticle(particle, messageCandidate);
-    processContentModel(contentModel, messageCandidate);
+    processAttributes(complexItem.getAttributes(), complexItem.getAnyAttribute(), messageCandidate);
+    processParticle(complexItem.getParticle(), messageCandidate);
+    processContentModel( complexItem.getContentModel(), messageCandidate);
 
     if (messageCandidate.hasFields()) {
       candidateContainer.addCandidate(messageCandidate);
@@ -148,9 +148,6 @@ public class ProtoSchemaBuilder {
 
   private void processAttributes(List<XmlSchemaAttributeOrGroupRef> attributes, XmlSchemaAnyAttribute anyAttribute, EntryCandidate candidate) {
     if (attributes != null && attributes.size() > 0) {
-      System.out.println("ATTR RESOLVED");
-      System.out.println(attributes);
-
       for (XmlSchemaAttributeOrGroupRef attribute : attributes) {
         if (attribute instanceof XmlSchemaAttribute) {
           String name = ((XmlSchemaAttribute) attribute).getName();
@@ -163,14 +160,11 @@ public class ProtoSchemaBuilder {
     }
 
     if (anyAttribute != null) {
-      System.out.println("ANY RESOLVED");
-      System.out.println(anyAttribute);
-
       candidate.addField(new ProtoField("any_attribute_value", null, true));
     }
   }
 
-  // TODO handle weird nesting (AwardForParty) among others
+  // TODO handle repeated nested choice (AwardForParty)
   private void processParticle(XmlSchemaParticle particle, EntryCandidate candidate) {
     if (particle != null) {
       System.out.println("P RESOLVED");
@@ -180,7 +174,9 @@ public class ProtoSchemaBuilder {
         List<XmlSchemaSequenceMember> items = ((XmlSchemaSequence)particle).getItems();
         for (XmlSchemaSequenceMember item : items) {
           if (item instanceof XmlSchemaSequence || item instanceof XmlSchemaChoice) {
-            // throw new Error("Unhandled nested particles");
+             processParticle((XmlSchemaParticle)item, candidate);
+          } else {
+            processItem(item, candidate);
           }
         }
       }
@@ -189,17 +185,32 @@ public class ProtoSchemaBuilder {
         List<XmlSchemaChoiceMember> items = ((XmlSchemaChoice)particle).getItems();
         for (XmlSchemaChoiceMember item : items) {
           if (item instanceof XmlSchemaSequence || item instanceof XmlSchemaChoice) {
-            // throw new Error("Unhandled nested particles");
+            processParticle((XmlSchemaParticle)item, candidate);
+          } else {
+            processItem(item, candidate);
           }
         }
       }
     }
   }
 
+  private void processItem(XmlSchemaObjectBase item, EntryCandidate candidate) {
+    if (item instanceof XmlSchemaElement) {
+      String name = ((XmlSchemaElement)item).getName();
+      QName itemType = ((XmlSchemaElement) item).getQName();
+      boolean repeated = ((XmlSchemaElement) item).getMaxOccurs() > 1;
+      candidate.addField(new ProtoField(name, itemType, repeated));
+    } else if (item instanceof XmlSchemaAny) {
+      boolean repeated = ((XmlSchemaAny) item).getMaxOccurs() > 1;
+      candidate.addField(new ProtoField("any_value", null, repeated));
+    } else {
+      throw new Error("Unhandled item " + item.getClass());
+    }
+  }
+
   private void processContentModel(XmlSchemaContentModel contentModel, EntryCandidate candidate) {
     if (contentModel != null) {
-      // Assuming only simple extension, there are more
-      if (!(contentModel.getContent() instanceof XmlSchemaSimpleContentExtension)) {
+      if (!(contentModel.getContent() instanceof XmlSchemaSimpleContentExtension)) {      // Assuming only simple extension, there are more
         throw new Error("Unhandled content " + contentModel.getContent().getClass());
       }
 
