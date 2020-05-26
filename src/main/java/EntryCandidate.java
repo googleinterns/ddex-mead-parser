@@ -28,6 +28,7 @@ public abstract class EntryCandidate {
     return fields;
   }
 
+  public boolean hasFields() { return fields.size() > 0 ;}
   public boolean isEnum() { return false; }
   public boolean isMessage() { return false; }
 }

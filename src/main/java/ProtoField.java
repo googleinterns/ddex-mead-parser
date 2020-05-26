@@ -1,23 +1,37 @@
+import javax.xml.namespace.QName;
+import java.util.Objects;
+
 public class ProtoField {
   String fieldValue;
-  String fieldType;
-  boolean repeated;
+  QName fieldQName;
+  boolean fieldRepeated;
 
-  public ProtoField(String type, String value) {
+  public ProtoField(String value, QName qName, boolean repeated) {
     fieldValue = value;
-    fieldType = type;
+    fieldQName = Objects.requireNonNullElseGet(qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
+    fieldRepeated = repeated;
   }
 
+  public ProtoField(String value, QName qName) {
+    fieldValue = value;
+    fieldQName = Objects.requireNonNullElseGet(qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
+    fieldRepeated = false;
+  }
+
+  // Default string QName
   public ProtoField(String value) {
     fieldValue = value;
-    fieldType = "";
+    fieldQName = new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
+    fieldRepeated = false;
   }
 
   public String getFieldValue() {
     return fieldValue;
   }
 
-  public String getFieldType() {
-    return fieldType;
+  public QName getFieldType() {
+    return fieldQName;
   }
+
+  public boolean isRepeated() { return fieldRepeated; }
 }

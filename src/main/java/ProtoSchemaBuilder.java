@@ -1,5 +1,6 @@
 import org.apache.ws.commons.schema.*;
 import org.apache.ws.commons.schema.utils.NamespacePrefixList;
+import org.w3c.dom.Attr;
 
 import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamSource;
@@ -49,19 +50,19 @@ public class ProtoSchemaBuilder {
     buildProtoBySchema();
   }
 
-  // TODO fix the import/include not being fully recursive
+  // TODO fix the import/include not being fully recursive (does it need to be)
   private void initializeSchemaSet() {
     List<XmlSchemaExternal> schemaExternals = baseSchema.getExternals();
 
     for (XmlSchemaExternal external : schemaExternals) {
       if (external instanceof XmlSchemaImport) {
-        XmlSchema importedSchema = ((XmlSchemaImport) external).getSchema();
+        XmlSchema importedSchema = external.getSchema();
         schemaSet.add(importedSchema);
       } else if (external instanceof XmlSchemaInclude) {
-        XmlSchema includedSchema = ((XmlSchemaInclude) external).getSchema();
+        XmlSchema includedSchema = external.getSchema();
         schemaSet.add(includedSchema);
       } else if (external instanceof XmlSchemaRedefine) {
-        XmlSchema redefinedSchema = ((XmlSchemaRedefine) external).getSchema();
+        XmlSchema redefinedSchema = external.getSchema();
         // TODO handle redefines? May not be needed for MEAD specifically
       }
     }
@@ -103,18 +104,13 @@ public class ProtoSchemaBuilder {
   }
 
   private void processSimple(XmlSchemaSimpleType simpleItem, String candidateName, String nsPrefix) {
-    if (candidateName != null) {
-      // System.out.println(candidateName);
-    } else if (simpleItem.getName() != null) {
-      candidateName = simpleItem.getName();
-      // System.out.println(simpleItem.getName() + " " + simpleItem.getQName());
-    } else {
-      // TODO ERROR?
-      System.out.println("NO NAME??");
+    if (candidateName == null && simpleItem.getName() == null) {
+      throw new Error("No name for simple candidate");
     }
+    candidateName = candidateName != null ? candidateName : simpleItem.getName();
 
     XmlSchemaSimpleTypeRestriction restriction = (XmlSchemaSimpleTypeRestriction) simpleItem.getContent();
-    QName restrictionQName = restriction.getBaseTypeName();
+    QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
     List<XmlSchemaFacet> facets = restriction.getFacets();
 
     if (isEnumFacetList(facets)) {
@@ -127,29 +123,109 @@ public class ProtoSchemaBuilder {
     }
   }
 
-  // TODO move to utils
-  private boolean isEnumFacetList(List<XmlSchemaFacet> facets) {
-    if (facets.size() <= 0) {
-      return false;
-    }
-    for (XmlSchemaFacet facet : facets) {
-      if (!(facet instanceof XmlSchemaEnumerationFacet)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
   private void processComplex(XmlSchemaComplexType complexItem, String candidateName, String nsPrefix) {
-    if (candidateName != null) {
-      // System.out.println(candidateName);
-    } else if (complexItem.getName() != null) {
-      candidateName = complexItem.getName();
-      // System.out.println(complexItem.getName() + " " + complexItem.getQName());
-    } else {
-      // TODO ERROR?
+    if (candidateName == null && complexItem.getName() == null) {
       System.out.println("NO NAME??");
     }
+    candidateName = candidateName != null ? candidateName : complexItem.getName();
+    System.out.println(candidateName);
+
+    List<XmlSchemaAttributeOrGroupRef> attributeList = complexItem.getAttributes();
+    XmlSchemaAnyAttribute anyAttribute = complexItem.getAnyAttribute();
+    XmlSchemaParticle particle = complexItem.getParticle();
+    XmlSchemaContentModel contentModel = complexItem.getContentModel();
+
+    MessageCandidate messageCandidate = new MessageCandidate(candidateName, nsPrefix);
+
+    processAttributes(attributeList, anyAttribute, messageCandidate);
+    processParticle(particle, messageCandidate);
+    processContentModel(contentModel, messageCandidate);
+
+    if (messageCandidate.hasFields()) {
+      candidateContainer.addCandidate(messageCandidate);
+    }
+  }
+
+  private void processAttributes(List<XmlSchemaAttributeOrGroupRef> attributes, XmlSchemaAnyAttribute anyAttribute, EntryCandidate candidate) {
+    if (attributes != null && attributes.size() > 0) {
+      System.out.println("ATTR RESOLVED");
+      System.out.println(attributes);
+
+      for (XmlSchemaAttributeOrGroupRef attribute : attributes) {
+        if (attribute instanceof XmlSchemaAttribute) {
+          String name = ((XmlSchemaAttribute) attribute).getName();
+          QName attributeType = getAttributeTypeName(((XmlSchemaAttribute) attribute));
+          candidate.addField(new ProtoField(name, attributeType));
+        } else {
+          throw new Error("Unhandled attribute");
+        }
+      }
+    }
+
+    if (anyAttribute != null) {
+      System.out.println("ANY RESOLVED");
+      System.out.println(anyAttribute);
+
+      candidate.addField(new ProtoField("any_attribute_value", null, true));
+    }
+  }
+
+  // TODO handle weird nesting (AwardForParty) among others
+  private void processParticle(XmlSchemaParticle particle, EntryCandidate candidate) {
+    if (particle != null) {
+      System.out.println("P RESOLVED");
+      System.out.println(particle);
+
+      if (particle instanceof XmlSchemaSequence) {
+        List<XmlSchemaSequenceMember> items = ((XmlSchemaSequence)particle).getItems();
+        for (XmlSchemaSequenceMember item : items) {
+          if (item instanceof XmlSchemaSequence || item instanceof XmlSchemaChoice) {
+            // throw new Error("Unhandled nested particles");
+          }
+        }
+      }
+
+      if (particle instanceof XmlSchemaChoice) {
+        List<XmlSchemaChoiceMember> items = ((XmlSchemaChoice)particle).getItems();
+        for (XmlSchemaChoiceMember item : items) {
+          if (item instanceof XmlSchemaSequence || item instanceof XmlSchemaChoice) {
+            // throw new Error("Unhandled nested particles");
+          }
+        }
+      }
+    }
+  }
+
+  private void processContentModel(XmlSchemaContentModel contentModel, EntryCandidate candidate) {
+    if (contentModel != null) {
+      // Assuming only simple extension, there are more
+      if (!(contentModel.getContent() instanceof XmlSchemaSimpleContentExtension)) {
+        throw new Error("Unhandled content " + contentModel.getContent().getClass());
+      }
+
+      XmlSchemaSimpleContentExtension content = (XmlSchemaSimpleContentExtension) contentModel.getContent();
+
+      System.out.println("C RESOLVED");
+      System.out.println(content);
+
+      processAttributes(content.getAttributes(), content.getAnyAttribute(), candidate);
+      candidate.addField(new ProtoField("extension_value"));
+    }
+  }
+
+  // Default to string
+  private QName getAttributeTypeName(XmlSchemaAttribute attribute) {
+    QName qName = attribute.getSchemaTypeName();
+    XmlSchemaSimpleType simpleItem =  attribute.getSchemaType();
+
+    if (qName != null) {
+      return qName;
+    }
+    if (simpleItem != null) {
+      XmlSchemaSimpleTypeRestriction restriction = (XmlSchemaSimpleTypeRestriction) simpleItem.getContent();
+      return restriction.getBaseTypeName(); // Always a STRING restriction
+    }
+    return new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
   }
 
   private void processElement(XmlSchemaElement elementItem, String candidateName, String nsPrefix) {
@@ -162,8 +238,7 @@ public class ProtoSchemaBuilder {
     }
   }
 
-  // TODO redo the function, maybe need a structure map to figure out the steps to take this is a
-  // hack
+  // TODO redo the function, separately as serializer and cleaner class
   private String buildProtoBySchema() {
     List<String> namespaces = candidateContainer.getNamespacePrefixes();
     Map<String, List<EntryCandidate>> namespaceMap =
@@ -182,10 +257,25 @@ public class ProtoSchemaBuilder {
         protoString += "}\n";
       }
 
-      System.out.println(protoString);
+      // System.out.println(protoString);
     }
     return "";
   }
+
+
+  // TODO move to utils
+  private boolean isEnumFacetList(List<XmlSchemaFacet> facets) {
+    if (facets.size() <= 0) {
+      return false;
+    }
+    for (XmlSchemaFacet facet : facets) {
+      if (!(facet instanceof XmlSchemaEnumerationFacet)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
 }
 
 /*
