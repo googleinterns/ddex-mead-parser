@@ -5,9 +5,11 @@ public class DdexMeadParser {
     System.out.println("Launched XSD parse tester");
 
     ProtoSchemaBuilder protoBuilder = new ProtoSchemaBuilder(/* Options from cmd line */ );
-
     /* Definitely take this as input from cmd line */
     protoBuilder.ingestXsdFromPath("src/main/resources/meadex.xsd");
-    protoBuilder.generateProto();
+    CandidateContainer candidateContainer = protoBuilder.parseXsd();
+
+    ProtoWriter protoWriter = new ProtoWriter(/* Optios from cmd line */);
+    protoWriter.serialize(candidateContainer);
   }
 }

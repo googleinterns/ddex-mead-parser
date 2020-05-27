@@ -1,7 +1,6 @@
 import org.apache.ws.commons.schema.*;
 import org.apache.ws.commons.schema.utils.NamespacePrefixList;
 import org.apache.ws.commons.schema.utils.XmlSchemaObjectBase;
-import org.w3c.dom.Attr;
 
 import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamSource;
@@ -29,7 +28,7 @@ public class ProtoSchemaBuilder {
     xsdIngested = false;
   }
 
-  public void ingestXsdFromPath(String path) throws IOException {
+  public boolean ingestXsdFromPath(String path) throws IOException {
     File initialFile = new File(path);
     InputStream xsdFile = new FileInputStream(initialFile);
 
@@ -38,17 +37,21 @@ public class ProtoSchemaBuilder {
     baseSchema = schemaCol.read(new StreamSource(xsdFile));
     schemaSet.add(baseSchema);
     xsdIngested = true;
+
+    // TODO add check for failure
+    return true;
   }
 
-  public void generateProto() {
+  public CandidateContainer parseXsd() {
     if (!xsdIngested) {
-      System.out.println("No XSD to process");
-      return;
+      System.err.println("No XSD to process");
+      return null;
     }
 
     initializeSchemaSet();
     processSchemaSet();
-    buildProtoBySchema();
+
+    return candidateContainer;
   }
 
   // TODO fix the import/include not being fully recursive (does it need to be)
@@ -84,12 +87,12 @@ public class ProtoSchemaBuilder {
 
   private void processSchemaSet() {
     for (WrappedXmlSchema wSchema : wrappedSchemaSet) {
-      System.out.println("Processing wrapped schema -> " + wSchema.getPrefix() + " " + wSchema.getUri());
       processSchema(wSchema);
     }
   }
 
   private void processSchema(WrappedXmlSchema wSchema) {
+    System.out.println("Processing wrapped schema -> " + wSchema.getPrefix() + " " + wSchema.getUri());
     String nsPrefix = wSchema.getPrefix();
     List<XmlSchemaObject> schemaItems = wSchema.getSchema().getItems();
 
@@ -125,15 +128,18 @@ public class ProtoSchemaBuilder {
       if (enumCandidate.hasFields()) {
         candidateContainer.addCandidate(enumCandidate);
       }
+    } else if (isPatternFacetList(facets)) {
+      MessageCandidate messageCandidate = new MessageCandidate(candidateName, nsPrefix);
+      messageCandidate.addField(new ProtoField("pattern_value"));
+      candidateContainer.addCandidate(messageCandidate);
     }
   }
 
   private void processComplex(XmlSchemaComplexType complexItem, String candidateName, String nsPrefix) {
     if (candidateName == null && complexItem.getName() == null) {
-      System.out.println("NO NAME??");
+      throw new Error("Complex item had no name");
     }
     candidateName = candidateName != null ? candidateName : complexItem.getName();
-    System.out.println(candidateName);
 
     MessageCandidate messageCandidate = new MessageCandidate(candidateName, nsPrefix);
 
@@ -164,17 +170,14 @@ public class ProtoSchemaBuilder {
     }
   }
 
-  // TODO handle repeated nested choice (AwardForParty)
+  // TODO handle repeated nested choice (AwardForParty) - Need to test this with a custom XSD
   private void processParticle(XmlSchemaParticle particle, EntryCandidate candidate) {
     if (particle != null) {
-      System.out.println("P RESOLVED");
-      System.out.println(particle);
-
       if (particle instanceof XmlSchemaSequence) {
         List<XmlSchemaSequenceMember> items = ((XmlSchemaSequence)particle).getItems();
         for (XmlSchemaSequenceMember item : items) {
           if (item instanceof XmlSchemaSequence || item instanceof XmlSchemaChoice) {
-             processParticle((XmlSchemaParticle)item, candidate);
+            processParticle((XmlSchemaParticle)item, candidate);
           } else {
             processItem(item, candidate);
           }
@@ -197,7 +200,7 @@ public class ProtoSchemaBuilder {
   private void processItem(XmlSchemaObjectBase item, EntryCandidate candidate) {
     if (item instanceof XmlSchemaElement) {
       String name = ((XmlSchemaElement)item).getName();
-      QName itemType = ((XmlSchemaElement) item).getQName();
+      QName itemType = ((XmlSchemaElement) item).getSchemaTypeName();
       boolean repeated = ((XmlSchemaElement) item).getMaxOccurs() > 1;
       candidate.addField(new ProtoField(name, itemType, repeated));
     } else if (item instanceof XmlSchemaAny) {
@@ -215,9 +218,6 @@ public class ProtoSchemaBuilder {
       }
 
       XmlSchemaSimpleContentExtension content = (XmlSchemaSimpleContentExtension) contentModel.getContent();
-
-      System.out.println("C RESOLVED");
-      System.out.println(content);
 
       processAttributes(content.getAttributes(), content.getAnyAttribute(), candidate);
       candidate.addField(new ProtoField("extension_value"));
@@ -245,7 +245,7 @@ public class ProtoSchemaBuilder {
     } else if (elementItem.getSchemaType() instanceof XmlSchemaSimpleType) {
       processSimple((XmlSchemaSimpleType) elementItem.getSchemaType(), elementItem.getName(), nsPrefix);
     } else {
-      System.err.println("Did not process an element");
+      throw new Error("Unable to process element " + elementItem.getClass());
     }
   }
 
@@ -256,7 +256,6 @@ public class ProtoSchemaBuilder {
         candidateContainer.getNamespacePrefixCandidateMap();
 
     for (String name : namespaces) {
-      System.out.println("Serialize .proto for " + name);
       String protoString = "syntax = \"proto2\";\npackage " + name + ";\n";
 
       for (EntryCandidate cand : namespaceMap.get(name)) {
@@ -268,7 +267,6 @@ public class ProtoSchemaBuilder {
         protoString += "}\n";
       }
 
-      // System.out.println(protoString);
     }
     return "";
   }
@@ -287,6 +285,17 @@ public class ProtoSchemaBuilder {
     return true;
   }
 
+  private boolean isPatternFacetList(List<XmlSchemaFacet> facets) {
+    if (facets.size() <= 0) {
+      return false;
+    }
+    for (XmlSchemaFacet facet : facets) {
+      if (!(facet instanceof XmlSchemaPatternFacet)) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
 
 /*

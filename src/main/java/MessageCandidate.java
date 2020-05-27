@@ -4,5 +4,5 @@ public class MessageCandidate extends EntryCandidate {
   }
 
   @Override
-  public boolean isMessage() { return false; }
+  public boolean isMessage() { return true; }
 }
