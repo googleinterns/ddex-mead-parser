@@ -135,7 +135,10 @@ public class ProtoSchemaBuilder {
 
   // TODO Implement
   private QName processSimpleUnion(XmlSchemaSimpleTypeUnion union, String candidateName,String nsPrefix, EntryCandidate parent) {
-    return null;
+    MessageCandidate messageCandidate = new MessageCandidate(candidateName, nsPrefix);
+    messageCandidate.addField(new ProtoField("auto_value"));
+    candidateContainer.addCandidate(messageCandidate);
+    return new QName(namespaces.getUri(messageCandidate.getNamespacePrefix()), messageCandidate.getTitle(), messageCandidate.getNamespacePrefix());
   }
 
   private QName processSimpleRestriction(XmlSchemaSimpleTypeRestriction restriction, String candidateName, String nsPrefix, EntryCandidate parent) {

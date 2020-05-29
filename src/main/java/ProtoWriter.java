@@ -91,7 +91,7 @@ public class ProtoWriter {
     private List<String> getImportsForNamespace(String currentNamespace) {
         List<String> nonCurrentNamespaces = new ArrayList<>();
         for (String namespace : namespaces) {
-            if (!currentNamespace.equals(namespace) && !namespace.equals("mead")) {
+            if (!currentNamespace.equals(namespace) && !namespace.equals("mead") && !namespace.equals("ern")) {
                 nonCurrentNamespaces.add(namespace);
             }
         }
