@@ -1,6 +1,11 @@
 import javax.xml.namespace.QName;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.common.base.CaseFormat;
 
 public class ProtoWriter {
     private List<String> namespaces;
@@ -14,20 +19,21 @@ public class ProtoWriter {
     // TODO 2 pass?
     // TODO camel case / uppercase / snake case conversion using guava thing
     // TODO escape illegal stuff
-    public void serialize(CandidateContainer candidateContainer) {
+    public void serialize(CandidateContainer candidateContainer) throws IOException {
         namespaces = candidateContainer.getNamespacePrefixes();
         for (String namespace : namespaces) {
-            serializeNamespace(candidateContainer.getNamespacePrefixCandidateMap().get(namespace), namespace);
+            String toWrite = serializeNamespace(candidateContainer.getNamespacePrefixCandidateMap().get(namespace), namespace);
+            writeFile(toWrite, namespace);
         }
     }
 
     // Todo package? and file structure for output???
-    private void serializeNamespace(List<EntryCandidate> candidates, String namespace) {
+    private String serializeNamespace(List<EntryCandidate> candidates, String namespace) {
         StringBuilder outputBuilder = new StringBuilder();
         outputBuilder.append("syntax = \"proto2\";\n");
-
+        outputBuilder.append("package ").append(namespace).append(";\n");
         for (String namespaceToImport : getImportsForNamespace(namespace)) {
-            outputBuilder.append("import \"").append(namespaceToImport).append("\"\n");
+            outputBuilder.append("import \"").append(namespaceToImport).append("/").append(namespaceToImport).append(".proto\";\n");
         }
 
         for (EntryCandidate candidate : candidates) {
@@ -40,7 +46,7 @@ public class ProtoWriter {
             }
         }
 
-        System.out.println(outputBuilder.toString());
+        return(outputBuilder.toString());
     }
 
     private String dumbSerializeEnum(EnumCandidate candidate) {
@@ -49,7 +55,10 @@ public class ProtoWriter {
 
         int ident = 0; // Enums starting at 0
         for (ProtoField field : candidate.getFields()) {
-            enumBuilder.append("\t").append(field.getFieldValue()).append(" = ").append(ident).append(";\n");
+            String fieldName = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, field.getFieldValue());
+            fieldName = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, candidate.getTitle()) + "_" + fieldName;
+            fieldName = sanitizeFieldName(fieldName);
+            enumBuilder.append("\t").append(fieldName).append(" = ").append(ident).append(";\n");
             ident++;
         }
         enumBuilder.append("}\n");
@@ -69,7 +78,9 @@ public class ProtoWriter {
                 messageBuilder.append("optional ");
             }
             messageBuilder.append(resolveType(candidate, field));
-            messageBuilder.append(field.getFieldValue()).append(" = ").append(ident).append(";\n");
+            String fieldName = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getFieldValue());
+            fieldName = sanitizeFieldName(fieldName);
+            messageBuilder.append(fieldName).append(" = ").append(ident).append(";\n");
             ident++;
         }
         messageBuilder.append("}\n");
@@ -80,7 +91,7 @@ public class ProtoWriter {
     private List<String> getImportsForNamespace(String currentNamespace) {
         List<String> nonCurrentNamespaces = new ArrayList<>();
         for (String namespace : namespaces) {
-            if (!currentNamespace.equals(namespace)) {
+            if (!currentNamespace.equals(namespace) && !namespace.equals("mead")) {
                 nonCurrentNamespaces.add(namespace);
             }
         }
@@ -92,7 +103,7 @@ public class ProtoWriter {
         String type;
 
         if (fieldType.getPrefix().equals("xs")) {
-            type = fieldType.getLocalPart();
+            type = convertXmlTypeToProto(fieldType.getLocalPart());
         } else if (!fieldType.getPrefix().equals(candidate.getNamespacePrefix())) {
             type = fieldType.getPrefix() + "." + fieldType.getLocalPart();
         } else {
@@ -100,5 +111,57 @@ public class ProtoWriter {
         }
 
         return type + " ";
+    }
+
+    // TODO MAP ALL TYPES - 100
+    private String convertXmlTypeToProto(String xmlType) {
+        switch (xmlType) {
+            case "string": return "string";
+            case "boolean": return "bool";
+            case "float": return "float";
+            case "integer": return "int32";
+            case "decimal": return "double";
+
+            case "dateTime": return "uint64";
+            case "anyURI": return "string";
+            case "NMTOKEN": return "string";
+            case "positiveInteger": return "uint32";
+
+            case "duration": return "string";
+            case "token": return "string";
+
+            case "gYear": return "uint32";
+            case "IDREF": return "string";
+            default: throw new Error("Unhandled " + xmlType);
+        }
+    }
+
+    private String sanitizeFieldName(String fieldName) {
+        fieldName = fieldName.replace("&", "__AND__");
+        fieldName = fieldName.replace("/", "__FWSLASH__");
+        fieldName = fieldName.replace("-", "__MINUS__");
+        fieldName = fieldName.replace("+", "__PLUS__");
+        fieldName = fieldName.replace("(", "__FRB__");
+        fieldName = fieldName.replace(")", "__BRB__");
+        fieldName = fieldName.replace("[", "__FSB__");
+        fieldName = fieldName.replace("]", "__BSB__");
+        fieldName = fieldName.replace(" ", "__SP__");
+        fieldName = fieldName.replace("#", "__SHARP__");
+        fieldName = fieldName.replace("!", "__BANG__");
+        fieldName = fieldName.replace("ó", "__OI__");
+        fieldName = fieldName.replace("í", "__II__");
+        fieldName = fieldName.replace(".", "__DOT__");
+
+        return fieldName;
+
+    }
+
+    public void writeFile(String toWrite, String namespace) throws IOException {
+        File file = new File("./output/" + namespace + "/" + namespace+ ".proto");
+        file.getParentFile().mkdirs();
+
+        FileWriter writer = new FileWriter(file, false);
+        writer.write(toWrite);
+        writer.close();
     }
 }

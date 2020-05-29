@@ -67,7 +67,7 @@ public class ProtoSchemaBuilder {
         schemaSet.add(includedSchema);
       } else if (external instanceof XmlSchemaRedefine) {
         XmlSchema redefinedSchema = external.getSchema();
-        // TODO handle redefines? May not be needed for MEAD specifically
+        // TODO handle redefines? Not be needed for MEAD specifically
       }
     }
 
@@ -98,61 +98,88 @@ public class ProtoSchemaBuilder {
 
     for (XmlSchemaObject item : schemaItems) {
       if (item instanceof XmlSchemaSimpleType) {
-        processSimple((XmlSchemaSimpleType) item, null, nsPrefix);
+        processSimple((XmlSchemaSimpleType) item, null, nsPrefix, null);
       } else if (item instanceof XmlSchemaComplexType) {
-        processComplex((XmlSchemaComplexType) item, null, nsPrefix);
+        processComplex((XmlSchemaComplexType) item, null, nsPrefix, null);
       } else if (item instanceof XmlSchemaElement) {
-        processElement((XmlSchemaElement) item, null, nsPrefix);
+        processElement((XmlSchemaElement) item, null, nsPrefix, null);
       }
     }
   }
 
-  private void processSimple(XmlSchemaSimpleType simpleItem, String candidateName, String nsPrefix) {
+
+  private QName processElement(XmlSchemaElement elementItem, String candidateName, String nsPrefix, EntryCandidate parent) {
+    if (elementItem.getSchemaType() instanceof XmlSchemaSimpleType) {
+      return processSimple((XmlSchemaSimpleType) elementItem.getSchemaType(), elementItem.getName(), nsPrefix, parent);
+    } else if (elementItem.getSchemaType() instanceof XmlSchemaComplexType) {
+      return processComplex((XmlSchemaComplexType) elementItem.getSchemaType(), elementItem.getName(), nsPrefix, parent);
+    } else {
+      throw new Error("Unable to process element " + elementItem.getClass());
+    }
+  }
+
+  private QName processSimple(XmlSchemaSimpleType simpleItem, String candidateName, String nsPrefix, EntryCandidate parent) {
     if (candidateName == null && simpleItem.getName() == null) {
       throw new Error("No name for simple candidate");
     }
     candidateName = candidateName != null ? candidateName : simpleItem.getName();
 
-    XmlSchemaSimpleTypeRestriction restriction = (XmlSchemaSimpleTypeRestriction) simpleItem.getContent();
-    QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
+    if (simpleItem.getContent() instanceof XmlSchemaSimpleTypeUnion) {
+      return processSimpleUnion((XmlSchemaSimpleTypeUnion)simpleItem.getContent(), candidateName, nsPrefix, parent);
+    } else if (simpleItem.getContent() instanceof XmlSchemaSimpleTypeRestriction) {
+      return processSimpleRestriction((XmlSchemaSimpleTypeRestriction)simpleItem.getContent(), candidateName, nsPrefix, parent);
+    } else {
+      throw new Error("Unhandled simple type " + simpleItem.getClass());
+    }
+  }
+
+  // TODO Implement
+  private QName processSimpleUnion(XmlSchemaSimpleTypeUnion union, String candidateName,String nsPrefix, EntryCandidate parent) {
+    return null;
+  }
+
+  private QName processSimpleRestriction(XmlSchemaSimpleTypeRestriction restriction, String candidateName, String nsPrefix, EntryCandidate parent) {
     List<XmlSchemaFacet> facets = restriction.getFacets();
 
     if (isEnumFacetList(facets)) {
       EnumCandidate enumCandidate = new EnumCandidate(candidateName, nsPrefix);
-
       for (XmlSchemaFacet facet : facets) {
         ProtoField field = new ProtoField(facet.getValue().toString());
         enumCandidate.addField(field);
       }
-
       if (enumCandidate.hasFields()) {
         candidateContainer.addCandidate(enumCandidate);
+        return new QName(namespaces.getUri(enumCandidate.getNamespacePrefix()), enumCandidate.getTitle(), enumCandidate.getNamespacePrefix());
       }
-    } else if (isPatternFacetList(facets)) {
+    } else if (parent == null) {
       MessageCandidate messageCandidate = new MessageCandidate(candidateName, nsPrefix);
-      messageCandidate.addField(new ProtoField("pattern_value"));
+      QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
+      messageCandidate.addField(new ProtoField("auto_value", restrictionQName));
       candidateContainer.addCandidate(messageCandidate);
+      return new QName(namespaces.getUri(messageCandidate.getNamespacePrefix()), messageCandidate.getTitle(), messageCandidate.getNamespacePrefix());
     }
+    return null;
   }
 
-  private void processComplex(XmlSchemaComplexType complexItem, String candidateName, String nsPrefix) {
+  private QName processComplex(XmlSchemaComplexType complexItem, String candidateName, String nsPrefix, EntryCandidate parent) {
     if (candidateName == null && complexItem.getName() == null) {
       throw new Error("Complex item had no name");
     }
     candidateName = candidateName != null ? candidateName : complexItem.getName();
-
     MessageCandidate messageCandidate = new MessageCandidate(candidateName, nsPrefix);
 
-    processAttributes(complexItem.getAttributes(), complexItem.getAnyAttribute(), messageCandidate);
-    processParticle(complexItem.getParticle(), messageCandidate);
-    processContentModel( complexItem.getContentModel(), messageCandidate);
+    processAttributes(complexItem.getAttributes(), complexItem.getAnyAttribute(), messageCandidate, parent);
+    processParticle(complexItem.getParticle(), messageCandidate, parent);
+    processContentModel(complexItem.getContentModel(), messageCandidate, parent);
 
     if (messageCandidate.hasFields()) {
       candidateContainer.addCandidate(messageCandidate);
+      return new QName(namespaces.getUri(messageCandidate.getNamespacePrefix()), messageCandidate.getTitle(), messageCandidate.getNamespacePrefix());
     }
+    return null;
   }
 
-  private void processAttributes(List<XmlSchemaAttributeOrGroupRef> attributes, XmlSchemaAnyAttribute anyAttribute, EntryCandidate candidate) {
+  private void processAttributes(List<XmlSchemaAttributeOrGroupRef> attributes, XmlSchemaAnyAttribute anyAttribute, EntryCandidate candidate, EntryCandidate parent) {
     if (attributes != null && attributes.size() > 0) {
       for (XmlSchemaAttributeOrGroupRef attribute : attributes) {
         if (attribute instanceof XmlSchemaAttribute) {
@@ -171,15 +198,15 @@ public class ProtoSchemaBuilder {
   }
 
   // TODO handle repeated nested choice (AwardForParty) - Need to test this with a custom XSD
-  private void processParticle(XmlSchemaParticle particle, EntryCandidate candidate) {
+  private void processParticle(XmlSchemaParticle particle, EntryCandidate candidate, EntryCandidate parent) {
     if (particle != null) {
       if (particle instanceof XmlSchemaSequence) {
         List<XmlSchemaSequenceMember> items = ((XmlSchemaSequence)particle).getItems();
         for (XmlSchemaSequenceMember item : items) {
           if (item instanceof XmlSchemaSequence || item instanceof XmlSchemaChoice) {
-            processParticle((XmlSchemaParticle)item, candidate);
+            processParticle((XmlSchemaParticle)item, candidate, parent);
           } else {
-            processItem(item, candidate);
+            processItem(item, candidate, parent);
           }
         }
       }
@@ -188,19 +215,28 @@ public class ProtoSchemaBuilder {
         List<XmlSchemaChoiceMember> items = ((XmlSchemaChoice)particle).getItems();
         for (XmlSchemaChoiceMember item : items) {
           if (item instanceof XmlSchemaSequence || item instanceof XmlSchemaChoice) {
-            processParticle((XmlSchemaParticle)item, candidate);
+            processParticle((XmlSchemaParticle)item, candidate, parent);
           } else {
-            processItem(item, candidate);
+            processItem(item, candidate, parent);
           }
         }
       }
     }
   }
 
-  private void processItem(XmlSchemaObjectBase item, EntryCandidate candidate) {
+  private void processItem(XmlSchemaObjectBase item, EntryCandidate candidate, EntryCandidate parent) {
     if (item instanceof XmlSchemaElement) {
-      String name = ((XmlSchemaElement)item).getName();
+      XmlSchemaType type = ((XmlSchemaElement) item).getSchemaType();
       QName itemType = ((XmlSchemaElement) item).getSchemaTypeName();
+
+      // Only evaluate an element that is a concrete definition as opposed to a leaf referencing an element
+      if (type != null && itemType == null) {
+        itemType = processElement((XmlSchemaElement)item, candidate.getTitle(), candidate.getNamespacePrefix(), candidate);
+      } else {
+        itemType = ((XmlSchemaElement) item).getSchemaTypeName();
+      }
+
+      String name = ((XmlSchemaElement)item).getName();
       boolean repeated = ((XmlSchemaElement) item).getMaxOccurs() > 1;
       candidate.addField(new ProtoField(name, itemType, repeated));
     } else if (item instanceof XmlSchemaAny) {
@@ -211,7 +247,7 @@ public class ProtoSchemaBuilder {
     }
   }
 
-  private void processContentModel(XmlSchemaContentModel contentModel, EntryCandidate candidate) {
+  private void processContentModel(XmlSchemaContentModel contentModel, EntryCandidate candidate, EntryCandidate parent) {
     if (contentModel != null) {
       if (!(contentModel.getContent() instanceof XmlSchemaSimpleContentExtension)) {      // Assuming only simple extension, there are more
         throw new Error("Unhandled content " + contentModel.getContent().getClass());
@@ -219,7 +255,7 @@ public class ProtoSchemaBuilder {
 
       XmlSchemaSimpleContentExtension content = (XmlSchemaSimpleContentExtension) contentModel.getContent();
 
-      processAttributes(content.getAttributes(), content.getAnyAttribute(), candidate);
+      processAttributes(content.getAttributes(), content.getAnyAttribute(), candidate, parent);
       candidate.addField(new ProtoField("extension_value"));
     }
   }
@@ -238,39 +274,6 @@ public class ProtoSchemaBuilder {
     }
     return new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
   }
-
-  private void processElement(XmlSchemaElement elementItem, String candidateName, String nsPrefix) {
-    if (elementItem.getSchemaType() instanceof XmlSchemaComplexType) {
-      processComplex((XmlSchemaComplexType) elementItem.getSchemaType(), elementItem.getName(), nsPrefix);
-    } else if (elementItem.getSchemaType() instanceof XmlSchemaSimpleType) {
-      processSimple((XmlSchemaSimpleType) elementItem.getSchemaType(), elementItem.getName(), nsPrefix);
-    } else {
-      throw new Error("Unable to process element " + elementItem.getClass());
-    }
-  }
-
-  // TODO redo the function, separately as serializer and cleaner class
-  private String buildProtoBySchema() {
-    List<String> namespaces = candidateContainer.getNamespacePrefixes();
-    Map<String, List<EntryCandidate>> namespaceMap =
-        candidateContainer.getNamespacePrefixCandidateMap();
-
-    for (String name : namespaces) {
-      String protoString = "syntax = \"proto2\";\npackage " + name + ";\n";
-
-      for (EntryCandidate cand : namespaceMap.get(name)) {
-        int counter = 0;
-        protoString += "enum " + cand.getTitle() + " {\n";
-        for (ProtoField field : cand.getFields()) {
-          protoString += "\t" + field.getFieldValue() + " = " + counter++ + ";\n";
-        }
-        protoString += "}\n";
-      }
-
-    }
-    return "";
-  }
-
 
   // TODO move to utils
   private boolean isEnumFacetList(List<XmlSchemaFacet> facets) {
@@ -315,3 +318,4 @@ public class ProtoSchemaBuilder {
         - AnyAttribute and Any
         - Choices
  */
+
