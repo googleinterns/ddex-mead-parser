@@ -4005,8 +4005,7 @@
             <xs:anyAttribute namespace="##other"/>
          </xs:extension>
       </xs:simpleContent>
-   </xs:complexType>    QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
-
+   </xs:complexType>
    <xs:complexType name="Generator">
       <xs:annotation>
          <xs:documentation source="ddex:Definition">A Composite containing details of a generator. The Atom generator element is defined in section 4.2.4 of the format spec.</xs:documentation>
