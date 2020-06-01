@@ -151,13 +151,14 @@ public class ProtoWriter {
         fieldName = fieldName.replace("ó", "__OI__");
         fieldName = fieldName.replace("í", "__II__");
         fieldName = fieldName.replace(".", "__DOT__");
+        fieldName = fieldName.replace("'", "__APO__");
 
         return fieldName;
 
     }
 
     public void writeFile(String toWrite, String namespace) throws IOException {
-        File file = new File("./output/" + namespace + "/" + namespace+ ".proto");
+        File file = new File("./src/main/proto/" + namespace + "/" + namespace+ ".proto");
         file.getParentFile().mkdirs();
 
         FileWriter writer = new FileWriter(file, false);

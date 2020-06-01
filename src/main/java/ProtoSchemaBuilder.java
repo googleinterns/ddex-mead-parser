@@ -259,7 +259,7 @@ public class ProtoSchemaBuilder {
       XmlSchemaSimpleContentExtension content = (XmlSchemaSimpleContentExtension) contentModel.getContent();
 
       processAttributes(content.getAttributes(), content.getAnyAttribute(), candidate, parent);
-      candidate.addField(new ProtoField("extension_value"));
+      candidate.addField(new ProtoField("ext_value", content.getBaseTypeName()));
     }
   }
 
