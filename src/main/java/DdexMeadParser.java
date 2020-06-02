@@ -22,7 +22,7 @@ public class DdexMeadParser {
     ProtoWriter protoWriter = new ProtoWriter(/* Optios from cmd line */);
     protoWriter.serialize(candidateContainer);
 
-    XmlFixer xmlFixer = new XmlFixer();
+    XmlFixer xmlFixer = new XmlFixer(candidateContainer);
     xmlFixer.fixFromPath("src/main/resources/7 LongformMusicalWorkVideo.xml");
 
     Message.Builder builder = Ern.NewReleaseMessage.newBuilder();
@@ -41,4 +41,6 @@ public class DdexMeadParser {
   // TODO Issue with numbers / special chars in string? (starts with num / contains special chars)
   // TODO Issue with enum values not matching since I change them to Proto style and prepend Enum name
   // TODO Handle namespacing (ern:NewReleaseMessage)
+
+  // TODO FieldNamesUsingToType map, then TypeToDetails map - Use the field names map for ext_value setting (OR JUST NOT DO THAT?)
 }

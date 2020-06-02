@@ -23,17 +23,23 @@ import java.util.List;
 import java.util.Map;
 
 public class XmlFixer {
-  public XmlFixer() {}
+  Map<String, Map<String, String>> candidateDetails;
+
+  public XmlFixer(CandidateContainer candidateContainer) {
+    candidateDetails = candidateContainer.getCandidateDetails();
+  }
 
   public String fixFromPath(String path)
       throws IOException, ParserConfigurationException, SAXException, TransformerException {
+
     DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
     Document doc = docBuilder.parse(path);
 
     Node root = doc.getFirstChild();
-      renameNodes(doc, root);
-      appendAttributesToNodes(doc, root);
+    shiftExtValue(doc, root);
+    renameNodes(doc, root);
+    appendAttributesToNodes(doc, root);
 
     // write the content into xml file
     TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -49,6 +55,24 @@ public class XmlFixer {
     return doc.toString();
   }
 
+  public void shiftExtValue(Document doc, Node node) {
+    Map<String, String> detailsForErn = candidateDetails.get("ern");
+    if (detailsForErn.get(node.getNodeName()) != null && detailsForErn.get(node.getNodeName()).equals("EXT")) {
+      Element attr_to_append = doc.createElement("ext_value");
+      attr_to_append.setTextContent(node.getTextContent());
+      node.setTextContent("");
+      node.appendChild(attr_to_append);
+    }
+
+    NodeList nodes = node.getChildNodes();
+    int children_len = nodes.getLength();
+    for (int i = 0; i < children_len; i++) {
+      if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
+        shiftExtValue(doc, nodes.item(i));
+      }
+    }
+  }
+
   public void renameNodes(Document doc, Node node) {
     doc.renameNode(
         node,
@@ -59,32 +83,31 @@ public class XmlFixer {
     int children_len = nodes.getLength();
     for (int i = 0; i < children_len; i++) {
       if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-          renameNodes(doc, nodes.item(i));
+        renameNodes(doc, nodes.item(i));
       }
     }
   }
 
   public void appendAttributesToNodes(Document doc, Node node) {
-      NamedNodeMap attributes = node.getAttributes();
-      while (attributes.getLength() > 0) {
-          System.out.println(attributes.item(0));
-          System.out.println(attributes.item(0).getNodeName());
-          System.out.println(attributes.item(0).getNodeValue());
-          Node attr = attributes.item(0);
-          if (!attr.getNodeName().contains(":")) {
-              Element attr_to_append = doc.createElement(CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, attr.getNodeName()));
-              attr_to_append.setTextContent(attr.getNodeValue());
-              node.appendChild(attr_to_append);
-          }
-          ((Element)node).removeAttribute(attr.getNodeName());
+    NamedNodeMap attributes = node.getAttributes();
+    while (attributes.getLength() > 0) {
+      Node attr = attributes.item(0);
+      if (!attr.getNodeName().contains(":")) {
+        Element attr_to_append =
+            doc.createElement(
+                CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, attr.getNodeName()));
+        attr_to_append.setTextContent(attr.getNodeValue());
+        node.appendChild(attr_to_append);
       }
+      ((Element) node).removeAttribute(attr.getNodeName());
+    }
 
-      NodeList nodes = node.getChildNodes();
-      int children_len = nodes.getLength();
-      for (int i = 0; i < children_len; i++) {
-          if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-              appendAttributesToNodes(doc, nodes.item(i));
-          }
+    NodeList nodes = node.getChildNodes();
+    int children_len = nodes.getLength();
+    for (int i = 0; i < children_len; i++) {
+      if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
+        appendAttributesToNodes(doc, nodes.item(i));
       }
+    }
   }
 }
