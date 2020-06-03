@@ -90,9 +90,6 @@ public class XmlFixer {
     } else {
       Descriptors.Descriptor messageDescriptor = file.findMessageTypeByName(node.getNodeName());
       name = messageDescriptor.getName();
-      if (node.getNodeName().equals("MessageControlType")) {
-        System.out.println("HERE");
-      }
     }
 
     if (name.equals("STRING")) {
@@ -146,9 +143,6 @@ public class XmlFixer {
     } else {
       Descriptors.Descriptor messageDescriptor = file.findMessageTypeByName(node.getNodeName());
       name = messageDescriptor.getName();
-      if (node.getNodeName().equals("MessageControlType")) {
-        System.out.println("HERE");
-      }
     }
 
 
