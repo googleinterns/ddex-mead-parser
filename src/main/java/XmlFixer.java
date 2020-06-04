@@ -1,9 +1,6 @@
 import com.google.common.base.CaseFormat;
 import ern.Ern;
-import org.apache.ws.commons.schema.XmlSchema;
-import org.apache.ws.commons.schema.XmlSchemaCollection;
-import org.apache.ws.commons.schema.XmlSchemaElement;
-import org.apache.ws.commons.schema.XmlSchemaObject;
+
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -21,6 +18,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Map;
 import com.google.protobuf.Descriptors;
@@ -34,14 +33,11 @@ public class XmlFixer {
     file = Ern.getDescriptor();
   }
 
-  public String fixFromPath(String path)
-          throws IOException, ParserConfigurationException, SAXException, TransformerException {
-
+  public String fixFromPath(String path) throws IOException, ParserConfigurationException, SAXException, TransformerException {
     DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
     Document doc = docBuilder.parse(path);
 
-    Descriptors.Descriptor baseDescriptor = Ern.NewReleaseMessage.getDescriptor();
     Node root = doc.getFirstChild();
 
     // Perform transformations
@@ -59,14 +55,13 @@ public class XmlFixer {
     transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
     transformer.transform(source, result);
 
-    System.out.println("Done writing transformed xml");
+    // Return value not used
     return doc.toString();
   }
 
   public void shiftExtValue(Document doc, Node node, String parentMessageName) {
     String name;
 
-    boolean toShift = false;
     if (parentMessageName != null) {
       Descriptors.Descriptor messageDescriptor = file.findMessageTypeByName(parentMessageName);
       Descriptors.FieldDescriptor p = messageDescriptor.findFieldByName(CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, node.getNodeName()));
@@ -97,6 +92,15 @@ public class XmlFixer {
       node.setTextContent(content);
     }
 
+    if (name.equals("LONG")) {
+      try {
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse(node.getTextContent());
+        node.setTextContent(Long.toString(zonedDateTime.toInstant().toEpochMilli()));
+      } catch (DateTimeParseException e) {
+        System.out.println(e);
+      }
+    }
+
     NodeList nodes = node.getChildNodes();
     int children_len = nodes.getLength();
     for (int i = 0; i < children_len; i++) {
@@ -124,12 +128,10 @@ public class XmlFixer {
   public void appendAttributesToNodes(Document doc, Node node, String parentMessageName) {
     String name;
 
-    boolean toShift = false;
     if (parentMessageName != null) {
       Descriptors.Descriptor messageDescriptor = file.findMessageTypeByName(parentMessageName);
       Descriptors.FieldDescriptor p = messageDescriptor.findFieldByName(CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, node.getNodeName()));
       if (p.getJavaType() == Descriptors.FieldDescriptor.JavaType.MESSAGE) {
-        toShift  = shouldShiftExtValue(p);
         name = p.getMessageType().getName();
       } else {
         name = p.getJavaType().name();

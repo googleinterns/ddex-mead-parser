@@ -25,8 +25,6 @@ public class DdexMeadParser {
     ProtoWriter protoWriter = new ProtoWriter(/* Optios from cmd line */);
     protoWriter.serialize(candidateContainer);
 
-
-
     XmlFixer xmlFixer = new XmlFixer(candidateContainer);
     xmlFixer.fixFromPath("src/main/resources/6 Ringtone.xml");
 
@@ -46,7 +44,7 @@ public class DdexMeadParser {
 
   // TODO Issue with extensions needed an extra nest <ext_value></ext_value> - NOT FIXED
   // TODO Issue with attributes in tags "Expected identifier. -" Should shift it into sub element, at same time as first issue fix - DONE TENTATIVE
-  // TODO Issue with numbers / special chars in string? (starts with num / contains special chars)
+  // TODO Issue with numbers / special chars in string? (starts with num / contains special chars) - Wrap in quotes, issue with parser lib
   // TODO Issue with enum values not matching since I change them to Proto style and prepend Enum name
   // TODO Handle namespacing (ern:NewReleaseMessage)
 
