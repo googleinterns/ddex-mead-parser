@@ -2,16 +2,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 
-import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.XmlFormat;
-import ern.Ern;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
+import ern.Ern;
 
 public class DdexMeadParser {
 
@@ -35,7 +34,6 @@ public class DdexMeadParser {
     xmlFormat.merge(asXml, builder);
     Ern.NewReleaseMessage message = (Ern.NewReleaseMessage) builder.build();
     System.out.println(message.toString());
-
   }
   // TODO Smart imports
   // TODO Smart circular dep
