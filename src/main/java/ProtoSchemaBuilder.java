@@ -7,13 +7,12 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ProtoSchemaBuilder {
   private final NamespaceManager namespaces;
   private final List<XmlSchema> schemaSet;
   private final List<WrappedXmlSchema> wrappedSchemaSet;
-  private final CandidateContainer candidateContainer;
+  private final EntryContainer entryContainer;
 
   private XmlSchema baseSchema;
 
@@ -21,7 +20,7 @@ public class ProtoSchemaBuilder {
 
   public ProtoSchemaBuilder() {
     namespaces = new NamespaceManager();
-    candidateContainer = new CandidateContainer();
+    entryContainer = new EntryContainer();
     schemaSet = new ArrayList<>();
     wrappedSchemaSet = new ArrayList<>();
 
@@ -42,7 +41,7 @@ public class ProtoSchemaBuilder {
     return true;
   }
 
-  public CandidateContainer parseXsd() {
+  public EntryContainer parseXsd() {
     if (!xsdIngested) {
       System.err.println("No XSD to process");
       return null;
@@ -51,7 +50,7 @@ public class ProtoSchemaBuilder {
     initializeSchemaSet();
     processSchemaSet();
 
-    return candidateContainer;
+    return entryContainer;
   }
 
   // TODO fix the import/include not being fully recursive (does it need to be)
@@ -108,7 +107,7 @@ public class ProtoSchemaBuilder {
   }
 
 
-  private QName processElement(XmlSchemaElement elementItem, String candidateName, String nsPrefix, EntryCandidate parent) {
+  private QName processElement(XmlSchemaElement elementItem, String entry, String nsPrefix, AbstractEntry parent) {
     if (elementItem.getSchemaType() instanceof XmlSchemaSimpleType) {
       return processSimple((XmlSchemaSimpleType) elementItem.getSchemaType(), elementItem.getName(), nsPrefix, parent);
     } else if (elementItem.getSchemaType() instanceof XmlSchemaComplexType) {
@@ -118,77 +117,77 @@ public class ProtoSchemaBuilder {
     }
   }
 
-  private QName processSimple(XmlSchemaSimpleType simpleItem, String candidateName, String nsPrefix, EntryCandidate parent) {
-    if (candidateName == null && simpleItem.getName() == null) {
-      throw new Error("No name for simple candidate");
+  private QName processSimple(XmlSchemaSimpleType simpleItem, String entryName, String nsPrefix, AbstractEntry parent) {
+    if (entryName == null && simpleItem.getName() == null) {
+      throw new Error("No name for simple entry");
     }
-    candidateName = candidateName != null ? candidateName : simpleItem.getName();
+    entryName = entryName != null ? entryName : simpleItem.getName();
 
     if (simpleItem.getContent() instanceof XmlSchemaSimpleTypeUnion) {
-      return processSimpleUnion((XmlSchemaSimpleTypeUnion)simpleItem.getContent(), candidateName, nsPrefix, parent);
+      return processSimpleUnion((XmlSchemaSimpleTypeUnion)simpleItem.getContent(), entryName, nsPrefix, parent);
     } else if (simpleItem.getContent() instanceof XmlSchemaSimpleTypeRestriction) {
-      return processSimpleRestriction((XmlSchemaSimpleTypeRestriction)simpleItem.getContent(), candidateName, nsPrefix, parent);
+      return processSimpleRestriction((XmlSchemaSimpleTypeRestriction)simpleItem.getContent(), entryName, nsPrefix, parent);
     } else {
       throw new Error("Unhandled simple type " + simpleItem.getClass());
     }
   }
 
   // TODO Implement
-  private QName processSimpleUnion(XmlSchemaSimpleTypeUnion union, String candidateName,String nsPrefix, EntryCandidate parent) {
-    MessageCandidate messageCandidate = new MessageCandidate(candidateName, nsPrefix);
-    messageCandidate.addField(new ProtoField("auto_value"));
-    candidateContainer.addCandidate(messageCandidate);
-    return new QName(namespaces.getUri(messageCandidate.getNamespacePrefix()), messageCandidate.getTitle(), messageCandidate.getNamespacePrefix());
+  private QName processSimpleUnion(XmlSchemaSimpleTypeUnion union, String entryName,String nsPrefix, AbstractEntry parent) {
+    MessageEntry messageEntry = new MessageEntry(entryName, nsPrefix);
+    messageEntry.addField(new ProtoField("auto_value"));
+    entryContainer.addEntry(messageEntry);
+    return new QName(namespaces.getUri(messageEntry.getNamespacePrefix()), messageEntry.getTitle(), messageEntry.getNamespacePrefix());
   }
 
-  private QName processSimpleRestriction(XmlSchemaSimpleTypeRestriction restriction, String candidateName, String nsPrefix, EntryCandidate parent) {
+  private QName processSimpleRestriction(XmlSchemaSimpleTypeRestriction restriction, String entryName, String nsPrefix, AbstractEntry parent) {
     List<XmlSchemaFacet> facets = restriction.getFacets();
 
     if (isEnumFacetList(facets)) {
-      EnumCandidate enumCandidate = new EnumCandidate(candidateName, nsPrefix);
+      EnumEntry enumEntry = new EnumEntry(entryName, nsPrefix);
       for (XmlSchemaFacet facet : facets) {
         ProtoField field = new ProtoField(facet.getValue().toString());
-        enumCandidate.addField(field);
+        enumEntry.addField(field);
       }
-      if (enumCandidate.hasFields()) {
-        candidateContainer.addCandidate(enumCandidate);
-        return new QName(namespaces.getUri(enumCandidate.getNamespacePrefix()), enumCandidate.getTitle(), enumCandidate.getNamespacePrefix());
+      if (enumEntry.hasFields()) {
+        entryContainer.addEntry(enumEntry);
+        return new QName(namespaces.getUri(enumEntry.getNamespacePrefix()), enumEntry.getTitle(), enumEntry.getNamespacePrefix());
       }
     } else if (parent == null) {
-      MessageCandidate messageCandidate = new MessageCandidate(candidateName, nsPrefix);
+      MessageEntry messageEntry = new MessageEntry(entryName, nsPrefix);
       QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
-      messageCandidate.addField(new ProtoField("auto_value", restrictionQName));
-      candidateContainer.addCandidate(messageCandidate);
-      return new QName(namespaces.getUri(messageCandidate.getNamespacePrefix()), messageCandidate.getTitle(), messageCandidate.getNamespacePrefix());
+      messageEntry.addField(new ProtoField("auto_value", restrictionQName));
+      entryContainer.addEntry(messageEntry);
+      return new QName(namespaces.getUri(messageEntry.getNamespacePrefix()), messageEntry.getTitle(), messageEntry.getNamespacePrefix());
     }
     return null;
   }
 
-  private QName processComplex(XmlSchemaComplexType complexItem, String candidateName, String nsPrefix, EntryCandidate parent) {
-    if (candidateName == null && complexItem.getName() == null) {
+  private QName processComplex(XmlSchemaComplexType complexItem, String entryName, String nsPrefix, AbstractEntry parent) {
+    if (entryName == null && complexItem.getName() == null) {
       throw new Error("Complex item had no name");
     }
-    candidateName = candidateName != null ? candidateName : complexItem.getName();
-    MessageCandidate messageCandidate = new MessageCandidate(candidateName, nsPrefix);
+    entryName = entryName != null ? entryName : complexItem.getName();
+    MessageEntry messageEntry = new MessageEntry(entryName, nsPrefix);
 
-    processAttributes(complexItem.getAttributes(), complexItem.getAnyAttribute(), messageCandidate, parent);
-    processParticle(complexItem.getParticle(), messageCandidate, parent);
-    processContentModel(complexItem.getContentModel(), messageCandidate, parent);
+    processAttributes(complexItem.getAttributes(), complexItem.getAnyAttribute(), messageEntry, parent);
+    processParticle(complexItem.getParticle(), messageEntry, parent);
+    processContentModel(complexItem.getContentModel(), messageEntry, parent);
 
-    if (messageCandidate.hasFields()) {
-      candidateContainer.addCandidate(messageCandidate);
-      return new QName(namespaces.getUri(messageCandidate.getNamespacePrefix()), messageCandidate.getTitle(), messageCandidate.getNamespacePrefix());
+    if (messageEntry.hasFields()) {
+      entryContainer.addEntry(messageEntry);
+      return new QName(namespaces.getUri(messageEntry.getNamespacePrefix()), messageEntry.getTitle(), messageEntry.getNamespacePrefix());
     }
     return null;
   }
 
-  private void processAttributes(List<XmlSchemaAttributeOrGroupRef> attributes, XmlSchemaAnyAttribute anyAttribute, EntryCandidate candidate, EntryCandidate parent) {
+  private void processAttributes(List<XmlSchemaAttributeOrGroupRef> attributes, XmlSchemaAnyAttribute anyAttribute, AbstractEntry entry, AbstractEntry parent) {
     if (attributes != null && attributes.size() > 0) {
       for (XmlSchemaAttributeOrGroupRef attribute : attributes) {
         if (attribute instanceof XmlSchemaAttribute) {
           String name = ((XmlSchemaAttribute) attribute).getName();
           QName attributeType = getAttributeTypeName(((XmlSchemaAttribute) attribute));
-          candidate.addField(new ProtoField(name, attributeType));
+          entry.addField(new ProtoField(name, attributeType));
         } else {
           throw new Error("Unhandled attribute");
         }
@@ -196,20 +195,20 @@ public class ProtoSchemaBuilder {
     }
 
     if (anyAttribute != null) {
-      candidate.addField(new ProtoField("any_attribute_value", null, true));
+      entry.addField(new ProtoField("any_attribute_value", null, true));
     }
   }
 
   // TODO handle repeated nested choice (AwardForParty) - Need to test this with a custom XSD
-  private void processParticle(XmlSchemaParticle particle, EntryCandidate candidate, EntryCandidate parent) {
+  private void processParticle(XmlSchemaParticle particle, AbstractEntry entry, AbstractEntry parent) {
     if (particle != null) {
       if (particle instanceof XmlSchemaSequence) {
         List<XmlSchemaSequenceMember> items = ((XmlSchemaSequence)particle).getItems();
         for (XmlSchemaSequenceMember item : items) {
           if (item instanceof XmlSchemaSequence || item instanceof XmlSchemaChoice) {
-            processParticle((XmlSchemaParticle)item, candidate, parent);
+            processParticle((XmlSchemaParticle)item, entry, parent);
           } else {
-            processItem(item, candidate, parent);
+            processItem(item, entry, parent);
           }
         }
       }
@@ -218,39 +217,39 @@ public class ProtoSchemaBuilder {
         List<XmlSchemaChoiceMember> items = ((XmlSchemaChoice)particle).getItems();
         for (XmlSchemaChoiceMember item : items) {
           if (item instanceof XmlSchemaSequence || item instanceof XmlSchemaChoice) {
-            processParticle((XmlSchemaParticle)item, candidate, parent);
+            processParticle((XmlSchemaParticle)item, entry, parent);
           } else {
-            processItem(item, candidate, parent);
+            processItem(item, entry, parent);
           }
         }
       }
     }
   }
 
-  private void processItem(XmlSchemaObjectBase item, EntryCandidate candidate, EntryCandidate parent) {
+  private void processItem(XmlSchemaObjectBase item, AbstractEntry entry, AbstractEntry parent) {
     if (item instanceof XmlSchemaElement) {
       XmlSchemaType type = ((XmlSchemaElement) item).getSchemaType();
       QName itemType = ((XmlSchemaElement) item).getSchemaTypeName();
 
       // Only evaluate an element that is a concrete definition as opposed to a leaf referencing an element
       if (type != null && itemType == null) {
-        itemType = processElement((XmlSchemaElement)item, candidate.getTitle(), candidate.getNamespacePrefix(), candidate);
+        itemType = processElement((XmlSchemaElement)item, entry.getTitle(), entry.getNamespacePrefix(), entry);
       } else {
         itemType = ((XmlSchemaElement) item).getSchemaTypeName();
       }
 
       String name = ((XmlSchemaElement)item).getName();
       boolean repeated = ((XmlSchemaElement) item).getMaxOccurs() > 1;
-      candidate.addField(new ProtoField(name, itemType, repeated));
+      entry.addField(new ProtoField(name, itemType, repeated));
     } else if (item instanceof XmlSchemaAny) {
       boolean repeated = ((XmlSchemaAny) item).getMaxOccurs() > 1;
-      candidate.addField(new ProtoField("any_value", null, repeated));
+      entry.addField(new ProtoField("any_value", null, repeated));
     } else {
       throw new Error("Unhandled item " + item.getClass());
     }
   }
 
-  private void processContentModel(XmlSchemaContentModel contentModel, EntryCandidate candidate, EntryCandidate parent) {
+  private void processContentModel(XmlSchemaContentModel contentModel, AbstractEntry entry, AbstractEntry parent) {
     if (contentModel != null) {
       if (!(contentModel.getContent() instanceof XmlSchemaSimpleContentExtension)) {      // Assuming only simple extension, there are more
         throw new Error("Unhandled content " + contentModel.getContent().getClass());
@@ -258,8 +257,8 @@ public class ProtoSchemaBuilder {
 
       XmlSchemaSimpleContentExtension content = (XmlSchemaSimpleContentExtension) contentModel.getContent();
 
-      processAttributes(content.getAttributes(), content.getAnyAttribute(), candidate, parent);
-      candidate.addField(new ProtoField("ext_value", content.getBaseTypeName()));
+      processAttributes(content.getAttributes(), content.getAnyAttribute(), entry, parent);
+      entry.addField(new ProtoField("ext_value", content.getBaseTypeName()));
     }
   }
 

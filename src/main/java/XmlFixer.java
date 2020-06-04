@@ -12,16 +12,13 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.time.ZonedDateTime;
-import java.util.Map;
 
 import ern.Ern;
 
 public class XmlFixer {
-  Map<String, Map<String, String>> candidateDetails;
   Descriptors.FileDescriptor file;
 
-  public XmlFixer(CandidateContainer candidateContainer) {
-    candidateDetails = candidateContainer.getCandidateDetails();
+  public XmlFixer() {
     file = Ern.getDescriptor();
   }
 

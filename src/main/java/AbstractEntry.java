@@ -3,13 +3,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class EntryCandidate {
+public abstract class AbstractEntry {
   String title;
   String namespacePrefix;
   Map<String, ProtoField> fields;
   boolean extension;
 
-  public EntryCandidate(String entryTitle, String entryNamespacePrefix) {
+  public AbstractEntry(String entryTitle, String entryNamespacePrefix) {
     title = entryTitle;
     namespacePrefix = entryNamespacePrefix;
     fields = new HashMap<>();

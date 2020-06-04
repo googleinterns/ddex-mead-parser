@@ -13,18 +13,17 @@ import javax.xml.transform.TransformerException;
 import ern.Ern;
 
 public class DdexMeadParser {
-
   public static void main(String args[]) throws IOException, ParserConfigurationException, SAXException, TransformerException, NoSuchFieldException {
     System.out.println("Launched XSD parse tester");
     ProtoSchemaBuilder protoBuilder = new ProtoSchemaBuilder(/* Options from cmd line */ );
     /* Definitely take this as input from cmd line */
     protoBuilder.ingestXsdFromPath("src/main/resources/release-notification.xsd");
-    CandidateContainer candidateContainer = protoBuilder.parseXsd();
+    EntryContainer entryContainer = protoBuilder.parseXsd();
 
     ProtoWriter protoWriter = new ProtoWriter(/* Optios from cmd line */);
-    protoWriter.serialize(candidateContainer);
+    protoWriter.serialize(entryContainer);
 
-    XmlFixer xmlFixer = new XmlFixer(candidateContainer);
+    XmlFixer xmlFixer = new XmlFixer();
     xmlFixer.fixFromPath("src/main/resources/6 Ringtone.xml");
 
     Message.Builder builder = Ern.NewReleaseMessage.newBuilder();
@@ -32,6 +31,7 @@ public class DdexMeadParser {
     InputStream asXml = new FileInputStream(initialFile);
     XmlFormat xmlFormat = new XmlFormat();
     xmlFormat.merge(asXml, builder);
+
     Ern.NewReleaseMessage message = (Ern.NewReleaseMessage) builder.build();
     System.out.println(message.toString());
   }

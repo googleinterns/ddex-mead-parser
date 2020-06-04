@@ -19,16 +19,16 @@ public class ProtoWriter {
     // TODO 2 pass?
     // TODO camel case / uppercase / snake case conversion using guava thing
     // TODO escape illegal stuff
-    public void serialize(CandidateContainer candidateContainer) throws IOException {
-        namespaces = candidateContainer.getNamespacePrefixes();
+    public void serialize(EntryContainer entryContainer) throws IOException {
+        namespaces = entryContainer.getNamespacePrefixes();
         for (String namespace : namespaces) {
-            String toWrite = serializeNamespace(candidateContainer.getNamespacePrefixCandidateMap().get(namespace), namespace);
+            String toWrite = serializeNamespace(entryContainer.getNamespacePrefixEntryMap().get(namespace), namespace);
             writeFile(toWrite, namespace);
         }
     }
 
     // Todo package? and file structure for output???
-    private String serializeNamespace(List<EntryCandidate> candidates, String namespace) {
+    private String serializeNamespace(List<AbstractEntry> entries, String namespace) {
         StringBuilder outputBuilder = new StringBuilder();
         outputBuilder.append("syntax = \"proto2\";\n");
         outputBuilder.append("package ").append(namespace).append(";\n");
@@ -36,12 +36,12 @@ public class ProtoWriter {
             outputBuilder.append("import \"").append(namespaceToImport).append("/").append(namespaceToImport).append(".proto\";\n");
         }
 
-        for (EntryCandidate candidate : candidates) {
-            if (candidate.isEnum()) {
-                String enumEntry = dumbSerializeEnum((EnumCandidate) candidate);
+        for (AbstractEntry entry : entries) {
+            if (entry.isEnum()) {
+                String enumEntry = dumbSerializeEnum((EnumEntry) entry);
                 outputBuilder.append(enumEntry);
             } else {
-                String messageEntry = dumbSerializeMessage((MessageCandidate) candidate);
+                String messageEntry = dumbSerializeMessage((MessageEntry) entry);
                 outputBuilder.append(messageEntry);
             }
         }
@@ -49,14 +49,14 @@ public class ProtoWriter {
         return(outputBuilder.toString());
     }
 
-    private String dumbSerializeEnum(EnumCandidate candidate) {
+    private String dumbSerializeEnum(EnumEntry entry) {
         StringBuilder enumBuilder = new StringBuilder();
-        enumBuilder.append("enum ").append(candidate.getTitle()).append(" {\n");
+        enumBuilder.append("enum ").append(entry.getTitle()).append(" {\n");
 
         int ident = 0; // Enums starting at 0
-        for (ProtoField field : candidate.getFields()) {
+        for (ProtoField field : entry.getFields()) {
             String fieldName = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, field.getFieldValue());
-            fieldName = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, candidate.getTitle()) + "_" + fieldName;
+            fieldName = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, entry.getTitle()) + "_" + fieldName;
             fieldName = sanitizeFieldName(fieldName);
             enumBuilder.append("\t").append(fieldName).append(" = ").append(ident).append(";\n");
             ident++;
@@ -65,19 +65,19 @@ public class ProtoWriter {
         return enumBuilder.toString();
     }
 
-    private String dumbSerializeMessage(MessageCandidate candidate) {
+    private String dumbSerializeMessage(MessageEntry entry) {
         StringBuilder messageBuilder = new StringBuilder();
-        messageBuilder.append("message ").append(candidate.getTitle()).append(" {\n");
+        messageBuilder.append("message ").append(entry.getTitle()).append(" {\n");
 
         int ident = 1; // Messages starting at 1
-        for (ProtoField field : candidate.getFields()) {
+        for (ProtoField field : entry.getFields()) {
             messageBuilder.append("\t");
             if (field.isRepeated()) {
                 messageBuilder.append("repeated ");
             } else {
                 messageBuilder.append("optional ");
             }
-            messageBuilder.append(resolveType(candidate, field));
+            messageBuilder.append(resolveType(entry, field));
             String fieldName = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getFieldValue());
             fieldName = sanitizeFieldName(fieldName);
             messageBuilder.append(fieldName).append(" = ").append(ident).append(";\n");
@@ -98,13 +98,13 @@ public class ProtoWriter {
         return nonCurrentNamespaces;
     }
 
-    private String resolveType(MessageCandidate candidate, ProtoField field) {
+    private String resolveType(MessageEntry entry, ProtoField field) {
         QName fieldType = field.getFieldType();
         String type;
 
         if (fieldType.getPrefix().equals("xs")) {
             type = convertXmlTypeToProto(fieldType.getLocalPart());
-        } else if (!fieldType.getPrefix().equals(candidate.getNamespacePrefix())) {
+        } else if (!fieldType.getPrefix().equals(entry.getNamespacePrefix())) {
             type = fieldType.getPrefix() + "." + fieldType.getLocalPart();
         } else {
             type = fieldType.getLocalPart();
