@@ -24,10 +24,10 @@ public class DdexMeadParser {
     protoWriter.serialize(entryContainer);
 
     XmlFixer xmlFixer = new XmlFixer();
-    xmlFixer.fixFromPath("src/main/resources/6 Ringtone.xml");
+    xmlFixer.fixFromPath("src/main/resources/8 DjMix.xml");
 
     Message.Builder builder = Ern.NewReleaseMessage.newBuilder();
-    File initialFile = new File("src/main/resources/6 Ringtone.xmlr");
+    File initialFile = new File("src/main/resources/8 DjMix.xmlr");
     InputStream asXml = new FileInputStream(initialFile);
     XmlFormat xmlFormat = new XmlFormat();
     xmlFormat.merge(asXml, builder);

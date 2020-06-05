@@ -6,7 +6,7 @@ import java.util.Map;
 public abstract class AbstractEntry {
   String title;
   String namespacePrefix;
-  Map<String, ProtoField> fields;
+  Map<String, EntryField> fields;
   boolean extension;
 
   public AbstractEntry(String entryTitle, String entryNamespacePrefix) {
@@ -16,10 +16,10 @@ public abstract class AbstractEntry {
     extension = false;
   }
 
-  public void addField(ProtoField protoField) {
-    fields.put(protoField.getFieldValue(), protoField);
+  public void addField(EntryField entryField) {
+    fields.put(entryField.getFieldValue(), entryField);
     
-    if (protoField.getFieldValue().equals("ext_value")) {
+    if (entryField.getFieldValue().equals("ext_value")) {
       extension = true;
     }
   }
@@ -32,7 +32,7 @@ public abstract class AbstractEntry {
     return namespacePrefix;
   }
 
-  public List<ProtoField> getFields() {
+  public List<EntryField> getFields() {
     return new ArrayList<>(fields.values());
   }
 

@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.text.StringEscapeUtils;
 
 import com.google.common.base.CaseFormat;
 
@@ -54,7 +55,7 @@ public class ProtoWriter {
         enumBuilder.append("enum ").append(entry.getTitle()).append(" {\n");
 
         int ident = 0; // Enums starting at 0
-        for (ProtoField field : entry.getFields()) {
+        for (EntryField field : entry.getFields()) {
             String fieldName = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, field.getFieldValue());
             fieldName = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, entry.getTitle()) + "_" + fieldName;
             fieldName = sanitizeFieldName(fieldName);
@@ -70,7 +71,7 @@ public class ProtoWriter {
         messageBuilder.append("message ").append(entry.getTitle()).append(" {\n");
 
         int ident = 1; // Messages starting at 1
-        for (ProtoField field : entry.getFields()) {
+        for (EntryField field : entry.getFields()) {
             messageBuilder.append("\t");
             if (field.isRepeated()) {
                 messageBuilder.append("repeated ");
@@ -98,7 +99,7 @@ public class ProtoWriter {
         return nonCurrentNamespaces;
     }
 
-    private String resolveType(MessageEntry entry, ProtoField field) {
+    private String resolveType(MessageEntry entry, EntryField field) {
         QName fieldType = field.getFieldType();
         String type;
 
@@ -137,24 +138,25 @@ public class ProtoWriter {
     }
 
     private String sanitizeFieldName(String fieldName) {
-        fieldName = fieldName.replace("&", "__AND__");
-        fieldName = fieldName.replace("/", "__FWSLASH__");
-        fieldName = fieldName.replace("-", "__MINUS__");
-        fieldName = fieldName.replace("+", "__PLUS__");
-        fieldName = fieldName.replace("(", "__FRB__");
-        fieldName = fieldName.replace(")", "__BRB__");
-        fieldName = fieldName.replace("[", "__FSB__");
-        fieldName = fieldName.replace("]", "__BSB__");
-        fieldName = fieldName.replace(" ", "__SP__");
-        fieldName = fieldName.replace("#", "__SHARP__");
-        fieldName = fieldName.replace("!", "__BANG__");
-        fieldName = fieldName.replace("ó", "__OI__");
-        fieldName = fieldName.replace("í", "__II__");
-        fieldName = fieldName.replace(".", "__DOT__");
-        fieldName = fieldName.replace("'", "__APO__");
-
-        return fieldName;
-
+        return StringEscapeUtils.escapeJava(fieldName);
+//
+//        fieldName = fieldName.replace("&", "__AND__");
+//        fieldName = fieldName.replace("/", "__FWSLASH__");
+//        fieldName = fieldName.replace("-", "__MINUS__");
+//        fieldName = fieldName.replace("+", "__PLUS__");
+//        fieldName = fieldName.replace("(", "__FRB__");
+//        fieldName = fieldName.replace(")", "__BRB__");
+//        fieldName = fieldName.replace("[", "__FSB__");
+//        fieldName = fieldName.replace("]", "__BSB__");
+//        fieldName = fieldName.replace(" ", "__SP__");
+//        fieldName = fieldName.replace("#", "__SHARP__");
+//        fieldName = fieldName.replace("!", "__BANG__");
+//        fieldName = fieldName.replace("ó", "__OI__");
+//        fieldName = fieldName.replace("í", "__II__");
+//        fieldName = fieldName.replace(".", "__DOT__");
+//        fieldName = fieldName.replace("'", "__APO__");
+//
+//        return fieldName;
     }
 
     public void writeFile(String toWrite, String namespace) throws IOException {

@@ -135,7 +135,7 @@ public class ProtoSchemaBuilder {
   // TODO Implement
   private QName processSimpleUnion(XmlSchemaSimpleTypeUnion union, String entryName,String nsPrefix, AbstractEntry parent) {
     MessageEntry messageEntry = new MessageEntry(entryName, nsPrefix);
-    messageEntry.addField(new ProtoField("auto_value"));
+    messageEntry.addField(new EntryField("auto_value"));
     entryContainer.addEntry(messageEntry);
     return new QName(namespaces.getUri(messageEntry.getNamespacePrefix()), messageEntry.getTitle(), messageEntry.getNamespacePrefix());
   }
@@ -146,7 +146,7 @@ public class ProtoSchemaBuilder {
     if (isEnumFacetList(facets)) {
       EnumEntry enumEntry = new EnumEntry(entryName, nsPrefix);
       for (XmlSchemaFacet facet : facets) {
-        ProtoField field = new ProtoField(facet.getValue().toString());
+        EntryField field = new EntryField(facet.getValue().toString());
         enumEntry.addField(field);
       }
       if (enumEntry.hasFields()) {
@@ -156,7 +156,7 @@ public class ProtoSchemaBuilder {
     } else if (parent == null) {
       MessageEntry messageEntry = new MessageEntry(entryName, nsPrefix);
       QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
-      messageEntry.addField(new ProtoField("auto_value", restrictionQName));
+      messageEntry.addField(new EntryField("auto_value", restrictionQName));
       entryContainer.addEntry(messageEntry);
       return new QName(namespaces.getUri(messageEntry.getNamespacePrefix()), messageEntry.getTitle(), messageEntry.getNamespacePrefix());
     }
@@ -187,7 +187,7 @@ public class ProtoSchemaBuilder {
         if (attribute instanceof XmlSchemaAttribute) {
           String name = ((XmlSchemaAttribute) attribute).getName();
           QName attributeType = getAttributeTypeName(((XmlSchemaAttribute) attribute));
-          entry.addField(new ProtoField(name, attributeType));
+          entry.addField(new EntryField(name, attributeType));
         } else {
           throw new Error("Unhandled attribute");
         }
@@ -195,7 +195,7 @@ public class ProtoSchemaBuilder {
     }
 
     if (anyAttribute != null) {
-      entry.addField(new ProtoField("any_attribute_value", null, true));
+      entry.addField(new EntryField("any_attribute_value", null, true));
     }
   }
 
@@ -240,10 +240,10 @@ public class ProtoSchemaBuilder {
 
       String name = ((XmlSchemaElement)item).getName();
       boolean repeated = ((XmlSchemaElement) item).getMaxOccurs() > 1;
-      entry.addField(new ProtoField(name, itemType, repeated));
+      entry.addField(new EntryField(name, itemType, repeated));
     } else if (item instanceof XmlSchemaAny) {
       boolean repeated = ((XmlSchemaAny) item).getMaxOccurs() > 1;
-      entry.addField(new ProtoField("any_value", null, repeated));
+      entry.addField(new EntryField("any_value", null, repeated));
     } else {
       throw new Error("Unhandled item " + item.getClass());
     }
@@ -258,7 +258,7 @@ public class ProtoSchemaBuilder {
       XmlSchemaSimpleContentExtension content = (XmlSchemaSimpleContentExtension) contentModel.getContent();
 
       processAttributes(content.getAttributes(), content.getAnyAttribute(), entry, parent);
-      entry.addField(new ProtoField("ext_value", content.getBaseTypeName()));
+      entry.addField(new EntryField("ext_value", content.getBaseTypeName()));
     }
   }
 
