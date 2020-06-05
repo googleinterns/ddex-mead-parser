@@ -1,8 +1,7 @@
+import Utils.ConversionHelper;
 import com.google.common.base.CaseFormat;
-import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 
-import org.apache.commons.text.StringEscapeUtils;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -14,7 +13,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.time.ZonedDateTime;
-import java.util.Arrays;
 import java.util.Base64;
 
 import ern.Ern;
@@ -99,6 +97,7 @@ public class XmlFixer {
         String enumName = currentNodeFieldDescriptor.getEnumType().getName();
         String content = node.getTextContent();
         content = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, enumName) + "_" + CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, content);
+        content = ConversionHelper.sanitizeEnumName(content);
         node.setTextContent(content);
       }
     }
@@ -162,9 +161,6 @@ public class XmlFixer {
   }
 
   private String encodeStringToBase64(String content) {
-    if (!content.startsWith("\"")) {
-      content = '\"' + content + '\"';
-    }
     return Base64.getEncoder().withoutPadding().encodeToString(content.getBytes());
   }
 
