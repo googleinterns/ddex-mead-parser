@@ -1,6 +1,8 @@
 import com.google.common.base.CaseFormat;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -12,6 +14,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.time.ZonedDateTime;
+import java.util.Arrays;
+import java.util.Base64;
 
 import ern.Ern;
 
@@ -56,7 +60,7 @@ public class XmlFixer {
     }
     if (shouldShiftAutoValue(currentNodeMessageDescriptor)) {
       Element attr_to_append = doc.createElement("auto_value");
-      attr_to_append.setTextContent(escapeString(node.getTextContent()));
+      attr_to_append.setTextContent(node.getTextContent());
       node.setTextContent("");
       node.appendChild(attr_to_append);
     }
@@ -83,11 +87,12 @@ public class XmlFixer {
     if (currentNodeFieldDescriptor != null) {
       Descriptors.FieldDescriptor.JavaType javaType = currentNodeFieldDescriptor.getJavaType();
       if (javaType == Descriptors.FieldDescriptor.JavaType.STRING) {
-        String content = escapeString(node.getTextContent());
+        String content = encodeStringToBase64(node.getTextContent());
         node.setTextContent(content);
       }
       if (javaType == Descriptors.FieldDescriptor.JavaType.LONG) {
-        ZonedDateTime zonedDateTime = ZonedDateTime.parse(node.getTextContent());
+        String content = verifyDate(node.getTextContent());
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse(content);
         node.setTextContent(Long.toString(zonedDateTime.toInstant().toEpochMilli()));
       }
       if (javaType == Descriptors.FieldDescriptor.JavaType.ENUM) {
@@ -156,9 +161,16 @@ public class XmlFixer {
     return field != null;
   }
 
-  private String escapeString(String content) {
+  private String encodeStringToBase64(String content) {
     if (!content.startsWith("\"")) {
       content = '\"' + content + '\"';
+    }
+    return Base64.getEncoder().withoutPadding().encodeToString(content.getBytes());
+  }
+
+  private String verifyDate(String content) {
+    if (!content.endsWith("Z")) {
+      content = content + "Z";
     }
     return content;
   }
