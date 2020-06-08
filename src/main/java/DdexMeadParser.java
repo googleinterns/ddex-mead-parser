@@ -23,10 +23,10 @@ public class DdexMeadParser {
 
     // Create protobuf FileDescriptor for the schema
     DynamicProtoWriter dynamicProtoWriter = new DynamicProtoWriter();
-    List<DescriptorProtos.FileDescriptorProto> fileDescriptors = dynamicProtoWriter.serialize(entryContainer);
+    List<DescriptorProtos.FileDescriptorProto> fileDescriptors = dynamicProtoWriter.buildDescriptor(entryContainer);
     Descriptors.FileDescriptor avsDescriptor = Descriptors.FileDescriptor.buildFrom(fileDescriptors.get(1), new Descriptors.FileDescriptor[]{});
     Descriptors.FileDescriptor mainDescriptor = Descriptors.FileDescriptor.buildFrom(fileDescriptors.get(0), new Descriptors.FileDescriptor[] { avsDescriptor });
-
+    
     // Write an automatically merge-able version of the message XML
     XmlFixer xmlFixer = new XmlFixer(mainDescriptor);
     String rootName = xmlFixer.fixFromPath("src/main/resources/8 DjMix.xml");

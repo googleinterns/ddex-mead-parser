@@ -3,29 +3,25 @@ import com.google.common.base.CaseFormat;
 import com.google.protobuf.DescriptorProtos;
 
 import javax.xml.namespace.QName;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DynamicProtoWriter {
     private List<String> namespaces;
 
-    public DynamicProtoWriter() {
-    }
+    public DynamicProtoWriter() { }
 
-    public List<DescriptorProtos.FileDescriptorProto> serialize(EntryContainer entryContainer) throws IOException {
+    public List<DescriptorProtos.FileDescriptorProto> buildDescriptor(EntryContainer entryContainer) {
         List<DescriptorProtos.FileDescriptorProto> files = new ArrayList<>();
         namespaces = entryContainer.getNamespacePrefixes();
         for (String namespace : namespaces) {
-            DescriptorProtos.FileDescriptorProto f = serializeNamespace(entryContainer.getNamespacePrefixEntryMap().get(namespace), namespace);
-            files.add(f);
+            DescriptorProtos.FileDescriptorProto file = buildNamespace(entryContainer.getNamespacePrefixEntryMap().get(namespace), namespace);
+            files.add(file);
         }
         return files;
     }
 
-    private DescriptorProtos.FileDescriptorProto serializeNamespace(List<AbstractEntry> entries, String namespace) {
+    private DescriptorProtos.FileDescriptorProto buildNamespace(List<AbstractEntry> entries, String namespace) {
         DescriptorProtos.FileDescriptorProto.Builder fileBuilder = DescriptorProtos.FileDescriptorProto.newBuilder();
         fileBuilder.setName(namespace);
         fileBuilder.setSyntax("proto2");
@@ -38,17 +34,16 @@ public class DynamicProtoWriter {
 
         for (AbstractEntry entry : entries) {
             if (entry.isEnum()) {
-                fileBuilder.addEnumType(dumbSerializeEnum((EnumEntry) entry));
+                fileBuilder.addEnumType(buildEnum((EnumEntry) entry));
             } else {
-                fileBuilder.addMessageType(dumbSerializeMessage((MessageEntry) entry));
+                fileBuilder.addMessageType(buildMessage((MessageEntry) entry));
             }
         }
-        DescriptorProtos.FileDescriptorProto done = fileBuilder.build();
         return fileBuilder.build();
     }
 
 
-    private DescriptorProtos.EnumDescriptorProto.Builder dumbSerializeEnum(EnumEntry entry) {
+    private DescriptorProtos.EnumDescriptorProto.Builder buildEnum(EnumEntry entry) {
         DescriptorProtos.EnumDescriptorProto.Builder enumBuilder = DescriptorProtos.EnumDescriptorProto.newBuilder();
         enumBuilder.setName(entry.getTitle());
 
@@ -68,19 +63,19 @@ public class DynamicProtoWriter {
         return enumBuilder;
     }
 
-    private DescriptorProtos.DescriptorProto.Builder dumbSerializeMessage(MessageEntry entry) {
+    private DescriptorProtos.DescriptorProto.Builder buildMessage(MessageEntry entry) {
         DescriptorProtos.DescriptorProto.Builder messageBuilder = DescriptorProtos.DescriptorProto.newBuilder();
         messageBuilder.setName(entry.getTitle());
 
         int ident = 1;
         for (EntryField field : entry.getFields()) {
-            messageBuilder.addField(dumbSerializeMessageField(entry, field, ident++));
+            messageBuilder.addField(buildMessageField(entry, field, ident++));
         }
 
         return messageBuilder;
     }
 
-    private DescriptorProtos.FieldDescriptorProto.Builder dumbSerializeMessageField(MessageEntry entry, EntryField field, int ident) {
+    private DescriptorProtos.FieldDescriptorProto.Builder buildMessageField(MessageEntry entry, EntryField field, int ident) {
         DescriptorProtos.FieldDescriptorProto.Builder fieldBuilder = DescriptorProtos.FieldDescriptorProto.newBuilder();
 
         String fieldName = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getFieldValue());
@@ -98,19 +93,17 @@ public class DynamicProtoWriter {
         if (field.isXmlType()) {
             fieldBuilder.setType(resolveXmlType(field));
         } else {
-            fieldBuilder.setTypeName(resolveType(entry, field));
+            fieldBuilder.setTypeName(resolveCustomType(entry, field));
         }
 
         return fieldBuilder;
     }
 
-    private String resolveType(MessageEntry entry, EntryField field) {
+    private String resolveCustomType(MessageEntry entry, EntryField field) {
         QName fieldType = field.getFieldType();
         String type;
 
-        if (fieldType.getPrefix().equals("xs")) {
-            type = convertXmlTypeToProto(fieldType.getLocalPart());
-        } else if (!fieldType.getPrefix().equals(entry.getNamespacePrefix())) {
+        if (!fieldType.getPrefix().equals(entry.getNamespacePrefix())) {
             type = fieldType.getPrefix() + "." + fieldType.getLocalPart();
         } else {
             type = fieldType.getLocalPart();
@@ -121,46 +114,28 @@ public class DynamicProtoWriter {
 
     private DescriptorProtos.FieldDescriptorProto.Type resolveXmlType(EntryField field) {
         switch (field.getFieldType().getLocalPart()) {
-            case "string":  return DescriptorProtos.FieldDescriptorProto.Type.TYPE_STRING;
-            case "boolean": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_BOOL;
-            case "float": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_FLOAT;
-            case "integer": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_INT32;
-            case "decimal": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_DOUBLE;
-
-            case "dateTime": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_UINT64;
-            case "anyURI": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_STRING;
-            case "NMTOKEN": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_STRING;
-            case "positiveInteger": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_UINT32;
-
-            case "duration": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_STRING;
-            case "token": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_STRING;
-
-            case "gYear": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_UINT32;
-            case "IDREF": return DescriptorProtos.FieldDescriptorProto.Type.TYPE_STRING;
-            default: throw new Error("Unhandled " + field.getFieldType().getLocalPart());
-        }
-    }
-
-    // TODO MAP ALL TYPES - 100
-    private String convertXmlTypeToProto(String xmlType) {
-        switch (xmlType) {
-            case "string": return "string";
-            case "boolean": return "bool";
-            case "float": return "float";
-            case "integer": return "int32";
-            case "decimal": return "double";
-
-            case "dateTime": return "uint64";
-            case "anyURI": return "string";
-            case "NMTOKEN": return "string";
-            case "positiveInteger": return "uint32";
-
-            case "duration": return "string";
-            case "token": return "string";
-
-            case "gYear": return "uint32";
-            case "IDREF": return "string";
-            default: throw new Error("Unhandled " + xmlType);
+            case "string":
+            case "NMTOKEN":
+            case "anyURI":
+            case "token":
+            case "duration":
+            case "IDREF":
+                return DescriptorProtos.FieldDescriptorProto.Type.TYPE_STRING;
+            case "positiveInteger":
+            case "gYear":
+                return DescriptorProtos.FieldDescriptorProto.Type.TYPE_UINT32;
+            case "boolean":
+                return DescriptorProtos.FieldDescriptorProto.Type.TYPE_BOOL;
+            case "float":
+                return DescriptorProtos.FieldDescriptorProto.Type.TYPE_FLOAT;
+            case "integer":
+                return DescriptorProtos.FieldDescriptorProto.Type.TYPE_INT32;
+            case "decimal":
+                return DescriptorProtos.FieldDescriptorProto.Type.TYPE_DOUBLE;
+            case "dateTime":
+                return DescriptorProtos.FieldDescriptorProto.Type.TYPE_UINT64;
+            default:
+                throw new Error("Unhandled " + field.getFieldType().getLocalPart());
         }
     }
 
@@ -172,14 +147,5 @@ public class DynamicProtoWriter {
             }
         }
         return nonCurrentNamespaces;
-    }
-
-    public void writeFile(String toWrite, String namespace) throws IOException {
-        File file = new File("./src/main/proto/" + namespace + "/" + namespace+ ".proto");
-        file.getParentFile().mkdirs();
-
-        FileWriter writer = new FileWriter(file, false);
-        writer.write(toWrite);
-        writer.close();
     }
 }
