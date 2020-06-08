@@ -15,20 +15,19 @@ import java.io.*;
 import java.time.ZonedDateTime;
 import java.util.Base64;
 
-import ern.Ern;
-
 public class XmlFixer {
   Descriptors.FileDescriptor file;
 
-  public XmlFixer() {
-    file = Ern.getDescriptor();
+  public XmlFixer(Descriptors.FileDescriptor fileDescriptor) {
+    file = fileDescriptor;
   }
 
-  public void fixFromPath(String path)
+  public String fixFromPath(String path)
       throws ParserConfigurationException, TransformerException, IOException, SAXException {
     Document doc = getDocument(path);
-    transformDocToParsableXml(doc);
+    String rootName = transformDocToParsableXml(doc);
     writeDocToPath(doc, path);
+    return rootName;
   }
 
   private Document getDocument(String path)
@@ -38,9 +37,18 @@ public class XmlFixer {
     return docBuilder.parse(path);
   }
 
-  private void transformDocToParsableXml(Document doc) {
+  private String transformDocToParsableXml(Document doc) {
     Node root = doc.getFirstChild();
+
+    // Strip namespace from root tag if exists
+    String rootName = root.getNodeName();
+    if (rootName.contains(":")) {
+      rootName = rootName.split(":")[1];
+      doc.renameNode(root, root.getNamespaceURI(), rootName);
+    }
+
     traverseTransformWrapper(doc, root, null);
+    return rootName;
   }
 
   private void traverseTransformWrapper(Document doc, Node node, Descriptors.Descriptor parentMessage) {
@@ -85,7 +93,7 @@ public class XmlFixer {
     if (currentNodeFieldDescriptor != null) {
       Descriptors.FieldDescriptor.JavaType javaType = currentNodeFieldDescriptor.getJavaType();
       if (javaType == Descriptors.FieldDescriptor.JavaType.STRING) {
-        String content = encodeStringToBase64(node.getTextContent());
+        String content = Base64.getEncoder().withoutPadding().encodeToString(node.getTextContent().getBytes());
         node.setTextContent(content);
       }
       if (javaType == Descriptors.FieldDescriptor.JavaType.LONG) {
@@ -106,8 +114,15 @@ public class XmlFixer {
     NodeList nodes = node.getChildNodes();
     int children_len = nodes.getLength();
     for (int i = 0; i < children_len; i++) {
-      if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-        traverseTransformWrapper(doc, nodes.item(i), currentNodeMessageDescriptor);
+      Node child = nodes.item(i);
+      // Only iterate on children with content check
+      if (!child.hasChildNodes() && child.getTextContent().isEmpty()) {
+        i--;
+        children_len--;
+        node.removeChild(child);
+      }
+      else if (child.getNodeType() == Node.ELEMENT_NODE) {
+        traverseTransformWrapper(doc, child, currentNodeMessageDescriptor);
       }
     }
   }
@@ -158,10 +173,6 @@ public class XmlFixer {
     }
     Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName("auto_value");
     return field != null;
-  }
-
-  private String encodeStringToBase64(String content) {
-    return Base64.getEncoder().withoutPadding().encodeToString(content.getBytes());
   }
 
   private String verifyDate(String content) {

@@ -34,4 +34,8 @@ public class EntryField {
   }
 
   public boolean isRepeated() { return fieldRepeated; }
+
+  public boolean isXmlType() {
+    return fieldQName.getPrefix().equals("xs");
+  }
 }

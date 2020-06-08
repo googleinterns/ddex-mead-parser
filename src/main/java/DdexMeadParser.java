@@ -2,52 +2,47 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
-import com.google.protobuf.Message;
+import com.google.protobuf.DescriptorProtos;
+import com.google.protobuf.Descriptors;
+import com.google.protobuf.DynamicMessage;
 import com.googlecode.protobuf.format.XmlFormat;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import ern.Ern;
-
 public class DdexMeadParser {
-  public static void main(String args[]) throws IOException, ParserConfigurationException, SAXException, TransformerException, NoSuchFieldException {
-    System.out.println("Launched XSD parse tester");
+  public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, TransformerException, Descriptors.DescriptorValidationException {
     ProtoSchemaBuilder protoBuilder = new ProtoSchemaBuilder(/* Options from cmd line */ );
-    /* Definitely take this as input from cmd line */
+
+    // Build custom representation of XML schema to be used by the DynamicProtoWriter
     protoBuilder.ingestXsdFromPath("src/main/resources/release-notification.xsd");
     EntryContainer entryContainer = protoBuilder.parseXsd();
 
-    ProtoWriter protoWriter = new ProtoWriter(/* Optios from cmd line */);
-    protoWriter.serialize(entryContainer);
+    // Create protobuf FileDescriptor for the schema
+    DynamicProtoWriter dynamicProtoWriter = new DynamicProtoWriter();
+    List<DescriptorProtos.FileDescriptorProto> fileDescriptors = dynamicProtoWriter.serialize(entryContainer);
+    Descriptors.FileDescriptor avsDescriptor = Descriptors.FileDescriptor.buildFrom(fileDescriptors.get(1), new Descriptors.FileDescriptor[]{});
+    Descriptors.FileDescriptor mainDescriptor = Descriptors.FileDescriptor.buildFrom(fileDescriptors.get(0), new Descriptors.FileDescriptor[] { avsDescriptor });
 
-    XmlFixer xmlFixer = new XmlFixer();
-    xmlFixer.fixFromPath("src/main/resources/7 LongformMusicalWorkVideo.xml");
+    // Write an automatically merge-able version of the message XML
+    XmlFixer xmlFixer = new XmlFixer(mainDescriptor);
+    String rootName = xmlFixer.fixFromPath("src/main/resources/8 DjMix.xml");
 
-    Message.Builder builder = Ern.NewReleaseMessage.newBuilder();
-    File initialFile = new File("src/main/resources/7 LongformMusicalWorkVideo.xmlr");
+    // Get builder for message being parsed | TODO Add null check
+    Descriptors.Descriptor file = mainDescriptor.findMessageTypeByName(rootName);
+    DynamicMessage.Builder builder = DynamicMessage.newBuilder(file);
+
+    // Merge transformed XML with generated builder
+    File initialFile = new File("src/main/resources/8 DjMix.xmlr");
     InputStream asXml = new FileInputStream(initialFile);
     XmlFormat xmlFormat = new XmlFormat();
     xmlFormat.merge(asXml, builder);
 
-    Ern.NewReleaseMessage message = (Ern.NewReleaseMessage) builder.build();
+    // Output the proto message
+    DynamicMessage message = builder.build();
     System.out.println(message.toString());
   }
-  // TODO Smart imports
-  // TODO Smart circular dep
-  // TODO Smart field tracking per message
-  // protoc -I="src/main/proto" --java_out="src/main/java" "src/main/proto/ern/ern.proto"
-
-  // TODO Issue with extensions needed an extra nest <ext_value></ext_value> - NOT FIXED
-  // TODO Issue with attributes in tags "Expected identifier. -" Should shift it into sub element, at same time as first issue fix - DONE TENTATIVE
-  // TODO Issue with numbers / special chars in string? (starts with num / contains special chars) - Wrap in quotes, issue with parser lib
-  // TODO Issue with enum values not matching since I change them to Proto style and prepend Enum name
-  // TODO Handle namespacing (ern:NewReleaseMessage)
-
-  // TODO FieldNamesUsingToType map, then TypeToDetails map - Use the field names map for ext_value setting (OR JUST NOT DO THAT?)
-
-  // TODO Store field names and their types, if more than 1 type walk from root? Maybe need a tree representation of the entire schema....??? JAXB?
-
 }
