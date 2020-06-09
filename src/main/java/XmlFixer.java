@@ -93,7 +93,7 @@ public class XmlFixer {
     if (currentNodeFieldDescriptor != null) {
       Descriptors.FieldDescriptor.JavaType javaType = currentNodeFieldDescriptor.getJavaType();
       if (javaType == Descriptors.FieldDescriptor.JavaType.STRING) {
-        String content = Base64.getEncoder().withoutPadding().encodeToString(node.getTextContent().getBytes());
+        String content = toSafeBase64(node.getTextContent());
         node.setTextContent(content);
       }
       if (javaType == Descriptors.FieldDescriptor.JavaType.LONG) {
@@ -180,6 +180,13 @@ public class XmlFixer {
       content = content + "Z";
     }
     return content;
+  }
+
+  private String toSafeBase64(String content) {
+    String ret = Base64.getEncoder().withoutPadding().encodeToString(content.getBytes());
+    ret = ret.replace("+", "__PLUS__");
+    ret = ret.replace("/", "__FS__");
+    return ret;
   }
 
   private void writeDocToPath(Document doc, String path) throws TransformerException {

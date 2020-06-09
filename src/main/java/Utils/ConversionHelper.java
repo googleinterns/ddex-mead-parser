@@ -5,7 +5,7 @@ public class ConversionHelper {
 
     public static String sanitizeEnumName(String fieldName) {
         fieldName = fieldName.replace("&", "__AND__");
-        fieldName = fieldName.replace("/", "__FWSLASH__");
+        fieldName = fieldName.replace("/", "__FS__");
         fieldName = fieldName.replace("-", "__MINUS__");
         fieldName = fieldName.replace("+", "__PLUS__");
         fieldName = fieldName.replace("(", "__FRB__");

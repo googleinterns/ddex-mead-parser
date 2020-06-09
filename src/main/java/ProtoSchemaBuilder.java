@@ -27,7 +27,7 @@ public class ProtoSchemaBuilder {
     xsdIngested = false;
   }
 
-  public boolean ingestXsdFromPath(String path) throws IOException {
+  public void ingestXsdFromPath(String path) throws IOException {
     File initialFile = new File(path);
     InputStream xsdFile = new FileInputStream(initialFile);
 
@@ -38,7 +38,6 @@ public class ProtoSchemaBuilder {
     xsdIngested = true;
 
     // TODO add check for failure
-    return true;
   }
 
   public EntryContainer parseXsd() {

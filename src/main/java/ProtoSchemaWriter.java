@@ -8,10 +8,10 @@ import Utils.ConversionHelper;
 
 import com.google.common.base.CaseFormat;
 
-public class ProtoWriter {
+public class ProtoSchemaWriter {
     private List<String> namespaces;
 
-    public ProtoWriter() {
+    public ProtoSchemaWriter() {
     }
 
     // TODO Keeping track of types
@@ -137,7 +137,7 @@ public class ProtoWriter {
         }
     }
 
-    public void writeFile(String toWrite, String namespace) throws IOException {
+    private void writeFile(String toWrite, String namespace) throws IOException {
         File file = new File("./src/main/proto/" + namespace + "/" + namespace+ ".proto");
         file.getParentFile().mkdirs();
 

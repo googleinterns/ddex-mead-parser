@@ -1,24 +1,30 @@
 import Utils.ConversionHelper;
 import com.google.common.base.CaseFormat;
 import com.google.protobuf.DescriptorProtos;
+import com.google.protobuf.Descriptors;
 
 import javax.xml.namespace.QName;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DynamicProtoWriter {
+public class ProtoDescriptorBuilder {
     private List<String> namespaces;
 
-    public DynamicProtoWriter() { }
+    public ProtoDescriptorBuilder() { }
 
-    public List<DescriptorProtos.FileDescriptorProto> buildDescriptor(EntryContainer entryContainer) {
-        List<DescriptorProtos.FileDescriptorProto> files = new ArrayList<>();
+    public Descriptors.FileDescriptor buildFileDescriptor(EntryContainer entryContainer) throws Descriptors.DescriptorValidationException {
+        List<DescriptorProtos.FileDescriptorProto> files = new ArrayList<   >();
         namespaces = entryContainer.getNamespacePrefixes();
         for (String namespace : namespaces) {
             DescriptorProtos.FileDescriptorProto file = buildNamespace(entryContainer.getNamespacePrefixEntryMap().get(namespace), namespace);
             files.add(file);
         }
-        return files;
+        // TODO Parse the adjacency list to auto generate dependencies and return the main file descriptor right from buildDescriptorList()
+        Descriptors.FileDescriptor avsDescriptor = Descriptors.FileDescriptor.buildFrom(files.get(1), new Descriptors.FileDescriptor[]{});
+        return Descriptors.FileDescriptor.buildFrom(files.get(0), new Descriptors.FileDescriptor[]{ avsDescriptor });
     }
 
     private DescriptorProtos.FileDescriptorProto buildNamespace(List<AbstractEntry> entries, String namespace) {
