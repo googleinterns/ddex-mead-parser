@@ -4,9 +4,6 @@ import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
 
 import javax.xml.namespace.QName;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +13,7 @@ public class ProtoDescriptorBuilder {
     public ProtoDescriptorBuilder() { }
 
     public Descriptors.FileDescriptor buildFileDescriptor(EntryContainer entryContainer) throws Descriptors.DescriptorValidationException {
-        List<DescriptorProtos.FileDescriptorProto> files = new ArrayList<   >();
+        List<DescriptorProtos.FileDescriptorProto> files = new ArrayList<>();
         namespaces = entryContainer.getNamespacePrefixes();
         for (String namespace : namespaces) {
             DescriptorProtos.FileDescriptorProto file = buildNamespace(entryContainer.getNamespacePrefixEntryMap().get(namespace), namespace);

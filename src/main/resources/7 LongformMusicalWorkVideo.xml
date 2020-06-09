@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<NewReleaseMessage
+<ern:NewReleaseMessage
    xmlns:ern="http://ddex.net/xml/ern/42"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://ddex.net/xml/ern/42 http://ddex.net/xml/ern/42/release-notification.xsd"
@@ -1053,4 +1053,4 @@
       </ReleaseVisibility>
       
    </DealList>
-</NewReleaseMessage>
+</ern:NewReleaseMessage>

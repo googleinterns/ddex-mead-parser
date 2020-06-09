@@ -1,831 +1,831 @@
 <new_release_message>
    <message_header>
-      <message_thread_id>"3000027906924"</message_thread_id>
-      <message_id>"3000027906924_67385405006"</message_id>
-      <message_file_name>"UMG_Metadata_TestBP_00602537022502_2016-07-25_20-38-54_LongformVideo.xml"</message_file_name>
+      <message_thread_id>MzAwMDAyNzkwNjkyNA</message_thread_id>
+      <message_id>MzAwMDAyNzkwNjkyNF82NzM4NTQwNTAwNg</message_id>
+      <message_file_name>VU1HX01ldGFkYXRhX1Rlc3RCUF8wMDYwMjUzNzAyMjUwMl8yMDE2LTA3LTI1XzIwLTM4LTU0X0xvbmdmb3JtVmlkZW8ueG1s</message_file_name>
       <message_sender>
-         <party_id>"PADPIDA2010032301A"</party_id>
+         <party_id>UEFEUElEQTIwMTAwMzIzMDFB</party_id>
          <party_name>
-            <full_name>"Digiplug"</full_name>
+            <full_name>RGlnaXBsdWc</full_name>
          </party_name>
       </message_sender>
       <sent_on_behalf_of>
-         <party_id>"PADPIDA2012031302R"</party_id>
+         <party_id>UEFEUElEQTIwMTIwMzEzMDJS</party_id>
          <party_name>
-            <full_name>"Universal Music Group International"</full_name>
+            <full_name>VW5pdmVyc2FsIE11c2ljIEdyb3VwIEludGVybmF0aW9uYWw</full_name>
          </party_name>
       </sent_on_behalf_of>
       <message_recipient>
-         <party_id>"PADPIDA2012031302R"</party_id>
+         <party_id>UEFEUElEQTIwMTIwMzEzMDJS</party_id>
          <party_name>
-            <full_name>"TestBP"</full_name>
+            <full_name>VGVzdEJQ</full_name>
          </party_name>
       </message_recipient>
-      <message_created_date_time>2016</message_created_date_time>
+      <message_created_date_time>1469479134000</message_created_date_time>
       <message_control_type>MESSAGE_CONTROL_TYPE_LIVE_MESSAGE</message_control_type>
    </message_header>
    <party_list>
       <party>
-         <party_reference>"PPatrizioBuanne"</party_reference>
+         <party_reference>UFBhdHJpemlvQnVhbm5l</party_reference>
          <party_name>
-            <full_name><ext_value>"Patrizio Buanne"</ext_value></full_name>
-            <names_before_key_name><ext_value>"Patrizio"</ext_value></names_before_key_name>
-            <key_name><ext_value>"Buanne"</ext_value></key_name>
+            <full_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value></full_name>
+            <names_before_key_name><ext_value>UGF0cml6aW8</ext_value></names_before_key_name>
+            <key_name><ext_value>QnVhbm5l</ext_value></key_name>
          </party_name>
       </party>
       <party>
-         <party_reference>"PAlasdairMacmillan"</party_reference>
+         <party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</party_reference>
          <party_name>
-            <full_name><ext_value>"Alasdair Macmillan"</ext_value></full_name>
-            <names_before_key_name><ext_value>"Alasdair"</ext_value></names_before_key_name>
-            <key_name><ext_value>"Macmillan"</ext_value></key_name>
+            <full_name><ext_value>QWxhc2RhaXIgTWFjbWlsbGFu</ext_value></full_name>
+            <names_before_key_name><ext_value>QWxhc2RhaXI</ext_value></names_before_key_name>
+            <key_name><ext_value>TWFjbWlsbGFu</ext_value></key_name>
          </party_name>
       </party>
       <party>
-         <party_reference>"PColinFay"</party_reference>
+         <party_reference>UENvbGluRmF5</party_reference>
          <party_name>
-            <full_name><ext_value>"Colin Fay"</ext_value></full_name>
-            <names_before_key_name><ext_value>"Colin"</ext_value></names_before_key_name>
-            <key_name><ext_value>"Fay"</ext_value></key_name>
+            <full_name><ext_value>Q29saW4gRmF5</ext_value></full_name>
+            <names_before_key_name><ext_value>Q29saW4</ext_value></names_before_key_name>
+            <key_name><ext_value>RmF5</ext_value></key_name>
          </party_name>
       </party>
       <party>
-         <party_reference>"PUMG"</party_reference>
+         <party_reference>UFVNRw</party_reference>
          <party_name>
-            <full_name><ext_value>"Universal Music Ltd."</ext_value></full_name>
+            <full_name><ext_value>VW5pdmVyc2FsIE11c2ljIEx0ZC4</ext_value></full_name>
          </party_name>
       </party>
    </party_list>
    <cue_sheet_list>
       <cue_sheet>
-         <cue_sheet_reference>"Q1"</cue_sheet_reference>
-         <cue_sheet_type><ext_value>"StandardCueSheet"</ext_value></cue_sheet_type>
+         <cue_sheet_reference>UTE</cue_sheet_reference>
+         <cue_sheet_type><ext_value>CUE_SHEET_TYPE_STANDARD_CUE_SHEET</ext_value></cue_sheet_type>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"20001018380"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>MjAwMDEwMTgzODA</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Il Mondo"</title_text>
+               <title_text>SWwgTW9uZG8</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT0S"</start_time>
-            <duration>"PT3M4S"</duration>
+            <start_time>UFQwUw</start_time>
+            <duration>UFQzTTRT</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40058904235"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwNTg5MDQyMzU</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Amore Scusami"</title_text>
+               <title_text>QW1vcmUgU2N1c2FtaQ</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT3M22S"</start_time>
-            <duration>"PT2M47S"</duration>
+            <start_time>UFQzTTIyUw</start_time>
+            <duration>UFQyTTQ3Uw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40058904483"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwNTg5MDQ0ODM</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"On An Evening In Roma"</title_text>
+               <title_text>T24gQW4gRXZlbmluZyBJbiBSb21h</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT6M19S"</start_time>
-            <duration>"PT2M23S"</duration>
+            <start_time>UFQ2TTE5Uw</start_time>
+            <duration>UFQyTTIzUw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40058921358"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwNTg5MjEzNTg</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"A Man Without Love"</title_text>
+               <title_text>QSBNYW4gV2l0aG91dCBMb3Zl</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT9M52S"</start_time>
-            <duration>"PT3M20S"</duration>
+            <start_time>UFQ5TTUyUw</start_time>
+            <duration>UFQzTTIwUw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40058904427"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwNTg5MDQ0Mjc</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Parla Piu Piano"</title_text>
+               <title_text>UGFybGEgUGl1IFBpYW5v</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT13M58S"</start_time>
-            <duration>"PT3M1S"</duration>
+            <start_time>UFQxM001OFM</start_time>
+            <duration>UFQzTTFT</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40058921805"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwNTg5MjE4MDU</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"'Na Sera 'E Maggio"</title_text>
+               <title_text>J05hIFNlcmEgJ0UgTWFnZ2lv</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT17M27S"</start_time>
-            <duration>"PT3M40S"</duration>
+            <start_time>UFQxN00yN1M</start_time>
+            <duration>UFQzTTQwUw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40058920781"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwNTg5MjA3ODE</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Home To Mamma"</title_text>
+               <title_text>SG9tZSBUbyBNYW1tYQ</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT21M25S"</start_time>
-            <duration>"PT2M27S"</duration>
+            <start_time>UFQyMU0yNVM</start_time>
+            <duration>UFQyTTI3Uw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40058921178"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwNTg5MjExNzg</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Luna Mezz 'O Mare"</title_text>
+               <title_text>THVuYSBNZXp6ICdPIE1hcmU</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT24M"</start_time>
-            <duration>"PT2M29S"</duration>
+            <start_time>UFQyNE0</start_time>
+            <duration>UFQyTTI5Uw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"20001046688"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>MjAwMDEwNDY2ODg</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Alta Marea"</title_text>
+               <title_text>QWx0YSBNYXJlYQ</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT26M37S"</start_time>
-            <duration>"PT3M53S"</duration>
+            <start_time>UFQyNk0zN1M</start_time>
+            <duration>UFQzTTUzUw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40058904671"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwNTg5MDQ2NzE</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Che Sara"</title_text>
+               <title_text>Q2hlIFNhcmE</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT31M8S"</start_time>
-            <duration>"PT4M39S"</duration>
+            <start_time>UFQzMU04Uw</start_time>
+            <duration>UFQ0TTM5Uw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40058921312"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwNTg5MjEzMTI</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Soli"</title_text>
+               <title_text>U29saQ</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT36M2S"</start_time>
-            <duration>"PT3M52S"</duration>
+            <start_time>UFQzNk0yUw</start_time>
+            <duration>UFQzTTUyUw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40058905026"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwNTg5MDUwMjY</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"L'Italiano"</title_text>
+               <title_text>TCdJdGFsaWFubw</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT40M42S"</start_time>
-            <duration>"PT5M"</duration>
+            <start_time>UFQ0ME00MlM</start_time>
+            <duration>UFQ1TQ</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"40009612284"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>NDAwMDk2MTIyODQ</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Volare"</title_text>
+               <title_text>Vm9sYXJl</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <start_time>"PT45M54S"</start_time>
-            <duration>"PT1M54S"</duration>
+            <start_time>UFQ0NU01NFM</start_time>
+            <duration>UFQxTTU0Uw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"20001066697"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>MjAwMDEwNjY2OTc</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Ciao Ciao Bambina"</title_text>
+               <title_text>Q2lhbyBDaWFvIEJhbWJpbmE</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <duration>"PT2M31S"</duration>
+            <duration>UFQyTTMxUw</duration>
          </cue>
          <cue>
-            <cue_use_type><ext_value>"OnScreenMusic"</ext_value></cue_use_type>
+            <cue_use_type><ext_value>CUE_USE_TYPE_ON_SCREEN_MUSIC</ext_value></cue_use_type>
             <resource_id>
-			   <i_s_r_c>"GBUV71200495"</i_s_r_c>
-               <proprietary_id><ext_value>"30153217813"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+			   <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
+               <proprietary_id><ext_value>MzAxNTMyMTc4MTM</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
             </resource_id>
             <display_title>
-               <title_text>"Spoken Word"</title_text>
+               <title_text>U3Bva2VuIFdvcmQ</title_text>
             </display_title>
             <contributor>
-               <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
+               <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
             <sequence_number>1</sequence_number></contributor>
             <contributor>
-               <contributor_party_reference>"PColinFay"</contributor_party_reference>
+               <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
             <sequence_number>2</sequence_number></contributor>
             <has_musical_content>true</has_musical_content>
             <p_line>
-               <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+               <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
             </p_line>
-            <duration>"PT5M37S"</duration>
+            <duration>UFQ1TTM3Uw</duration>
          </cue>
       </cue_sheet>
    </cue_sheet_list>
    <resource_list>
       <video>
-         <resource_reference>"A15"</resource_reference>
-         <type><ext_value>"MusicalWorkTrailer"</ext_value></type>
+         <resource_reference>QTE1</resource_reference>
+         <type><ext_value>VIDEO_TYPE_MUSICAL_WORK_TRAILER</ext_value></type>
          <resource_id>
-            <i_s_r_c>"GBUV71200494"</i_s_r_c>
+            <i_s_r_c>R0JVVjcxMjAwNDk0</i_s_r_c>
          </resource_id>
-         <display_title_text><ext_value>"The Italian - Live In Concert (Trailer)"</ext_value></display_title_text>
+         <display_title_text><ext_value>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQgKFRyYWlsZXIp</ext_value></display_title_text>
          <display_title>
-            <title_text>"The Italian - Live In Concert"</title_text>
-            <sub_title><ext_value>"Trailer"</ext_value></sub_title>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQ</title_text>
+            <sub_title><ext_value>VHJhaWxlcg</ext_value></sub_title>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-            <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_C_N</applicable_territory_code></display_artist_name>
+            <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_C_N</applicable_territory_code></display_artist_name>
          <display_artist>
-            <artist_party_reference>"PPatrizioBuanne"</artist_party_reference>
-            <display_artist_role><ext_value>"MainArtist"</ext_value></display_artist_role>
+            <artist_party_reference>UFBhdHJpemlvQnVhbm5l</artist_party_reference>
+            <display_artist_role><ext_value>DISPLAY_ARTIST_ROLE_MAIN_ARTIST</ext_value></display_artist_role>
          <sequence_number>1</sequence_number></display_artist>
          <display_artist>
-            <artist_party_reference>"PAlasdairMacmillan"</artist_party_reference>
-            <display_artist_role><ext_value>"FeaturedArtist"</ext_value></display_artist_role>
+            <artist_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</artist_party_reference>
+            <display_artist_role><ext_value>DISPLAY_ARTIST_ROLE_FEATURED_ARTIST</ext_value></display_artist_role>
          <sequence_number>2</sequence_number></display_artist>
          <display_artist>
-            <artist_party_reference>"PColinFay"</artist_party_reference>
-            <display_artist_role><ext_value>"FeaturedArtist"</ext_value></display_artist_role>
+            <artist_party_reference>UENvbGluRmF5</artist_party_reference>
+            <display_artist_role><ext_value>DISPLAY_ARTIST_ROLE_FEATURED_ARTIST</ext_value></display_artist_role>
          <sequence_number>3</sequence_number></display_artist>
          <contributor>
-            <contributor_party_reference>"PColinFay"</contributor_party_reference>
-            <role><ext_value>"Actor"</ext_value></role>
+            <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
+            <role><ext_value>CONTRIBUTOR_ROLE_ACTOR</ext_value></role>
          <sequence_number>1</sequence_number></contributor>
          <contributor>
-            <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
-            <role><ext_value>"Actor"</ext_value></role>
+            <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
+            <role><ext_value>CONTRIBUTOR_ROLE_ACTOR</ext_value></role>
          <sequence_number>2</sequence_number></contributor>
          <p_line>
-            <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH, under exclusive license to Universal Music TV, a division of Universal Music Operations Ltd."</p_line_text>
+            <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSCwgdW5kZXIgZXhjbHVzaXZlIGxpY2Vuc2UgdG8gVW5pdmVyc2FsIE11c2ljIFRWLCBhIGRpdmlzaW9uIG9mIFVuaXZlcnNhbCBNdXNpYyBPcGVyYXRpb25zIEx0ZC4</p_line_text>
          </p_line>
          <p_line>
-            <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+            <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
          </p_line>
          <c_line>
-            <c_line_text>"(C) 2005 Hit Galaxy musicentertainment GmbH, under exclusive license to Universal Music TV, a division of Universal Music Operations Ltd."</c_line_text>
+            <c_line_text>KEMpIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSCwgdW5kZXIgZXhjbHVzaXZlIGxpY2Vuc2UgdG8gVW5pdmVyc2FsIE11c2ljIFRWLCBhIGRpdmlzaW9uIG9mIFVuaXZlcnNhbCBNdXNpYyBPcGVyYXRpb25zIEx0ZC4</c_line_text>
          </c_line>
          <c_line>
-            <c_line_text>"(C) 2005 Hit Galaxy musicentertainment GmbH"</c_line_text>
+            <c_line_text>KEMpIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</c_line_text>
          </c_line>
-         <duration>"PT1M"</duration>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <duration>UFQxTQ</duration>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </video>
       <video>
-         <resource_reference>"A16"</resource_reference>
-         <type><ext_value>"LongFormMusicalWorkVideo"</ext_value></type>
+         <resource_reference>QTE2</resource_reference>
+         <type><ext_value>VIDEO_TYPE_LONG_FORM_MUSICAL_WORK_VIDEO</ext_value></type>
          <resource_id>
-            <i_s_r_c>"GBUV71200495"</i_s_r_c>
+            <i_s_r_c>R0JVVjcxMjAwNDk1</i_s_r_c>
          </resource_id>
-         <display_title_text><ext_value>"The Italian - Live In Concert (ConcertFilm)"</ext_value></display_title_text>
+         <display_title_text><ext_value>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQgKENvbmNlcnRGaWxtKQ</ext_value></display_title_text>
          <display_title>
-            <title_text>"The Italian - Live In Concert"</title_text>
-            <sub_title><ext_value>"Concert Film"</ext_value></sub_title>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQ</title_text>
+            <sub_title><ext_value>Q29uY2VydCBGaWxt</ext_value></sub_title>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_C_N</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_C_N</applicable_territory_code></display_artist_name>
          <display_artist>
-            <artist_party_reference>"PPatrizioBuanne"</artist_party_reference>
-            <display_artist_role><ext_value>"MainArtist"</ext_value></display_artist_role>
+            <artist_party_reference>UFBhdHJpemlvQnVhbm5l</artist_party_reference>
+            <display_artist_role><ext_value>DISPLAY_ARTIST_ROLE_MAIN_ARTIST</ext_value></display_artist_role>
          <sequence_number>1</sequence_number></display_artist>
          <display_artist>
-            <artist_party_reference>"PAlasdairMacmillan"</artist_party_reference>
-            <display_artist_role><ext_value>"FeaturedArtist"</ext_value></display_artist_role>
+            <artist_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</artist_party_reference>
+            <display_artist_role><ext_value>DISPLAY_ARTIST_ROLE_FEATURED_ARTIST</ext_value></display_artist_role>
          <sequence_number>2</sequence_number></display_artist>
          <display_artist>
-            <artist_party_reference>"PColinFay"</artist_party_reference>
-            <display_artist_role><ext_value>"FeaturedArtist"</ext_value></display_artist_role>
+            <artist_party_reference>UENvbGluRmF5</artist_party_reference>
+            <display_artist_role><ext_value>DISPLAY_ARTIST_ROLE_FEATURED_ARTIST</ext_value></display_artist_role>
          <sequence_number>3</sequence_number></display_artist>
          <contributor>
-            <contributor_party_reference>"PAlasdairMacmillan"</contributor_party_reference>
-            <role><ext_value>"Actor"</ext_value></role>
+            <contributor_party_reference>UEFsYXNkYWlyTWFjbWlsbGFu</contributor_party_reference>
+            <role><ext_value>CONTRIBUTOR_ROLE_ACTOR</ext_value></role>
          <sequence_number>1</sequence_number></contributor>
          <contributor>
-            <contributor_party_reference>"PColinFay"</contributor_party_reference>
-            <role><ext_value>"Actor"</ext_value></role>
+            <contributor_party_reference>UENvbGluRmF5</contributor_party_reference>
+            <role><ext_value>CONTRIBUTOR_ROLE_ACTOR</ext_value></role>
          <sequence_number>2</sequence_number></contributor>
          <p_line>
-            <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH, under exclusive license to Universal Music TV, a division of Universal Music Operations Ltd."</p_line_text>
+            <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSCwgdW5kZXIgZXhjbHVzaXZlIGxpY2Vuc2UgdG8gVW5pdmVyc2FsIE11c2ljIFRWLCBhIGRpdmlzaW9uIG9mIFVuaXZlcnNhbCBNdXNpYyBPcGVyYXRpb25zIEx0ZC4</p_line_text>
          </p_line>
          <p_line>
-            <p_line_text>"(P) 2005 Hit Galaxy musicentertainment GmbH"</p_line_text>
+            <p_line_text>KFApIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</p_line_text>
          </p_line>
          <c_line>
-            <c_line_text>"(C) 2005 Hit Galaxy musicentertainment GmbH, under exclusive license to Universal Music TV, a division of Universal Music Operations Ltd."</c_line_text>
+            <c_line_text>KEMpIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSCwgdW5kZXIgZXhjbHVzaXZlIGxpY2Vuc2UgdG8gVW5pdmVyc2FsIE11c2ljIFRWLCBhIGRpdmlzaW9uIG9mIFVuaXZlcnNhbCBNdXNpYyBPcGVyYXRpb25zIEx0ZC4</c_line_text>
          </c_line>
          <c_line>
-            <c_line_text>"(C) 2005 Hit Galaxy musicentertainment GmbH"</c_line_text>
+            <c_line_text>KEMpIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</c_line_text>
          </c_line>
-         <duration>"PT50M37S"</duration>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
-         <video_cue_sheet_reference>"Q1"</video_cue_sheet_reference>
-         <video_chapter_reference>"X1"</video_chapter_reference>
-         <video_chapter_reference>"X2"</video_chapter_reference>
-         <video_chapter_reference>"X3"</video_chapter_reference>
-         <video_chapter_reference>"X4"</video_chapter_reference>
-         <video_chapter_reference>"X5"</video_chapter_reference>
-         <video_chapter_reference>"X6"</video_chapter_reference>
-         <video_chapter_reference>"X7"</video_chapter_reference>         
+         <duration>UFQ1ME0zN1M</duration>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
+         <video_cue_sheet_reference>UTE</video_cue_sheet_reference>
+         <video_chapter_reference>WDE</video_chapter_reference>
+         <video_chapter_reference>WDI</video_chapter_reference>
+         <video_chapter_reference>WDM</video_chapter_reference>
+         <video_chapter_reference>WDQ</video_chapter_reference>
+         <video_chapter_reference>WDU</video_chapter_reference>
+         <video_chapter_reference>WDY</video_chapter_reference>
+         <video_chapter_reference>WDc</video_chapter_reference>         
       </video>
       <image>
-         <resource_reference>"A1"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTE</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13040"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDQw</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"Il Mondo (My World)"</title_text>
+            <title_text>SWwgTW9uZG8gKE15IFdvcmxkKQ</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A2"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTI</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13041"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDQx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"Amore Scusami (My Love, Forgive Me)"</title_text>
+            <title_text>QW1vcmUgU2N1c2FtaSAoTXkgTG92ZSwgRm9yZ2l2ZSBNZSk</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A3"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTM</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13042"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDQy</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"On An Evening In Roma"</title_text>
+            <title_text>T24gQW4gRXZlbmluZyBJbiBSb21h</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A4"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTQ</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13043"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDQz</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"A Man Without Love"</title_text>
+            <title_text>QSBNYW4gV2l0aG91dCBMb3Zl</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A5"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTU</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13044"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDQ0</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"Parla Piu Piano (Theme from \"The Godfather\")"</title_text>
+            <title_text>UGFybGEgUGl1IFBpYW5vIChUaGVtZSBmcm9tICJUaGUgR29kZmF0aGVyIik</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A6"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTY</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13045"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDQ1</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"Na Sera E Maggio (An Evening In May)"</title_text>
+            <title_text>TmEgU2VyYSBFIE1hZ2dpbyAoQW4gRXZlbmluZyBJbiBNYXkp</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A7"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTc</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13046"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDQ2</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"Home To Mamma"</title_text>
+            <title_text>SG9tZSBUbyBNYW1tYQ</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A8"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTg</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13047"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDQ3</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"Luna Mezz'o Mare"</title_text>
+            <title_text>THVuYSBNZXp6J28gTWFyZQ</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A9"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTk</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13048"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDQ4</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"Alta Marea"</title_text>
+            <title_text>QWx0YSBNYXJlYQ</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A10"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTEw</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13049"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDQ5</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"Che Sara"</title_text>
+            <title_text>Q2hlIFNhcmE</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A11"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTEx</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13050"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDUw</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"Soli"</title_text>
+            <title_text>U29saQ</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A12"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTEy</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13051"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDUx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"L'Italiano"</title_text>
+            <title_text>TCdJdGFsaWFubw</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A13"</resource_reference>
-         <type><ext_value>"VideoScreenCapture"</ext_value></type>
+         <resource_reference>QTEz</resource_reference>
+         <type><ext_value>IMAGE_TYPE_VIDEO_SCREEN_CAPTURE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13052"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDUy</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"Voltare/Ciao Ciao Bambina"</title_text>
+            <title_text>Vm9sdGFyZS9DaWFvIENpYW8gQmFtYmluYQ</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
       <image>
-         <resource_reference>"A14"</resource_reference>
-         <type><ext_value>"FrontCoverImage"</ext_value></type>
+         <resource_reference>QTE0</resource_reference>
+         <type><ext_value>IMAGE_TYPE_FRONT_COVER_IMAGE</ext_value></type>
          <resource_id>
-            <proprietary_id><ext_value>"12UMGIM13038"</ext_value><namespace>PADPIDA2012031302R</namespace></proprietary_id>
+            <proprietary_id><ext_value>MTJVTUdJTTEzMDM4</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></proprietary_id>
          </resource_id>
          <display_title>
-            <title_text>"The Italian - Live In Concert"</title_text>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQ</title_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <contributor>
-            <contributor_party_reference>"PPatrizioBuanne"</contributor_party_reference>
+            <contributor_party_reference>UFBhdHJpemlvQnVhbm5l</contributor_party_reference>
          <sequence_number>1</sequence_number></contributor>
          <c_line>
-            <c_line_text>"(C) 2005 Hit Galaxy musicentertainment GmbH, under exclusive license to Universal Music TV, a division of Universal Music Operations Ltd."</c_line_text>
+            <c_line_text>KEMpIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSCwgdW5kZXIgZXhjbHVzaXZlIGxpY2Vuc2UgdG8gVW5pdmVyc2FsIE11c2ljIFRWLCBhIGRpdmlzaW9uIG9mIFVuaXZlcnNhbCBNdXNpYyBPcGVyYXRpb25zIEx0ZC4</c_line_text>
          </c_line>
          <c_line>
-            <c_line_text>"(C) 2005 Hit Galaxy musicentertainment GmbH"</c_line_text>
+            <c_line_text>KEMpIDIwMDUgSGl0IEdhbGF4eSBtdXNpY2VudGVydGFpbm1lbnQgR21iSA</c_line_text>
          </c_line>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
       </image>
    </resource_list>
    
    <chapter_list>     
       <chapter>
-         <chapter_reference>"X1"</chapter_reference>
-         <chapter_id><ext_value>"GBUV71200495_1"</ext_value><namespace>PADPIDA2010032301A</namespace></chapter_id>
+         <chapter_reference>WDE</chapter_reference>
+         <chapter_id><ext_value>R0JVVjcxMjAwNDk1XzE</ext_value><namespace>UEFEUElEQTIwMTAwMzIzMDFB</namespace></chapter_id>
          <additional_title>
-            <title_text>"The Italian - Live In Concert - Il Mondo (My World)"</title_text>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQgLSBJbCBNb25kbyAoTXkgV29ybGQp</title_text>
          </additional_title>
-         <representative_image_reference>"A1"</representative_image_reference>
-         <start_time>"PT0S"</start_time>
-         <duration>"PT5M10S"</duration>
+         <representative_image_reference>QTE</representative_image_reference>
+         <start_time>UFQwUw</start_time>
+         <duration>UFQ1TTEwUw</duration>
       </chapter>      
       <chapter>
-         <chapter_reference>"X2"</chapter_reference>
-         <chapter_id><ext_value>"GBUV71200495_2"</ext_value><namespace>PADPIDA2010032301A</namespace></chapter_id>
+         <chapter_reference>WDI</chapter_reference>
+         <chapter_id><ext_value>R0JVVjcxMjAwNDk1XzI</ext_value><namespace>UEFEUElEQTIwMTAwMzIzMDFB</namespace></chapter_id>
          <additional_title>
-            <title_text>"The Italian - Live In Concert - Amore Scusami (My Love, Forgive Me)"</title_text>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQgLSBBbW9yZSBTY3VzYW1pIChNeSBMb3ZlLCBGb3JnaXZlIE1lKQ</title_text>
          </additional_title>
-         <representative_image_reference>"A2"</representative_image_reference>
-         <start_time>"PT5M10S"</start_time>
-         <duration>"PT2M12S"</duration>
+         <representative_image_reference>QTI</representative_image_reference>
+         <start_time>UFQ1TTEwUw</start_time>
+         <duration>UFQyTTEyUw</duration>
       </chapter>      
       <chapter>
-         <chapter_reference>"X3"</chapter_reference>
-         <chapter_id><ext_value>"GBUV71200495_3"</ext_value><namespace>PADPIDA2010032301A</namespace></chapter_id>
+         <chapter_reference>WDM</chapter_reference>
+         <chapter_id><ext_value>R0JVVjcxMjAwNDk1XzM</ext_value><namespace>UEFEUElEQTIwMTAwMzIzMDFB</namespace></chapter_id>
          <additional_title>
-            <title_text>"The Italian - Live In Concert - On An Evening In Roma"</title_text>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQgLSBPbiBBbiBFdmVuaW5nIEluIFJvbWE</title_text>
          </additional_title>
-         <representative_image_reference>"A3"</representative_image_reference>
-         <start_time>"PT7M22S"</start_time>
-         <duration>"PT1M1S"</duration>
+         <representative_image_reference>QTM</representative_image_reference>
+         <start_time>UFQ3TTIyUw</start_time>
+         <duration>UFQxTTFT</duration>
       </chapter>
       <chapter>
-         <chapter_reference>"X4"</chapter_reference>
-         <chapter_id><ext_value>"GBUV71200495_4"</ext_value><namespace>PADPIDA2010032301A</namespace></chapter_id>
+         <chapter_reference>WDQ</chapter_reference>
+         <chapter_id><ext_value>R0JVVjcxMjAwNDk1XzQ</ext_value><namespace>UEFEUElEQTIwMTAwMzIzMDFB</namespace></chapter_id>
          <additional_title>
-            <title_text>"The Italian - Live In Concert - A Man Without Love"</title_text>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQgLSBBIE1hbiBXaXRob3V0IExvdmU</title_text>
          </additional_title>
-         <representative_image_reference>"A1"</representative_image_reference>
-         <start_time>"PT8M23S"</start_time>
-         <duration>"PT10M37S"</duration>
+         <representative_image_reference>QTE</representative_image_reference>
+         <start_time>UFQ4TTIzUw</start_time>
+         <duration>UFQxME0zN1M</duration>
       </chapter>
       <chapter>
-         <chapter_reference>"X5"</chapter_reference>
-         <chapter_id><ext_value>"GBUV71200495_5"</ext_value><namespace>PADPIDA2010032301A</namespace></chapter_id>
+         <chapter_reference>WDU</chapter_reference>
+         <chapter_id><ext_value>R0JVVjcxMjAwNDk1XzU</ext_value><namespace>UEFEUElEQTIwMTAwMzIzMDFB</namespace></chapter_id>
          <additional_title>
-            <title_text>"The Italian - Live In Concert - Parla Piu Piano (Theme from \"The Godfather\")"</title_text>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQgLSBQYXJsYSBQaXUgUGlhbm8gKFRoZW1lIGZyb20gIlRoZSBHb2RmYXRoZXIiKQ</title_text>
          </additional_title>
-         <representative_image_reference>"A5"</representative_image_reference>
-         <start_time>"PT19M"</start_time>
-         <duration>"PT4M2S"</duration>
+         <representative_image_reference>QTU</representative_image_reference>
+         <start_time>UFQxOU0</start_time>
+         <duration>UFQ0TTJT</duration>
       </chapter>
       <chapter>
-         <chapter_reference>"X6"</chapter_reference>
-         <chapter_id><ext_value>"GBUV71200495_6"</ext_value><namespace>PADPIDA2010032301A</namespace></chapter_id>
+         <chapter_reference>WDY</chapter_reference>
+         <chapter_id><ext_value>R0JVVjcxMjAwNDk1XzY</ext_value><namespace>UEFEUElEQTIwMTAwMzIzMDFB</namespace></chapter_id>
          <additional_title>
-            <title_text>"The Italian - Live In Concert - Na Sera E Maggio (An Evening In May)"</title_text>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQgLSBOYSBTZXJhIEUgTWFnZ2lvIChBbiBFdmVuaW5nIEluIE1heSk</title_text>
          </additional_title>
-         <representative_image_reference>"A6"</representative_image_reference>
-         <start_time>"PT23M2S"</start_time>
-         <duration>"PT5M30S"</duration>
+         <representative_image_reference>QTY</representative_image_reference>
+         <start_time>UFQyM00yUw</start_time>
+         <duration>UFQ1TTMwUw</duration>
       </chapter>
       <chapter>
-         <chapter_reference>"X7"</chapter_reference>
-         <chapter_id><ext_value>"GBUV71200495_7"</ext_value><namespace>PADPIDA2010032301A</namespace></chapter_id>
+         <chapter_reference>WDc</chapter_reference>
+         <chapter_id><ext_value>R0JVVjcxMjAwNDk1Xzc</ext_value><namespace>UEFEUElEQTIwMTAwMzIzMDFB</namespace></chapter_id>
          <additional_title>
-            <title_text>"The Italian - Live In Concert - Home To Mamma"</title_text>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQgLSBIb21lIFRvIE1hbW1h</title_text>
          </additional_title>
-         <representative_image_reference>"A7"</representative_image_reference>
-         <start_time>"PT28M32S"</start_time>
-         <duration>"PT22M1S"</duration>
+         <representative_image_reference>QTc</representative_image_reference>
+         <start_time>UFQyOE0zMlM</start_time>
+         <duration>UFQyMk0xUw</duration>
       </chapter>
    </chapter_list>   
    
    <release_list>
       <release>
-         <release_reference>"R0"</release_reference>
-         <release_type><ext_value>"LongFormMusicalWorkVideoRelease"</ext_value></release_type>
+         <release_reference>UjA</release_reference>
+         <release_type><ext_value>RELEASE_TYPE__E_R_N4_LONG_FORM_MUSICAL_WORK_VIDEO_RELEASE</ext_value></release_type>
          <release_id>
-            <i_c_p_n>"00602537022502"</i_c_p_n>
+            <i_c_p_n>MDA2MDI1MzcwMjI1MDI</i_c_p_n>
          </release_id>
-         <display_title_text><ext_value>"The Italian - Live In Concert (Concert Film)"</ext_value></display_title_text>
+         <display_title_text><ext_value>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQgKENvbmNlcnQgRmlsbSk</ext_value></display_title_text>
          <display_title>
-            <title_text>"The Italian - Live In Concert"</title_text>
-            <sub_title><ext_value>"Concert Film"</ext_value></sub_title>
+            <title_text>VGhlIEl0YWxpYW4gLSBMaXZlIEluIENvbmNlcnQ</title_text>
+            <sub_title><ext_value>Q29uY2VydCBGaWxt</ext_value></sub_title>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_title>
-         <display_artist_name><ext_value>"Patrizio Buanne"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
+         <display_artist_name><ext_value>UGF0cml6aW8gQnVhbm5l</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></display_artist_name>
          <display_artist>
-            <artist_party_reference>"PPatrizioBuanne"</artist_party_reference>
-            <display_artist_role><ext_value>"MainArtist"</ext_value></display_artist_role>
+            <artist_party_reference>UFBhdHJpemlvQnVhbm5l</artist_party_reference>
+            <display_artist_role><ext_value>DISPLAY_ARTIST_ROLE_MAIN_ARTIST</ext_value></display_artist_role>
          <sequence_number>1</sequence_number></display_artist>
-         <release_label_reference><ext_value>"PUMG"</ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_C_N</applicable_territory_code></release_label_reference>
+         <release_label_reference><ext_value><auto_value>UFVNRw</auto_value></ext_value><applicable_territory_code>CURRENT_TERRITORY_CODE_C_N</applicable_territory_code></release_label_reference>
          <genre>
-            <genre_text>"Easy Listening"</genre_text>
+            <genre_text>RWFzeSBMaXN0ZW5pbmc</genre_text>
          <applicable_territory_code>CURRENT_TERRITORY_CODE_WORLDWIDE</applicable_territory_code></genre>
-         <release_visibility_reference>"V0"</release_visibility_reference>
-         <parental_warning_type><ext_value>"NoAdviceAvailable"</ext_value></parental_warning_type>
+         <release_visibility_reference>VjA</release_visibility_reference>
+         <parental_warning_type><ext_value>PARENTAL_WARNING_TYPE_NO_ADVICE_AVAILABLE</ext_value></parental_warning_type>
          <resource_group>
             <resource_group>
                <sequence_number>1</sequence_number>
                <resource_group_content_item>
 				  <sequence_number>1</sequence_number>
-                  <release_resource_reference>"A16"</release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A1"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A2"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A3"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A4"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A5"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A6"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A7"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A8"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A9"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A10"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A11"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A12"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
-                  <linked_release_resource_reference><ext_value>"A13"</ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <release_resource_reference>QTE2</release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTE</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTI</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTM</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTQ</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTU</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTY</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTc</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTg</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTk</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTEw</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTEx</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTEy</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
+                  <linked_release_resource_reference><ext_value><auto_value>QTEz</auto_value></ext_value><link_description>LINK_DESCRIPTION_VIDEO_SCREEN_CAPTURE</link_description></linked_release_resource_reference>
                   <is_instant_gratification_resource>false</is_instant_gratification_resource>
                   <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
                </resource_group_content_item>
@@ -834,218 +834,218 @@
                <sequence_number>2</sequence_number>
                <resource_group_content_item>
 				  <sequence_number>1</sequence_number>
-                  <release_resource_reference>"A15"</release_resource_reference>
+                  <release_resource_reference>QTE1</release_resource_reference>
                   <is_instant_gratification_resource>false</is_instant_gratification_resource>
                   <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
                </resource_group_content_item>
             <resource_group_type>RESOURCE_GROUP_TYPE_COMPONENT</resource_group_type></resource_group>
             <resource_group_content_item>
-               <release_resource_reference>"A1"</release_resource_reference>
+               <release_resource_reference>QTE</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A2"</release_resource_reference>
+               <release_resource_reference>QTI</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A3"</release_resource_reference>
+               <release_resource_reference>QTM</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A4"</release_resource_reference>
+               <release_resource_reference>QTQ</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A5"</release_resource_reference>
+               <release_resource_reference>QTU</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A6"</release_resource_reference>
+               <release_resource_reference>QTY</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A7"</release_resource_reference>
+               <release_resource_reference>QTc</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A8"</release_resource_reference>
+               <release_resource_reference>QTg</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A9"</release_resource_reference>
+               <release_resource_reference>QTk</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A10"</release_resource_reference>
+               <release_resource_reference>QTEw</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A11"</release_resource_reference>
+               <release_resource_reference>QTEx</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A12"</release_resource_reference>
+               <release_resource_reference>QTEy</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
             <resource_group_content_item>
-               <release_resource_reference>"A13"</release_resource_reference>
+               <release_resource_reference>QTEz</release_resource_reference>
                <is_instant_gratification_resource>false</is_instant_gratification_resource>
                <is_pre_order_incentive_resource>false</is_pre_order_incentive_resource>
             </resource_group_content_item>
-            <linked_release_resource_reference><ext_value>"A14"</ext_value></linked_release_resource_reference>
+            <linked_release_resource_reference><ext_value><auto_value>QTE0</auto_value></ext_value></linked_release_resource_reference>
          </resource_group>
-         <synopsis><ext_value>"Patrizio Buanne: Live in concert, August 2005. A stunning live performance of his debut album 'The Italian' filmed in a beautiful Roman amphitheatre. Watch Patrizio at his best as the sun sets and night falls through the arches of this ancient arena - the perfect setting for an evening with 'The Italian'... Viva la dolce vita!"</ext_value></synopsis>
+         <synopsis><ext_value>UGF0cml6aW8gQnVhbm5lOiBMaXZlIGluIGNvbmNlcnQsIEF1Z3VzdCAyMDA1LiBBIHN0dW5uaW5nIGxpdmUgcGVyZm9ybWFuY2Ugb2YgaGlzIGRlYnV0IGFsYnVtICdUaGUgSXRhbGlhbicgZmlsbWVkIGluIGEgYmVhdXRpZnVsIFJvbWFuIGFtcGhpdGhlYXRyZS4gV2F0Y2ggUGF0cml6aW8gYXQgaGlzIGJlc3QgYXMgdGhlIHN1biBzZXRzIGFuZCBuaWdodCBmYWxscyB0aHJvdWdoIHRoZSBhcmNoZXMgb2YgdGhpcyBhbmNpZW50IGFyZW5hIC0gdGhlIHBlcmZlY3Qgc2V0dGluZyBmb3IgYW4gZXZlbmluZyB3aXRoICdUaGUgSXRhbGlhbicuLi4gVml2YSBsYSBkb2xjZSB2aXRhIQ</ext_value></synopsis>
       </release>
    </release_list>
    <deal_list>
       <release_deal>
-         <deal_release_reference>"R0"</deal_release_reference>
+         <deal_release_reference>UjA</deal_release_reference>
          <deal>
             <deal_terms>
-               <territory_code><ext_value>"CN"</ext_value></territory_code>
+               <territory_code><ext_value>CURRENT_TERRITORY_CODE_C_N</ext_value></territory_code>
                <validity_period>
-                  <start_date><ext_value>"2016-07-25"</ext_value></start_date>
+                  <start_date><ext_value><auto_value>MjAxNi0wNy0yNQ</auto_value></ext_value></start_date>
                </validity_period>
-               <commercial_model_type><ext_value>"SubscriptionModel"</ext_value></commercial_model_type>
-               <use_type><ext_value>"PermanentDownload"</ext_value></use_type>
+               <commercial_model_type><ext_value>COMMERCIAL_MODEL_TYPE__E_R_N_SUBSCRIPTION_MODEL</ext_value></commercial_model_type>
+               <use_type><ext_value>USE_TYPE__E_R_N_PERMANENT_DOWNLOAD</ext_value></use_type>
                <price_information>
-                  <price_code><ext_value>"LF1"</ext_value><namespace>PADPIDA2012031302R</namespace></price_code>
+                  <price_code><ext_value>TEYx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></price_code>
                </price_information>
                <is_pre_order_deal>false</is_pre_order_deal>
             </deal_terms>
          </deal>
          <deal>
             <deal_terms>
-               <territory_code><ext_value>"CN"</ext_value></territory_code>
+               <territory_code><ext_value>CURRENT_TERRITORY_CODE_C_N</ext_value></territory_code>
                <validity_period>
-                  <start_date><ext_value>"2016-07-25"</ext_value></start_date>
+                  <start_date><ext_value><auto_value>MjAxNi0wNy0yNQ</auto_value></ext_value></start_date>
                </validity_period>
-               <commercial_model_type><ext_value>"SubscriptionModel"</ext_value></commercial_model_type>
-               <use_type><ext_value>"Stream"</ext_value></use_type>
+               <commercial_model_type><ext_value>COMMERCIAL_MODEL_TYPE__E_R_N_SUBSCRIPTION_MODEL</ext_value></commercial_model_type>
+               <use_type><ext_value>USE_TYPE__E_R_N_STREAM</ext_value></use_type>
                <price_information>
-                  <price_code><ext_value>"LF1"</ext_value><namespace>PADPIDA2012031302R</namespace></price_code>
+                  <price_code><ext_value>TEYx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></price_code>
                </price_information>
                <is_pre_order_deal>false</is_pre_order_deal>
             </deal_terms>
          </deal>
          <deal>
             <deal_terms>
-               <territory_code><ext_value>"CN"</ext_value></territory_code>
+               <territory_code><ext_value>CURRENT_TERRITORY_CODE_C_N</ext_value></territory_code>
                <validity_period>
-                  <start_date><ext_value>"2016-07-25"</ext_value></start_date>
+                  <start_date><ext_value><auto_value>MjAxNi0wNy0yNQ</auto_value></ext_value></start_date>
                </validity_period>
-               <commercial_model_type><ext_value>"AdvertisementSupportedModel"</ext_value></commercial_model_type>
-               <use_type><ext_value>"PermanentDownload"</ext_value></use_type>
+               <commercial_model_type><ext_value>COMMERCIAL_MODEL_TYPE__E_R_N_ADVERTISEMENT_SUPPORTED_MODEL</ext_value></commercial_model_type>
+               <use_type><ext_value>USE_TYPE__E_R_N_PERMANENT_DOWNLOAD</ext_value></use_type>
                <price_information>
-                  <price_code><ext_value>"LF1"</ext_value><namespace>PADPIDA2012031302R</namespace></price_code>
+                  <price_code><ext_value>TEYx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></price_code>
                </price_information>
                <is_pre_order_deal>false</is_pre_order_deal>
             </deal_terms>
          </deal>
          <deal>
             <deal_terms>
-               <territory_code><ext_value>"CN"</ext_value></territory_code>
+               <territory_code><ext_value>CURRENT_TERRITORY_CODE_C_N</ext_value></territory_code>
                <validity_period>
-                  <start_date><ext_value>"2016-07-25"</ext_value></start_date>
+                  <start_date><ext_value><auto_value>MjAxNi0wNy0yNQ</auto_value></ext_value></start_date>
                </validity_period>
-               <commercial_model_type><ext_value>"PayAsYouGoModel"</ext_value></commercial_model_type>
-               <use_type><ext_value>"Stream"</ext_value></use_type>
+               <commercial_model_type><ext_value>COMMERCIAL_MODEL_TYPE__E_R_N_PAY_AS_YOU_GO_MODEL</ext_value></commercial_model_type>
+               <use_type><ext_value>USE_TYPE__E_R_N_STREAM</ext_value></use_type>
                <price_information>
-                  <price_code><ext_value>"LF1"</ext_value><namespace>PADPIDA2012031302R</namespace></price_code>
+                  <price_code><ext_value>TEYx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></price_code>
                </price_information>
                <is_pre_order_deal>false</is_pre_order_deal>
             </deal_terms>
          </deal>
          <deal>
             <deal_terms>
-               <territory_code><ext_value>"CN"</ext_value></territory_code>
+               <territory_code><ext_value>CURRENT_TERRITORY_CODE_C_N</ext_value></territory_code>
                <validity_period>
-                  <start_date><ext_value>"2016-07-25"</ext_value></start_date>
+                  <start_date><ext_value><auto_value>MjAxNi0wNy0yNQ</auto_value></ext_value></start_date>
                </validity_period>
-               <commercial_model_type><ext_value>"PayAsYouGoModel"</ext_value></commercial_model_type>
-               <use_type><ext_value>"ConditionalDownload"</ext_value></use_type>
+               <commercial_model_type><ext_value>COMMERCIAL_MODEL_TYPE__E_R_N_PAY_AS_YOU_GO_MODEL</ext_value></commercial_model_type>
+               <use_type><ext_value>USE_TYPE__E_R_N_CONDITIONAL_DOWNLOAD</ext_value></use_type>
                <price_information>
-                  <price_code><ext_value>"LF1"</ext_value><namespace>PADPIDA2012031302R</namespace></price_code>
+                  <price_code><ext_value>TEYx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></price_code>
                </price_information>
                <is_pre_order_deal>false</is_pre_order_deal>
             </deal_terms>
          </deal>
          <deal>
             <deal_terms>
-               <territory_code><ext_value>"CN"</ext_value></territory_code>
+               <territory_code><ext_value>CURRENT_TERRITORY_CODE_C_N</ext_value></territory_code>
                <validity_period>
-                  <start_date><ext_value>"2016-07-25"</ext_value></start_date>
+                  <start_date><ext_value><auto_value>MjAxNi0wNy0yNQ</auto_value></ext_value></start_date>
                </validity_period>
-               <commercial_model_type><ext_value>"AdvertisementSupportedModel"</ext_value></commercial_model_type>
-               <use_type><ext_value>"Stream"</ext_value></use_type>
+               <commercial_model_type><ext_value>COMMERCIAL_MODEL_TYPE__E_R_N_ADVERTISEMENT_SUPPORTED_MODEL</ext_value></commercial_model_type>
+               <use_type><ext_value>USE_TYPE__E_R_N_STREAM</ext_value></use_type>
                <price_information>
-                  <price_code><ext_value>"LF1"</ext_value><namespace>PADPIDA2012031302R</namespace></price_code>
+                  <price_code><ext_value>TEYx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></price_code>
                </price_information>
                <is_pre_order_deal>false</is_pre_order_deal>
             </deal_terms>
          </deal>
          <deal>
             <deal_terms>
-               <territory_code><ext_value>"CN"</ext_value></territory_code>
+               <territory_code><ext_value>CURRENT_TERRITORY_CODE_C_N</ext_value></territory_code>
                <validity_period>
-                  <start_date><ext_value>"2016-07-25"</ext_value></start_date>
+                  <start_date><ext_value><auto_value>MjAxNi0wNy0yNQ</auto_value></ext_value></start_date>
                </validity_period>
-               <commercial_model_type><ext_value>"SubscriptionModel"</ext_value></commercial_model_type>
-               <use_type><ext_value>"ConditionalDownload"</ext_value></use_type>
+               <commercial_model_type><ext_value>COMMERCIAL_MODEL_TYPE__E_R_N_SUBSCRIPTION_MODEL</ext_value></commercial_model_type>
+               <use_type><ext_value>USE_TYPE__E_R_N_CONDITIONAL_DOWNLOAD</ext_value></use_type>
                <price_information>
-                  <price_code><ext_value>"LF1"</ext_value><namespace>PADPIDA2012031302R</namespace></price_code>
+                  <price_code><ext_value>TEYx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></price_code>
                </price_information>
                <is_pre_order_deal>false</is_pre_order_deal>
             </deal_terms>
          </deal>
          <deal>
             <deal_terms>
-               <territory_code><ext_value>"CN"</ext_value></territory_code>
+               <territory_code><ext_value>CURRENT_TERRITORY_CODE_C_N</ext_value></territory_code>
                <validity_period>
-                  <start_date><ext_value>"2016-07-25"</ext_value></start_date>
+                  <start_date><ext_value><auto_value>MjAxNi0wNy0yNQ</auto_value></ext_value></start_date>
                </validity_period>
-               <commercial_model_type><ext_value>"PayAsYouGoModel"</ext_value></commercial_model_type>
-               <use_type><ext_value>"PermanentDownload"</ext_value></use_type>
+               <commercial_model_type><ext_value>COMMERCIAL_MODEL_TYPE__E_R_N_PAY_AS_YOU_GO_MODEL</ext_value></commercial_model_type>
+               <use_type><ext_value>USE_TYPE__E_R_N_PERMANENT_DOWNLOAD</ext_value></use_type>
                <price_information>
-                  <price_code><ext_value>"LF1"</ext_value><namespace>PADPIDA2012031302R</namespace></price_code>
+                  <price_code><ext_value>TEYx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></price_code>
                </price_information>
                <is_pre_order_deal>false</is_pre_order_deal>
             </deal_terms>
          </deal>
          <deal>
             <deal_terms>
-               <territory_code><ext_value>"CN"</ext_value></territory_code>
+               <territory_code><ext_value>CURRENT_TERRITORY_CODE_C_N</ext_value></territory_code>
                <validity_period>
-                  <start_date><ext_value>"2016-07-25"</ext_value></start_date>
+                  <start_date><ext_value><auto_value>MjAxNi0wNy0yNQ</auto_value></ext_value></start_date>
                </validity_period>
-               <commercial_model_type><ext_value>"AdvertisementSupportedModel"</ext_value></commercial_model_type>
-               <use_type><ext_value>"ConditionalDownload"</ext_value></use_type>
+               <commercial_model_type><ext_value>COMMERCIAL_MODEL_TYPE__E_R_N_ADVERTISEMENT_SUPPORTED_MODEL</ext_value></commercial_model_type>
+               <use_type><ext_value>USE_TYPE__E_R_N_CONDITIONAL_DOWNLOAD</ext_value></use_type>
                <price_information>
-                  <price_code><ext_value>"LF1"</ext_value><namespace>PADPIDA2012031302R</namespace></price_code>
+                  <price_code><ext_value>TEYx</ext_value><namespace>UEFEUElEQTIwMTIwMzEzMDJS</namespace></price_code>
                </price_information>
                <is_pre_order_deal>false</is_pre_order_deal>
             </deal_terms>
          </deal>
       </release_deal>
       <release_visibility>
-         <visibility_reference>"V0"</visibility_reference>
+         <visibility_reference>VjA</visibility_reference>
          
-         <release_display_start_date_time>2012</release_display_start_date_time>
-         <cover_art_preview_start_date_time>2012</cover_art_preview_start_date_time>
-         <full_track_listing_preview_start_date_time>2012</full_track_listing_preview_start_date_time>
+         <release_display_start_date_time>1346198400000</release_display_start_date_time>
+         <cover_art_preview_start_date_time>1346198400000</cover_art_preview_start_date_time>
+         <full_track_listing_preview_start_date_time>1346198400000</full_track_listing_preview_start_date_time>
       </release_visibility>
       
    </deal_list>
-<language_and_script_code>en</language_and_script_code><release_profile_version_id>RELEASE_PROFILE_VERSION_ID_LONG_FORM_MUSICAL_WORK_VIDEO</release_profile_version_id></new_release_message>
+<language_and_script_code>ZW4</language_and_script_code><release_profile_version_id>RELEASE_PROFILE_VERSION_ID_LONG_FORM_MUSICAL_WORK_VIDEO</release_profile_version_id></new_release_message>

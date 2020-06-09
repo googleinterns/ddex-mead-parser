@@ -16,6 +16,7 @@ public class ConversionHelper {
         fieldName = fieldName.replace("#", "__SHARP__");
         fieldName = fieldName.replace("!", "__BANG__");
         fieldName = fieldName.replace("ó", "__OI__");
+        fieldName = fieldName.replace("ó", "__OIO__");
         fieldName = fieldName.replace("í", "__II__");
         fieldName = fieldName.replace(".", "__DOT__");
         fieldName = fieldName.replace("'", "__APO__");

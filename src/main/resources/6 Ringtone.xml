@@ -1,4 +1,4 @@
-<NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/42"
+<ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/42"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://ddex.net/xml/ern/42 http://ddex.net/xml/ern/42/release-notification.xsd"
    ReleaseProfileVersionId="Ringtone" LanguageAndScriptCode="en">
@@ -2805,4 +2805,4 @@
          <FullTrackListingPreviewStartDateTime>2017-01-09T00:00:00Z</FullTrackListingPreviewStartDateTime>
       </ReleaseVisibility>
    </DealList>
-</NewReleaseMessage>
+</ern:NewReleaseMessage>

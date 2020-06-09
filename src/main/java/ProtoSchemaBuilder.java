@@ -90,7 +90,7 @@ public class ProtoSchemaBuilder {
   }
 
   private void processSchema(WrappedXmlSchema wSchema) {
-    System.out.println("Processing wrapped schema -> " + wSchema.getPrefix() + " " + wSchema.getUri());
+    System.out.println("Processing schema -> " + wSchema.getPrefix() + " " + wSchema.getUri());
     String nsPrefix = wSchema.getPrefix();
     List<XmlSchemaObject> schemaItems = wSchema.getSchema().getItems();
 
