@@ -1,4 +1,4 @@
 target/
 .idea/
 output/
-src/prototype/proto/
+src/main/proto/
