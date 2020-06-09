@@ -54,13 +54,13 @@
                         <configuration>
                             <!-- <includeDirectories> <include>src/main/protobuf</include> </includeDirectories> -->
                             <inputDirectories>
-                                <include>src/main/protobuf</include>
+                                <include>src/prototype/protobuf</include>
                             </inputDirectories>
                             <!-- Create java files. And put them in the src/main/java directory. -->
                             <outputTargets>
                                 <outputTarget>
                                     <type>java</type>
-                                    <outputDirectory>src/main/java</outputDirectory>
+                                    <outputDirectory>src/prototype/java</outputDirectory>
                                 </outputTarget>
                             </outputTargets>
                         </configuration>
