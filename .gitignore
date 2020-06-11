@@ -3,3 +3,5 @@ ddexmeadparser.iml
 target/
 .idea/
 output/
+src/main/resources/avs
+src/main/resources/mead

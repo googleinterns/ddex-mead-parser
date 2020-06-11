@@ -1,7 +1,7 @@
 package com.google.ddexmeadparser;
 
-import com.google.protobuf.Descriptors;
-import mead.Mead.MeadMessage;
+//import mead.Mead.MeadMessage;
+import ern.Ern.NewReleaseMessage;
 
 import org.apache.commons.cli.*;
 import java.io.File;
@@ -13,7 +13,7 @@ public class DdexMeadParser {
         try {
             DdexMeadParser ddexMeadParser = new DdexMeadParser(args);
             ddexMeadParser.parseMead();
-        } catch (InvalidOptionsException | MeadParseException e) {
+        } catch (InvalidOptionsException | MeadConversionException e) {
             e.printStackTrace();
         }
     }
@@ -34,15 +34,18 @@ public class DdexMeadParser {
         }
     }
 
-    public void parseMead() throws MeadParseException {
-        System.out.println("Started running the MEAD XML parser!");
-        System.out.println("Running parse on file: " + runtimeOptions.inputMeadMessage.getName());
+    public void parseMead() throws MeadConversionException {
+        System.out.println("Started running parse on file: " + runtimeOptions.inputMeadMessage.getName());
 
         // Get the MEAD message back from our inner class - wrap in loop to work through directory
         MeadConverter meadConverter = new MeadConverter();
-        MeadMessage message = meadConverter.convert(runtimeOptions.inputMeadMessage);
+        NewReleaseMessage message = meadConverter.convert(runtimeOptions.inputMeadMessage);
 
         // Write the MEAD message to output file in output folder
+        System.out.println(message.getPartyList().getParty(1).getPartyName(0).getFullName().getExtValue());
+        System.out.println(message.toString());
+
+
     }
 
 

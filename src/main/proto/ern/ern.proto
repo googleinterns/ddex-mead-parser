@@ -1,0 +1,1493 @@
+syntax = "proto2";
+package ern;
+import "avs/avs.proto";
+message NewReleaseMessage {
+	repeated ReleaseAdmin release_admin = 1;
+	optional SupplementalDocumentList supplemental_document_list = 2;
+	optional ResourceList resource_list = 3;
+	optional ChapterList chapter_list = 4;
+	optional avs.ReleaseProfileVersionId release_profile_version_id = 5;
+	optional DetailedCueSheetList cue_sheet_list = 6;
+	optional avs.ReleaseProfileVariantVersionId release_profile_variant_version_id = 7;
+	optional ReleaseList release_list = 8;
+	optional string language_and_script_code = 9;
+	optional MessageHeader message_header = 10;
+	optional DealList deal_list = 11;
+	optional PartyList party_list = 12;
+}
+message PurgeReleaseMessage {
+	optional string language_and_script_code = 1;
+	optional MessageHeader message_header = 2;
+	optional PurgedRelease purged_release = 3;
+}
+message AdditionalTitle {
+	optional bool is_default = 1;
+	optional string title_text = 2;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 3;
+	optional avs.AdditionalTitleType title_type = 4;
+	optional string language_and_script_code = 5;
+	optional string namespace = 6;
+	repeated DisplaySubTitle sub_title = 7;
+	optional string user_defined_value = 8;
+}
+message AdministratingRecordCompanyWithReference {
+	optional AdministratingRecordCompanyRole role = 1;
+	optional string record_company_party_reference = 2;
+}
+message AvRating {
+	optional bool is_default = 1;
+	optional RatingAgency agency = 2;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 3;
+	optional string rating = 4;
+	optional RatingReason reason = 5;
+}
+message CLineWithDefault {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional uint32 year = 3;
+	optional string c_line_company = 4;
+	optional string c_line_text = 5;
+	optional string language_and_script_code = 6;
+}
+message Chapter {
+	repeated DisplayTitle display_title = 1;
+	repeated Character character = 2;
+	optional string end_time = 3;
+	repeated DisplayTitleText display_title_text = 4;
+	optional string start_time = 5;
+	optional string language_and_script_code = 6;
+	repeated Contributor contributor = 7;
+	optional string duration = 8;
+	optional string representative_image_reference = 9;
+	repeated ProprietaryId chapter_id = 10;
+	optional int32 sequence_number = 11;
+	optional string chapter_reference = 12;
+	repeated AdditionalTitle additional_title = 13;
+}
+message ChapterList {
+	repeated Chapter chapter = 1;
+	optional string language_and_script_code = 2;
+}
+message Character {
+	optional string character_party_reference = 1;
+	optional Contributor performer = 2;
+	optional int32 sequence_number = 3;
+}
+message CommercialModelType {
+	optional avs.CommercialModelType_ERN ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message ConditionForRightsClaimPolicy {
+	optional avs.RelationalRelator relational_relator = 1;
+	optional avs.ReferenceCreation reference_creation = 2;
+	optional avs.MeasurementType measurement_type = 3;
+	optional double value = 4;
+	optional avs.UnitOfConditionValue unit = 5;
+}
+message Contributor {
+	repeated ContributorRole role = 1;
+	optional IsCredited is_credited = 2;
+	optional bool has_made_contracted_contribution = 3;
+	optional int32 sequence_number = 4;
+	repeated InstrumentType instrument_type = 5;
+	optional bool has_made_featured_contribution = 6;
+	repeated DisplayCredits display_credits = 7;
+	optional string contributor_party_reference = 8;
+}
+message CoreArea {
+	optional string top_left_corner = 1;
+	optional string bottom_right_corner = 2;
+}
+message CourtesyLineWithDefault {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional string language_and_script_code = 3;
+	optional string ext_value = 4;
+}
+message Deal {
+	optional DealTerms deal_terms = 1;
+	repeated DistributionChannelPage distribution_channel_page = 2;
+	optional bool is_communicated_out_of_band = 3;
+	repeated string deal_reference = 4;
+	optional DealTechnicalResourceDetailsReferenceList deal_technical_resource_details_reference_list = 5;
+}
+message DealList {
+	repeated TrackReleaseVisibility track_release_visibility = 1;
+	repeated ReleaseVisibility release_visibility = 2;
+	repeated ReleaseDeal release_deal = 3;
+}
+message DealResourceReferenceList {
+	repeated string deal_resource_reference = 1;
+}
+message DealTechnicalResourceDetailsReferenceList {
+	repeated string deal_technical_resource_details_reference = 1;
+}
+message DealTerms {
+	optional bool is_promotional = 1;
+	optional DealTermsTechnicalInstantiation technical_instantiation = 2;
+	optional bool is_pre_order_deal = 3;
+	repeated DiscoverableUseType use_type = 4;
+	repeated PriceInformationWithType price_information = 5;
+	repeated DSP distribution_channel = 6;
+	optional PromotionalCode promotional_code = 7;
+	repeated CurrentTerritoryCode excluded_territory_code = 8;
+	repeated UserInterfaceType user_interface_type = 9;
+	repeated DSP excluded_distribution_channel = 10;
+	optional int32 number_of_usages = 11;
+	repeated RightsClaimPolicy rights_claim_policy = 12;
+	optional DealResourceReferenceList instant_gratification_resource_list = 13;
+	optional PhysicalReturns physical_returns = 14;
+	repeated CarrierType carrier_type = 15;
+	repeated CurrentTerritoryCode territory_code = 16;
+	optional int32 number_of_products_per_carton = 17;
+	repeated PeriodWithStartDate validity_period = 18;
+	repeated CommercialModelType commercial_model_type = 19;
+}
+message DealTermsTechnicalInstantiation {
+	optional avs.CodingType coding_type = 1;
+	optional VideoDefinitionType video_definition_type = 2;
+	optional BitRate bit_rate = 3;
+}
+message Deity {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional string ext_value = 3;
+}
+message DelegatedUsageRights {
+	optional Period period_of_rights_delegation = 1;
+	repeated UseType use_type = 2;
+	repeated AllTerritoryCode territory_of_rights_delegation = 3;
+}
+message DescriptionWithTerritory {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional string language_and_script_code = 3;
+	optional string ext_value = 4;
+}
+message DetailedCue {
+	repeated CLine c_line = 1;
+	repeated DisplayTitle display_title = 2;
+	optional string end_time = 3;
+	repeated DisplayTitleText display_title_text = 4;
+	optional string start_time = 5;
+	optional CueThemeType cue_theme_type = 6;
+	repeated Contributor contributor = 7;
+	optional string duration = 8;
+	optional MusicalWorkId work_id = 9;
+	repeated PLine p_line = 10;
+	optional CueUseType cue_use_type = 11;
+	optional bool has_musical_content = 12;
+	optional CueVisualPerceptionType cue_visual_perception_type = 13;
+	optional ResourceId resource_id = 14;
+	optional CueOrigin cue_origin = 15;
+	optional bool is_dance = 16;
+	optional CueVocalType cue_vocal_type = 17;
+	repeated AdditionalTitle additional_title = 18;
+}
+message DetailedCueSheet {
+	repeated DetailedCue cue = 1;
+	repeated ProprietaryId cue_sheet_id = 2;
+	optional string cue_sheet_reference = 3;
+	optional CueSheetType cue_sheet_type = 4;
+}
+message DetailedCueSheetList {
+	repeated DetailedCueSheet cue_sheet = 1;
+}
+message DetailedResourceContributor {
+	repeated ContributorRole role = 1;
+	repeated DetailedPartyId party_id = 2;
+	optional bool has_made_contracted_contribution = 3;
+	optional int32 sequence_number = 4;
+	repeated InstrumentType instrument_type = 5;
+	repeated PartyName party_name = 6;
+	optional bool has_made_featured_contribution = 7;
+	repeated DisplayCredits display_credits = 8;
+}
+message DiscoverableUseType {
+	optional bool is_discoverable = 1;
+	optional avs.UseType_ERN ext_value = 2;
+	optional string namespace = 3;
+	optional string user_defined_value = 4;
+}
+message DisplayArtist {
+	optional int32 sequence_number = 1;
+	optional DisplayArtistRole display_artist_role = 2;
+	optional string artist_party_reference = 3;
+	repeated ContributorRole artistic_role = 4;
+	repeated TitleDisplayInformation title_display_information = 5;
+}
+message DisplaySubTitle {
+	optional bool is_displayed_in_title = 1;
+	optional avs.SubTitleType sub_title_type = 2;
+	optional int32 sequence_number = 3;
+	optional string ext_value = 4;
+}
+message DisplayTitle {
+	optional bool is_default = 1;
+	optional string title_text = 2;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 3;
+	optional string language_and_script_code = 4;
+	repeated DisplaySubTitle sub_title = 5;
+}
+message DisplayTitleText {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional string language_and_script_code = 3;
+	optional string ext_value = 4;
+}
+message DistributionChannelPage {
+	optional string user_name = 1;
+	repeated DetailedPartyId party_id = 2;
+	optional Name page_name = 3;
+	optional string u_r_l = 4;
+}
+message EventDateTimeWithoutFlags {
+	optional avs.CurrentTerritoryCode applicable_territory_code = 1;
+	optional string location_description = 2;
+	optional string language_and_script_code = 3;
+	optional uint64 ext_value = 4;
+	optional bool is_approximate = 5;
+}
+message EventDateWithCurrentTerritory {
+	optional avs.CurrentTerritoryCode applicable_territory_code = 1;
+	optional string location_description = 2;
+	optional string language_and_script_code = 3;
+	optional ddex_IsoDate ext_value = 4;
+	optional bool is_approximate = 5;
+}
+message EventDateWithDefault {
+	optional bool is_default = 1;
+	optional avs.AllTerritoryCode applicable_territory_code = 2;
+	optional ddex_IsoDate ext_value = 3;
+	optional bool is_approximate = 4;
+}
+message EventDateWithoutFlags {
+	optional avs.AllTerritoryCode applicable_territory_code = 1;
+	optional string location_description = 2;
+	optional string language_and_script_code = 3;
+	optional ddex_IsoDate ext_value = 4;
+	optional bool is_approximate = 5;
+}
+message ExternalResourceLink {
+	repeated ExternallyLinkedResourceType externally_linked_resource_type = 1;
+	optional PeriodWithoutFlags validity_period = 2;
+	optional string file_format = 3;
+	repeated string u_r_l = 4;
+	optional string external_link = 5;
+}
+message Fingerprint {
+	optional string version = 1;
+	optional string parameter = 2;
+	optional avs.BinaryDataType data_type = 3;
+	optional FingerprintAlgorithmType algorithm = 4;
+	optional File file = 5;
+	optional string fingerprint_value = 6;
+}
+message Image {
+	repeated DisplayArtistNameWithDefault display_artist_name = 1;
+	optional EventDateWithoutFlags creation_date = 2;
+	repeated RelatedResource related_resource = 3;
+	repeated CLineWithDefault c_line = 4;
+	repeated DescriptionWithTerritory description = 5;
+	repeated DisplayTitle display_title = 6;
+	repeated DisplayTitleText display_title_text = 7;
+	optional string language_and_script_code = 8;
+	repeated Contributor contributor = 9;
+	optional bool is_supplemental = 10;
+	repeated VersionType version_type = 11;
+	repeated CourtesyLineWithDefault courtesy_line = 12;
+	repeated FulfillmentDateWithTerritory first_publication_date = 13;
+	repeated TechnicalImageDetails technical_details = 14;
+	optional ImageType type = 15;
+	repeated ParentalWarningTypeWithTerritory parental_warning_type = 16;
+	repeated ResourceRightsController resource_rights_controller = 17;
+	repeated WorkRightsController work_rights_controller = 18;
+	repeated ResourceProprietaryId resource_id = 19;
+	repeated RelatedRelease related_release = 20;
+	optional string resource_reference = 21;
+	repeated AdditionalTitle additional_title = 22;
+	repeated DisplayArtist display_artist = 23;
+	optional bool contains_hidden_content = 24;
+}
+message IsCredited {
+	optional bool ext_value = 1;
+	optional bool may_be_shared = 2;
+}
+message LinkedReleaseResourceReference {
+	optional avs.LinkDescription link_description = 1;
+	optional string language_and_script_code = 2;
+	optional ddex_LocalResourceAnchorReference ext_value = 3;
+	optional string namespace = 4;
+	optional string user_defined_value = 5;
+}
+message LocationAndDateOfSession {
+	optional TextWithFormat comment = 1;
+	repeated SessionType session_type = 2;
+	repeated Venue venue = 3;
+	optional Period period = 4;
+	repeated PartyWithRole contributor = 5;
+}
+message Party {
+	optional string party_reference = 1;
+	repeated string artist_profile_page = 2;
+	repeated DetailedPartyId party_id = 3;
+	repeated RelatedParty related_party = 4;
+	repeated PartyNameWithTerritory party_name = 5;
+	repeated Affiliation affiliation = 6;
+}
+message PartyList {
+	repeated Party party = 1;
+}
+message PartyNameWithTerritory {
+	optional bool is_default = 1;
+	optional bool is_legal_name = 2;
+	optional Name names_after_key_name = 3;
+	optional string language_and_script_code = 4;
+	optional Name full_name_indexed = 5;
+	optional Name abbreviated_name = 6;
+	optional Name key_name = 7;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 8;
+	optional Name full_name = 9;
+	optional bool is_nickname = 10;
+	optional Name names_before_key_name = 11;
+	optional string full_name_ascii_transcribed = 12;
+	optional bool is_stage_name = 13;
+}
+message PartyWithRole {
+	optional ResourceContributorRole role = 1;
+	optional string ipi_name_number = 2;
+	optional string i_p_n = 3;
+	optional string i_s_n_i = 4;
+	optional string d_p_i_d = 5;
+	optional PartyNameWithTerritory party_name = 6;
+	repeated ProprietaryId proprietary_id = 7;
+}
+message PeriodWithStartDate {
+	optional EventDateWithCurrentTerritory start_date = 1;
+	optional EventDateTimeWithoutFlags start_date_time = 2;
+	optional EventDateTimeWithoutFlags end_date_time = 3;
+	optional EventDateWithCurrentTerritory end_date = 4;
+}
+message PeriodWithoutFlags {
+	optional EventDateWithCurrentTerritory start_date = 1;
+	optional EventDateTimeWithoutFlags start_date_time = 2;
+	optional EventDateTimeWithoutFlags end_date_time = 3;
+	optional EventDateWithCurrentTerritory end_date = 4;
+}
+message PhysicalReturns {
+	optional bool physical_returns_allowed = 1;
+	optional ddex_IsoDate latest_date_for_physical_returns = 2;
+}
+message PreviewDetails {
+	optional string top_left_corner = 1;
+	optional string bottom_right_corner = 2;
+	optional avs.ExpressionType expression_type = 3;
+}
+message PriceInformationWithType {
+	optional PriceType price_code = 1;
+	optional Price bulk_order_wholesale_price_per_unit = 2;
+	optional Price suggested_retail_price = 3;
+	optional Price wholesale_price_per_unit = 4;
+	optional avs.PriceInformationType price_type = 5;
+	optional string namespace = 6;
+	optional string user_defined_value = 7;
+}
+message PurgedRelease {
+	repeated Title title = 1;
+	repeated DetailedResourceContributor contributor = 2;
+	optional ReleaseId release_id = 3;
+}
+message Raga {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional string ext_value = 3;
+}
+message RelatedRelease {
+	repeated ReleaseLabelReference release_label_reference = 1;
+	repeated DisplayArtistNameWithDefault display_artist_name = 2;
+	optional ReleaseRelationshipType release_relationship_type = 3;
+	repeated DisplayTitle display_title = 4;
+	repeated DisplayTitleText display_title_text = 5;
+	optional EventDateWithoutFlags original_release_date = 6;
+	optional ReleaseId release_id = 7;
+	repeated AdditionalTitle additional_title = 8;
+	optional EventDateWithoutFlags release_date = 9;
+}
+message RelatedResource {
+	optional ResourceId resource_id = 1;
+	optional avs.ResourceRelationshipType resource_relationship_type = 2;
+	repeated Timing timing = 3;
+	optional string resource_related_resource_reference = 4;
+}
+message Release {
+	repeated ReleaseLabelReferenceWithParty release_label_reference = 1;
+	repeated Deity deity = 2;
+	repeated RelatedResource related_resource = 3;
+	repeated CLineWithDefault c_line = 4;
+	repeated KeywordsWithTerritory keywords = 5;
+	repeated DisplayTitleText display_title_text = 6;
+	repeated EventDateWithDefault original_release_date = 7;
+	optional bool is_single_artist_compilation = 8;
+	repeated AdministratingRecordCompanyWithReference administrating_record_company = 9;
+	optional bool is_multi_artist_compilation = 10;
+	repeated CourtesyLineWithDefault courtesy_line = 11;
+	repeated Raga raga = 12;
+	repeated ParentalWarningTypeWithTerritory parental_warning_type = 13;
+	repeated AvRating av_rating = 14;
+	optional string hi_res_music_description = 15;
+	optional ResourceGroup resource_group = 16;
+	repeated ReleaseTypeForReleaseNotification release_type = 17;
+	repeated DisplayArtistNameWithDefault display_artist_name = 18;
+	repeated DisplayTitle display_title = 19;
+	repeated Tala tala = 20;
+	optional string release_visibility_reference = 21;
+	optional string language_and_script_code = 22;
+	optional string duration = 23;
+	optional ReleaseId release_id = 24;
+	optional string target_u_r_l = 25;
+	repeated EventDateWithDefault release_date = 26;
+	repeated SynopsisWithTerritory synopsis = 27;
+	repeated PLineWithDefault p_line = 28;
+	optional bool is_hi_res_music = 29;
+	repeated ExternalResourceLink external_resource_link = 30;
+	optional bool is_soundtrack = 31;
+	repeated RelatedRelease related_release = 32;
+	repeated MarketingComment marketing_comment = 33;
+	optional string release_reference = 34;
+	repeated AdditionalTitle additional_title = 35;
+	repeated DisplayArtist display_artist = 36;
+	repeated GenreWithTerritory genre = 37;
+}
+message ReleaseAdmin {
+	repeated string system_description = 1;
+	optional string release_admin_id = 2;
+	optional string personnel_description = 3;
+}
+message ReleaseDeal {
+	repeated string deal_release_reference = 1;
+	repeated Deal deal = 2;
+}
+message ReleaseId {
+	optional CatalogNumber catalog_number = 1;
+	optional string g_rid = 2;
+	optional string i_c_p_n = 3;
+	repeated ProprietaryId proprietary_id = 4;
+}
+message ReleaseLabelReference {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional avs.LabelType label_type = 3;
+	optional string language_and_script_code = 4;
+	optional ddex_LocalPartyAnchorReference ext_value = 5;
+	optional string namespace = 6;
+	optional string user_defined_value = 7;
+}
+message ReleaseLabelReferenceWithParty {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional avs.LabelType label_type = 3;
+	optional string access_control_party = 4;
+	optional string language_and_script_code = 5;
+	optional ddex_LocalPartyAnchorReference ext_value = 6;
+	optional string namespace = 7;
+	optional string user_defined_value = 8;
+}
+message ReleaseList {
+	repeated TrackRelease track_release = 1;
+	optional Release release = 2;
+}
+message ReleaseVisibility {
+	optional uint64 release_display_start_date_time = 1;
+	optional uint64 full_track_listing_preview_start_date_time = 2;
+	optional uint64 cover_art_preview_start_date_time = 3;
+	optional string visibility_reference = 4;
+}
+message ResourceGroup {
+	repeated DisplayTitle display_title = 1;
+	repeated DisplayTitleText display_title_text = 2;
+	optional bool no_display_sequence = 3;
+	optional string display_sequence = 4;
+	repeated ResourceGroupContentItem resource_group_content_item = 5;
+	optional string duration = 6;
+	optional ReleaseId release_id = 7;
+	optional string resource_group_release_reference = 8;
+	repeated LinkedReleaseResourceReference linked_release_resource_reference = 9;
+	repeated CarrierType carrier_type = 10;
+	optional int32 sequence_number = 11;
+	repeated AdditionalTitle additional_title = 12;
+	repeated DisplayArtist display_artist = 13;
+	repeated ResourceSubGroup resource_group = 14;
+}
+message ResourceGroupContentItem {
+	optional string release_resource_reference = 1;
+	repeated LinkedReleaseResourceReference linked_release_resource_reference = 2;
+	optional bool no_display_sequence = 3;
+	optional string display_sequence = 4;
+	optional bool is_instant_gratification_resource = 5;
+	optional bool is_pre_order_incentive_resource = 6;
+	optional int32 sequence_number = 7;
+	optional bool is_bonus_resource = 8;
+}
+message ResourceList {
+	repeated Video video = 1;
+	repeated SheetMusic sheet_music = 2;
+	repeated SoundRecording sound_recording = 3;
+	repeated Text text = 4;
+	repeated Software software = 5;
+	repeated Image image = 6;
+}
+message ResourceRightsController {
+	optional Percentage right_share_percentage = 1;
+	repeated DelegatedUsageRights delegated_usage_rights = 2;
+	optional bool right_share_unknown = 3;
+	optional int32 sequence_number = 4;
+	repeated avs.RightsControllerRole rights_control_type = 5;
+	optional string rights_controller_party_reference = 6;
+}
+message ResourceSubGroup {
+	repeated DisplayTitle display_title = 1;
+	repeated DisplayTitleText display_title_text = 2;
+	optional bool no_display_sequence = 3;
+	optional string display_sequence = 4;
+	repeated ResourceGroupContentItem resource_group_content_item = 5;
+	optional string duration = 6;
+	optional ReleaseId release_id = 7;
+	optional avs.ResourceGroupType resource_group_type = 8;
+	optional string resource_group_release_reference = 9;
+	repeated LinkedReleaseResourceReference linked_release_resource_reference = 10;
+	repeated CarrierType carrier_type = 11;
+	optional int32 sequence_number = 12;
+	repeated AdditionalTitle additional_title = 13;
+	repeated DisplayArtist display_artist = 14;
+	repeated ResourceSubGroup resource_group = 15;
+}
+message RightsClaimPolicy {
+	repeated ConditionForRightsClaimPolicy condition = 1;
+	optional avs.RightsClaimPolicyType rights_claim_policy_type = 2;
+}
+message SheetMusic {
+	optional EventDateWithoutFlags creation_date = 1;
+	repeated RelatedResource related_resource = 2;
+	repeated CLineWithDefault c_line = 3;
+	repeated DisplayTitleText display_title_text = 4;
+	repeated Contributor contributor = 5;
+	repeated CourtesyLineWithDefault courtesy_line = 6;
+	repeated ParentalWarningTypeWithTerritory parental_warning_type = 7;
+	repeated ResourceRightsController resource_rights_controller = 8;
+	optional string resource_reference = 9;
+	repeated DisplayArtistNameWithDefault display_artist_name = 10;
+	optional string language_of_lyrics = 11;
+	repeated DisplayTitle display_title = 12;
+	optional string language_and_script_code = 13;
+	repeated MusicalWorkId work_id = 14;
+	optional bool is_supplemental = 15;
+	repeated VersionType version_type = 16;
+	repeated FulfillmentDateWithTerritory first_publication_date = 17;
+	repeated TechnicalSheetMusicDetails technical_details = 18;
+	optional SheetMusicType type = 19;
+	optional ResourceContainedResourceReferenceList resource_contained_resource_reference_list = 20;
+	repeated WorkRightsController work_rights_controller = 21;
+	repeated SheetMusicId resource_id = 22;
+	repeated RelatedRelease related_release = 23;
+	repeated AdditionalTitle additional_title = 24;
+	repeated DisplayArtist display_artist = 25;
+	optional bool contains_hidden_content = 26;
+}
+message Software {
+	optional EventDateWithoutFlags creation_date = 1;
+	repeated RelatedResource related_resource = 2;
+	repeated CLineWithDefault c_line = 3;
+	repeated DisplayTitleText display_title_text = 4;
+	repeated Contributor contributor = 5;
+	repeated CourtesyLineWithDefault courtesy_line = 6;
+	repeated ParentalWarningTypeWithTerritory parental_warning_type = 7;
+	repeated ResourceRightsController resource_rights_controller = 8;
+	optional string resource_reference = 9;
+	repeated DisplayArtistNameWithDefault display_artist_name = 10;
+	repeated DisplayTitle display_title = 11;
+	optional string language_and_script_code = 12;
+	repeated MusicalWorkId work_id = 13;
+	optional bool is_supplemental = 14;
+	repeated VersionType version_type = 15;
+	repeated PLineWithDefault p_line = 16;
+	repeated FulfillmentDateWithTerritory first_publication_date = 17;
+	repeated TechnicalSoftwareDetails technical_details = 18;
+	optional SoftwareType type = 19;
+	optional ResourceContainedResourceReferenceList resource_contained_resource_reference_list = 20;
+	repeated WorkRightsController work_rights_controller = 21;
+	repeated ResourceProprietaryId resource_id = 22;
+	repeated RelatedRelease related_release = 23;
+	repeated AdditionalTitle additional_title = 24;
+	repeated DisplayArtist display_artist = 25;
+	optional bool contains_hidden_content = 26;
+}
+message SoundRecording {
+	repeated Deity deity = 1;
+	optional EventDateWithoutFlags creation_date = 2;
+	optional EventDateWithoutFlags mastered_date = 3;
+	repeated RelatedResource related_resource = 4;
+	repeated DisplayTitleText display_title_text = 5;
+	optional bool is_cover = 6;
+	optional bool is_remastered = 7;
+	repeated Contributor contributor = 8;
+	optional avs.CompositeMusicalWorkType composite_musical_work_type = 9;
+	repeated CourtesyLineWithDefault courtesy_line = 10;
+	repeated Raga raga = 11;
+	repeated ParentalWarningTypeWithTerritory parental_warning_type = 12;
+	repeated ResourceRightsController resource_rights_controller = 13;
+	repeated string audio_chapter_reference = 14;
+	optional string resource_reference = 15;
+	repeated DisplayArtistNameWithDefault display_artist_name = 16;
+	repeated DisplayTitle display_title = 17;
+	repeated Character character = 18;
+	repeated Tala tala = 19;
+	optional string language_and_script_code = 20;
+	optional string duration = 21;
+	repeated MusicalWorkId work_id = 22;
+	repeated LocationAndDateOfSession location_and_date_of_session = 23;
+	optional bool disable_crossfade = 24;
+	optional bool is_supplemental = 25;
+	repeated VersionType version_type = 26;
+	repeated PLineWithDefault p_line = 27;
+	repeated FirstPublicationDate first_publication_date = 28;
+	optional bool disable_search = 29;
+	repeated TechnicalSoundRecordingDetails technical_details = 30;
+	optional SoundRecordingType type = 31;
+	repeated WorkRightsController work_rights_controller = 32;
+	optional bool is_hi_res_music = 33;
+	repeated SoundRecordingId resource_id = 34;
+	optional bool is_instrumental = 35;
+	repeated RelatedRelease related_release = 36;
+	repeated string language_of_performance = 37;
+	optional avs.RecordingMode audio_channel_configuration = 38;
+	repeated AdditionalTitle additional_title = 39;
+	repeated DisplayArtist display_artist = 40;
+	repeated DisplayCredits display_credits = 41;
+	optional bool contains_hidden_content = 42;
+	optional EventDateWithoutFlags remastered_date = 43;
+}
+message SoundRecordingPreviewDetails {
+	optional string top_left_corner = 1;
+	optional string bottom_right_corner = 2;
+	optional double start_point = 3;
+	optional string duration = 4;
+	optional double end_point = 5;
+	optional avs.ExpressionType expression_type = 6;
+}
+message SupplementalDocumentList {
+	repeated File supplemental_document = 1;
+}
+message SynopsisWithTerritory {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional bool is_short_synopsis = 3;
+	optional string language_and_script_code = 4;
+	optional string ext_value = 5;
+}
+message Tala {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional string ext_value = 3;
+}
+message TechnicalImageDetails {
+	optional bool is_default = 1;
+	optional string technical_resource_details_reference = 2;
+	repeated Fingerprint fingerprint = 3;
+	optional string language_and_script_code = 4;
+	optional int32 image_resolution = 5;
+	optional int32 color_depth = 6;
+	optional int32 bit_depth = 7;
+	optional bool is_provided_in_delivery = 8;
+	optional ImageCodecType image_codec_type = 9;
+	optional AspectRatio aspect_ratio = 10;
+	optional bool is_preview = 11;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 12;
+	optional Extent image_height = 13;
+	optional Extent image_width = 14;
+	optional File file = 15;
+	optional PreviewDetails preview_details = 16;
+}
+message TechnicalSheetMusicDetails {
+	optional bool is_default = 1;
+	optional string technical_resource_details_reference = 2;
+	optional bool is_preview = 3;
+	repeated Fingerprint fingerprint = 4;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 5;
+	optional string language_and_script_code = 6;
+	optional SheetMusicCodecType sheet_music_codec_type = 7;
+	optional int32 bit_depth = 8;
+	optional File file = 9;
+	optional bool is_provided_in_delivery = 10;
+	optional PreviewDetails preview_details = 11;
+}
+message TechnicalSoftwareDetails {
+	optional bool is_default = 1;
+	optional string technical_resource_details_reference = 2;
+	optional bool is_preview = 3;
+	repeated Fingerprint fingerprint = 4;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 5;
+	optional OperatingSystemType operating_system_type = 6;
+	optional string language_and_script_code = 7;
+	optional int32 bit_depth = 8;
+	optional File file = 9;
+	optional bool is_provided_in_delivery = 10;
+	optional PreviewDetails preview_details = 11;
+}
+message TechnicalSoundRecordingDetails {
+	optional bool is_default = 1;
+	optional string technical_resource_details_reference = 2;
+	repeated Fingerprint fingerprint = 3;
+	optional string language_and_script_code = 4;
+	optional string duration = 5;
+	optional SamplingRate sampling_rate = 6;
+	optional SamplingRate original_sampling_rate = 7;
+	optional int32 bit_depth = 8;
+	optional int32 bits_per_sample = 9;
+	optional bool is_provided_in_delivery = 10;
+	optional AudioCodecType audio_codec_type = 11;
+	optional bool is_preview = 12;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 13;
+	optional SoundRecordingId encoding_id = 14;
+	optional BitRate original_bit_rate = 15;
+	optional string encoding_description = 16;
+	optional int32 number_of_channels = 17;
+	optional BitRate bit_rate = 18;
+	optional File file = 19;
+	optional SoundRecordingPreviewDetails preview_details = 20;
+}
+message TechnicalTextDetails {
+	optional bool is_default = 1;
+	optional string technical_resource_details_reference = 2;
+	optional bool is_preview = 3;
+	repeated Fingerprint fingerprint = 4;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 5;
+	optional string language_and_script_code = 6;
+	optional TextCodecType text_codec_type = 7;
+	optional int32 bit_depth = 8;
+	optional File file = 9;
+	optional bool is_provided_in_delivery = 10;
+	optional PreviewDetails preview_details = 11;
+}
+message TechnicalVideoDetails {
+	optional string technical_resource_details_reference = 1;
+	optional ContainerFormat container_format = 2;
+	optional int32 bit_depth = 3;
+	optional SamplingRate audio_sampling_rate = 4;
+	optional bool is_provided_in_delivery = 5;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 6;
+	optional VideoId encoding_id = 7;
+	optional CoreArea core_area = 8;
+	optional Extent image_width = 9;
+	optional string encoding_description = 10;
+	optional int32 number_of_audio_channels = 11;
+	optional bool is_default = 12;
+	optional BitRate audio_bit_rate = 13;
+	optional FrameRate frame_rate = 14;
+	repeated Fingerprint fingerprint = 15;
+	optional BitRate overall_bit_rate = 16;
+	optional string language_and_script_code = 17;
+	optional string duration = 18;
+	optional int32 audio_bits_per_sample = 19;
+	optional BitRate video_bit_rate = 20;
+	optional VideoDefinitionType video_definition_type = 21;
+	optional int32 color_depth = 22;
+	optional VideoCodecType video_codec_type = 23;
+	optional AspectRatio aspect_ratio = 24;
+	optional AudioCodecType audio_codec_type = 25;
+	optional bool is_preview = 26;
+	optional Extent image_height = 27;
+	optional File file = 28;
+	optional SoundRecordingPreviewDetails preview_details = 29;
+}
+message Text {
+	optional EventDateWithoutFlags creation_date = 1;
+	repeated RelatedResource related_resource = 2;
+	repeated CLineWithDefault c_line = 3;
+	repeated DisplayTitleText display_title_text = 4;
+	repeated Contributor contributor = 5;
+	repeated CourtesyLineWithDefault courtesy_line = 6;
+	repeated ParentalWarningTypeWithTerritory parental_warning_type = 7;
+	repeated ResourceRightsController resource_rights_controller = 8;
+	optional string resource_reference = 9;
+	repeated DisplayArtistNameWithDefault display_artist_name = 10;
+	repeated DisplayTitle display_title = 11;
+	optional string language_and_script_code = 12;
+	repeated MusicalWorkId work_id = 13;
+	optional bool is_supplemental = 14;
+	repeated VersionType version_type = 15;
+	repeated FulfillmentDateWithTerritory first_publication_date = 16;
+	repeated TechnicalTextDetails technical_details = 17;
+	optional TextType type = 18;
+	optional ResourceContainedResourceReferenceList resource_contained_resource_reference_list = 19;
+	repeated WorkRightsController work_rights_controller = 20;
+	repeated TextId resource_id = 21;
+	repeated RelatedRelease related_release = 22;
+	repeated AdditionalTitle additional_title = 23;
+	repeated DisplayArtist display_artist = 24;
+	optional bool contains_hidden_content = 25;
+}
+message TextWithFormat {
+	optional bool is_default = 1;
+	optional avs.TextCodecType format = 2;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 3;
+	optional string language_and_script_code = 4;
+	optional string ext_value = 5;
+	optional string namespace = 6;
+	optional string user_defined_value = 7;
+}
+message Timing {
+	optional string start_point = 1;
+	optional string duration_used = 2;
+}
+message Title {
+	optional string title_text = 1;
+	optional avs.AdditionalTitleType title_type = 2;
+	optional string language_and_script_code = 3;
+	optional string sub_title = 4;
+}
+message TrackRelease {
+	repeated ReleaseLabelReferenceWithParty release_label_reference = 1;
+	repeated RelatedResource related_resource = 2;
+	repeated KeywordsWithTerritory keywords = 3;
+	repeated DisplayTitle display_title = 4;
+	repeated DisplayTitleText display_title_text = 5;
+	optional string release_visibility_reference = 6;
+	optional ReleaseId release_id = 7;
+	optional string target_u_r_l = 8;
+	repeated SynopsisWithTerritory synopsis = 9;
+	optional bool is_main_release = 10;
+	optional string release_resource_reference = 11;
+	repeated LinkedReleaseResourceReference linked_release_resource_reference = 12;
+	repeated RelatedRelease related_release = 13;
+	repeated MarketingComment marketing_comment = 14;
+	optional string release_reference = 15;
+	repeated AdditionalTitle additional_title = 16;
+	repeated GenreWithTerritory genre = 17;
+}
+message TrackReleaseVisibility {
+	optional uint64 track_listing_preview_start_date_time = 1;
+	optional uint64 clip_preview_start_date_time = 2;
+	optional string visibility_reference = 3;
+}
+message UseType {
+	optional avs.UseType_ERN ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message UserInterfaceType {
+	optional avs.UserInterfaceType_ERN ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message Video {
+	repeated string deity = 1;
+	optional EventDateWithoutFlags creation_date = 2;
+	optional EventDateWithoutFlags mastered_date = 3;
+	repeated RelatedResource related_resource = 4;
+	repeated CLineWithDefault c_line = 5;
+	repeated DisplayTitleText display_title_text = 6;
+	optional bool is_cover = 7;
+	optional bool is_remastered = 8;
+	repeated Contributor contributor = 9;
+	optional avs.CompositeMusicalWorkType composite_musical_work_type = 10;
+	repeated CourtesyLineWithDefault courtesy_line = 11;
+	repeated string sub_title_language = 12;
+	repeated string raga = 13;
+	repeated ParentalWarningTypeWithTerritory parental_warning_type = 14;
+	repeated ResourceRightsController resource_rights_controller = 15;
+	repeated AvRating av_rating = 16;
+	repeated string video_chapter_reference = 17;
+	optional string resource_reference = 18;
+	repeated string language_of_dubbing = 19;
+	repeated DisplayArtistNameWithDefault display_artist_name = 20;
+	repeated DisplayTitle display_title = 21;
+	repeated Character character = 22;
+	repeated string tala = 23;
+	optional string language_and_script_code = 24;
+	optional string duration = 25;
+	repeated MusicalWorkId work_id = 26;
+	optional Reason reason_for_cue_sheet_absence = 27;
+	optional bool is_supplemental = 28;
+	repeated VersionType version_type = 29;
+	repeated PLineWithDefault p_line = 30;
+	repeated FulfillmentDateWithTerritory first_publication_date = 31;
+	repeated TechnicalVideoDetails technical_details = 32;
+	optional VideoType type = 33;
+	optional ResourceContainedResourceReferenceList resource_contained_resource_reference_list = 34;
+	repeated WorkRightsController work_rights_controller = 35;
+	repeated VideoId resource_id = 36;
+	optional bool is_instrumental = 37;
+	repeated RelatedRelease related_release = 38;
+	repeated string video_cue_sheet_reference = 39;
+	repeated string language_of_performance = 40;
+	repeated AdditionalTitle additional_title = 41;
+	repeated DisplayArtist display_artist = 42;
+	repeated DisplayCredits display_credits = 43;
+	optional bool contains_hidden_content = 44;
+	repeated EventDateWithoutFlags remastered_date = 45;
+}
+message WorkRightsController {
+	optional ddex_IsoDate start_date = 1;
+	repeated AllTerritoryCode territory = 2;
+	optional double right_share_percentage = 3;
+	optional bool right_share_unknown = 4;
+	repeated avs.RightsControllerRole rights_control_type = 5;
+	optional string rights_controller_party_reference = 6;
+	optional avs.RightsControllerType rights_controller_type = 7;
+	optional ddex_IsoDate end_date = 8;
+}
+message AdministratingRecordCompanyRole {
+	optional avs.AdministratingRecordCompanyRole ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message Affiliation {
+	optional string company_name = 1;
+	optional avs.AffiliationType type = 2;
+	optional string party_affiliate_reference = 3;
+	repeated SimpleRightsType rights_type = 4;
+	repeated CurrentTerritoryCode territory_code = 5;
+	optional double percentage_of_rights_assignment = 6;
+	optional ValidityPeriod validity_period = 7;
+	repeated CurrentTerritoryCode excluded_territory_code = 8;
+}
+message AllTerritoryCode {
+	optional avs.AllTerritoryCode ext_value = 1;
+	optional avs.TerritoryCodeTypeIncludingDeprecatedCodes identifier_type = 2;
+}
+message AspectRatio {
+	optional avs.AspectRatioType aspect_ratio_type = 1;
+	optional double ext_value = 2;
+}
+message AudioCodecType {
+	optional string version = 1;
+	optional avs.AudioCodecType ext_value = 2;
+	optional string namespace = 3;
+	optional string user_defined_value = 4;
+}
+message BitRate {
+	optional avs.UnitOfBitRate unit_of_measure = 1;
+	optional double ext_value = 2;
+}
+message CLine {
+	optional uint32 year = 1;
+	optional string c_line_company = 2;
+	optional string c_line_text = 3;
+	optional string language_and_script_code = 4;
+}
+message CarrierType {
+	optional avs.CarrierType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message CatalogNumber {
+	optional string ext_value = 1;
+	optional string namespace = 2;
+}
+message ContainerFormat {
+	optional avs.ContainerFormat ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message ContributorRole {
+	optional avs.ContributorRole ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message CueOrigin {
+	optional avs.CueOrigin ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message CueSheetType {
+	optional avs.CueSheetType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message CueThemeType {
+	optional avs.ThemeType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message CueUseType {
+	optional avs.CueUseType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message CueVisualPerceptionType {
+	optional avs.VisualPerceptionType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message CueVocalType {
+	optional avs.VocalType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message CurrentTerritoryCode {
+	optional avs.CurrentTerritoryCode ext_value = 1;
+	optional avs.TerritoryCodeType identifier_type = 2;
+}
+message DSP {
+	repeated DetailedPartyId party_id = 1;
+	repeated PartyName party_name = 2;
+	optional Name trading_name = 3;
+	repeated string u_r_l = 4;
+}
+message DetailedHashSum {
+	optional string version = 1;
+	optional string parameter = 2;
+	optional avs.BinaryDataType data_type = 3;
+	optional string hash_sum_value = 4;
+	optional HashSumAlgorithmType algorithm = 5;
+}
+message DetailedPartyId {
+	optional string ipi_name_number = 1;
+	optional string i_p_n = 2;
+	optional string i_s_n_i = 3;
+	optional string d_p_i_d = 4;
+	optional string cisac_society_id = 5;
+	repeated ProprietaryId proprietary_id = 6;
+}
+message DisplayArtistNameWithDefault {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional string language_and_script_code = 3;
+	optional string ext_value = 4;
+}
+message DisplayArtistRole {
+	optional avs.DisplayArtistRole ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message DisplayCredits {
+	optional bool is_default = 1;
+	optional string display_credit_text = 2;
+	optional string display_credit_party = 3;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 4;
+	optional string language_and_script_code = 5;
+	optional string name_used_in_display_credit = 6;
+}
+message EventDate {
+	optional avs.AllTerritoryCode applicable_territory_code = 1;
+	optional string location_description = 2;
+	optional bool is_before = 3;
+	optional string language_and_script_code = 4;
+	optional bool is_after = 5;
+	optional ddex_IsoDate ext_value = 6;
+	optional bool is_approximate = 7;
+}
+message EventDateTime {
+	optional string location_description = 1;
+	optional bool is_before = 2;
+	optional avs.AllTerritoryCode territory_code = 3;
+	optional string language_and_script_code = 4;
+	optional bool is_after = 5;
+	optional uint64 ext_value = 6;
+	optional bool is_approximate = 7;
+}
+message Extent {
+	optional avs.UnitOfExtent unit_of_measure = 1;
+	optional double ext_value = 2;
+}
+message ExternallyLinkedResourceType {
+	optional avs.ExternallyLinkedResourceType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message File {
+	optional DetailedHashSum hash_sum = 1;
+	optional string u_r_i = 2;
+	optional double file_size = 3;
+}
+message FingerprintAlgorithmType {
+	optional avs.FingerprintAlgorithmType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message FirstPublicationDate {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional ddex_IsoDate ext_value = 3;
+}
+message FrameRate {
+	optional avs.UnitOfFrameRate unit_of_measure = 1;
+	optional double ext_value = 2;
+}
+message FulfillmentDateWithTerritory {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	repeated string resource_release_reference = 3;
+	optional ddex_IsoDate fulfillment_date = 4;
+}
+message GenreCategory {
+	repeated TextWithoutTerritory description = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional GenreCategoryValue value = 3;
+}
+message GenreCategoryValue {
+	optional string language_and_script_code = 1;
+	optional avs.ClassifiedGenre ext_value = 2;
+	optional string namespace = 3;
+	optional string user_defined_value = 4;
+}
+message GenreWithTerritory {
+	optional bool is_default = 1;
+	repeated GenreCategory genre_category = 2;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 3;
+	optional string language_and_script_code = 4;
+	repeated SubGenreCategory sub_genre_category = 5;
+	optional string genre_text = 6;
+	optional string sub_genre = 7;
+}
+message HashSumAlgorithmType {
+	optional avs.HashSumAlgorithmType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message ImageCodecType {
+	optional string version = 1;
+	optional avs.ImageCodecType ext_value = 2;
+	optional string namespace = 3;
+	optional string user_defined_value = 4;
+}
+message ImageType {
+	optional avs.ImageType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message InstrumentType {
+	optional avs.InstrumentType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message KeywordsWithTerritory {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional string language_and_script_code = 3;
+	optional string ext_value = 4;
+}
+message MarketingComment {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional string language_and_script_code = 3;
+	optional string ext_value = 4;
+}
+message MessageAuditTrail {
+	repeated MessageAuditTrailEvent message_audit_trail_event = 1;
+}
+message MessageAuditTrailEvent {
+	optional MessagingPartyWithoutCode messaging_party_descriptor = 1;
+	optional uint64 date_time = 2;
+}
+message MessageHeader {
+	optional string message_thread_id = 1;
+	optional avs.MessageControlType message_control_type = 2;
+	optional string message_file_name = 3;
+	optional MessagingPartyWithoutCode sent_on_behalf_of = 4;
+	optional uint64 message_created_date_time = 5;
+	optional MessageAuditTrail message_audit_trail = 6;
+	optional MessagingPartyWithoutCode message_sender = 7;
+	repeated MessagingPartyWithoutCode message_recipient = 8;
+	optional string message_id = 9;
+}
+message MessagingPartyWithoutCode {
+	optional string party_id = 1;
+	optional PartyNameWithoutCode party_name = 2;
+	optional string trading_name = 3;
+}
+message MusicalWorkId {
+	optional string i_s_w_c = 1;
+	optional string opus_number = 2;
+	repeated string composer_catalog_number = 3;
+	optional bool is_replaced = 4;
+	repeated ProprietaryId proprietary_id = 5;
+}
+message Name {
+	optional string language_and_script_code = 1;
+	optional string ext_value = 2;
+}
+message OperatingSystemType {
+	optional string version = 1;
+	optional avs.OperatingSystemType ext_value = 2;
+	optional string namespace = 3;
+	optional string user_defined_value = 4;
+}
+message PLine {
+	optional uint32 year = 1;
+	optional string p_line_text = 2;
+	optional avs.PLineType p_line_type = 3;
+	optional string language_and_script_code = 4;
+	optional string p_line_company = 5;
+}
+message PLineWithDefault {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional uint32 year = 3;
+	optional string p_line_text = 4;
+	optional string language_and_script_code = 5;
+	optional string p_line_company = 6;
+}
+message ParentalWarningTypeWithTerritory {
+	optional bool is_default = 1;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 2;
+	optional avs.ParentalWarningType ext_value = 3;
+	optional string namespace = 4;
+	optional string user_defined_value = 5;
+}
+message PartyName {
+	optional Name key_name = 1;
+	optional Name full_name = 2;
+	optional Name names_after_key_name = 3;
+	optional string language_and_script_code = 4;
+	optional Name full_name_indexed = 5;
+	optional Name names_before_key_name = 6;
+	optional string full_name_ascii_transcribed = 7;
+	optional Name abbreviated_name = 8;
+}
+message PartyNameWithoutCode {
+	optional string key_name = 1;
+	optional string full_name = 2;
+	optional string names_after_key_name = 3;
+	optional string full_name_indexed = 4;
+	optional string names_before_key_name = 5;
+	optional string full_name_ascii_transcribed = 6;
+	optional string abbreviated_name = 7;
+}
+message PartyRelationshipType {
+	optional avs.PartyRelationshipType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+	optional bool may_be_shared = 4;
+}
+message Percentage {
+	optional bool has_max_value_of_one = 1;
+	optional double ext_value = 2;
+}
+message Period {
+	optional EventDate start_date = 1;
+	optional EventDateTime start_date_time = 2;
+	optional EventDateTime end_date_time = 3;
+	optional EventDate end_date = 4;
+}
+message Prefix {
+	optional string language_and_script_code = 1;
+	optional string ext_value = 2;
+}
+message Price {
+	optional avs.CurrencyCode currency_code = 1;
+	optional double ext_value = 2;
+}
+message PriceType {
+	optional string ext_value = 1;
+	optional string namespace = 2;
+}
+message PromotionalCode {
+	optional string ext_value = 1;
+	optional string namespace = 2;
+}
+message ProprietaryId {
+	optional string ext_value = 1;
+	optional string namespace = 2;
+}
+message Purpose {
+	optional avs.Purpose ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message RatingAgency {
+	optional avs.RatingAgency ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message RatingReason {
+	optional avs.RatingReason ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message Reason {
+	optional string language_and_script_code = 1;
+	optional string ext_value = 2;
+}
+message RelatedParty {
+	optional PartyRelationshipType party_relationship_type = 1;
+	optional string party_related_party_reference = 2;
+}
+message ReleaseRelationshipType {
+	optional avs.ReleaseRelationshipType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message ReleaseTypeForReleaseNotification {
+	optional avs.ReleaseType_ERN4 ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message ResourceContainedResourceReference {
+	optional string resource_contained_resource_reference = 1;
+	optional double start_point = 2;
+	optional Purpose purpose = 3;
+	optional string duration_used = 4;
+}
+message ResourceContainedResourceReferenceList {
+	repeated ResourceContainedResourceReference resource_contained_resource_reference = 1;
+}
+message ResourceContributorRole {
+	optional avs.ResourceContributorRole ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message ResourceId {
+	optional CatalogNumber catalog_number = 1;
+	optional string v_i_s_a_n = 2;
+	optional string i_s_b_n = 3;
+	optional string i_s_a_n = 4;
+	optional string i_s_s_n = 5;
+	optional bool is_replaced = 6;
+	optional string i_s_r_c = 7;
+	optional string i_s_m_n = 8;
+	optional string s_i_c_i = 9;
+	repeated ProprietaryId proprietary_id = 10;
+}
+message ResourceProprietaryId {
+	optional bool is_replaced = 1;
+	repeated ProprietaryId proprietary_id = 2;
+}
+message SamplingRate {
+	optional avs.UnitOfFrequency unit_of_measure = 1;
+	optional double ext_value = 2;
+}
+message SessionType {
+	optional avs.SessionType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message SheetMusicCodecType {
+	optional string version = 1;
+	optional avs.SheetMusicCodecType ext_value = 2;
+	optional string namespace = 3;
+	optional string user_defined_value = 4;
+}
+message SheetMusicId {
+	optional bool is_replaced = 1;
+	optional string i_s_m_n = 2;
+	repeated ProprietaryId proprietary_id = 3;
+}
+message SheetMusicType {
+	optional avs.SheetMusicType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message SimpleRightsType {
+	optional avs.RightsCoverage ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message SoftwareType {
+	optional avs.SoftwareType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message SoundRecordingId {
+	optional CatalogNumber catalog_number = 1;
+	optional bool is_replaced = 2;
+	optional string i_s_r_c = 3;
+	repeated ProprietaryId proprietary_id = 4;
+}
+message SoundRecordingType {
+	optional avs.SoundRecordingType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message SubGenreCategory {
+	repeated SubGenreCategoryValue value = 1;
+}
+message SubGenreCategoryValue {
+	optional avs.SubGenre ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message TextCodecType {
+	optional string version = 1;
+	optional avs.TextCodecType ext_value = 2;
+	optional string namespace = 3;
+	optional string user_defined_value = 4;
+}
+message TextId {
+	optional string i_s_b_n = 1;
+	optional string i_s_s_n = 2;
+	optional bool is_replaced = 3;
+	optional string s_i_c_i = 4;
+	repeated ProprietaryId proprietary_id = 5;
+}
+message TextType {
+	optional avs.TextType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message TextWithoutTerritory {
+	optional bool is_default = 1;
+	optional avs.TextCodecType format = 2;
+	optional avs.CurrentTerritoryCode applicable_territory_code = 3;
+	optional string language_and_script_code = 4;
+	optional string ext_value = 5;
+	optional string namespace = 6;
+	optional string user_defined_value = 7;
+}
+message TitleDisplayInformation {
+	optional bool is_displayed_in_title = 1;
+	optional int32 sequence_number = 2;
+	optional string language_and_script_code = 3;
+	repeated Prefix prefix = 4;
+}
+message ValidityPeriod {
+	optional EventDate start_date = 1;
+	optional EventDate end_date = 2;
+}
+message Venue {
+	optional string venue_address = 1;
+	optional string venue_room = 2;
+	optional string venue_name = 3;
+	optional AllTerritoryCode territory_code = 4;
+	optional string location_code = 5;
+}
+message VersionType {
+	optional avs.VersionType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message VideoCodecType {
+	optional string version = 1;
+	optional avs.VideoCodecType ext_value = 2;
+	optional string namespace = 3;
+	optional string user_defined_value = 4;
+}
+message VideoDefinitionType {
+	optional avs.VideoDefinitionType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message VideoId {
+	optional CatalogNumber catalog_number = 1;
+	repeated string e_i_d_r = 2;
+	optional string v_i_s_a_n = 3;
+	optional string i_s_a_n = 4;
+	optional bool is_replaced = 5;
+	optional string i_s_r_c = 6;
+	repeated ProprietaryId proprietary_id = 7;
+}
+message VideoType {
+	optional avs.VideoType ext_value = 1;
+	optional string namespace = 2;
+	optional string user_defined_value = 3;
+}
+message ddex_IsoDate {
+	optional string auto_value = 1;
+}
+message ddex_LocalPartyAnchorReference {
+	optional string auto_value = 1;
+}
+message ddex_LocalResourceAnchorReference {
+	optional string auto_value = 1;
+}
