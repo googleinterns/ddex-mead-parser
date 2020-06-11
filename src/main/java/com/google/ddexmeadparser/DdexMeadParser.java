@@ -1,6 +1,8 @@
 package com.google.ddexmeadparser;
 
-import com.google.protobuf.ByteString;
+import com.google.protobuf.Descriptors;
+import mead.Mead.MeadMessage;
+
 import org.apache.commons.cli.*;
 import java.io.File;
 
@@ -36,10 +38,11 @@ public class DdexMeadParser {
         System.out.println("Started running the MEAD XML parser!");
         System.out.println("Running parse on file: " + runtimeOptions.inputMeadMessage.getName());
 
-        // Get the MEAD message back from our inner class
+        // Get the MEAD message back from our inner class - wrap in loop to work through directory
         MeadConverter meadConverter = new MeadConverter();
-        ByteString a = meadConverter.convert(runtimeOptions.inputMeadMessage);
-        // Write the MEAD message to file
+        MeadMessage message = meadConverter.convert(runtimeOptions.inputMeadMessage);
+
+        // Write the MEAD message to output file in output folder
     }
 
 
@@ -78,7 +81,7 @@ public class DdexMeadParser {
             if (meadXml.exists()) {
                 runtimeOptions.inputMeadMessage = meadXml;
             } else {
-               // throw new InvalidOptionsException("XML file input does not exist.");
+                throw new InvalidOptionsException("XML file input does not exist.");
             }
         } else {
             throw new InvalidOptionsException("Expected 1 argument.");

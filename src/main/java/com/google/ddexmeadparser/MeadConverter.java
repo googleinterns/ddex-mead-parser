@@ -1,11 +1,11 @@
 package com.google.ddexmeadparser;
 
-import com.google.protobuf.ByteString;
-
+import mead.Mead.MeadMessage;
 import java.io.File;
 
 public class MeadConverter {
-    public ByteString convert(File input) throws MeadParseException {
-        return null;
+    public MeadMessage convert(File input) throws MeadParseException {
+        MeadMessage.Builder messageBuilder = MeadMessage.newBuilder();
+        return messageBuilder.build();
     }
 }
