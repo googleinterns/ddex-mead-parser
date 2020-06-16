@@ -5,9 +5,6 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 
-//import mead.Mead.MeadMessage;
-import ern.Ern.NewReleaseMessage;
-
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -16,30 +13,29 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeParseException;
 
 public class MeadConverter {
-    public NewReleaseMessage convert(String path) throws MeadConversionException {
-        File meadXml = new File(path);
-        if (!meadXml.exists() || meadXml.isDirectory()) {
-            throw new MeadConversionException("XML file input does not exist.");
+    public Message convert(File file) throws MeadConversionException {
+        try {
+            if (!file.exists() || file.isDirectory()) {
+                throw new MeadConversionException("XML file input does not exist or is a directory.");
+            }
+            Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+            return convert(document);
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            throw new MeadConversionException("Exception occurred when getting document: " + e.getMessage(), e);
         }
-        return convert(meadXml);
     }
 
-    public NewReleaseMessage convert(File input) throws MeadConversionException {
-        NewReleaseMessage.Builder messageBuilder = NewReleaseMessage.newBuilder();
-        try {
-            Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(input);
-            mergeRoot(document, messageBuilder);
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            throw new MeadConversionException("Exception occurred when merging XML with builder: " + e.getMessage(), e);
-        }
-
+    public Message convert(Document document) throws MeadConversionException {
+        Message.Builder messageBuilder = MeadBuilderResolver.getBuilder(document);
+        mergeRoot(document, messageBuilder);
         return messageBuilder.build();
     }
 
     private void mergeRoot(Document document, Message.Builder messageBuilder) throws MeadConversionException {
-        Node root = document.getFirstChild();
+        Node root = getRootNode(document);
         mergeMessage(document, root, messageBuilder);
     }
 
@@ -62,9 +58,27 @@ public class MeadConverter {
                     } else {
                         messageBuilder.setField(field, content);
                     }
+                } else {
+                    System.out.println("Had to skip " + child.getNodeName() + " in " + node.getNodeName());
                 }
             }
         }
+    }
+
+    private boolean shouldShiftExtValue(Descriptors.Descriptor messageDescriptor) {
+        if (messageDescriptor == null) {
+            return false;
+        }
+        Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName("ext_value");
+        return field != null;
+    }
+
+    private boolean shouldShiftAutoValue(Descriptors.Descriptor messageDescriptor) {
+        if (messageDescriptor == null) {
+            return false;
+        }
+        Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName("auto_value");
+        return field != null;
     }
 
     private void shiftToExtField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
@@ -76,25 +90,27 @@ public class MeadConverter {
         }
     }
 
-    private void shiftNodeAttributes(Document document, Node node) {
-        NamedNodeMap attributes = node.getAttributes();
-        while (attributes.getLength() > 0) {
-            Node attr = attributes.item(0);
-            if (!attr.getNodeName().contains(":")) {
-                Element attr_to_append = document.createElement(CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, attr.getNodeName()));
-                attr_to_append.setTextContent(attr.getNodeValue());
-                node.appendChild(attr_to_append);
-            }
-            ((Element) node).removeAttribute(attr.getNodeName());
-        }
-    }
-
     private void shiftToAutoField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
         if (shouldShiftAutoValue(messageDescriptor)) {
             Element attr_to_append = document.createElement("auto_value");
             attr_to_append.setTextContent(node.getTextContent());
             node.setTextContent("");
             node.appendChild(attr_to_append);
+        }
+    }
+
+    private void shiftNodeAttributes(Document document, Node node) {
+        NamedNodeMap attributes = node.getAttributes();
+        if (attributes != null) {
+            while (attributes.getLength() > 0) {
+                Node attr = attributes.item(0);
+                if (!attr.getNodeName().contains(":")) {
+                    Element attr_to_append = document.createElement(CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, attr.getNodeName()));
+                    attr_to_append.setTextContent(attr.getNodeValue());
+                    node.appendChild(attr_to_append);
+                }
+                ((Element) node).removeAttribute(attr.getNodeName());
+            }
         }
     }
 
@@ -135,33 +151,20 @@ public class MeadConverter {
                     return enumType.findValueByNumber(Integer.parseInt(textContent));
                 } else {
                     textContent = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, enumType.getName())
-                                    + "_"
-                                    + CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, textContent);
+                            + "_"
+                            + CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, textContent);
                     return enumType.findValueByName(textContent);
                 }
-            case LONG:
-                // Handle date
+            case LONG: // Handle date
                 textContent = verifyDate(textContent);
-                ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent);
-                return zonedDateTime.toInstant().toEpochMilli();
+                try {
+                    ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent);
+                    return zonedDateTime.toInstant().toEpochMilli();
+                } catch (DateTimeParseException e) {
+                    return 0;
+                }
         }
         return null;
-    }
-
-    private boolean shouldShiftExtValue(Descriptors.Descriptor messageDescriptor) {
-        if (messageDescriptor == null) {
-            return false;
-        }
-        Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName("ext_value");
-        return field != null;
-    }
-
-    private boolean shouldShiftAutoValue(Descriptors.Descriptor messageDescriptor) {
-        if (messageDescriptor == null) {
-            return false;
-        }
-        Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName("auto_value");
-        return field != null;
     }
 
     private String verifyDate(String content) {
@@ -169,5 +172,15 @@ public class MeadConverter {
             content = content + "Z";
         }
         return content;
+    }
+
+    public static Node getRootNode(Document document) throws MeadConversionException {
+        NodeList nodes = document.getChildNodes();
+        for (int i = 0; i < nodes.getLength(); i++) {
+            if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                return nodes.item(i);
+            }
+        }
+        throw new MeadConversionException("No root node found");
     }
 }

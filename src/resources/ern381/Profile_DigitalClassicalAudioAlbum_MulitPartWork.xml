@@ -1,0 +1,1130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	(c) 2014 Digital Data Exchange, LLC (DDEX)
+	This file forms part of the DDEX Standard defining Release Profiles for Common Release Types (Version 1.4)	
+-->
+<ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/382"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+	xs:schemaLocation="http://ddex.net/xml/ern/382 http://ddex.net/xml/ern/382/release-notification.xsd"
+	MessageSchemaVersionId="ern/382" 
+	ReleaseProfileVersionId="CommonReleaseTypes/14/ClassicalAudioAlbum" LanguageAndScriptCode="en">
+
+	<MessageHeader>
+		<MessageThreadId/>
+		<MessageId/>
+		<MessageSender>
+			<PartyId>DPID_OF_THE_SENDER</PartyId>
+		</MessageSender>
+		<MessageRecipient>
+			<PartyId>DPID_OF_THE_RECIPIENT</PartyId>
+		</MessageRecipient>
+		<MessageCreatedDateTime>2012-12-11T15:50:00+00:00</MessageCreatedDateTime>
+	</MessageHeader>
+
+	<!-- The IsBackfill flag is optional and should only be used for indicating that an XML file is part of
+		a special backfill of a (typically large) catalogue -->
+	<IsBackfill>true</IsBackfill>
+
+	<ResourceList>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000901</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A1</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 1 in E (La primavera / Spring) RV269 (Op. 8 No. 1): I. Allegro</TitleText>
+			</ReferenceTitle>
+			<Duration>PT3M14S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 1 in E (La primavera / Spring) RV269 (Op. 8 No. 1): I. Allegro</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 1 in E (La primavera / Spring) RV269 (Op. 8 No. 1)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T1</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_01.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000902</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A2</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 1 in E (La primavera / Spring) RV269 (Op. 8 No. 1): II. Largo</TitleText>
+			</ReferenceTitle>
+			<Duration>PT3M3S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 1 in E (La primavera / Spring) RV269 (Op. 8 No. 1): II. Largo</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 1 in E (La primavera / Spring) RV269 (Op. 8 No. 1)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T2</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_02.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000903</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A3</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 1 in E (La primavera / Spring) RV269 (Op. 8 No. 1): III. Allegro</TitleText>
+			</ReferenceTitle>
+			<Duration>PT4M32S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 1 in E (La primavera / Spring) RV269 (Op. 8 No. 1): III. Allegro</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 1 in E (La primavera / Spring) RV269 (Op. 8 No. 1)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T3</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_03.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000904</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A4</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 2 in G minor (L'estate / Summer) RV315 (Op. 8 No. 2): I. Allegro</TitleText>
+			</ReferenceTitle>
+			<Duration>PT5M29S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 2 in G minor (L'estate / Summer) RV315 (Op. 8 No. 2): I. Allegro</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 2 in G minor (L'estate / Summer) RV315 (Op. 8 No. 2)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T4</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_04.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000905</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A5</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 2 in G minor (L'estate / Summer) RV315 (Op. 8 No. 2): II. Adagio</TitleText>
+			</ReferenceTitle>
+			<Duration>PT2M5S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 2 in G minor (L'estate / Summer) RV315 (Op. 8 No. 2): II. Adagio</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 2 in G minor (L'estate / Summer) RV315 (Op. 8 No. 2)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vicaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T5</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_05.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000906</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A6</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 2 in G minor (L'estate / Summer) RV315 (Op. 8 No. 2): III. Presto</TitleText>
+			</ReferenceTitle>
+			<Duration>PT2M43S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 2 in G minor (L'estate / Summer) RV315 (Op. 8 No. 2): III. Presto</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 2 in G minor (L'estate / Summer) RV315 (Op. 8 No. 2)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T6</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_06.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000907</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A7</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 3 in F (L'autunno / Autumn) RV293 (Op. 8 No. 3): I. Allegro</TitleText>
+			</ReferenceTitle>
+			<Duration>PT4M52S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 3 in F (L'autunno / Autumn) RV293 (Op. 8 No. 3): I. Allegro</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 3 in F (L'autunno / Autumn) RV293 (Op. 8 No. 3)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T7</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_07.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000908</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A8</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 3 in F (L'autunno / Autumn) RV293 (Op. 8 No. 3): II. Adagio molto</TitleText>
+			</ReferenceTitle>
+			<Duration>PT2M44S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 3 in F (L'autunno / Autumn) RV293 (Op. 8 No. 3): II. Adagio molto</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 3 in F (L'autunno / Autumn) RV293 (Op. 8 No. 3)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T8</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_08.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000909</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A9</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 3 in F (L'autunno / Autumn) RV293 (Op. 8 No. 3): III. Allegro</TitleText>
+			</ReferenceTitle>
+			<Duration>PT3M16S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 3 in F (L'autunno / Autumn) RV293 (Op. 8 No. 3): III. Allegro</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 3 in F (L'autunno / Autumn) RV293 (Op. 8 No. 3)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T9</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_09.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000910</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A10</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 4 in F minor (L'inverno / Winter) RV297 (Op. 8 No. 4): I. Allegro non molto</TitleText>
+			</ReferenceTitle>
+			<Duration>PT3M24S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 4 in F minor (L'inverno / Winter) RV297 (Op. 8 No. 4): I. Allegro non molto</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 4 in F minor (L'inverno / Winter) RV297 (Op. 8 No. 4)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T10</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_10.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000911</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A11</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 4 in F minor (L'inverno / Winter) RV297 (Op. 8 No. 4): II. Largo</TitleText>
+			</ReferenceTitle>
+			<Duration>PT2M</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 4 in F minor (L'inverno / Winter) RV297 (Op. 8 No. 4): II. Largo</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 4 in F minor (L'inverno / Winter) RV297 (Op. 8 No. 4)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T11</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_11.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000912</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A12</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons, Concerto No. 4 in F minor (L'inverno / Winter) RV297 (Op. 8 No. 4): III. Allegro</TitleText>
+			</ReferenceTitle>
+			<Duration>PT3M10S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Antonio Vivaldi: The Four Seasons, Concerto No. 4 in F minor (L'inverno / Winter) RV297 (Op. 8 No. 4): III. Allegro</TitleText>
+				</Title>
+				<Title TitleType="GroupingTitle">
+					<TitleText>The Four Seasons, Concerto No. 4 in F minor (L'inverno / Winter) RV297 (Op. 8 No. 4)</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+				
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->					
+				
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2010</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Uriel Records</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T12</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X_01_12.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<Image>
+			<ImageType>FrontCoverImage</ImageType>
+			<ImageId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000003A">PId0900</ProprietaryId>
+			</ImageId>
+			<ResourceReference>A13</ResourceReference>
+			<ImageDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalImageDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalImageDetails>
+					<TechnicalResourceDetailsReference>T13</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000900X.jpeg</FileName>
+					</File>
+				</TechnicalImageDetails>
+			</ImageDetailsByTerritory>
+		</Image>
+	</ResourceList>
+	<ReleaseList>
+		<Release IsMainRelease="true">
+			<ReleaseId>
+				<GRid>A1UCASE0000000900X</GRid>
+				<ICPN IsEan="true">0000000000900</ICPN>
+			</ReleaseId>
+			<ReleaseReference>R0</ReleaseReference>
+			<ReferenceTitle>
+				<TitleText>The Four Seasons</TitleText>
+			</ReferenceTitle>
+			<ReleaseResourceReferenceList>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A1</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A2</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A3</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A4</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A5</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A6</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A7</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A8</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A9</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A10</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A11</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A12</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="SecondaryResource"
+					>A13</ReleaseResourceReference>
+			</ReleaseResourceReferenceList>
+			<ReleaseType>Album</ReleaseType>
+			<ReleaseDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<DisplayArtistName>The Streatham Philharmonic Orchestra conducted by Ludwig von Edwig</DisplayArtistName>
+				<LabelName>Uriel Records</LabelName>
+				<Title TitleType="DisplayTitle">
+					<TitleText>The Four Seasons</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Antonio Vivaldi</FullName>
+					</PartyName>
+					<ArtistRole>Composer</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="2">
+					<PartyName>
+						<FullName>Ludwig von Edwig</FullName>
+					</PartyName>
+					<ArtistRole>Conductor</ArtistRole>
+				</DisplayArtist>
+				<DisplayArtist SequenceNumber="3">
+					<PartyName>
+						<FullName>The Streatham Philharmonic Orchestra</FullName>
+					</PartyName>
+					<ArtistRole>Orchestra</ArtistRole>
+				</DisplayArtist>
+				<RelatedRelease>
+					<ReleaseId>
+						<ICPN IsEan="true">0000000000900</ICPN>
+					</ReleaseId>
+					<ReferenceTitle>
+						<TitleText>The Four Seasons</TitleText>
+					</ReferenceTitle>
+					<ReleaseRelationshipType>IsDigitalEquivalentToPhysical</ReleaseRelationshipType>
+				</RelatedRelease>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<ResourceGroup>
+					<ResourceGroup>
+						<Title>
+							<TitleText>Component 1</TitleText>
+						</Title>
+						<SequenceNumber>1</SequenceNumber>
+						<ResourceGroup>
+							<Title TitleType="GroupingTitle">
+								<TitleText>The Four Seasons, Concerto No. 1 in E (La primavera / Spring) RV269 (Op. 8 No. 1)</TitleText>
+							</Title>
+							<ResourceGroupContentItem>
+								<SequenceNumber>1</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A1</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+							<ResourceGroupContentItem>
+								<SequenceNumber>2</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A2</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+							<ResourceGroupContentItem>
+								<SequenceNumber>3</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A3</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+						</ResourceGroup>
+						<ResourceGroup>
+							<Title TitleType="GroupingTitle">
+								<TitleText>The Four Seasons, Concerto No. 2 in G minor (L'estate / Summer) RV315 (Op. 8 No. 2)</TitleText>
+							</Title>
+							<ResourceGroupContentItem>
+								<SequenceNumber>4</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A4</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+							<ResourceGroupContentItem>
+								<SequenceNumber>5</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A5</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+							<ResourceGroupContentItem>
+								<SequenceNumber>6</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A6</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+						</ResourceGroup>
+					</ResourceGroup>
+					<ResourceGroup>
+						<Title>
+							<TitleText>Component 2</TitleText>
+						</Title>
+						<SequenceNumber>2</SequenceNumber>
+						<ResourceGroup>
+							<Title TitleType="GroupingTitle">
+								<TitleText>The Four Seasons, Concerto No. 3 in F (L'autunno / Autumn) RV293 (Op. 8 No. 3)</TitleText>
+							</Title>
+							<ResourceGroupContentItem>
+								<SequenceNumber>1</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A7</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+							<ResourceGroupContentItem>
+								<SequenceNumber>2</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A8</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+							<ResourceGroupContentItem>
+								<SequenceNumber>3</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A9</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+						</ResourceGroup>
+						<ResourceGroup>
+							<Title TitleType="GroupingTitle">
+								<TitleText>The Four Seasons, Concerto No. 4 in F minor (L'inverno / Winter) RV297 (Op. 8 No. 4)</TitleText>
+							</Title>
+							<ResourceGroupContentItem>
+								<SequenceNumber>4</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A10</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+							<ResourceGroupContentItem>
+								<SequenceNumber>5</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A11</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+							<ResourceGroupContentItem>
+								<SequenceNumber>6</SequenceNumber>
+								<ResourceType>SoundRecording</ResourceType>
+								<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+									>A12</ReleaseResourceReference>
+							</ResourceGroupContentItem>
+						</ResourceGroup>
+					</ResourceGroup>
+					<ResourceGroupContentItem>
+						<ResourceType>Image</ResourceType>
+						<ReleaseResourceReference ReleaseResourceType="SecondaryResource"
+							>A13</ReleaseResourceReference>
+					</ResourceGroupContentItem>
+				</ResourceGroup>
+				<Genre>
+					<GenreText>Classical</GenreText>
+					<SubGenre>Concerto</SubGenre>
+				</Genre>
+				<ReleaseDate IsApproximate="true">2010-01-01</ReleaseDate>
+			</ReleaseDetailsByTerritory>
+			<PLine>
+				<Year>2010</Year>
+				<PLineText>(P) 2010 Uriel Records</PLineText>
+			</PLine>
+			<CLine>
+				<Year>2010</Year>
+				<CLineText>(C) 2010 Uriel Records</CLineText>
+			</CLine>
+			<GlobalOriginalReleaseDate IsApproximate="true">2010-10-01</GlobalOriginalReleaseDate>
+		</Release>
+
+		<!-- Not shown in this sample are Track Releases -->
+
+	</ReleaseList>
+</ern:NewReleaseMessage>

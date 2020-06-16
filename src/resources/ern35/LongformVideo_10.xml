@@ -1,0 +1,583 @@
+<?xml version="1.0"?>
+<!-- 
+	(c) 2012 Digital Data Exchange, LLC (DDEX)
+	This file forms part of the DDEX Standard defining Release Profiles for Common Release Types
+	
+-->
+<ern:NewReleaseMessage 
+	xmlns:ern="http://ddex.net/xml/ern/35"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+	xs:schemaLocation="http://ddex.net/xml/ern/35 release-notification.xsd"
+	MessageSchemaVersionId="ern/35"
+	ReleaseProfileVersionId="CommonReleaseTypes/10/LongformMusicVideo" LanguageAndScriptCode="en">
+	<MessageHeader>
+		<MessageThreadId>B3D723B8-B40A-4984-8D9D-B5335D21D154</MessageThreadId>
+		<MessageId>B3D723B8-B40A-4984-8D9D-B5335D21D154</MessageId>
+		<MessageFileName>LongformVideo.ERN33.xml</MessageFileName>
+		<MessageSender>
+			<PartyId>PADPIDA0000000001A</PartyId>
+			<TradingName>Iron Crown Music</TradingName>
+		</MessageSender>
+		<MessageRecipient>
+			<PartyId>PADPIDA0000000002A</PartyId>
+			<TradingName>Lamson Digital Distribution</TradingName>
+		</MessageRecipient>
+		<MessageCreatedDateTime>0001-01-01T00:00:00</MessageCreatedDateTime>
+		<MessageControlType>TestMessage</MessageControlType>
+	</MessageHeader>
+	<UpdateIndicator>OriginalMessage</UpdateIndicator>
+	<CueSheetList>
+		<CueSheet>
+			<CueSheetReference>Q1</CueSheetReference>
+			<CueSheetType>StandardCueSheet</CueSheetType>
+			<Cue>
+				<CueUseType>OnScreenMusic</CueUseType>
+				<ReferencedCreationId>
+					<ISRC>CASE00000001</ISRC>
+				</ReferencedCreationId>
+				<ReferencedCreationTitle TitleType="FormalTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationTitle TitleType="DisplayTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ResourceContributorRole>MainArtist</ResourceContributorRole>
+				</ReferencedCreationContributor>
+				<HasMusicalContent>true</HasMusicalContent>
+				<StartTime>PT0S</StartTime>
+				<Duration>PT20M1S</Duration>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Iron Crown Music</PLineText>
+				</PLine>
+				<CLine>
+					<Year>2010</Year>
+					<CLineText>(C) 2010 Iron Crown Music</CLineText>
+				</CLine>
+			</Cue>
+			<Cue>
+				<CueUseType>OnScreenMusic</CueUseType>
+				<ReferencedCreationId>
+					<ISRC>CASE00000002</ISRC>
+				</ReferencedCreationId>
+				<ReferencedCreationTitle TitleType="FormalTitle">
+					<TitleText>Red top mountain, blown sky high</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationTitle TitleType="DisplayTitle">
+					<TitleText>Red top mountain, blown sky high</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ResourceContributorRole>MainArtist</ResourceContributorRole>
+				</ReferencedCreationContributor>
+				<HasMusicalContent>true</HasMusicalContent>
+				<StartTime>PT20M1S</StartTime>
+				<Duration>PT7M7S</Duration>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Iron Crown Music</PLineText>
+				</PLine>
+				<CLine>
+					<Year>2010</Year>
+					<CLineText>(C) 2010 Iron Crown Music</CLineText>
+				</CLine>
+			</Cue>
+			<Cue>
+				<CueUseType>OnScreenMusic</CueUseType>
+				<ReferencedCreationId>
+					<ISRC>CASE00000003</ISRC>
+				</ReferencedCreationId>
+				<ReferencedCreationTitle TitleType="FormalTitle">
+					<TitleText>Seige of Antioch</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationTitle TitleType="DisplayTitle">
+					<TitleText>Seige of Antioch</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ResourceContributorRole>MainArtist</ResourceContributorRole>
+				</ReferencedCreationContributor>
+				<HasMusicalContent>true</HasMusicalContent>
+				<StartTime>PT27M8S</StartTime>
+				<Duration>PT28M12S</Duration>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Iron Crown Music</PLineText>
+				</PLine>
+				<CLine>
+					<Year>2010</Year>
+					<CLineText>(C) 2010 Iron Crown Music</CLineText>
+				</CLine>
+			</Cue>
+			<Cue>
+				<CueUseType>OnScreenMusic</CueUseType>
+				<ReferencedCreationId>
+					<ISRC>CASE00000004</ISRC>
+				</ReferencedCreationId>
+				<ReferencedCreationTitle TitleType="FormalTitle">
+					<TitleText>Warhammer</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationTitle TitleType="DisplayTitle">
+					<TitleText>Warhammer</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ResourceContributorRole>MainArtist</ResourceContributorRole>
+				</ReferencedCreationContributor>
+				<HasMusicalContent>true</HasMusicalContent>
+				<StartTime>PT55M20S</StartTime>
+				<Duration>PT2M43S</Duration>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Iron Crown Music</PLineText>
+				</PLine>
+				<CLine>
+					<Year>2010</Year>
+					<CLineText>(C) 2010 Iron Crown Music</CLineText>
+				</CLine>
+			</Cue>
+			<Cue>
+				<CueUseType>OnScreenMusic</CueUseType>
+				<ReferencedCreationId>
+					<ISRC>CASE00000005</ISRC>
+				</ReferencedCreationId>
+				<ReferencedCreationTitle TitleType="FormalTitle">
+					<TitleText>Iron Horse</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationTitle TitleType="DisplayTitle">
+					<TitleText>Iron Horse</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ResourceContributorRole>MainArtist</ResourceContributorRole>
+				</ReferencedCreationContributor>
+				<HasMusicalContent>true</HasMusicalContent>
+				<StartTime>PT58M3S</StartTime>
+				<Duration>PT4M45S</Duration>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Iron Crown Music</PLineText>
+				</PLine>
+				<CLine>
+					<Year>2010</Year>
+					<CLineText>(C) 2010 Iron Crown Music</CLineText>
+				</CLine>
+			</Cue>
+			<Cue>
+				<CueUseType>OnScreenMusic</CueUseType>
+				<ReferencedCreationId>
+					<ISRC>CASE00000006</ISRC>
+				</ReferencedCreationId>
+				<ReferencedCreationTitle TitleType="FormalTitle">
+					<TitleText>Yes... I can feel the Monkey Claw!</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationTitle TitleType="DisplayTitle">
+					<TitleText>Yes... I can feel the Monkey Claw!</TitleText>
+				</ReferencedCreationTitle>
+				<ReferencedCreationContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ResourceContributorRole>MainArtist</ResourceContributorRole>
+				</ReferencedCreationContributor>
+				<HasMusicalContent>true</HasMusicalContent>
+				<StartTime>PT1H2M48S</StartTime>
+				<Duration>PT24M12S</Duration>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Iron Crown Music</PLineText>
+				</PLine>
+				<CLine>
+					<Year>2010</Year>
+					<CLineText>(C) 2010 Iron Crown Music</CLineText>
+				</CLine>
+			</Cue>
+		</CueSheet>
+	</CueSheetList>
+	<ResourceList>
+		<Video>
+			<VideoType>LongFormMusicalWorkVideo</VideoType>
+			<VideoId>
+				<ISRC>CASE00000018</ISRC>
+			</VideoId>
+			<ResourceReference>A7</ResourceReference>
+			<VideoCueSheetReference>
+				<VideoCueSheetReference>Q1</VideoCueSheetReference>
+			</VideoCueSheetReference>
+			<ReferenceTitle>
+				<TitleText>Live at Budokan</TitleText>
+			</ReferenceTitle>
+			<Duration>PT3H3M3S</Duration>
+			<VideoCollectionReferenceList>
+				<SoundRecordingCollectionReference>
+					<SoundRecordingCollectionReference>X1</SoundRecordingCollectionReference>
+					<StartTime>PT1S</StartTime>
+					<Duration>PT20M1S</Duration>
+				</SoundRecordingCollectionReference>
+				<SoundRecordingCollectionReference>
+					<SoundRecordingCollectionReference>X2</SoundRecordingCollectionReference>
+					<StartTime>PT20M2S</StartTime>
+					<Duration>PT7M7S</Duration>
+				</SoundRecordingCollectionReference>
+				<SoundRecordingCollectionReference>
+					<SoundRecordingCollectionReference>X3</SoundRecordingCollectionReference>
+					<StartTime>PT27M9S</StartTime>
+					<Duration>PT28M12S</Duration>
+				</SoundRecordingCollectionReference>
+				<SoundRecordingCollectionReference>
+					<SoundRecordingCollectionReference>X4</SoundRecordingCollectionReference>
+					<StartTime>PT55M21S</StartTime>
+					<Duration>PT2M43S</Duration>
+				</SoundRecordingCollectionReference>
+				<SoundRecordingCollectionReference>
+					<SoundRecordingCollectionReference>X5</SoundRecordingCollectionReference>
+					<StartTime>PT58M4S</StartTime>
+					<Duration>PT4M45S</Duration>
+				</SoundRecordingCollectionReference>
+				<SoundRecordingCollectionReference>
+					<SoundRecordingCollectionReference>X6</SoundRecordingCollectionReference>
+					<StartTime>PT1H2M49S</StartTime>
+					<Duration>PT24M12S</Duration>
+				</SoundRecordingCollectionReference>
+			</VideoCollectionReferenceList>
+			<VideoDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="FormalTitle">
+					<TitleText>Live at Budokan</TitleText>
+				</Title>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Live at Budokan</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ArtistRole>MainArtist</ArtistRole>
+				</DisplayArtist>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Iron Crown Music</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Metal</GenreText>
+					<SubGenre>Progressive Metal</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<TechnicalVideoDetails>
+					<TechnicalResourceDetailsReference>T7</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000018X.mpeg</FileName>
+					</File>
+				</TechnicalVideoDetails>
+			</VideoDetailsByTerritory>
+		</Video>
+		<Image>
+			<ImageType>VideoScreenCapture</ImageType>
+			<ImageId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">PId0007</ProprietaryId>
+			</ImageId>
+			<ResourceReference>A1</ResourceReference>
+			<ImageDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<TechnicalImageDetails>
+					<TechnicalResourceDetailsReference>T1</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000501X_01.jpeg</FileName>
+					</File>
+				</TechnicalImageDetails>
+			</ImageDetailsByTerritory>
+		</Image>
+		<Image>
+			<ImageType>VideoScreenCapture</ImageType>
+			<ImageId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">PId0013</ProprietaryId>
+			</ImageId>
+			<ResourceReference>A2</ResourceReference>
+			<ImageDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<TechnicalImageDetails>
+					<TechnicalResourceDetailsReference>T2</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000501X_02.jpeg</FileName>
+					</File>
+				</TechnicalImageDetails>
+			</ImageDetailsByTerritory>
+		</Image>
+		<Image>
+			<ImageType>VideoScreenCapture</ImageType>
+			<ImageId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">PId0014</ProprietaryId>
+			</ImageId>
+			<ResourceReference>A3</ResourceReference>
+			<ImageDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<TechnicalImageDetails>
+					<TechnicalResourceDetailsReference>T3</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000501X_03.jpeg</FileName>
+					</File>
+				</TechnicalImageDetails>
+			</ImageDetailsByTerritory>
+		</Image>
+		<Image>
+			<ImageType>VideoScreenCapture</ImageType>
+			<ImageId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">PId0015</ProprietaryId>
+			</ImageId>
+			<ResourceReference>A4</ResourceReference>
+			<ImageDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<TechnicalImageDetails>
+					<TechnicalResourceDetailsReference>T4</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000501X_04.jpeg</FileName>
+					</File>
+				</TechnicalImageDetails>
+			</ImageDetailsByTerritory>
+		</Image>
+		<Image>
+			<ImageType>VideoScreenCapture</ImageType>
+			<ImageId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">PId0016</ProprietaryId>
+			</ImageId>
+			<ResourceReference>A5</ResourceReference>
+			<ImageDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<TechnicalImageDetails>
+					<TechnicalResourceDetailsReference>T5</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000501X_05.jpeg</FileName>
+					</File>
+				</TechnicalImageDetails>
+			</ImageDetailsByTerritory>
+		</Image>
+		<Image>
+			<ImageType>VideoScreenCapture</ImageType>
+			<ImageId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">PId0017</ProprietaryId>
+			</ImageId>
+			<ResourceReference>A6</ResourceReference>
+			<ImageDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<TechnicalImageDetails>
+					<TechnicalResourceDetailsReference>T6</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000501X_06.jpeg</FileName>
+					</File>
+				</TechnicalImageDetails>
+			</ImageDetailsByTerritory>
+		</Image>
+		<Image>
+			<ImageType>FrontCoverImage</ImageType>
+			<ImageId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">PId0018</ProprietaryId>
+			</ImageId>
+			<ResourceReference>A8</ResourceReference>
+			<ImageDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<TechnicalImageDetails>
+					<TechnicalResourceDetailsReference>T8</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000018X.jpeg</FileName>
+					</File>
+				</TechnicalImageDetails>
+			</ImageDetailsByTerritory>
+		</Image>
+	</ResourceList>
+	<CollectionList>
+		<Collection>
+			<CollectionId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">CHAPTER:CASE00000018.001</ProprietaryId>
+			</CollectionId>
+			<CollectionType>VideoChapter</CollectionType>
+			<CollectionReference>X1</CollectionReference>
+			<Title TitleType="DisplayTitle">
+				<TitleText>Can you feel ...the Monkey Claw! (Live at Budokan)</TitleText>
+			</Title>
+			<IsComplete>true</IsComplete>
+			<Duration>PT20M1S</Duration>
+			<CollectionResourceReferenceList>
+				<CollectionResourceReference>
+					<CollectionResourceReference>A7</CollectionResourceReference>
+				</CollectionResourceReference>
+			</CollectionResourceReferenceList>
+			<RepresentativeImageReference>A1</RepresentativeImageReference>
+		</Collection>
+		<Collection>
+			<CollectionId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">CHAPTER:CASE00000018.002</ProprietaryId>
+			</CollectionId>
+			<CollectionType>VideoChapter</CollectionType>
+			<CollectionReference>X2</CollectionReference>
+			<Title TitleType="DisplayTitle">
+				<TitleText>Red top mountain, blown sky high (Live at Budokan)</TitleText>
+			</Title>
+			<IsComplete>true</IsComplete>
+			<Duration>PT7M7S</Duration>
+			<CollectionResourceReferenceList>
+				<CollectionResourceReference>
+					<CollectionResourceReference>A7</CollectionResourceReference>
+				</CollectionResourceReference>
+			</CollectionResourceReferenceList>
+			<RepresentativeImageReference>A2</RepresentativeImageReference>
+		</Collection>
+		<Collection>
+			<CollectionId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">CHAPTER:CASE00000018.003</ProprietaryId>
+			</CollectionId>
+			<CollectionType>VideoChapter</CollectionType>
+			<CollectionReference>X3</CollectionReference>
+			<Title TitleType="DisplayTitle">
+				<TitleText>Seige of Antioch (Live at Budokan)</TitleText>
+			</Title>
+			<IsComplete>true</IsComplete>
+			<Duration>PT28M12S</Duration>
+			<CollectionResourceReferenceList>
+				<CollectionResourceReference>
+					<CollectionResourceReference>A7</CollectionResourceReference>
+				</CollectionResourceReference>
+			</CollectionResourceReferenceList>
+			<RepresentativeImageReference>A3</RepresentativeImageReference>
+		</Collection>
+		<Collection>
+			<CollectionId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">CHAPTER:CASE00000018.004</ProprietaryId>
+			</CollectionId>
+			<CollectionType>VideoChapter</CollectionType>
+			<CollectionReference>X4</CollectionReference>
+			<Title TitleType="DisplayTitle">
+				<TitleText>Warhammer (Live at Budokan)</TitleText>
+			</Title>
+			<IsComplete>true</IsComplete>
+			<Duration>PT2M43S</Duration>
+			<CollectionResourceReferenceList>
+				<CollectionResourceReference>
+					<CollectionResourceReference>A7</CollectionResourceReference>
+				</CollectionResourceReference>
+			</CollectionResourceReferenceList>
+			<RepresentativeImageReference>A4</RepresentativeImageReference>
+		</Collection>
+		<Collection>
+			<CollectionId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">CHAPTER:CASE00000018.005</ProprietaryId>
+			</CollectionId>
+			<CollectionType>VideoChapter</CollectionType>
+			<CollectionReference>X5</CollectionReference>
+			<Title TitleType="DisplayTitle">
+				<TitleText>Iron Horse (Live at Budokan)</TitleText>
+			</Title>
+			<IsComplete>true</IsComplete>
+			<Duration>PT4M45S</Duration>
+			<CollectionResourceReferenceList>
+				<CollectionResourceReference>
+					<CollectionResourceReference>A7</CollectionResourceReference>
+				</CollectionResourceReference>
+			</CollectionResourceReferenceList>
+			<RepresentativeImageReference>A5</RepresentativeImageReference>
+		</Collection>
+		<Collection>
+			<CollectionId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">CHAPTER:CASE00000018.006</ProprietaryId>
+			</CollectionId>
+			<CollectionType>VideoChapter</CollectionType>
+			<CollectionReference>X6</CollectionReference>
+			<Title TitleType="DisplayTitle">
+				<TitleText>Yes... I can feel the Monkey Claw! (Live at Budokan)</TitleText>
+			</Title>
+			<IsComplete>true</IsComplete>
+			<Duration>PT24M12S</Duration>
+			<CollectionResourceReferenceList>
+				<CollectionResourceReference>
+					<CollectionResourceReference>A7</CollectionResourceReference>
+				</CollectionResourceReference>
+			</CollectionResourceReferenceList>
+			<RepresentativeImageReference>A6</RepresentativeImageReference>
+		</Collection>
+	</CollectionList>
+	<ReleaseList>
+		<Release>
+			<ReleaseId>
+				<GRid>A1UCASE0000000018X</GRid>
+			</ReleaseId>
+			<ReleaseReference>R0</ReleaseReference>
+			<ReferenceTitle>
+				<TitleText>Live at Budokan</TitleText>
+			</ReferenceTitle>
+			<ReleaseResourceReferenceList>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A7</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="SecondaryResource"
+					>A8</ReleaseResourceReference>
+			</ReleaseResourceReferenceList>
+			<ReleaseType>LongFormMusicalWorkVideoRelease</ReleaseType>
+			<ReleaseDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<DisplayArtistName>Monkey Claw</DisplayArtistName>
+				<LabelName>Iron Crown Music</LabelName>
+				<Title TitleType="FormalTitle">
+					<TitleText>Live at Budokan</TitleText>
+				</Title>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Live at Budokan</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ArtistRole>MainArtist</ArtistRole>
+				</DisplayArtist>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<ResourceGroup>
+					<ResourceGroup>
+						<Title TitleType="GroupingTitle">
+							<TitleText>Component 1</TitleText>
+						</Title>
+						<SequenceNumber>1</SequenceNumber>
+						<ResourceGroupContentItem>
+							<SequenceNumber>1</SequenceNumber>
+							<ResourceType>Video</ResourceType>
+							<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+								>A7</ReleaseResourceReference>
+						</ResourceGroupContentItem>
+					</ResourceGroup>
+					<ResourceGroupContentItem>
+						<ResourceType>Image</ResourceType>
+						<ReleaseResourceReference ReleaseResourceType="SecondaryResource"
+							>A8</ReleaseResourceReference>
+					</ResourceGroupContentItem>
+				</ResourceGroup>
+				<Genre>
+					<GenreText>Metal</GenreText>
+					<SubGenre>Progressive Metal</SubGenre>
+				</Genre>
+			</ReleaseDetailsByTerritory>
+			<PLine>
+				<Year>2010</Year>
+				<PLineText>(P) 2010 Iron Crown Music</PLineText>
+			</PLine>
+			<CLine>
+				<Year>2010</Year>
+				<CLineText>(C) 2010 Iron Crown Music</CLineText>
+			</CLine>
+		</Release>
+	</ReleaseList>
+</ern:NewReleaseMessage>

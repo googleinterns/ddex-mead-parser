@@ -1,7 +1,5 @@
 package com.google.ddexmeadparser;
-
-//import mead.Mead.MeadMessage;
-import ern.Ern.NewReleaseMessage;
+import com.google.protobuf.Message;
 
 import org.apache.commons.cli.*;
 import java.io.File;
@@ -39,13 +37,11 @@ public class DdexMeadParser {
 
         // Get the MEAD message back from our inner class - wrap in loop to work through directory
         MeadConverter meadConverter = new MeadConverter();
-        NewReleaseMessage message = meadConverter.convert(runtimeOptions.inputMeadMessage);
+        Message message = meadConverter.convert(runtimeOptions.inputMeadMessage);
 
         // Write the MEAD message to output file in output folder
-        System.out.println(message.getPartyList().getParty(1).getPartyName(0).getFullName().getExtValue());
+//        System.out.println(message.getPartyList().getParty(1).getPartyName(0).getFullName().getExtValue());
         System.out.println(message.toString());
-
-
     }
 
 
