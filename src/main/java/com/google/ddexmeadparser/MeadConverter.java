@@ -11,9 +11,9 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
+import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 
@@ -156,22 +156,19 @@ public class MeadConverter {
                     return enumType.findValueByName(textContent);
                 }
             case LONG: // Handle date
-                textContent = verifyDate(textContent);
                 try {
-                    ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent);
-                    return zonedDateTime.toInstant().toEpochMilli();
+                    if (textContent.endsWith("Z")) {
+                        ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent);
+                        return zonedDateTime.toInstant().toEpochMilli();
+                    } else {
+                        OffsetDateTime offsetDateTime = OffsetDateTime.parse(textContent);
+                        return offsetDateTime.toInstant().toEpochMilli();
+                    }
                 } catch (DateTimeParseException e) {
                     return 0;
                 }
         }
         return null;
-    }
-
-    private String verifyDate(String content) {
-        if (!content.endsWith("Z")) {
-            content = content + "Z";
-        }
-        return content;
     }
 
     public static Node getRootNode(Document document) throws MeadConversionException {
