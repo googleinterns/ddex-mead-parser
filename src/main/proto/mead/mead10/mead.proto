@@ -1,5 +1,5 @@
 syntax = "proto2";
-package mead;
+package mead10;
 message AbsolutePitch {
 	repeated string metadata_source_reference = 1;
 	optional double value = 2;

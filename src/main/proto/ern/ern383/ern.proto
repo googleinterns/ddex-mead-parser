@@ -1,5 +1,5 @@
 syntax = "proto2";
-package ern;
+package ern383;
 message AdministratingRecordCompany {
 	optional string namespace = 1;
 	repeated PartyId party_id = 2;
