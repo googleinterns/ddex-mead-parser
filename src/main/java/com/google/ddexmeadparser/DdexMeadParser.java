@@ -2,7 +2,13 @@ package com.google.ddexmeadparser;
 import com.google.protobuf.Message;
 
 import org.apache.commons.cli.*;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.IOException;
 
 public class DdexMeadParser {
     private final DdexMeadParserOptions runtimeOptions;
@@ -34,16 +40,24 @@ public class DdexMeadParser {
 
     public void parseMead() throws MeadConversionException {
         System.out.println("Started running parse on file: " + runtimeOptions.inputMeadMessage.getName());
+        Document document = getDocument(runtimeOptions.inputMeadMessage);
 
-        // Get the MEAD message back from our inner class - wrap in loop to work through directory
         MeadConverter meadConverter = new MeadConverter();
-        Message message = meadConverter.convert(runtimeOptions.inputMeadMessage);
+        Message message = meadConverter.convert(document);
 
-        // Write the MEAD message to output file in output folder
-//        System.out.println(message.getPartyList().getParty(1).getPartyName(0).getFullName().getExtValue());
         System.out.println(message.toString());
     }
 
+    private Document getDocument(File file) throws MeadConversionException {
+        try {
+            if (!file.exists() || file.isDirectory()) {
+                throw new MeadConversionException("XML file input does not exist or is a directory.");
+            }
+            return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            throw new MeadConversionException("Exception occurred when getting document: " + e.getMessage(), e);
+        }
+    }
 
     private static Options buildCommandOptions() {
         Options options = new Options();

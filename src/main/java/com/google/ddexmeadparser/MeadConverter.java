@@ -6,32 +6,32 @@ import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 
 import org.w3c.dom.*;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 
 public class MeadConverter {
-    public Message convert(File file) throws MeadConversionException {
-        try {
-            if (!file.exists() || file.isDirectory()) {
-                throw new MeadConversionException("XML file input does not exist or is a directory.");
-            }
-            Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
-            return convert(document);
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            throw new MeadConversionException("Exception occurred when getting document: " + e.getMessage(), e);
-        }
-    }
-
     public Message convert(Document document) throws MeadConversionException {
         Message.Builder messageBuilder = MeadBuilderResolver.getBuilder(document);
         mergeRoot(document, messageBuilder);
         return messageBuilder.build();
+    }
+
+    public Message convert(String xmlString) throws MeadConversionException {
+        try {
+            InputSource xmlInputSource = new InputSource(new StringReader(xmlString));
+            Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlInputSource);
+            return convert(document);
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            throw new MeadConversionException("Exception occurred when getting document: " + e.getMessage(), e);
+        }
     }
 
     private void mergeRoot(Document document, Message.Builder messageBuilder) throws MeadConversionException {
@@ -59,7 +59,7 @@ public class MeadConverter {
                         messageBuilder.setField(field, content);
                     }
                 } else {
-                    System.out.println("Had to skip " + child.getNodeName() + " in " + node.getNodeName());
+                    System.err.println("Skipping " + child.getNodeName() + " in " + node.getNodeName());
                 }
             }
         }
@@ -145,7 +145,7 @@ public class MeadConverter {
                 return textContent;
             case BYTE_STRING:
                 return ByteString.copyFromUtf8(textContent);
-            case ENUM:
+            case ENUM: // Should never actually encounter an ENUM
                 Descriptors.EnumDescriptor enumType = field.getEnumType();
                 if (textContent.matches("[0-9]+")) {
                     return enumType.findValueByNumber(Integer.parseInt(textContent));
