@@ -2,13 +2,14 @@ package com.google.ddexmeadparser;
 import com.google.protobuf.Message;
 
 import org.apache.commons.cli.*;
+import org.apache.ws.commons.schema.XmlSchemaCollection;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
+import javax.xml.transform.stream.StreamSource;
+import java.io.*;
 
 public class DdexMeadParser {
     private final DdexMeadParserOptions runtimeOptions;
@@ -16,8 +17,9 @@ public class DdexMeadParser {
     public static void main(String[] args) {
         try {
             DdexMeadParser ddexMeadParser = new DdexMeadParser(args);
-            ddexMeadParser.parseMead();
-        } catch (InvalidOptionsException | MeadConversionException e) {
+            ddexMeadParser.exec();
+
+        } catch (InvalidOptionsException | MeadConversionException | SchemaConversionException e) {
             e.printStackTrace();
         }
     }
@@ -38,24 +40,52 @@ public class DdexMeadParser {
         }
     }
 
-    public void parseMead() throws MeadConversionException {
-        System.out.println("Started running parse on file: " + runtimeOptions.inputMeadMessage.getName());
-        Document document = getDocument(runtimeOptions.inputMeadMessage);
+    public void exec() throws MeadConversionException, SchemaConversionException, InvalidOptionsException {
+        if (runtimeOptions.inputType == DdexMeadParserOptions.inputTypeValue.MESSAGE) {
+            parseMead();
+        } else if (runtimeOptions.inputType == DdexMeadParserOptions.inputTypeValue.SCHEMA) {
+            parseSchema();
+        }
+    }
+
+    public void parseMead() throws MeadConversionException, InvalidOptionsException {
+        System.out.println("Started mead message parse on file: " + runtimeOptions.inputFile.getName());
+        Document document = getDocument(runtimeOptions.inputFile);
 
         MeadConverter meadConverter = new MeadConverter();
         Message message = meadConverter.convert(document);
 
+        // Write output proto message files
         System.out.println(message.toString());
     }
 
-    private Document getDocument(File file) throws MeadConversionException {
+    public void parseSchema() throws SchemaConversionException, InvalidOptionsException {
+        System.out.println("Started schema parse on file: " + runtimeOptions.inputFile.getName());
+        StreamSource xsdFile = getStreamSource(runtimeOptions.inputFile);
+
+        SchemaConverter schemaConverter = new SchemaConverter();
+        SchemaEntryMap schemaEntryList = schemaConverter.convert(xsdFile);
+    }
+
+    private Document getDocument(File file) throws InvalidOptionsException {
         try {
             if (!file.exists() || file.isDirectory()) {
-                throw new MeadConversionException("XML file input does not exist or is a directory.");
+                throw new FileNotFoundException("XML file input does not exist or is a directory.");
             }
             return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
         } catch (ParserConfigurationException | IOException | SAXException e) {
-            throw new MeadConversionException("Exception occurred when getting document: " + e.getMessage(), e);
+            throw new InvalidOptionsException("Exception occurred when getting document: " + e.getMessage(), e);
+        }
+    }
+
+    private StreamSource getStreamSource(File file) throws InvalidOptionsException {
+        try {
+            if (!file.exists() || file.isDirectory()) {
+                throw new FileNotFoundException("XSD input does not exist or is a directory.");
+            }
+            return new StreamSource(new FileInputStream(runtimeOptions.inputFile));
+        } catch (IOException e) {
+            throw new InvalidOptionsException("Exception occurred when getting document: " + e.getMessage(), e);
         }
     }
 
@@ -74,6 +104,14 @@ public class DdexMeadParser {
                 .desc("specify this option if the input argument is a directory of input_files")
                 .build()
         );
+        options.addOption(Option.builder()
+                .longOpt("inputType")
+                .hasArg()
+                .argName("type")
+                .required(true)
+                .desc("message | schema")
+                .build()
+        );
         return options;
     }
 
@@ -87,12 +125,19 @@ public class DdexMeadParser {
         if (commandLineInput.hasOption("directory")) {
             runtimeOptions.inputIsDirectory = true;
         }
+        if (commandLineInput.hasOption("inputType") && commandLineInput.getOptionValue("inputType").equals("message")) {
+            runtimeOptions.inputType = DdexMeadParserOptions.inputTypeValue.MESSAGE;
+        } else if (commandLineInput.hasOption("inputType") && commandLineInput.getOptionValue("inputType").equals("schema")) {
+            runtimeOptions.inputType = DdexMeadParserOptions.inputTypeValue.SCHEMA;
+        } else {
+            throw new InvalidOptionsException("Invalid or missing inputType.");
+        }
 
         String[] args = commandLineInput.getArgs();
         if (args.length == 1) {
             File meadXml = new File(args[0]);
             if (meadXml.exists()) {
-                runtimeOptions.inputMeadMessage = meadXml;
+                runtimeOptions.inputFile = meadXml;
             } else {
                 throw new InvalidOptionsException("XML file input does not exist.");
             }
