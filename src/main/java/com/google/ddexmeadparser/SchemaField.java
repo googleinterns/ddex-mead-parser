@@ -2,6 +2,8 @@ package com.google.ddexmeadparser;
 
 import com.google.common.base.CaseFormat;
 import org.apache.ws.commons.schema.XmlSchemaAnnotation;
+import org.apache.ws.commons.schema.XmlSchemaDocumentation;
+import org.w3c.dom.NodeList;
 
 import javax.xml.namespace.QName;
 import java.util.Objects;
@@ -34,10 +36,19 @@ public class SchemaField {
         fieldAnnotation = null;
     }
 
-    public String toSchemaString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, fieldValue));
-        return stringBuilder.toString();
+    public String getEntryAnnotationString() {
+        StringBuilder annotationBuilder = new StringBuilder();
+        if (fieldAnnotation != null) {
+            for (int i = 0; i < fieldAnnotation.getItems().size(); i++) {
+                XmlSchemaDocumentation documentation = (XmlSchemaDocumentation) fieldAnnotation.getItems().get(i);
+                NodeList markup = documentation.getMarkup();
+                for (int j = 0; j < markup.getLength(); j++) {
+                    annotationBuilder.append(markup.item(j).getTextContent());
+                    if (j != markup.getLength() - 1) annotationBuilder.append('\n');
+                }
+            }
+        }
+        return annotationBuilder.toString();
     }
 
     public void setFieldAnnotation(XmlSchemaAnnotation fieldAnnotation) {
@@ -48,7 +59,7 @@ public class SchemaField {
         return fieldValue;
     }
 
-    public XmlSchemaAnnotation getFieldAnnotation() { return fieldAnnotation; }
+    public XmlSchemaAnnotation getAnnotation() { return fieldAnnotation; }
 
     public QName getFieldType() {
         return fieldQName;

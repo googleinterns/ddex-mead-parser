@@ -3,7 +3,6 @@ package com.google.ddexmeadparser;
 import org.apache.ws.commons.schema.*;
 import org.apache.ws.commons.schema.utils.NamespacePrefixList;
 import org.apache.ws.commons.schema.utils.XmlSchemaObjectBase;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.xml.namespace.QName;
@@ -126,6 +125,7 @@ public class SchemaConverterInstance {
             String nsPrefix,
             SchemaAbstractEntry parent) {
         SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
+        messageEntry.setEntryAnnotation(getAnnotations(union));
         messageEntry.addField(new SchemaField("auto_value"));
         schemaEntryMap.addEntry(messageEntry);
         return new QName(
@@ -143,9 +143,11 @@ public class SchemaConverterInstance {
 
         if (isEnumFacetList(facets)) {
             SchemaEnumEntry enumEntry = new SchemaEnumEntry(entryName, nsPrefix);
+            enumEntry.setEntryAnnotation(getAnnotations(restriction));
+
             for (XmlSchemaFacet facet : facets) {
                 SchemaField field = new SchemaField(facet.getValue().toString());
-                getAnnotations((XmlSchemaAnnotated) facet);
+                field.setFieldAnnotation(getAnnotations(facet));
                 enumEntry.addField(field);
             }
             if (enumEntry.hasFields()) {
@@ -157,6 +159,7 @@ public class SchemaConverterInstance {
             }
         } else if (parent == null) {
             SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
+            messageEntry.setEntryAnnotation(getAnnotations(restriction));
             QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
             messageEntry.addField(new SchemaField("auto_value", restrictionQName));
             schemaEntryMap.addEntry(messageEntry);
@@ -178,6 +181,7 @@ public class SchemaConverterInstance {
         }
         entryName = entryName != null ? entryName : complexItem.getName();
         SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
+        messageEntry.setEntryAnnotation(getAnnotations(complexItem));
 
         processAttributes(complexItem.getAttributes(), complexItem.getAnyAttribute(), messageEntry);
         processParticle(complexItem.getParticle(), messageEntry, parent);
@@ -277,7 +281,9 @@ public class SchemaConverterInstance {
                 if (attribute instanceof XmlSchemaAttribute) {
                     String name = ((XmlSchemaAttribute) attribute).getName();
                     QName attributeType = getAttributeTypeName(((XmlSchemaAttribute) attribute));
-                    entry.addField(new SchemaField(name, attributeType));
+                    SchemaField field = new SchemaField(name, attributeType);
+                    field.setFieldAnnotation(getAnnotations(attribute));
+                    entry.addField(field);
                 } else {
                     throw new Error("Unhandled attribute");
                 }

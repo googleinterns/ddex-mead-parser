@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.*;
 
 import com.google.common.base.CaseFormat;
+import org.apache.ws.commons.schema.XmlSchemaDocumentation;
+import org.w3c.dom.NodeList;
 
 public class ProtoWriter {
     private List<String> namespaces;
@@ -20,7 +22,7 @@ public class ProtoWriter {
 
         StringBuilder schemaStringBuilder = new StringBuilder();
         schemaStringBuilder.append("syntax = \"proto2\";\n");
-        schemaStringBuilder.append("package ").append(packageName).append(";\n");
+        schemaStringBuilder.append("package ").append(packageName).append(";\n\n");
         namespaces = entryMap.getNamespacePrefixes();
         for (String namespace : namespaces) {
             schemaStringBuilder.append(serializeNamespace(entryMap.getNamespacePrefixEntryMap().get(namespace), namespace));
@@ -36,10 +38,10 @@ public class ProtoWriter {
         for (SchemaAbstractEntry entry : entries) {
             if (entry.isEnum()) {
                 String enumEntry = dumbSerializeEnum((SchemaEnumEntry) entry, namespace);
-                outputBuilder.append(enumEntry);
+                outputBuilder.append(enumEntry).append('\n');
             } else {
                 String messageEntry = dumbSerializeMessage((SchemaMessageEntry) entry, namespace);
-                outputBuilder.append(messageEntry);
+                outputBuilder.append(messageEntry).append('\n');;
             }
         }
 
@@ -48,6 +50,7 @@ public class ProtoWriter {
 
     private String dumbSerializeEnum(SchemaEnumEntry entry, String prefix) {
         StringBuilder enumBuilder = new StringBuilder();
+        if (entry.getAnnotation() != null) enumBuilder.append("/* ").append(entry.getEntryAnnotationString()).append(" */\n");
         enumBuilder.append("message ").append(prefix).append("_").append(entry.getTitle()).append(" {\n");
         enumBuilder.append("\toptional string enum_value = 1;\n");
         enumBuilder.append("}\n");
@@ -56,6 +59,7 @@ public class ProtoWriter {
 
     private String dumbSerializeMessage(SchemaMessageEntry entry, String prefix) {
         StringBuilder messageBuilder = new StringBuilder();
+        if (entry.getAnnotation() != null) messageBuilder.append("/* ").append(entry.getEntryAnnotationString()).append(" */\n");
         messageBuilder.append("message ").append(prefix).append("_").append(entry.getTitle()).append(" {\n");
 
         List<SchemaField> sorted = entry.getFields();
@@ -63,6 +67,7 @@ public class ProtoWriter {
 
         int ident = 1; // Messages starting at 1
         for (SchemaField field : sorted) {
+            if (field.getAnnotation() != null) messageBuilder.append("/* ").append(field.getEntryAnnotationString()).append(" */\n");
             messageBuilder.append("\t");
             if (field.isRepeated()) {
                 messageBuilder.append("repeated ");
