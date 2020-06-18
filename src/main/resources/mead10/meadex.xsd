@@ -5,7 +5,7 @@
    targetNamespace="http://ddex.net/xml/mead/10" elementFormDefault="unqualified"
    attributeFormDefault="unqualified">
    <xs:import namespace="http://ddex.net/xml/avs/avs"
-      schemaLocation="src/main/resources/avs-mead10.xsd"/>
+      schemaLocation="src/main/resources/mead10/avs-mead10.xsd"/>
    <xs:annotation>
       <xs:documentation>© 2006-2019 Digital Data Exchange, LLC (DDEX)</xs:documentation>
       <xs:documentation>This XML Schema Definition file is, together with all DDEX standards, subject to two licences: If you wish to evaluate whether the standard meets your needs please have a look at the Evaluation Licence at https://kb.ddex.net/display/HBK/Evaluation+Licence+for+DDEX+Standards. If you want to implement and use this DDEX standard, please take out an Implementation Licence. For details please go to http://ddex.net/apply-ddex-implementation-licence.</xs:documentation>

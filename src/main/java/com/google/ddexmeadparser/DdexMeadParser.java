@@ -2,7 +2,6 @@ package com.google.ddexmeadparser;
 import com.google.protobuf.Message;
 
 import org.apache.commons.cli.*;
-import org.apache.ws.commons.schema.XmlSchemaCollection;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -18,7 +17,6 @@ public class DdexMeadParser {
         try {
             DdexMeadParser ddexMeadParser = new DdexMeadParser(args);
             ddexMeadParser.exec();
-
         } catch (InvalidOptionsException | MeadConversionException | SchemaConversionException e) {
             e.printStackTrace();
         }
@@ -65,6 +63,13 @@ public class DdexMeadParser {
 
         SchemaConverter schemaConverter = new SchemaConverter();
         SchemaEntryMap schemaEntryList = schemaConverter.convert(xsdFile);
+
+        ProtoWriter protoWriter = new ProtoWriter();
+        try {
+            protoWriter.serialize(schemaEntryList);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private Document getDocument(File file) throws InvalidOptionsException {

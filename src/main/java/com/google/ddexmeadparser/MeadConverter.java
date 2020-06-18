@@ -44,6 +44,7 @@ public class MeadConverter {
 
         shiftToExtField(document, node, messageDescriptor);
         shiftToAutoField(document, node, messageDescriptor);
+        shiftToEnumField(document, node, messageDescriptor);
         shiftNodeAttributes(document, node);
 
         NodeList nodes = node.getChildNodes();
@@ -81,6 +82,14 @@ public class MeadConverter {
         return field != null;
     }
 
+    private boolean shouldShiftEnumValue(Descriptors.Descriptor messageDescriptor) {
+        if (messageDescriptor == null) {
+            return false;
+        }
+        Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName("enum_value");
+        return field != null;
+    }
+
     private void shiftToExtField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
         if (shouldShiftExtValue(messageDescriptor)) {
             Element attr_to_append = document.createElement("ext_value");
@@ -94,6 +103,15 @@ public class MeadConverter {
         if (shouldShiftAutoValue(messageDescriptor)) {
             Element attr_to_append = document.createElement("auto_value");
             attr_to_append.setTextContent(node.getTextContent());
+            node.setTextContent("");
+            node.appendChild(attr_to_append);
+        }
+    }
+
+    private void shiftToEnumField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
+        if (shouldShiftEnumValue(messageDescriptor)) {
+            Element attr_to_append = document.createElement("enum_value");
+            attr_to_append.setTextContent(messageDescriptor.getName() +"::"+ node.getTextContent());
             node.setTextContent("");
             node.appendChild(attr_to_append);
         }
@@ -133,6 +151,9 @@ public class MeadConverter {
         String textContent = node.getTextContent();
 
         switch (fieldType) {
+            // Should not actually ever reach enum in this iteration of the converter
+            case ENUM:
+                return null;
             case BOOLEAN:
                 return Boolean.parseBoolean(textContent);
             case INT:
@@ -141,28 +162,21 @@ public class MeadConverter {
                 return Double.parseDouble(textContent);
             case FLOAT:
                 return Float.parseFloat(textContent);
-            case STRING:
-                return textContent;
             case BYTE_STRING:
                 return ByteString.copyFromUtf8(textContent);
-            case ENUM: // Should never actually encounter an ENUM
-                Descriptors.EnumDescriptor enumType = field.getEnumType();
-                if (textContent.matches("[0-9]+")) {
-                    return enumType.findValueByNumber(Integer.parseInt(textContent));
-                } else {
-                    textContent = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, enumType.getName())
-                            + "_"
-                            + CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, textContent);
-                    return enumType.findValueByName(textContent);
-                }
+            case STRING:
+                return textContent;
             case LONG: // Handle date
                 try {
                     if (textContent.endsWith("Z")) {
                         ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent);
                         return zonedDateTime.toInstant().toEpochMilli();
-                    } else {
+                    } else if (textContent.contains("+")) {
                         OffsetDateTime offsetDateTime = OffsetDateTime.parse(textContent);
                         return offsetDateTime.toInstant().toEpochMilli();
+                    } else {
+                        ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent + "Z");
+                        return zonedDateTime.toInstant().toEpochMilli();
                     }
                 } catch (DateTimeParseException e) {
                     return 0;
