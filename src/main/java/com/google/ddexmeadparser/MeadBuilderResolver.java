@@ -1,7 +1,6 @@
 package com.google.ddexmeadparser;
 
 import com.google.protobuf.Message;
-import mead10.Mead;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -30,7 +29,7 @@ public class MeadBuilderResolver {
             String schemaVersion = uri.substring(uri.lastIndexOf('/') + 1);
             return Integer.parseInt(schemaVersion.substring(0, 1));
         } catch (URISyntaxException e) {
-            throw new MeadConversionException("Malformed URI for schema location. Could not determine version number", e);
+            throw new MeadConversionException("Malformed URI for schema location. Could not determine major version number", e);
         }
     }
 

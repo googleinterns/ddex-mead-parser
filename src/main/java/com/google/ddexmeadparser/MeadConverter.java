@@ -167,19 +167,15 @@ public class MeadConverter {
             case STRING:
                 return textContent;
             case LONG: // Handle date
-                try {
-                    if (textContent.endsWith("Z")) {
-                        ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent);
-                        return zonedDateTime.toInstant().toEpochMilli();
-                    } else if (textContent.contains("+")) {
-                        OffsetDateTime offsetDateTime = OffsetDateTime.parse(textContent);
-                        return offsetDateTime.toInstant().toEpochMilli();
-                    } else {
-                        ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent + "Z");
-                        return zonedDateTime.toInstant().toEpochMilli();
-                    }
-                } catch (DateTimeParseException e) {
-                    return 0;
+                if (textContent.endsWith("Z")) {
+                    ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent);
+                    return zonedDateTime.toInstant().toEpochMilli();
+                } else if (textContent.contains("+")) {
+                    OffsetDateTime offsetDateTime = OffsetDateTime.parse(textContent);
+                    return offsetDateTime.toInstant().toEpochMilli();
+                } else {
+                    ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent + "Z");
+                    return zonedDateTime.toInstant().toEpochMilli();
                 }
         }
         return null;

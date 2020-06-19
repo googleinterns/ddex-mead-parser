@@ -62,13 +62,24 @@ public class DdexMeadParser {
         StreamSource xsdFile = getStreamSource(runtimeOptions.inputFile);
 
         SchemaConverter schemaConverter = new SchemaConverter();
-        SchemaEntryMap schemaEntryList = schemaConverter.convert(xsdFile);
+        SchemaEntryMap schemaEntryMap = schemaConverter.convert(xsdFile);
 
-        ProtoWriter protoWriter = new ProtoWriter();
+        ProtoSchema protoSchema = new ProtoSchema(schemaEntryMap);
+
+        // Write schema to file
+        writeSchema(protoSchema.getSchemaString(), protoSchema.getPackageName(), protoSchema.getRootNamespace());
+    }
+
+    private void writeSchema(String schemaString, String packageName, String rootNamespace) throws SchemaConversionException {
+        File file = new File("./src/main/proto/" + rootNamespace + "/" + packageName + "/" + rootNamespace + ".proto");
+        file.getParentFile().mkdirs();
+
         try {
-            protoWriter.serialize(schemaEntryList);
+            FileWriter writer = new FileWriter(file, false);
+            writer.write(schemaString);
+            writer.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            throw new SchemaConversionException("Could not write schema to file.", e);
         }
     }
 

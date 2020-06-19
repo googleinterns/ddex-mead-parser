@@ -3,7 +3,6 @@ package com.google.ddexmeadparser;
 import org.apache.ws.commons.schema.*;
 import org.apache.ws.commons.schema.utils.NamespacePrefixList;
 import org.apache.ws.commons.schema.utils.XmlSchemaObjectBase;
-import org.w3c.dom.NodeList;
 
 import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamSource;
@@ -50,7 +49,6 @@ public class SchemaConverterInstance {
         schemaEntryMap.setVersion(getMeadVersionNumber(inputSchema));
         schemaEntryMap.setRootNamespacePrefix(namespaceMap.getPrefix(inputSchema.getTargetNamespace()));
 
-        System.out.println(namespaceMap.getPrefix(inputSchema.getTargetNamespace()));
         for (XmlSchema schema : allSchema) {
             processSchema(schema);
         }
@@ -125,7 +123,7 @@ public class SchemaConverterInstance {
             String nsPrefix,
             SchemaAbstractEntry parent) {
         SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
-        messageEntry.setEntryAnnotation(getAnnotations(union));
+        messageEntry.setAnnotation(getAnnotations(union));
         messageEntry.addField(new SchemaField("auto_value"));
         schemaEntryMap.addEntry(messageEntry);
         return new QName(
@@ -143,14 +141,14 @@ public class SchemaConverterInstance {
 
         if (isEnumFacetList(facets)) {
             SchemaEnumEntry enumEntry = new SchemaEnumEntry(entryName, nsPrefix);
-            enumEntry.setEntryAnnotation(getAnnotations(restriction));
+            enumEntry.setAnnotation(getAnnotations(restriction));
 
             for (XmlSchemaFacet facet : facets) {
                 SchemaField field = new SchemaField(facet.getValue().toString());
-                field.setFieldAnnotation(getAnnotations(facet));
+                field.setAnnotation(facet.getAnnotation());
                 enumEntry.addField(field);
             }
-            if (enumEntry.hasFields()) {
+            if (enumEntry.isPopulated()) {
                 schemaEntryMap.addEntry(enumEntry);
                 return new QName(
                         namespaceMap.getUri(enumEntry.getNamespacePrefix()),
@@ -159,7 +157,7 @@ public class SchemaConverterInstance {
             }
         } else if (parent == null) {
             SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
-            messageEntry.setEntryAnnotation(getAnnotations(restriction));
+            messageEntry.setAnnotation(getAnnotations(restriction));
             QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
             messageEntry.addField(new SchemaField("auto_value", restrictionQName));
             schemaEntryMap.addEntry(messageEntry);
@@ -181,13 +179,13 @@ public class SchemaConverterInstance {
         }
         entryName = entryName != null ? entryName : complexItem.getName();
         SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
-        messageEntry.setEntryAnnotation(getAnnotations(complexItem));
+        messageEntry.setAnnotation(getAnnotations(complexItem));
 
         processAttributes(complexItem.getAttributes(), complexItem.getAnyAttribute(), messageEntry);
         processParticle(complexItem.getParticle(), messageEntry, parent);
         processContentModel(complexItem.getContentModel(), messageEntry, parent);
 
-        if (messageEntry.hasFields()) {
+        if (messageEntry.isPopulated()) {
             schemaEntryMap.addEntry(messageEntry);
             return new QName(
                     namespaceMap.getUri(messageEntry.getNamespacePrefix()),
@@ -244,9 +242,8 @@ public class SchemaConverterInstance {
             String name = ((XmlSchemaElement) item).getName();
             boolean repeated = ((XmlSchemaElement) item).getMaxOccurs() > 1;
 
-            getAnnotations((XmlSchemaAnnotated) item);
             SchemaField field = new SchemaField(name, itemType, repeated);
-            field.setFieldAnnotation(getAnnotations((XmlSchemaAnnotated) item));
+            field.setAnnotation(((XmlSchemaElement) item).getAnnotation());
             entry.addField(field);
         } else if (item instanceof XmlSchemaAny) {
             boolean repeated = ((XmlSchemaAny) item).getMaxOccurs() > 1;
@@ -282,7 +279,7 @@ public class SchemaConverterInstance {
                     String name = ((XmlSchemaAttribute) attribute).getName();
                     QName attributeType = getAttributeTypeName(((XmlSchemaAttribute) attribute));
                     SchemaField field = new SchemaField(name, attributeType);
-                    field.setFieldAnnotation(getAnnotations(attribute));
+                    field.setAnnotation(attribute.getAnnotation());
                     entry.addField(field);
                 } else {
                     throw new Error("Unhandled attribute");
@@ -349,16 +346,6 @@ public class SchemaConverterInstance {
     }
 
     XmlSchemaAnnotation getAnnotations(XmlSchemaAnnotated element) {
-        XmlSchemaAnnotation annotation = element.getAnnotation();
-        if (annotation != null) {
-            for (int i = 0; i < annotation.getItems().size(); i++) {
-                XmlSchemaDocumentation documentation = (XmlSchemaDocumentation) annotation.getItems().get(i);
-                NodeList markup = documentation.getMarkup();
-                for (int j = 0; j < markup.getLength(); j++) {
-                    System.out.println(markup.item(j).getTextContent());
-                }
-            }
-        }
-        return annotation;
+        return element.getAnnotation();
     }
 }
