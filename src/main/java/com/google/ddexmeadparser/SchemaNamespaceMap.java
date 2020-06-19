@@ -28,7 +28,6 @@ public class SchemaNamespaceMap {
             return assumedUri;
         }
         return "";
-//        throw new SchemaConversionException("Namespace error, cannot find info on uri: " + assumedUri);
     }
 
     public String getUri(String assumedPrefix) {
@@ -38,6 +37,5 @@ public class SchemaNamespaceMap {
             return assumedPrefix;
         }
         return "";
-//        throw new SchemaConversionException("Namespace error, cannot find info on prefix: " + assumedPrefix);
     }
 }

@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeParseException;
 
 public class MeadConverter {
     public Message convert(Document document) throws MeadConversionException {

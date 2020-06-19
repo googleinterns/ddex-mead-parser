@@ -11,25 +11,25 @@ public class SchemaField implements SchemaAnnotated {
     String fieldValue;
     XmlSchemaAnnotation fieldAnnotation;
     QName fieldQName;
-    boolean fieldRepeated;
+    boolean fieldIsRepeated;
 
     public SchemaField(String value, QName qName, boolean repeated) {
         fieldValue = value;
         fieldQName = Objects.requireNonNullElseGet(qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
-        fieldRepeated = repeated;
+        fieldIsRepeated = repeated;
     }
 
     public SchemaField(String value, QName qName) {
         fieldValue = value;
         fieldQName = Objects.requireNonNullElseGet(qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
-        fieldRepeated = false;
+        fieldIsRepeated = false;
     }
 
     // Default string QName
     public SchemaField(String value) {
         fieldValue = value;
         fieldQName = new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
-        fieldRepeated = false;
+        fieldIsRepeated = false;
         fieldAnnotation = null;
     }
 
@@ -47,7 +47,7 @@ public class SchemaField implements SchemaAnnotated {
         return fieldQName;
     }
 
-    public boolean isRepeated() { return fieldRepeated; }
+    public boolean isRepeated() { return fieldIsRepeated; }
 
     public boolean isXmlType() {
         return fieldQName.getPrefix().equals("xs");

@@ -15,7 +15,7 @@ public class ProtoSchema {
     private int versionNumber;
     private final String schemaString;
 
-    public ProtoSchema(SchemaEntryMap entryMap) {
+    public ProtoSchema(SchemaEntryMap entryMap) throws SchemaConversionException {
         schemaString = serialize(entryMap);
     }
 
@@ -35,7 +35,7 @@ public class ProtoSchema {
         return schemaString;
     }
 
-    private String serialize(SchemaEntryMap entryMap) {
+    private String serialize(SchemaEntryMap entryMap) throws SchemaConversionException {
         versionNumber = entryMap.getVersion();
         rootNamespace = entryMap.getRootNamespacePrefix();
         packageName = rootNamespace + versionNumber;
@@ -53,7 +53,7 @@ public class ProtoSchema {
         return schemaStringBuilder.toString();
     }
 
-    private String serializeNamespace(List<SchemaAbstractEntry> entries, String namespace) {
+    private String serializeNamespace(List<SchemaAbstractEntry> entries, String namespace) throws SchemaConversionException {
         StringBuilder namespaceStringBuilder = new StringBuilder();
         entries.sort(Comparator.comparing(SchemaAbstractEntry::getTitle));
 
@@ -76,7 +76,7 @@ public class ProtoSchema {
         return enumStringBuilder.toString();
     }
 
-    private String serializeMessage(SchemaMessageEntry entry, String prefix) {
+    private String serializeMessage(SchemaMessageEntry entry, String prefix) throws SchemaConversionException {
         StringBuilder messageStringBuilder = new StringBuilder();
         messageStringBuilder.append(serializeAnnotation(entry));
         messageStringBuilder.append("message ").append(prefix).append("_").append(entry.getTitle()).append(" {\n");
@@ -86,7 +86,7 @@ public class ProtoSchema {
 
     }
 
-    private String serializeFieldSet(SchemaMessageEntry entry) {
+    private String serializeFieldSet(SchemaMessageEntry entry) throws SchemaConversionException {
         StringBuilder fieldSetStringBuilder = new StringBuilder();
 
         List<SchemaField> fields = entry.getFields();
@@ -130,7 +130,7 @@ public class ProtoSchema {
         return annotationStringBuilder.toString();
     }
 
-    private String resolveType(SchemaMessageEntry entry, SchemaField field) {
+    private String resolveType(SchemaMessageEntry entry, SchemaField field) throws SchemaConversionException {
         QName fieldType = field.getFieldType();
         String type;
 
@@ -143,7 +143,7 @@ public class ProtoSchema {
         return type;
     }
 
-    private String convertXmlTypeToProto(String xmlType) {
+    private String convertXmlTypeToProto(String xmlType) throws SchemaConversionException {
         switch (xmlType) {
             case "boolean":
                 return "bool";
@@ -167,7 +167,8 @@ public class ProtoSchema {
             case "date":
             case "ID":
                 return "string";
-            default: throw new Error("Unhandled " + xmlType);
+            default:
+                throw new SchemaConversionException("Unhandled XmlType mapping in serialize: " + xmlType);
         }
     }
 

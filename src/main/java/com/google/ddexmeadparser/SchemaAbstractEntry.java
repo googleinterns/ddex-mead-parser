@@ -11,21 +11,21 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
     String entryTitle;
     String entryNamespacePrefix;
     XmlSchemaAnnotation entryAnnotation;
-    Map<String, SchemaField> fields;
-    boolean extension;
+    Map<String, SchemaField> entryFields;
+    boolean entryIsExtension;
 
     public SchemaAbstractEntry(String title, String namespacePrefix) {
         entryTitle = title;
         entryNamespacePrefix = namespacePrefix;
-        fields = new HashMap<>();
-        extension = false;
+        entryFields = new HashMap<>();
+        entryIsExtension = false;
         entryAnnotation = null;
     }
 
     public void addField(SchemaField entryField) {
-        fields.put(entryField.getFieldValue(), entryField);
+        entryFields.put(entryField.getFieldValue(), entryField);
         if (entryField.getFieldValue().equals("ext_value")) {
-            extension = true;
+            entryIsExtension = true;
         }
     }
 
@@ -46,15 +46,15 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
     }
 
     public List<SchemaField> getFields() {
-        return new ArrayList<>(fields.values());
+        return new ArrayList<>(entryFields.values());
     }
 
     public boolean isExtension() {
-        return extension;
+        return entryIsExtension;
     }
 
     public boolean isPopulated() {
-        return fields.size() > 0;
+        return entryFields.size() > 0;
     }
 
     public boolean isEnum() {
