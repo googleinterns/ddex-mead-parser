@@ -1,37 +1,61 @@
 package com.google.ddexmeadparser;
 
 import com.google.common.base.CaseFormat;
-import org.apache.ws.commons.schema.XmlSchemaAnnotation;
-import org.apache.ws.commons.schema.XmlSchemaDocumentation;
-import org.w3c.dom.NodeList;
 
 import javax.xml.namespace.QName;
 import java.util.Comparator;
 import java.util.List;
 
+/** The type Proto schema. */
 public class ProtoSchema {
     private String rootNamespace;
     private String packageName;
     private int versionNumber;
     private final String schemaString;
 
-    public ProtoSchema(SchemaEntryMap entryMap) throws SchemaConversionException {
+  /**
+   * Instantiates a new Proto schema.
+   *
+   * @param entryMap the entry map
+   * @throws SchemaConversionException the schema conversion exception
+   */
+  public ProtoSchema(SchemaEntryMap entryMap) throws SchemaConversionException {
         schemaString = serialize(entryMap);
     }
 
-    public String getRootNamespace() {
+  /**
+   * Gets root namespace.
+   *
+   * @return the root namespace
+   */
+  public String getRootNamespace() {
         return rootNamespace;
     }
 
-    public String getPackageName() {
+  /**
+   * Gets package name.
+   *
+   * @return the package name
+   */
+  public String getPackageName() {
         return packageName;
     }
 
-    public int getVersionNumber() {
+  /**
+   * Gets version number.
+   *
+   * @return the version number
+   */
+  public int getVersionNumber() {
         return versionNumber;
     }
 
-    public String getSchemaString() {
+  /**
+   * Gets schema string.
+   *
+   * @return the schema string
+   */
+  public String getSchemaString() {
         return schemaString;
     }
 
@@ -41,6 +65,9 @@ public class ProtoSchema {
         packageName = rootNamespace + versionNumber;
 
         StringBuilder schemaStringBuilder = new StringBuilder();
+        schemaStringBuilder.append("/* Generated schema for ")
+                .append(rootNamespace).append(", version ").append(versionNumber)
+                .append(" */\n\n");
         schemaStringBuilder.append("syntax = \"proto2\";\n");
         schemaStringBuilder.append("package ").append(packageName).append(";\n\n");
         List<String> namespaces = entryMap.getNamespacePrefixes();
@@ -111,23 +138,11 @@ public class ProtoSchema {
     }
 
     private String serializeAnnotation(SchemaAnnotated annotated) {
-        XmlSchemaAnnotation annotation = annotated.getAnnotation();
-        if (annotation == null) {
+        String annotation = annotated.getAnnotation();
+        if (annotation == null || annotation.isEmpty()) {
             return "";
         }
-
-        StringBuilder annotationStringBuilder = new StringBuilder();
-        annotationStringBuilder.append("/* ");
-        for (int i = 0; i < annotation.getItems().size(); i++) {
-            XmlSchemaDocumentation documentation = (XmlSchemaDocumentation) annotation.getItems().get(i);
-            NodeList markup = documentation.getMarkup();
-            for (int j = 0; j < markup.getLength(); j++) {
-                annotationStringBuilder.append(markup.item(j).getTextContent());
-                if (j != markup.getLength() - 1) annotationStringBuilder.append('\n');
-            }
-        }
-        annotationStringBuilder.append(" */\n");
-        return annotationStringBuilder.toString();
+        return "/* " + annotation + " */\n";
     }
 
     private String resolveType(SchemaMessageEntry entry, SchemaField field) throws SchemaConversionException {
@@ -168,7 +183,7 @@ public class ProtoSchema {
             case "ID":
                 return "string";
             default:
-                throw new SchemaConversionException("Unhandled XmlType mapping in serialize: " + xmlType);
+                throw new SchemaConversionException("Unhandled Xml type mapping for: " + xmlType);
         }
     }
 

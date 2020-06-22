@@ -1,67 +1,131 @@
 package com.google.ddexmeadparser;
 
 import org.apache.ws.commons.schema.XmlSchemaAnnotation;
+import org.apache.ws.commons.schema.XmlSchemaDocumentation;
+import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/** The type Schema abstract entry. */
 public abstract class SchemaAbstractEntry implements SchemaAnnotated {
-    String entryTitle;
-    String entryNamespacePrefix;
-    XmlSchemaAnnotation entryAnnotation;
-    Map<String, SchemaField> entryFields;
-    boolean entryIsExtension;
+  String entryTitle;
+  String entryNamespacePrefix;
+  String entryAnnotation;
+  Map<String, SchemaField> entryFields;
+  boolean entryIsExtension;
 
-    public SchemaAbstractEntry(String title, String namespacePrefix) {
+  /**
+   * Instantiates a new Schema abstract entry.
+   *
+   * @param title the title
+   * @param namespacePrefix the namespace prefix
+   */
+  public SchemaAbstractEntry(String title, String namespacePrefix) {
         entryTitle = title;
         entryNamespacePrefix = namespacePrefix;
         entryFields = new HashMap<>();
         entryIsExtension = false;
-        entryAnnotation = null;
+        entryAnnotation = "";
     }
 
-    public void addField(SchemaField entryField) {
+  /**
+   * Add field.
+   *
+   * @param entryField the entry field
+   */
+  public void addField(SchemaField entryField) {
         entryFields.put(entryField.getFieldValue(), entryField);
         if (entryField.getFieldValue().equals("ext_value")) {
             entryIsExtension = true;
         }
     }
 
-    public void setAnnotation(XmlSchemaAnnotation annotation) {
+    public void setAnnotation(String annotation) {
         entryAnnotation = annotation;
     }
 
-    public XmlSchemaAnnotation getAnnotation() {
+    public void setAnnotation(XmlSchemaAnnotation annotation) {
+        StringBuilder annotationStringBuilder = new StringBuilder();
+        if (annotation == null || annotation.getItems() == null) return;
+
+        for (int i = 0; i < annotation.getItems().size(); i++) {
+            XmlSchemaDocumentation documentation = (XmlSchemaDocumentation) annotation.getItems().get(i);
+            NodeList markup = documentation.getMarkup();
+            for (int j = 0; j < markup.getLength(); j++) {
+                annotationStringBuilder.append(markup.item(j).getTextContent());
+                if (j != markup.getLength() - 1) annotationStringBuilder.append('\n');
+            }
+        }
+        entryAnnotation = annotationStringBuilder.toString();
+    }
+
+    public String getAnnotation() {
         return entryAnnotation;
     }
 
-    public String getTitle() {
+  /**
+   * Gets title.
+   *
+   * @return the title
+   */
+  public String getTitle() {
         return entryTitle;
     }
 
-    public String getNamespacePrefix() {
+  /**
+   * Gets namespace prefix.
+   *
+   * @return the namespace prefix
+   */
+  public String getNamespacePrefix() {
         return entryNamespacePrefix;
     }
 
-    public List<SchemaField> getFields() {
+  /**
+   * Gets fields.
+   *
+   * @return the fields
+   */
+  public List<SchemaField> getFields() {
         return new ArrayList<>(entryFields.values());
     }
 
-    public boolean isExtension() {
+  /**
+   * Is extension boolean.
+   *
+   * @return the boolean
+   */
+  public boolean isExtension() {
         return entryIsExtension;
     }
 
-    public boolean isPopulated() {
+  /**
+   * Is populated boolean.
+   *
+   * @return the boolean
+   */
+  public boolean isPopulated() {
         return entryFields.size() > 0;
     }
 
-    public boolean isEnum() {
+  /**
+   * Is enum boolean.
+   *
+   * @return the boolean
+   */
+  public boolean isEnum() {
         return false;
     }
 
-    public boolean isMessage() {
+  /**
+   * Is message boolean.
+   *
+   * @return the boolean
+   */
+  public boolean isMessage() {
         return false;
     }
 }

@@ -7,18 +7,37 @@ import org.w3c.dom.Node;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/** The type Mead builder resolver. */
 public class MeadBuilderResolver {
+    static final Logger LOGGER = LoggerFactory.getLogger(MeadBuilderResolver.class);
+
+    /**
+     * Gets builder.
+     *
+     * @param document the document
+     * @return the builder
+     * @throws MeadConversionException the mead conversion exception
+     */
     public static Message.Builder getBuilder(Document document) throws MeadConversionException {
         Node root = MeadConverter.getRootNode(document);
         int versionNumber = getMeadVersionNumber(root);
         int majorVersionNumber = getMeadMajorVersionNumber(root);
 
+        LOGGER.info(
+                "Detected message using major version "
+                        + majorVersionNumber
+                        + ", minor version "
+                        + versionNumber);
         if (majorVersionNumber == 4) {
             return ern42.Ern.ern_NewReleaseMessage.newBuilder();
         } else if (majorVersionNumber == 3) {
-            return ern383.Ern.NewReleaseMessage.newBuilder();
+            return ern381.Ern.ern_NewReleaseMessage.newBuilder();
         } else {
-            throw new MeadConversionException("Unsupported message version " + versionNumber + ". Temporarily blocking issue");
+            throw new MeadConversionException(
+                    "Unsupported message version " + versionNumber + ". Temporarily blocking issue");
         }
     }
 
@@ -29,7 +48,8 @@ public class MeadBuilderResolver {
             String schemaVersion = uri.substring(uri.lastIndexOf('/') + 1);
             return Integer.parseInt(schemaVersion.substring(0, 1));
         } catch (URISyntaxException e) {
-            throw new MeadConversionException("Malformed URI for schema location. Could not determine major version number", e);
+            throw new MeadConversionException(
+                    "Malformed URI for schema location. Could not determine major version number", e);
         }
     }
 
@@ -40,7 +60,8 @@ public class MeadBuilderResolver {
             String schemaVersion = uri.substring(uri.lastIndexOf('/') + 1);
             return Integer.parseInt(schemaVersion);
         } catch (URISyntaxException e) {
-            throw new MeadConversionException("Malformed URI for schema location. Could not determine version number", e);
+            throw new MeadConversionException(
+                    "Malformed URI for schema location. Could not determine version number", e);
         }
     }
 }

@@ -16,14 +16,35 @@ import java.io.StringReader;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/** The type Mead converter. */
 public class MeadConverter {
-    public Message convert(Document document) throws MeadConversionException {
+  /** The Logger. */
+  static final Logger LOGGER = LoggerFactory.getLogger(MeadConverter.class);
+
+  /**
+   * Convert message.
+   *
+   * @param document the document
+   * @return the message
+   * @throws MeadConversionException the mead conversion exception
+   */
+  public Message convert(Document document) throws MeadConversionException {
         Message.Builder messageBuilder = MeadBuilderResolver.getBuilder(document);
         mergeRoot(document, messageBuilder);
         return messageBuilder.build();
     }
 
-    public Message convert(String xmlString) throws MeadConversionException {
+  /**
+   * Convert message.
+   *
+   * @param xmlString the xml string
+   * @return the message
+   * @throws MeadConversionException the mead conversion exception
+   */
+  public Message convert(String xmlString) throws MeadConversionException {
         try {
             InputSource xmlInputSource = new InputSource(new StringReader(xmlString));
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlInputSource);
@@ -36,6 +57,23 @@ public class MeadConverter {
     private void mergeRoot(Document document, Message.Builder messageBuilder) throws MeadConversionException {
         Node root = getRootNode(document);
         mergeMessage(document, root, messageBuilder);
+    }
+
+  /**
+   * Gets root node.
+   *
+   * @param document the document
+   * @return the root node
+   * @throws MeadConversionException the mead conversion exception
+   */
+  public static Node getRootNode(Document document) throws MeadConversionException {
+        NodeList nodes = document.getChildNodes();
+        for (int i = 0; i < nodes.getLength(); i++) {
+            if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                return nodes.item(i);
+            }
+        }
+        throw new MeadConversionException("No root node found");
     }
 
     private void mergeMessage(Document document, Node node, Message.Builder messageBuilder) {
@@ -52,6 +90,7 @@ public class MeadConverter {
             if (child.getNodeType() == Node.ELEMENT_NODE) {
                 Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName(CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, child.getNodeName()));
                 if (field != null) {
+                    LOGGER.debug("Handling field: " + field.getFullName());
                     Object content = handleNode(document, child, field, messageBuilder);
                     if (field.isRepeated()) {
                         messageBuilder.addRepeatedField(field, content);
@@ -59,7 +98,7 @@ public class MeadConverter {
                         messageBuilder.setField(field, content);
                     }
                 } else {
-                    System.err.println("Skipping " + child.getNodeName() + " in " + node.getNodeName());
+                    LOGGER.error("Unexpected field. Skipping " + child.getNodeName() + " in " + node.getNodeName());
                 }
             }
         }
@@ -110,7 +149,7 @@ public class MeadConverter {
     private void shiftToEnumField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
         if (shouldShiftEnumValue(messageDescriptor)) {
             Element attr_to_append = document.createElement("enum_value");
-            attr_to_append.setTextContent(messageDescriptor.getName() +"::"+ node.getTextContent());
+            attr_to_append.setTextContent(node.getTextContent());
             node.setTextContent("");
             node.appendChild(attr_to_append);
         }
@@ -148,10 +187,9 @@ public class MeadConverter {
     private Object handleField(Node node, Descriptors.FieldDescriptor field) {
         Descriptors.FieldDescriptor.JavaType fieldType = field.getJavaType();
         String textContent = node.getTextContent();
-
         switch (fieldType) {
-            // Should not actually ever reach enum in this iteration of the converter
             case ENUM:
+                LOGGER.error("Encountered unexpected enum field: " + field.getFullName());
                 return null;
             case BOOLEAN:
                 return Boolean.parseBoolean(textContent);
@@ -163,30 +201,24 @@ public class MeadConverter {
                 return Float.parseFloat(textContent);
             case BYTE_STRING:
                 return ByteString.copyFromUtf8(textContent);
+            case LONG:
+                return handleDateText(textContent);
             case STRING:
                 return textContent;
-            case LONG: // Handle date
-                if (textContent.endsWith("Z")) {
-                    ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent);
-                    return zonedDateTime.toInstant().toEpochMilli();
-                } else if (textContent.contains("+")) {
-                    OffsetDateTime offsetDateTime = OffsetDateTime.parse(textContent);
-                    return offsetDateTime.toInstant().toEpochMilli();
-                } else {
-                    ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent + "Z");
-                    return zonedDateTime.toInstant().toEpochMilli();
-                }
         }
         return null;
     }
 
-    public static Node getRootNode(Document document) throws MeadConversionException {
-        NodeList nodes = document.getChildNodes();
-        for (int i = 0; i < nodes.getLength(); i++) {
-            if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                return nodes.item(i);
-            }
+    private long handleDateText(String textContent) {
+        if (textContent.endsWith("Z")) {
+            ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent);
+            return zonedDateTime.toInstant().toEpochMilli();
+        } else if (textContent.contains("+")) {
+            OffsetDateTime offsetDateTime = OffsetDateTime.parse(textContent);
+            return offsetDateTime.toInstant().toEpochMilli();
+        } else {
+            ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent + "Z");
+            return zonedDateTime.toInstant().toEpochMilli();
         }
-        throw new MeadConversionException("No root node found");
     }
 }

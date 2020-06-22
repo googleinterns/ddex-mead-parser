@@ -2,6 +2,9 @@ package com.google.ddexmeadparser;
 
 import java.io.File;
 
+/**
+ * Options for the DdexMeadParser set via command line.
+ */
 public class DdexMeadParserOptions {
     enum inputTypeValue {
         MESSAGE,

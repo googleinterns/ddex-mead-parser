@@ -1,3 +1,5 @@
+/* Generated schema for ern, version 42 */
+
 syntax = "proto2";
 package ern42;
 

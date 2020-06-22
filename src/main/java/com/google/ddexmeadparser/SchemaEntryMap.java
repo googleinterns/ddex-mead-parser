@@ -5,16 +5,36 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The type Schema entry map.
+ */
 public class SchemaEntryMap {
-    Map<String, List<SchemaAbstractEntry>> namespacePrefixEntryMap;
-    String rootNamespacePrefix;
-    int version;
+    /**
+     * The Namespace prefix entry map.
+     */
+Map<String, List<SchemaAbstractEntry>> namespacePrefixEntryMap;
+    /**
+     * The Root namespace prefix.
+     */
+String rootNamespacePrefix;
+    /**
+     * The Version.
+     */
+int version;
 
-    public SchemaEntryMap() {
+    /**
+     * Instantiates a new Schema entry map.
+     */
+public SchemaEntryMap() {
         namespacePrefixEntryMap = new HashMap<>();
     }
 
-    public void addEntry(SchemaAbstractEntry entry) {
+    /**
+     * Add entry.
+     *
+     * @param entry the entry
+     */
+public void addEntry(SchemaAbstractEntry entry) {
         String prefix = entry.getNamespacePrefix();
         if (!namespacePrefixEntryMap.containsKey(prefix)) {
             namespacePrefixEntryMap.put(prefix, new ArrayList<>());
@@ -22,31 +42,66 @@ public class SchemaEntryMap {
         namespacePrefixEntryMap.get(prefix).add(entry);
     }
 
-    public void setVersion(String version) {
+    /**
+     * Sets version.
+     *
+     * @param version the version
+     */
+public void setVersion(String version) {
         this.version = Integer.parseInt(version);
     }
 
-    public void setVersion(int version) {
+    /**
+     * Sets version.
+     *
+     * @param version the version
+     */
+public void setVersion(int version) {
         this.version = version;
     }
 
-    public void setRootNamespacePrefix(String rootNamespacePrefix) {
+    /**
+     * Sets root namespace prefix.
+     *
+     * @param rootNamespacePrefix the root namespace prefix
+     */
+public void setRootNamespacePrefix(String rootNamespacePrefix) {
         this.rootNamespacePrefix = rootNamespacePrefix;
     }
 
-    public String getRootNamespacePrefix() {
+    /**
+     * Gets root namespace prefix.
+     *
+     * @return the root namespace prefix
+     */
+public String getRootNamespacePrefix() {
         return rootNamespacePrefix;
     }
 
-    public int getVersion() {
+    /**
+     * Gets version.
+     *
+     * @return the version
+     */
+public int getVersion() {
         return version;
     }
 
-    public List<String> getNamespacePrefixes() {
+    /**
+     * Gets namespace prefixes.
+     *
+     * @return the namespace prefixes
+     */
+public List<String> getNamespacePrefixes() {
         return new ArrayList<>(namespacePrefixEntryMap.keySet());
     }
 
-    public Map<String, List<SchemaAbstractEntry>> getNamespacePrefixEntryMap() {
+    /**
+     * Gets namespace prefix entry map.
+     *
+     * @return the namespace prefix entry map
+     */
+public Map<String, List<SchemaAbstractEntry>> getNamespacePrefixEntryMap() {
         return namespacePrefixEntryMap;
     }
 }

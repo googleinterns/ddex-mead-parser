@@ -10,10 +10,20 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 
-public class DdexMeadParser {
-    private final DdexMeadParserOptions runtimeOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    public static void main(String[] args) {
+/** The type Ddex mead parser. */
+public class DdexMeadParser {
+  static final Logger LOGGER = LoggerFactory.getLogger(DdexMeadParser.class);
+  private final DdexMeadParserOptions runtimeOptions;
+
+  /**
+   * The entry point of application.
+   *
+   * @param args the input arguments
+   */
+  public static void main(String[] args) {
         try {
             DdexMeadParser ddexMeadParser = new DdexMeadParser(args);
             ddexMeadParser.exec();
@@ -22,8 +32,13 @@ public class DdexMeadParser {
         }
     }
 
-    // For use by command line users
-    public DdexMeadParser(String[] args) throws InvalidOptionsException {
+  /**
+   * Instantiates a new Ddex mead parser. Serves as entry point for command line usage
+   *
+   * @param args the args
+   * @throws InvalidOptionsException the invalid options exception
+   */
+  public DdexMeadParser(String[] args) throws InvalidOptionsException {
         Options commandOptions = buildCommandOptions();
         try {
             CommandLineParser commandParser = new DefaultParser();
@@ -38,7 +53,15 @@ public class DdexMeadParser {
         }
     }
 
-    public void exec() throws MeadConversionException, SchemaConversionException, InvalidOptionsException {
+  /**
+   * Exec.
+   *
+   * @throws MeadConversionException the mead conversion exception
+   * @throws SchemaConversionException the schema conversion exception
+   * @throws InvalidOptionsException the invalid options exception
+   */
+  public void exec()
+      throws MeadConversionException, SchemaConversionException, InvalidOptionsException {
         if (runtimeOptions.inputType == DdexMeadParserOptions.inputTypeValue.MESSAGE) {
             parseMead();
         } else if (runtimeOptions.inputType == DdexMeadParserOptions.inputTypeValue.SCHEMA) {
@@ -46,19 +69,31 @@ public class DdexMeadParser {
         }
     }
 
-    public void parseMead() throws MeadConversionException, InvalidOptionsException {
-        System.out.println("Started mead message parse on file: " + runtimeOptions.inputFile.getName());
+  /**
+   * Parse mead.
+   *
+   * @throws MeadConversionException the mead conversion exception
+   * @throws InvalidOptionsException the invalid options exception
+   */
+  public void parseMead() throws MeadConversionException, InvalidOptionsException {
+        LOGGER.info("Started mead message CONVERSION on file: " + runtimeOptions.inputFile.getName());
         Document document = getDocument(runtimeOptions.inputFile);
 
         MeadConverter meadConverter = new MeadConverter();
         Message message = meadConverter.convert(document);
 
         // Write output proto message files
-        System.out.println(message.toString());
+        LOGGER.debug(message.toString());
     }
 
-    public void parseSchema() throws SchemaConversionException, InvalidOptionsException {
-        System.out.println("Started schema parse on file: " + runtimeOptions.inputFile.getName());
+  /**
+   * Parse schema.
+   *
+   * @throws SchemaConversionException the schema conversion exception
+   * @throws InvalidOptionsException the invalid options exception
+   */
+  public void parseSchema() throws SchemaConversionException, InvalidOptionsException {
+        LOGGER.info("Started schema PARSE on file: " + runtimeOptions.inputFile.getName());
         StreamSource xsdFile = getStreamSource(runtimeOptions.inputFile);
 
         SchemaConverter schemaConverter = new SchemaConverter();
@@ -67,16 +102,18 @@ public class DdexMeadParser {
         ProtoSchema protoSchema = new ProtoSchema(schemaEntryMap);
 
         // Write schema to file
-        writeSchema(protoSchema.getSchemaString(), protoSchema.getPackageName(), protoSchema.getRootNamespace());
+        writeSchema(protoSchema);
     }
 
-    private void writeSchema(String schemaString, String packageName, String rootNamespace) throws SchemaConversionException {
+    private void writeSchema(ProtoSchema schema) throws SchemaConversionException {
+        String rootNamespace = schema.getRootNamespace();
+        String packageName = schema.getPackageName();
         File file = new File("./src/main/proto/" + rootNamespace + "/" + packageName + "/" + rootNamespace + ".proto");
         file.getParentFile().mkdirs();
 
         try {
             FileWriter writer = new FileWriter(file, false);
-            writer.write(schemaString);
+            writer.write(schema.getSchemaString());
             writer.close();
         } catch (IOException e) {
             throw new SchemaConversionException("Could not write schema to file.", e);

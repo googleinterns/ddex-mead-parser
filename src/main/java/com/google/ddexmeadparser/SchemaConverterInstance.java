@@ -6,24 +6,40 @@ import org.apache.ws.commons.schema.utils.XmlSchemaObjectBase;
 
 import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SchemaConverterInstance {
-    private final SchemaEntryMap schemaEntryMap;
-    private final SchemaNamespaceMap namespaceMap;
-    private final StreamSource inputXml;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    public SchemaConverterInstance(StreamSource source) {
+/** The type Schema converter instance. */
+public class SchemaConverterInstance {
+  static final Logger LOGGER = LoggerFactory.getLogger(SchemaConverterInstance.class);
+
+  private final SchemaEntryMap schemaEntryMap;
+  private final SchemaNamespaceMap namespaceMap;
+  private final StreamSource inputXml;
+
+  /**
+   * Instantiates a new Schema converter instance.
+   *
+   * @param source the source
+   */
+  public SchemaConverterInstance(StreamSource source) {
         schemaEntryMap = new SchemaEntryMap();
         namespaceMap = new SchemaNamespaceMap();
         inputXml = source;
     }
 
-    public SchemaEntryMap convert() throws SchemaConversionException {
+  /**
+   * Convert schema entry map.
+   *
+   * @return the schema entry map
+   * @throws SchemaConversionException the schema conversion exception
+   */
+  public SchemaEntryMap convert() throws SchemaConversionException {
         populateEntryMap();
         return schemaEntryMap;
     }
@@ -40,7 +56,12 @@ public class SchemaConverterInstance {
         }
     }
 
-    public void populateEntryMap() throws SchemaConversionException {
+  /**
+   * Populate entry map.
+   *
+   * @throws SchemaConversionException the schema conversion exception
+   */
+  public void populateEntryMap() throws SchemaConversionException {
         XmlSchemaCollection schemaCol = new XmlSchemaCollection();
         XmlSchema inputSchema = schemaCol.read(inputXml);
 
@@ -56,7 +77,7 @@ public class SchemaConverterInstance {
     }
 
     private void processSchema(XmlSchema schema) throws SchemaConversionException {
-        System.out.println("Processing schema -> " + schema.getTargetNamespace());
+        LOGGER.info("Processing schema: " + schema.getTargetNamespace());
 
         String nsPrefix = namespaceMap.getPrefix(schema.getTargetNamespace());
         for (XmlSchemaObject item : schema.getItems()) {
@@ -132,24 +153,18 @@ public class SchemaConverterInstance {
         List<XmlSchemaFacet> facets = restriction.getFacets();
 
         if (isEnumFacetList(facets)) {
-            SchemaEnumEntry enumEntry = new SchemaEnumEntry(entryName, nsPrefix);
-            enumEntry.setAnnotation(restriction.getAnnotation());
-
-            for (XmlSchemaFacet facet : facets) {
-                SchemaField field = new SchemaField(facet.getValue().toString());
-                field.setAnnotation(facet.getAnnotation());
-                enumEntry.addField(field);
-            }
-            if (enumEntry.isPopulated()) {
-                schemaEntryMap.addEntry(enumEntry);
-                return new QName(
-                        namespaceMap.getUri(enumEntry.getNamespacePrefix()),
-                        enumEntry.getTitle(),
-                        enumEntry.getNamespacePrefix());
-            }
+            SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
+            messageEntry.setAnnotation("SchemaConverter generated enum replacement message type");
+            QName restrictionQName = getDefaultQName();
+            messageEntry.addField(new SchemaField("enum_value", restrictionQName));
+            schemaEntryMap.addEntry(messageEntry);
+            return new QName(
+                    namespaceMap.getUri(messageEntry.getNamespacePrefix()),
+                    messageEntry.getTitle(),
+                    messageEntry.getNamespacePrefix());
         } else if (parent == null) {
             SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
-            messageEntry.setAnnotation(restriction.getAnnotation());
+            messageEntry.setAnnotation("SchemaConverter generated base level auto field wrapper");
             QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
             messageEntry.addField(new SchemaField("auto_value", restrictionQName));
             schemaEntryMap.addEntry(messageEntry);
@@ -228,9 +243,7 @@ public class SchemaConverterInstance {
             // Only evaluate an element that is a concrete definition as opposed to a leaf referencing an
             // el
             if (type != null && itemType == null) {
-                itemType =
-                        processElement(
-                                (XmlSchemaElement) item, entry.getTitle(), entry.getNamespacePrefix(), entry);
+                itemType = processElement((XmlSchemaElement) item, entry.getTitle(), entry.getNamespacePrefix(), entry);
             } else {
                 itemType = ((XmlSchemaElement) item).getSchemaTypeName();
             }
@@ -303,8 +316,7 @@ public class SchemaConverterInstance {
                 XmlSchema externalSchema = external.getSchema();
                 allSchema.add(externalSchema);
             } else if (external instanceof XmlSchemaRedefine) {
-                XmlSchema redefinedSchema = external.getSchema();
-                System.out.println("Found XmlSchemaRedefine node.");
+                LOGGER.debug("Found XmlSchemaRedefine node, ignoring.");
             }
         }
 
@@ -330,7 +342,7 @@ public class SchemaConverterInstance {
                     (XmlSchemaSimpleTypeRestriction) simpleItem.getContent();
             return restriction.getBaseTypeName(); // Always a STRING restriction
         }
-        return new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
+        return getDefaultQName();
     }
 
     private boolean isEnumFacetList(List<XmlSchemaFacet> facets) {
@@ -343,5 +355,9 @@ public class SchemaConverterInstance {
             }
         }
         return true;
+    }
+
+    private QName getDefaultQName() {
+        return new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
     }
 }
