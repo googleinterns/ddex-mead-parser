@@ -7,13 +7,11 @@ import org.w3c.dom.Node;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.google.common.flogger.FluentLogger;
 
 /** The type Mead builder resolver. */
 public class MeadBuilderResolver {
-    static final Logger LOGGER = LoggerFactory.getLogger(MeadBuilderResolver.class);
-
+    private static final FluentLogger logger = FluentLogger.forEnclosingClass();
     /**
      * Gets builder.
      *
@@ -26,11 +24,7 @@ public class MeadBuilderResolver {
         int versionNumber = getMeadVersionNumber(root);
         int majorVersionNumber = getMeadMajorVersionNumber(root);
 
-        LOGGER.info(
-                "Detected message using major version "
-                        + majorVersionNumber
-                        + ", minor version "
-                        + versionNumber);
+        logger.atInfo().log("Detected message using major version " + majorVersionNumber + ", minor version " + versionNumber);
         if (majorVersionNumber == 4) {
             return ern42.Ern.ern_NewReleaseMessage.newBuilder();
         } else if (majorVersionNumber == 3) {

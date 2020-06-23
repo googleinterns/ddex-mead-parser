@@ -11,13 +11,11 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.google.common.flogger.FluentLogger;
 
 /** The type Schema converter instance. */
 public class SchemaConverterInstance {
-  static final Logger LOGGER = LoggerFactory.getLogger(SchemaConverterInstance.class);
-
+    private static final FluentLogger logger = FluentLogger.forEnclosingClass();
   private final SchemaEntryMap schemaEntryMap;
   private final SchemaNamespaceMap namespaceMap;
   private final StreamSource inputXml;
@@ -77,7 +75,7 @@ public class SchemaConverterInstance {
     }
 
     private void processSchema(XmlSchema schema) throws SchemaConversionException {
-        LOGGER.info("Processing schema: " + schema.getTargetNamespace());
+        logger.atInfo().log("Processing schema: " + schema.getTargetNamespace());
 
         String nsPrefix = namespaceMap.getPrefix(schema.getTargetNamespace());
         for (XmlSchemaObject item : schema.getItems()) {
@@ -316,7 +314,7 @@ public class SchemaConverterInstance {
                 XmlSchema externalSchema = external.getSchema();
                 allSchema.add(externalSchema);
             } else if (external instanceof XmlSchemaRedefine) {
-                LOGGER.debug("Found XmlSchemaRedefine node, ignoring.");
+                logger.atFine().log("Found XmlSchemaRedefine node, ignoring.");
             }
         }
 

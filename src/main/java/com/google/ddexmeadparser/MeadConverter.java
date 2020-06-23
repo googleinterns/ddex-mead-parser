@@ -16,13 +16,13 @@ import java.io.StringReader;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.google.common.flogger.FluentLogger;
 
 /** The type Mead converter. */
 public class MeadConverter {
   /** The Logger. */
-  static final Logger LOGGER = LoggerFactory.getLogger(MeadConverter.class);
+  private static final FluentLogger logger = FluentLogger.forEnclosingClass();
+
 
   /**
    * Convert message.
@@ -90,7 +90,7 @@ public class MeadConverter {
             if (child.getNodeType() == Node.ELEMENT_NODE) {
                 Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName(CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, child.getNodeName()));
                 if (field != null) {
-                    LOGGER.debug("Handling field: " + field.getFullName());
+                    logger.atFine().log("Handling field: " + field.getFullName());
                     Object content = handleNode(document, child, field, messageBuilder);
                     if (field.isRepeated()) {
                         messageBuilder.addRepeatedField(field, content);
@@ -98,7 +98,7 @@ public class MeadConverter {
                         messageBuilder.setField(field, content);
                     }
                 } else {
-                    LOGGER.error("Unexpected field. Skipping " + child.getNodeName() + " in " + node.getNodeName());
+                    logger.atWarning().log("Unexpected field. Skipping " + child.getNodeName() + " in " + node.getNodeName());
                 }
             }
         }
@@ -189,7 +189,7 @@ public class MeadConverter {
         String textContent = node.getTextContent();
         switch (fieldType) {
             case ENUM:
-                LOGGER.error("Encountered unexpected enum field: " + field.getFullName());
+                logger.atWarning().log("Encountered unexpected enum field: " + field.getFullName());
                 return null;
             case BOOLEAN:
                 return Boolean.parseBoolean(textContent);

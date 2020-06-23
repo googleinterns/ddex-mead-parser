@@ -10,13 +10,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.google.common.flogger.FluentLogger;
 
 /** The type Ddex mead parser. */
 public class DdexMeadParser {
-  static final Logger LOGGER = LoggerFactory.getLogger(DdexMeadParser.class);
-  private final DdexMeadParserOptions runtimeOptions;
+    private static final FluentLogger logger = FluentLogger.forEnclosingClass();
+    private final DdexMeadParserOptions runtimeOptions;
 
   /**
    * The entry point of application.
@@ -76,14 +75,14 @@ public class DdexMeadParser {
    * @throws InvalidOptionsException the invalid options exception
    */
   public void parseMead() throws MeadConversionException, InvalidOptionsException {
-        LOGGER.info("Started mead message CONVERSION on file: " + runtimeOptions.inputFile.getName());
+        logger.atInfo().log("Started mead message CONVERSION on file: " + runtimeOptions.inputFile.getName());
         Document document = getDocument(runtimeOptions.inputFile);
 
         MeadConverter meadConverter = new MeadConverter();
         Message message = meadConverter.convert(document);
 
         // Write output proto message files
-        LOGGER.debug(message.toString());
+        logger.atInfo().log(message.toString());
     }
 
   /**
@@ -93,7 +92,7 @@ public class DdexMeadParser {
    * @throws InvalidOptionsException the invalid options exception
    */
   public void parseSchema() throws SchemaConversionException, InvalidOptionsException {
-        LOGGER.info("Started schema PARSE on file: " + runtimeOptions.inputFile.getName());
+        logger.atInfo().log("Started schema PARSE on file: " + runtimeOptions.inputFile.getName());
         StreamSource xsdFile = getStreamSource(runtimeOptions.inputFile);
 
         SchemaConverter schemaConverter = new SchemaConverter();
