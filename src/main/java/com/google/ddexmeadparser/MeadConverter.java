@@ -31,7 +31,7 @@ public class MeadConverter {
    * @return the message
    * @throws MeadConversionException the mead conversion exception
    */
-  public Message convert(Document document) throws MeadConversionException {
+public Message convert(Document document) throws MeadConversionException {
         Message.Builder messageBuilder = MeadBuilderResolver.getBuilder(document);
         mergeRoot(document, messageBuilder);
         return messageBuilder.build();
@@ -44,7 +44,7 @@ public class MeadConverter {
    * @return the message
    * @throws MeadConversionException the mead conversion exception
    */
-  public Message convert(String xmlString) throws MeadConversionException {
+public Message convert(String xmlString) throws MeadConversionException {
         try {
             InputSource xmlInputSource = new InputSource(new StringReader(xmlString));
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlInputSource);
@@ -66,7 +66,7 @@ public class MeadConverter {
    * @return the root node
    * @throws MeadConversionException the mead conversion exception
    */
-  public static Node getRootNode(Document document) throws MeadConversionException {
+public static Node getRootNode(Document document) throws MeadConversionException {
         NodeList nodes = document.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
             if (nodes.item(i).getNodeType() == Node.ELEMENT_NODE) {

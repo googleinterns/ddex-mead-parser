@@ -25,7 +25,7 @@ public class SchemaConverterInstance {
    *
    * @param source the source
    */
-  public SchemaConverterInstance(StreamSource source) {
+public SchemaConverterInstance(StreamSource source) {
         schemaEntryMap = new SchemaEntryMap();
         namespaceMap = new SchemaNamespaceMap();
         inputXml = source;
@@ -37,7 +37,7 @@ public class SchemaConverterInstance {
    * @return the schema entry map
    * @throws SchemaConversionException the schema conversion exception
    */
-  public SchemaEntryMap convert() throws SchemaConversionException {
+public SchemaEntryMap convert() throws SchemaConversionException {
         populateEntryMap();
         return schemaEntryMap;
     }
@@ -59,7 +59,7 @@ public class SchemaConverterInstance {
    *
    * @throws SchemaConversionException the schema conversion exception
    */
-  public void populateEntryMap() throws SchemaConversionException {
+public void populateEntryMap() throws SchemaConversionException {
         XmlSchemaCollection schemaCol = new XmlSchemaCollection();
         XmlSchema inputSchema = schemaCol.read(inputXml);
 

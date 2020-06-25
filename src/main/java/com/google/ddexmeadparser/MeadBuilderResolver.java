@@ -19,7 +19,7 @@ public class MeadBuilderResolver {
      * @return the builder
      * @throws MeadConversionException the mead conversion exception
      */
-    public static Message.Builder getBuilder(Document document) throws MeadConversionException {
+public static Message.Builder getBuilder(Document document) throws MeadConversionException {
         Node root = MeadConverter.getRootNode(document);
         int versionNumber = getMeadVersionNumber(root);
         int majorVersionNumber = getMeadMajorVersionNumber(root);

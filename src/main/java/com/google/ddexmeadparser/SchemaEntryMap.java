@@ -14,6 +14,7 @@ public class SchemaEntryMap {
   /** The Version. */
   int version;
 
+  /** The Import registry. */
   SchemaImportRegistry importRegistry;
 
   /** Instantiates a new Schema entry map. */
@@ -99,6 +100,11 @@ public class SchemaEntryMap {
     return namespacePrefixEntryMap;
   }
 
+  /**
+   * Gets import registry.
+   *
+   * @return the import registry
+   */
   public SchemaImportRegistry getImportRegistry() {
     return importRegistry;
   }

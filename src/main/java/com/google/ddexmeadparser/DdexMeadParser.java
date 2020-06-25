@@ -24,7 +24,7 @@ public class DdexMeadParser {
    *
    * @param args the input arguments
    */
-  public static void main(String[] args) {
+public static void main(String[] args) {
         try {
             DdexMeadParser ddexMeadParser = new DdexMeadParser(args);
             ddexMeadParser.exec();
@@ -39,7 +39,7 @@ public class DdexMeadParser {
    * @param args the args
    * @throws InvalidOptionsException the invalid options exception
    */
-  public DdexMeadParser(String[] args) throws InvalidOptionsException {
+public DdexMeadParser(String[] args) throws InvalidOptionsException {
         Options commandOptions = buildCommandOptions();
         try {
             CommandLineParser commandParser = new DefaultParser();
@@ -61,7 +61,7 @@ public class DdexMeadParser {
    * @throws SchemaConversionException the schema conversion exception
    * @throws InvalidOptionsException the invalid options exception
    */
-  public void exec()
+public void exec()
       throws MeadConversionException, SchemaConversionException, InvalidOptionsException {
         if (runtimeOptions.inputType == DdexMeadParserOptions.inputTypeValue.MESSAGE) {
             parseMead();
@@ -76,7 +76,7 @@ public class DdexMeadParser {
    * @throws MeadConversionException the mead conversion exception
    * @throws InvalidOptionsException the invalid options exception
    */
-  public void parseMead() throws MeadConversionException, InvalidOptionsException {
+public void parseMead() throws MeadConversionException, InvalidOptionsException {
         logger.atInfo().log("Started mead message CONVERSION on file: " + runtimeOptions.inputFile.getName());
         Document document = getDocument(runtimeOptions.inputFile);
 
@@ -93,7 +93,7 @@ public class DdexMeadParser {
    * @throws SchemaConversionException the schema conversion exception
    * @throws InvalidOptionsException the invalid options exception
    */
-  public void parseSchema() throws SchemaConversionException, InvalidOptionsException {
+public void parseSchema() throws SchemaConversionException, InvalidOptionsException {
         logger.atInfo().log("Started schema PARSE on file: " + runtimeOptions.inputFile.getName());
         StreamSource xsdFile = getStreamSource(runtimeOptions.inputFile);
 

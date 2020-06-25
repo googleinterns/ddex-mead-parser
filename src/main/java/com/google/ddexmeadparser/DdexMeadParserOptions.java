@@ -6,13 +6,34 @@ import java.io.File;
  * Options for the DdexMeadParser set via command line.
  */
 public class DdexMeadParserOptions {
-    enum inputTypeValue {
-        MESSAGE,
-        SCHEMA
+    /**
+     * The enum Input type value.
+     */
+enum inputTypeValue {
+        /**
+         *Message input type value.
+         */
+MESSAGE,
+        /**
+         *Schema input type value.
+         */
+SCHEMA
     }
 
-    public File outputDirectory = null;
-    public File inputFile = null;
-    public boolean inputIsDirectory = false;
-    public inputTypeValue inputType = null;
+    /**
+     * The Output directory.
+     */
+public File outputDirectory = null;
+    /**
+     * The Input file.
+     */
+public File inputFile = null;
+    /**
+     * The Input is directory.
+     */
+public boolean inputIsDirectory = false;
+    /**
+     * The Input type.
+     */
+public inputTypeValue inputType = null;
 }

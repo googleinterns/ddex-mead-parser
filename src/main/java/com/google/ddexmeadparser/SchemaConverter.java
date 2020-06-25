@@ -11,7 +11,7 @@ public class SchemaConverter {
    * @return the schema entry map
    * @throws SchemaConversionException the schema conversion exception
    */
-  public SchemaEntryMap convert(StreamSource inputXml) throws SchemaConversionException {
+public SchemaEntryMap convert(StreamSource inputXml) throws SchemaConversionException {
         SchemaConverterInstance converterInstance = new SchemaConverterInstance(inputXml);
         return converterInstance.convert();
     }

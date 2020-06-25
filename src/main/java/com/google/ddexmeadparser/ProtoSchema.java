@@ -14,53 +14,52 @@ public class ProtoSchema {
     private String packageName;
     private int versionNumber;
     private final Map<String, String> schemaStringMap;
-    private List<String> namespaces;
     private SchemaImportRegistry importRegistry;
 
-    /**
-     * Instantiates a new Proto schema.
-     *
-     * @param entryMap the entry map
-     * @throws SchemaConversionException the schema conversion exception
-     */
-    public ProtoSchema(SchemaEntryMap entryMap) throws SchemaConversionException {
+  /**
+   * Instantiates a new Proto schema.
+   *
+   * @param entryMap the entry map
+   * @throws SchemaConversionException the schema conversion exception
+   */
+  public ProtoSchema(SchemaEntryMap entryMap) throws SchemaConversionException {
         schemaStringMap = new HashMap<>();
         serialize(entryMap);
     }
 
-    /**
-     * Gets root namespace.
-     *
-     * @return the root namespace
-     */
-    public String getRootNamespace() {
+  /**
+   * Gets root namespace.
+   *
+   * @return the root namespace
+   */
+  public String getRootNamespace() {
         return rootNamespace;
     }
 
-    /**
-     * Gets package name.
-     *
-     * @return the package name
-     */
-    public String getPackageName() {
+  /**
+   * Gets package name.
+   *
+   * @return the package name
+   */
+  public String getPackageName() {
         return packageName;
     }
 
-    /**
-     * Gets version number.
-     *
-     * @return the version number
-     */
-    public int getVersionNumber() {
+  /**
+   * Gets version number.
+   *
+   * @return the version number
+   */
+  public int getVersionNumber() {
         return versionNumber;
     }
 
-    /**
-     * Gets schema string.
-     *
-     * @return the schema string
-     */
-    public Map<String, String> getSchemaStringMap() {
+  /**
+   * Gets schema string.
+   *
+   * @return the schema string
+   */
+  public Map<String, String> getSchemaStringMap() {
         return schemaStringMap;
     }
 
@@ -69,12 +68,11 @@ public class ProtoSchema {
         rootNamespace = entryMap.getRootNamespacePrefix();
         packageName = rootNamespace + versionNumber;
 
-        namespaces =  entryMap.getNamespacePrefixes();
+        List<String> namespaces = entryMap.getNamespacePrefixes();
         importRegistry = entryMap.getImportRegistry();
 
         for (String namespace : namespaces) {
             List<SchemaAbstractEntry> entries = entryMap.getNamespacePrefixEntryMap().get(namespace);
-
             schemaStringMap.put(namespace, serializeNamespace(entries, namespace));
         }
     }
@@ -88,22 +86,13 @@ public class ProtoSchema {
                 .append(namespace)
                 .append(", version ")
                 .append(packageName)
-                .append(" */\n\n");
+                .append(" */\n");
+
         entries.sort(Comparator.comparing(SchemaAbstractEntry::getTitle));
 
         namespaceStringBuilder.append("syntax = \"proto2\";\n");
         namespaceStringBuilder.append("package ").append(packageName).append(".").append(namespace).append(";\n\n");
-
-        List<String> imports = importRegistry.getImportsForNamespace(namespace);
-        if (imports != null) {
-            for (String toImport : imports) {
-                if (!toImport.equals(rootNamespace) && !toImport.equals(namespace)) {
-                    namespaceStringBuilder.append("import \"").append(toImport).append(".proto\";\n");
-                }
-            }
-            namespaceStringBuilder.append('\n');
-        }
-
+        namespaceStringBuilder.append(serializeImports(namespace));
 
         for (SchemaAbstractEntry entry : entries) {
             if (entry instanceof SchemaEnumEntry) {
@@ -112,7 +101,22 @@ public class ProtoSchema {
                 namespaceStringBuilder.append(serializeMessage((SchemaMessageEntry) entry, namespace));
             }
         }
+
         return namespaceStringBuilder.toString();
+    }
+
+    private String serializeImports(String namespace) {
+        StringBuilder importStringBuilder = new StringBuilder();
+        List<String> imports = importRegistry.getImportsForNamespace(namespace);
+        if (imports != null) {
+            for (String toImport : imports) {
+                if (!toImport.equals(rootNamespace) && !toImport.equals(namespace)) {
+                    importStringBuilder.append("import \"").append(toImport).append(".proto\";\n");
+                }
+            }
+            importStringBuilder.append('\n');
+        }
+        return importStringBuilder.toString();
     }
 
     private String serializeEnum(SchemaEnumEntry entry, String prefix) {

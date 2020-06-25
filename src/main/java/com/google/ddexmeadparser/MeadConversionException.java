@@ -7,7 +7,7 @@ public class MeadConversionException extends Exception {
    *
    * @param message the message
    */
-  public MeadConversionException(String message) {
+public MeadConversionException(String message) {
         super(message);
     }
   /**
@@ -16,7 +16,7 @@ public class MeadConversionException extends Exception {
    * @param message the message
    * @param root the root
    */
-  public MeadConversionException(String message, Exception root) {
+public MeadConversionException(String message, Exception root) {
         super(message, root);
     }
 }

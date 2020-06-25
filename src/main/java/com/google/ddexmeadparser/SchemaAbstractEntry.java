@@ -11,10 +11,19 @@ import java.util.Map;
 
 /** The type Schema abstract entry. */
 public abstract class SchemaAbstractEntry implements SchemaAnnotated {
+  /** The Entry title. */
   String entryTitle;
+
+  /** The Entry namespace prefix. */
   String entryNamespacePrefix;
+
+  /** The Entry annotation. */
   String entryAnnotation;
+
+  /** The Entry fields. */
   Map<String, SchemaField> entryFields;
+
+  /** The Entry is extension. */
   boolean entryIsExtension;
 
   /**
