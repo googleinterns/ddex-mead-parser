@@ -9,6 +9,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.common.flogger.FluentLogger;
 
@@ -107,15 +109,19 @@ public class DdexMeadParser {
     private void writeSchema(ProtoSchema schema) throws SchemaConversionException {
         String rootNamespace = schema.getRootNamespace();
         String packageName = schema.getPackageName();
-        File file = new File("./src/main/proto/" + rootNamespace + "/" + packageName + "/" + rootNamespace + ".proto");
-        file.getParentFile().mkdirs();
 
-        try {
-            FileWriter writer = new FileWriter(file, false);
-            writer.write(schema.getSchemaString());
-            writer.close();
-        } catch (IOException e) {
-            throw new SchemaConversionException("Could not write schema to file.", e);
+        List<String> namespaces = new ArrayList<>(schema.getSchemaStringMap().keySet());
+        for (String namespace : namespaces) {
+            File file = new File("./src/main/proto/" + rootNamespace + "/" + packageName + "/" + namespace + ".proto");
+            file.getParentFile().mkdirs();
+
+            try {
+                FileWriter writer = new FileWriter(file, false);
+                writer.write(schema.getSchemaStringMap().get(namespace));
+                writer.close();
+            } catch (IOException e) {
+                throw new SchemaConversionException("Could not write schema to file.", e);
+            }
         }
     }
 

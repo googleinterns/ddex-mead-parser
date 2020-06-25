@@ -4,85 +4,106 @@ import com.google.common.base.CaseFormat;
 
 import javax.xml.namespace.QName;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /** The type Proto schema. */
 public class ProtoSchema {
     private String rootNamespace;
     private String packageName;
     private int versionNumber;
-    private final String schemaString;
+    private final Map<String, String> schemaStringMap;
+    private List<String> namespaces;
+    private SchemaImportRegistry importRegistry;
 
-  /**
-   * Instantiates a new Proto schema.
-   *
-   * @param entryMap the entry map
-   * @throws SchemaConversionException the schema conversion exception
-   */
-  public ProtoSchema(SchemaEntryMap entryMap) throws SchemaConversionException {
-        schemaString = serialize(entryMap);
+    /**
+     * Instantiates a new Proto schema.
+     *
+     * @param entryMap the entry map
+     * @throws SchemaConversionException the schema conversion exception
+     */
+    public ProtoSchema(SchemaEntryMap entryMap) throws SchemaConversionException {
+        schemaStringMap = new HashMap<>();
+        serialize(entryMap);
     }
 
-  /**
-   * Gets root namespace.
-   *
-   * @return the root namespace
-   */
-  public String getRootNamespace() {
+    /**
+     * Gets root namespace.
+     *
+     * @return the root namespace
+     */
+    public String getRootNamespace() {
         return rootNamespace;
     }
 
-  /**
-   * Gets package name.
-   *
-   * @return the package name
-   */
-  public String getPackageName() {
+    /**
+     * Gets package name.
+     *
+     * @return the package name
+     */
+    public String getPackageName() {
         return packageName;
     }
 
-  /**
-   * Gets version number.
-   *
-   * @return the version number
-   */
-  public int getVersionNumber() {
+    /**
+     * Gets version number.
+     *
+     * @return the version number
+     */
+    public int getVersionNumber() {
         return versionNumber;
     }
 
-  /**
-   * Gets schema string.
-   *
-   * @return the schema string
-   */
-  public String getSchemaString() {
-        return schemaString;
+    /**
+     * Gets schema string.
+     *
+     * @return the schema string
+     */
+    public Map<String, String> getSchemaStringMap() {
+        return schemaStringMap;
     }
 
-    private String serialize(SchemaEntryMap entryMap) throws SchemaConversionException {
+    private void serialize(SchemaEntryMap entryMap) throws SchemaConversionException {
         versionNumber = entryMap.getVersion();
         rootNamespace = entryMap.getRootNamespacePrefix();
         packageName = rootNamespace + versionNumber;
 
-        StringBuilder schemaStringBuilder = new StringBuilder();
-        schemaStringBuilder.append("/* Generated schema for ")
-                .append(rootNamespace).append(", version ").append(versionNumber)
-                .append(" */\n\n");
-        schemaStringBuilder.append("syntax = \"proto2\";\n");
-        schemaStringBuilder.append("package ").append(packageName).append(";\n\n");
-        List<String> namespaces = entryMap.getNamespacePrefixes();
+        namespaces =  entryMap.getNamespacePrefixes();
+        importRegistry = entryMap.getImportRegistry();
 
         for (String namespace : namespaces) {
             List<SchemaAbstractEntry> entries = entryMap.getNamespacePrefixEntryMap().get(namespace);
-            schemaStringBuilder.append(serializeNamespace(entries, namespace));
-        }
 
-        return schemaStringBuilder.toString();
+            schemaStringMap.put(namespace, serializeNamespace(entries, namespace));
+        }
     }
 
-    private String serializeNamespace(List<SchemaAbstractEntry> entries, String namespace) throws SchemaConversionException {
+    private String serializeNamespace(List<SchemaAbstractEntry> entries, String namespace)
+            throws SchemaConversionException {
+
         StringBuilder namespaceStringBuilder = new StringBuilder();
+        namespaceStringBuilder
+                .append("/* Generated schema for ")
+                .append(namespace)
+                .append(", version ")
+                .append(packageName)
+                .append(" */\n\n");
         entries.sort(Comparator.comparing(SchemaAbstractEntry::getTitle));
+
+        namespaceStringBuilder.append("syntax = \"proto2\";\n");
+        namespaceStringBuilder.append("package ").append(packageName).append(".").append(namespace).append(";\n\n");
+
+        List<String> imports = importRegistry.getImportsForNamespace(namespace);
+        if (imports != null) {
+            for (String toImport : imports) {
+                if (!toImport.equals(rootNamespace) && !toImport.equals(namespace)) {
+                    namespaceStringBuilder.append("import \"").append(toImport).append(".proto\";\n");
+                }
+            }
+            namespaceStringBuilder.append('\n');
+        }
+
 
         for (SchemaAbstractEntry entry : entries) {
             if (entry instanceof SchemaEnumEntry) {
@@ -97,20 +118,26 @@ public class ProtoSchema {
     private String serializeEnum(SchemaEnumEntry entry, String prefix) {
         StringBuilder enumStringBuilder = new StringBuilder();
         enumStringBuilder.append(serializeAnnotation(entry));
-        enumStringBuilder.append("message ").append(prefix).append("_").append(entry.getTitle()).append(" {\n");
+        enumStringBuilder
+                .append("message ")
+                .append(entry.getTitle())
+                .append(" {\n");
         enumStringBuilder.append("\toptional string enum_value = 1;\n");
         enumStringBuilder.append("}\n\n");
         return enumStringBuilder.toString();
     }
 
-    private String serializeMessage(SchemaMessageEntry entry, String prefix) throws SchemaConversionException {
+    private String serializeMessage(SchemaMessageEntry entry, String prefix)
+            throws SchemaConversionException {
         StringBuilder messageStringBuilder = new StringBuilder();
         messageStringBuilder.append(serializeAnnotation(entry));
-        messageStringBuilder.append("message ").append(prefix).append("_").append(entry.getTitle()).append(" {\n");
+        messageStringBuilder
+                .append("message ")
+                .append(entry.getTitle())
+                .append(" {\n");
         messageStringBuilder.append(serializeFieldSet(entry));
         messageStringBuilder.append("}\n\n");
         return messageStringBuilder.toString();
-
     }
 
     private String serializeFieldSet(SchemaMessageEntry entry) throws SchemaConversionException {
@@ -129,7 +156,9 @@ public class ProtoSchema {
                 fieldSetStringBuilder.append("optional ");
             }
             fieldSetStringBuilder.append(resolveType(entry, field)).append(' ');
-            String fieldName = sanitizeProtoName(CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getFieldValue()));
+            String fieldName =
+                    sanitizeProtoName(
+                            CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getFieldValue()));
             fieldSetStringBuilder.append(fieldName).append(" = ").append(numerator).append(";\n");
             numerator++;
         }
@@ -151,8 +180,10 @@ public class ProtoSchema {
 
         if (field.isXmlType()) {
             type = convertXmlTypeToProto(fieldType.getLocalPart());
+        } else if (!fieldType.getPrefix().equals(entry.getNamespacePrefix())) {
+            type = packageName + "." + fieldType.getPrefix() + "." + fieldType.getLocalPart();
         } else {
-            type = fieldType.getPrefix() + "_" + fieldType.getLocalPart();
+            type = fieldType.getLocalPart();
         }
 
         return type;

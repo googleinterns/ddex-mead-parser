@@ -28,7 +28,7 @@ public class MeadBuilderResolver {
         if (majorVersionNumber == 4) {
             return ern42.Ern.ern_NewReleaseMessage.newBuilder();
         } else if (majorVersionNumber == 3) {
-            return ern381.Ern.ern_NewReleaseMessage.newBuilder();
+            return ern351.ern.Ern.NewReleaseMessage.newBuilder();
         } else {
             throw new MeadConversionException(
                     "Unsupported message version " + versionNumber + ". Temporarily blocking issue");
