@@ -26,10 +26,12 @@ public class SchemaField implements SchemaAnnotated {
    * @param repeated the repeated
    */
   public SchemaField(String value, QName qName, boolean repeated) {
-        fieldValue = value;
-        fieldQName = Objects.requireNonNullElseGet(qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
-        fieldIsRepeated = repeated;
-    }
+    fieldValue = value;
+    fieldQName =
+        Objects.requireNonNullElseGet(
+            qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
+    fieldIsRepeated = repeated;
+  }
 
   /**
    * Instantiates a new Schema field.
@@ -38,10 +40,12 @@ public class SchemaField implements SchemaAnnotated {
    * @param qName the q name
    */
   public SchemaField(String value, QName qName) {
-        fieldValue = value;
-        fieldQName = Objects.requireNonNullElseGet(qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
-        fieldIsRepeated = false;
-    }
+    fieldValue = value;
+    fieldQName =
+        Objects.requireNonNullElseGet(
+            qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
+    fieldIsRepeated = false;
+  }
 
   /**
    * Instantiates a new Schema field.
@@ -50,32 +54,34 @@ public class SchemaField implements SchemaAnnotated {
    */
   // Default string QName
   public SchemaField(String value) {
-        fieldValue = value;
-        fieldQName = new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
-        fieldIsRepeated = false;
-        fieldAnnotation = null;
+    fieldValue = value;
+    fieldQName = new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
+    fieldIsRepeated = false;
+    fieldAnnotation = null;
+  }
+
+  public void setAnnotation(String annotation) {
+    fieldAnnotation = annotation;
+  }
+
+  public void setAnnotation(XmlSchemaAnnotation annotation) {
+    StringBuilder annotationStringBuilder = new StringBuilder();
+    if (annotation == null || annotation.getItems() == null) return;
+
+    for (int i = 0; i < annotation.getItems().size(); i++) {
+      XmlSchemaDocumentation documentation = (XmlSchemaDocumentation) annotation.getItems().get(i);
+      NodeList markup = documentation.getMarkup();
+      for (int j = 0; j < markup.getLength(); j++) {
+        annotationStringBuilder.append(markup.item(j).getTextContent());
+        if (j != markup.getLength() - 1) annotationStringBuilder.append('\n');
+      }
     }
+    fieldAnnotation = annotationStringBuilder.toString();
+  }
 
-    public void setAnnotation(String annotation) {
-        fieldAnnotation = annotation;
-    }
-
-    public void setAnnotation(XmlSchemaAnnotation annotation) {
-        StringBuilder annotationStringBuilder = new StringBuilder();
-        if (annotation == null || annotation.getItems() == null) return;
-
-        for (int i = 0; i < annotation.getItems().size(); i++) {
-            XmlSchemaDocumentation documentation = (XmlSchemaDocumentation) annotation.getItems().get(i);
-            NodeList markup = documentation.getMarkup();
-            for (int j = 0; j < markup.getLength(); j++) {
-                annotationStringBuilder.append(markup.item(j).getTextContent());
-                if (j != markup.getLength() - 1) annotationStringBuilder.append('\n');
-            }
-        }
-        fieldAnnotation = annotationStringBuilder.toString();
-    }
-
-    public String getAnnotation() { return fieldAnnotation; }
+  public String getAnnotation() {
+    return fieldAnnotation;
+  }
 
   /**
    * Gets field value.
@@ -83,8 +89,8 @@ public class SchemaField implements SchemaAnnotated {
    * @return the field value
    */
   public String getFieldValue() {
-        return fieldValue;
-    }
+    return fieldValue;
+  }
 
   /**
    * Gets field type.
@@ -92,8 +98,8 @@ public class SchemaField implements SchemaAnnotated {
    * @return the field type
    */
   public QName getFieldType() {
-        return fieldQName;
-    }
+    return fieldQName;
+  }
 
   /**
    * Is repeated boolean.
@@ -101,7 +107,8 @@ public class SchemaField implements SchemaAnnotated {
    * @return the boolean
    */
   public boolean isRepeated() {
-    return fieldIsRepeated; }
+    return fieldIsRepeated;
+  }
 
   /**
    * Is xml type boolean.
@@ -109,6 +116,6 @@ public class SchemaField implements SchemaAnnotated {
    * @return the boolean
    */
   public boolean isXmlType() {
-        return fieldQName.getPrefix().equals("xs");
-    }
+    return fieldQName.getPrefix().equals("xs");
+  }
 }

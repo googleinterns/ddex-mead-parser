@@ -7,14 +7,14 @@ import java.util.Map;
 
 /** The type Schema namespace map. */
 public class SchemaNamespaceMap {
-    private final Map<String, String> prefixToUriMap;
-    private final Map<String, String> uriToPrefixMap;
+  private final Map<String, String> prefixToUriMap;
+  private final Map<String, String> uriToPrefixMap;
 
   /** Instantiates a new Schema namespace map. */
   public SchemaNamespaceMap() {
-        prefixToUriMap = new HashMap<>();
-        uriToPrefixMap = new HashMap<>();
-    }
+    prefixToUriMap = new HashMap<>();
+    uriToPrefixMap = new HashMap<>();
+  }
 
   /**
    * Populate from context.
@@ -22,11 +22,11 @@ public class SchemaNamespaceMap {
    * @param prefixList the prefix list
    */
   public void populateFromContext(NamespacePrefixList prefixList) {
-        for (String prefix : prefixList.getDeclaredPrefixes()) {
-            prefixToUriMap.put(prefix, prefixList.getNamespaceURI(prefix));
-            uriToPrefixMap.put(prefixList.getNamespaceURI(prefix), prefix);
-        }
+    for (String prefix : prefixList.getDeclaredPrefixes()) {
+      prefixToUriMap.put(prefix, prefixList.getNamespaceURI(prefix));
+      uriToPrefixMap.put(prefixList.getNamespaceURI(prefix), prefix);
     }
+  }
 
   /**
    * Gets prefix.
@@ -35,13 +35,13 @@ public class SchemaNamespaceMap {
    * @return the prefix
    */
   public String getPrefix(String assumedUri) {
-        if (uriToPrefixMap.containsKey(assumedUri)) {
-            return uriToPrefixMap.get(assumedUri);
-        } else if (prefixToUriMap.containsKey(assumedUri)) {
-            return assumedUri;
-        }
-        return "";
+    if (uriToPrefixMap.containsKey(assumedUri)) {
+      return uriToPrefixMap.get(assumedUri);
+    } else if (prefixToUriMap.containsKey(assumedUri)) {
+      return assumedUri;
     }
+    return "";
+  }
 
   /**
    * Gets uri.
@@ -50,11 +50,11 @@ public class SchemaNamespaceMap {
    * @return the uri
    */
   public String getUri(String assumedPrefix) {
-        if (prefixToUriMap.containsKey(assumedPrefix)) {
-            return prefixToUriMap.get(assumedPrefix);
-        } else if (uriToPrefixMap.containsKey(assumedPrefix)) {
-            return assumedPrefix;
-        }
-        return "";
+    if (prefixToUriMap.containsKey(assumedPrefix)) {
+      return prefixToUriMap.get(assumedPrefix);
+    } else if (uriToPrefixMap.containsKey(assumedPrefix)) {
+      return assumedPrefix;
     }
+    return "";
+  }
 }

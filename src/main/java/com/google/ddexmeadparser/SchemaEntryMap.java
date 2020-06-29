@@ -8,7 +8,7 @@ import java.util.Map;
 /** The type Schema entry map. */
 public class SchemaEntryMap {
   /** The Namespace prefix entry map. */
-  Map<String, List<SchemaAbstractEntry>> namespacePrefixEntryMap;
+  Map<String, Map<String, SchemaAbstractEntry>> namespacePrefixEntryMap;
   /** The Root namespace prefix. */
   String rootNamespacePrefix;
   /** The Version. */
@@ -31,9 +31,9 @@ public class SchemaEntryMap {
   public void addEntry(SchemaAbstractEntry entry) {
     String prefix = entry.getNamespacePrefix();
     if (!namespacePrefixEntryMap.containsKey(prefix)) {
-      namespacePrefixEntryMap.put(prefix, new ArrayList<>());
+      namespacePrefixEntryMap.put(prefix, new HashMap<>());
     }
-    namespacePrefixEntryMap.get(prefix).add(entry);
+    namespacePrefixEntryMap.get(prefix).put(entry.getTitle(), entry);
     registerImportsFromEntry(entry);
   }
 
@@ -96,7 +96,7 @@ public class SchemaEntryMap {
    *
    * @return the namespace prefix entry map
    */
-  public Map<String, List<SchemaAbstractEntry>> getNamespacePrefixEntryMap() {
+  public Map<String, Map<String, SchemaAbstractEntry>> getNamespacePrefixEntryMap() {
     return namespacePrefixEntryMap;
   }
 

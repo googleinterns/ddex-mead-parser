@@ -33,12 +33,12 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    * @param namespacePrefix the namespace prefix
    */
   public SchemaAbstractEntry(String title, String namespacePrefix) {
-        entryTitle = title;
-        entryNamespacePrefix = namespacePrefix;
-        entryFields = new HashMap<>();
-        entryIsExtension = false;
-        entryAnnotation = "";
-    }
+    entryTitle = title;
+    entryNamespacePrefix = namespacePrefix;
+    entryFields = new HashMap<>();
+    entryIsExtension = false;
+    entryAnnotation = "";
+  }
 
   /**
    * Add field.
@@ -46,34 +46,34 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    * @param entryField the entry field
    */
   public void addField(SchemaField entryField) {
-        entryFields.put(entryField.getFieldValue(), entryField);
-        if (entryField.getFieldValue().equals("ext_value")) {
-            entryIsExtension = true;
-        }
+    entryFields.put(entryField.getFieldValue(), entryField);
+    if (entryField.getFieldValue().equals("ext_value")) {
+      entryIsExtension = true;
     }
+  }
 
-    public void setAnnotation(String annotation) {
-        entryAnnotation = annotation;
+  public void setAnnotation(String annotation) {
+    entryAnnotation = annotation;
+  }
+
+  public void setAnnotation(XmlSchemaAnnotation annotation) {
+    StringBuilder annotationStringBuilder = new StringBuilder();
+    if (annotation == null || annotation.getItems() == null) return;
+
+    for (int i = 0; i < annotation.getItems().size(); i++) {
+      XmlSchemaDocumentation documentation = (XmlSchemaDocumentation) annotation.getItems().get(i);
+      NodeList markup = documentation.getMarkup();
+      for (int j = 0; j < markup.getLength(); j++) {
+        annotationStringBuilder.append(markup.item(j).getTextContent());
+        if (j != markup.getLength() - 1) annotationStringBuilder.append('\n');
+      }
     }
+    entryAnnotation = annotationStringBuilder.toString();
+  }
 
-    public void setAnnotation(XmlSchemaAnnotation annotation) {
-        StringBuilder annotationStringBuilder = new StringBuilder();
-        if (annotation == null || annotation.getItems() == null) return;
-
-        for (int i = 0; i < annotation.getItems().size(); i++) {
-            XmlSchemaDocumentation documentation = (XmlSchemaDocumentation) annotation.getItems().get(i);
-            NodeList markup = documentation.getMarkup();
-            for (int j = 0; j < markup.getLength(); j++) {
-                annotationStringBuilder.append(markup.item(j).getTextContent());
-                if (j != markup.getLength() - 1) annotationStringBuilder.append('\n');
-            }
-        }
-        entryAnnotation = annotationStringBuilder.toString();
-    }
-
-    public String getAnnotation() {
-        return entryAnnotation;
-    }
+  public String getAnnotation() {
+    return entryAnnotation;
+  }
 
   /**
    * Gets title.
@@ -81,8 +81,8 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    * @return the title
    */
   public String getTitle() {
-        return entryTitle;
-    }
+    return entryTitle;
+  }
 
   /**
    * Gets namespace prefix.
@@ -90,8 +90,8 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    * @return the namespace prefix
    */
   public String getNamespacePrefix() {
-        return entryNamespacePrefix;
-    }
+    return entryNamespacePrefix;
+  }
 
   /**
    * Gets fields.
@@ -99,8 +99,17 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    * @return the fields
    */
   public List<SchemaField> getFields() {
-        return new ArrayList<>(entryFields.values());
-    }
+    return new ArrayList<>(entryFields.values());
+  }
+
+  /**
+   * Gets fields.
+   *
+   * @return the fields
+   */
+  public Map<String, SchemaField> getFieldMap() {
+    return entryFields;
+  }
 
   /**
    * Is extension boolean.
@@ -108,8 +117,8 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    * @return the boolean
    */
   public boolean isExtension() {
-        return entryIsExtension;
-    }
+    return entryIsExtension;
+  }
 
   /**
    * Is populated boolean.
@@ -117,8 +126,8 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    * @return the boolean
    */
   public boolean isPopulated() {
-        return entryFields.size() > 0;
-    }
+    return entryFields.size() > 0;
+  }
 
   /**
    * Is enum boolean.
@@ -126,8 +135,8 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    * @return the boolean
    */
   public boolean isEnum() {
-        return false;
-    }
+    return false;
+  }
 
   /**
    * Is message boolean.
@@ -135,6 +144,6 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    * @return the boolean
    */
   public boolean isMessage() {
-        return false;
-    }
+    return false;
+  }
 }

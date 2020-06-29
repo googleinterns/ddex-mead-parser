@@ -12,8 +12,8 @@ public class SchemaImportRegistry {
 
   /** Instantiates a new Schema import registry. */
   public SchemaImportRegistry() {
-        schemaImportMap = new HashMap<>();
-    }
+    schemaImportMap = new HashMap<>();
+  }
 
   /**
    * Register import.
@@ -22,11 +22,11 @@ public class SchemaImportRegistry {
    * @param importNamespace the import namespace
    */
   public void registerImport(String currentNamespace, String importNamespace) {
-        if (currentNamespace.equals(importNamespace) || importNamespace.equals("xs")) return;
+    if (currentNamespace.equals(importNamespace) || importNamespace.equals("xs")) return;
 
-        schemaImportMap.computeIfAbsent(currentNamespace, k -> new HashMap<>());
-        schemaImportMap.get(currentNamespace).put(importNamespace, true);
-    }
+    schemaImportMap.computeIfAbsent(currentNamespace, k -> new HashMap<>());
+    schemaImportMap.get(currentNamespace).put(importNamespace, true);
+  }
 
   /**
    * Gets imports for namespace.
@@ -35,8 +35,8 @@ public class SchemaImportRegistry {
    * @return the imports for namespace
    */
   public List<String> getImportsForNamespace(String namespace) {
-        Map<String, Boolean> importSet = schemaImportMap.get(namespace);
-        if (importSet == null) return null;
-        return new ArrayList<>(importSet.keySet());
-    }
+    Map<String, Boolean> importSet = schemaImportMap.get(namespace);
+    if (importSet == null) return null;
+    return new ArrayList<>(importSet.keySet());
+  }
 }
