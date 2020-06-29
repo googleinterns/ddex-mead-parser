@@ -1,0 +1,764 @@
+/* Generated schema for avs, version ern381 */
+syntax = "proto2";
+package ern381.avs;
+
+/* SchemaConverter generated enum replacement message type */
+message AccessLimitation {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message AdministratingRecordCompanyRole {
+	optional string enum_value = 1;
+}
+
+message AllTerritoryCode {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ArtistRole {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message AudioCodecType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message BinaryDataType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message BusinessContributorRole {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated base level auto field wrapper */
+message CalculationType {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CarrierType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CdProtectionType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CharacterType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CodingType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CollectionType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CommercialModelType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CompilationType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ContainerFormat {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CreationType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CreativeContributorRole {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CueOrigin {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CueSheetType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message CueUseType {
+	optional string enum_value = 1;
+}
+
+message CurrencyCode {
+	optional string auto_value = 1;
+}
+
+message CurrentTerritoryCode {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DataMismatchResponseType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DataMismatchStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DataMismatchType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DdexTerritoryCode {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DeductionRateType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DeliveryActionType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DeliveryMessageType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DeprecatedCurrencyCode {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DeprecatedIsoTerritoryCode {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DigitizationMode {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DisputeReason {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DistributionChannelType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DpidStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DrmEnforcementType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DrmPlatformType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message DsrMessageType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message EquipmentType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ErnMessageType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ErncFileStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ErncProposedActionType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ExpressionType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ExternallyLinkedResourceType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message FileStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message FingerprintAlgorithmType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message GoverningAgreementType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message HashSumAlgorithmType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ImageCodecType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ImageType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message InvoiceAvailabilityStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message IsoCurrencyCode {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message IsoLanguageCode {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message IsoTerritoryCode {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message LabelNameType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message LicenseOrClaimRefusalReason {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message LicenseOrClaimRequestUpdateReason {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message LicenseOrClaimUpdateReason {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message LicenseRejectionReason {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message LicenseStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message LicensingProcessStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message LodFileStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message LodProposedActionType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MembershipType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MessageActionType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MessageContentRevenueType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MessageContextType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MessageControlType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MidiType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MlcMessageType {
+	optional string enum_value = 1;
+}
+
+message MusicalWorkContributorRole {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MusicalWorkRightsClaimType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MusicalWorkType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MwlCaCMessageInBatchType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message MwnMessageType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message NewReleaseMessageStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message OperatingSystemType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message OrderType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message PLineType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ParentalWarningType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated base level auto field wrapper */
+message PartyRelationshipType {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message PercentageType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message PriceInformationType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated base level auto field wrapper */
+message PriceRangeType {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated base level auto field wrapper */
+message PriceType {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message Priority {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ProductType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated base level auto field wrapper */
+message ProjectContributorRelationshipType {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message Purpose {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RateModificationType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RatingAgency {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ReasonType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RecipientRevenueType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RecordingMode {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RedeliveryReasonType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ReferenceUnit {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RelationalRelator {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ReleaseAvailabilityStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ReleaseRelationshipType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ReleaseResourceType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ReleaseType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ReportFormat {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ReportType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RequestReason {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RequestedActionType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ResourceContributorRole {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ResourceOmissionReason {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ResourceType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RevenueSourceType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated base level auto field wrapper */
+message RightShareRelationshipType {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RightShareType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RightsClaimPolicyType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RightsControllerRole {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RightsControllerType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RightsCoverage {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RoyaltyRateCalculationType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message RoyaltyRateType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message SalesReportAvailabilityStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message Sex {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated base level auto field wrapper */
+message SheetMusicCodecType {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated base level auto field wrapper */
+message SheetMusicType {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message SoftwareType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message SoundProcessorType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message SoundRecordingType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message SupplyChainStatus {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message TaxScope {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message TaxType {
+	optional string enum_value = 1;
+}
+
+message TerritoryCode {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message TerritoryCodeType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message TerritoryCodeTypeIncludingDeprecatedCodes {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message TextCodecType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message TextType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ThemeType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message TisTerritoryCode {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message TitleType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated base level auto field wrapper */
+message TrackContributorRelationshipType {
+	optional string auto_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message UnitOfBitRate {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message UnitOfConditionValue {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message UnitOfExtent {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message UnitOfFrameRate {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message UnitOfFrequency {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message UpdateIndicator {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message UseType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message UserInterfaceType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message ValueType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message VideoCodecType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message VideoContentType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message VideoDefinitionType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message VideoType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message VisualPerceptionType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message VocalType {
+	optional string enum_value = 1;
+}
+
+/* SchemaConverter generated enum replacement message type */
+message WsMessageStatus {
+	optional string enum_value = 1;
+}
+
