@@ -29,9 +29,7 @@ import java.util.stream.Collectors;
 
 import com.google.common.flogger.FluentLogger;
 
-/** The type Mead converter. */
 public class MessageParser {
-  /** The Logger. */
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
   public static Message parse(Document document, Message.Builder messageBuilder) throws MessageParseException {
