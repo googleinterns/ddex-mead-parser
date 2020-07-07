@@ -1,6 +1,7 @@
 ddexmeadparser.iml
 
 target/
+proto/
 .idea/
 output/
 

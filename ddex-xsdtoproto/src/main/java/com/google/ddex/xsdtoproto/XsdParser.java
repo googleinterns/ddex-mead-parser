@@ -33,8 +33,6 @@ import org.apache.ws.commons.schema.utils.NamespacePrefixList;
 import org.apache.ws.commons.schema.utils.XmlSchemaObjectBase;
 
 import javax.xml.namespace.QName;
-import javax.xml.transform.stream.StreamSource;
-import java.io.FileReader;
 import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -59,7 +57,7 @@ public class XsdParser {
     private final ProtoSchemaEntryMap protoSchemaEntryMap;
     private final XsdNamespaceMap namespaceMap;
     private final Reader inputXml;
-    private XsdParseReporter reporter;
+    private final XsdParseReporter reporter;
 
     public XsdParserInstance(Reader reader, XsdParseReporter xsdParseReporter) {
       protoSchemaEntryMap = new ProtoSchemaEntryMap();
@@ -100,7 +98,7 @@ public class XsdParser {
     }
 
     private void processSchema(XmlSchema schema) throws XsdParseException {
-      logger.atInfo().log("Processing schema: " + schema.getTargetNamespace());
+      reporter.addProcessedSchema(schema.getTargetNamespace());
 
       String nsPrefix = namespaceMap.getPrefix(schema.getTargetNamespace());
       for (XmlSchemaObject item : schema.getItems()) {
@@ -303,8 +301,7 @@ public class XsdParser {
           processParticle(content.getParticle(), entry, parent);
           entry.addField(new ProtoSchemaField("ext_value", content.getBaseTypeName()));
         } else {
-          throw new XsdParseException(
-                  "Unhandled content model: " + contentModel.getContent().getClass());
+          throw new XsdParseException("Unhandled content model: " + contentModel.getContent().getClass());
         }
       }
     }
@@ -344,7 +341,7 @@ public class XsdParser {
           XmlSchema externalSchema = external.getSchema();
           allSchema.add(externalSchema);
         } else if (external instanceof XmlSchemaRedefine) {
-          logger.atFine().log("Found XmlSchemaRedefine node, ignoring.");
+          reporter.addWarning("Found XmlSchemaRedefine node, ignoring.");
         }
       }
 

@@ -42,7 +42,7 @@ public class MessageParser {
   private static class MessageParserInstance {
     private final Reader inputXml;
     private final Message.Builder baseBuilder;
-    private MessageParseReporter reporter;
+    private final MessageParseReporter reporter;
 
     public MessageParserInstance(Reader reader, Message.Builder builder, MessageParseReporter messageParseReporter) {
       inputXml = reader;
@@ -96,7 +96,7 @@ public class MessageParser {
               messageBuilder.setField(field, content);
             }
           } else {
-            logger.atWarning().log("Unexpected field. Skipping " + child.getNodeName() + " in " + node.getNodeName());
+            reporter.addWarning("Unexpected field. Skipping " + child.getNodeName() + " in " + node.getNodeName());
           }
         }
       }
