@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /** The type Schema abstract entry. */
-public abstract class SchemaAbstractEntry implements SchemaAnnotated {
+public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   /** The Entry title. */
   String entryTitle;
 
@@ -21,7 +21,7 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
   String entryAnnotation;
 
   /** The Entry fields. */
-  Map<String, SchemaField> entryFields;
+  Map<String, ProtoSchemaField> entryFields;
 
   /** The Entry is extension. */
   boolean entryIsExtension;
@@ -32,7 +32,7 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    * @param title the title
    * @param namespacePrefix the namespace prefix
    */
-  public SchemaAbstractEntry(String title, String namespacePrefix) {
+  public ProtoSchemaAbstractEntry(String title, String namespacePrefix) {
     entryTitle = title;
     entryNamespacePrefix = namespacePrefix;
     entryFields = new HashMap<>();
@@ -45,7 +45,7 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    *
    * @param entryField the entry field
    */
-  public void addField(SchemaField entryField) {
+  public void addField(ProtoSchemaField entryField) {
     entryFields.put(entryField.getFieldValue(), entryField);
     if (entryField.getFieldValue().equals("ext_value")) {
       entryIsExtension = true;
@@ -98,7 +98,7 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    *
    * @return the fields
    */
-  public List<SchemaField> getFields() {
+  public List<ProtoSchemaField> getFields() {
     return new ArrayList<>(entryFields.values());
   }
 
@@ -107,7 +107,7 @@ public abstract class SchemaAbstractEntry implements SchemaAnnotated {
    *
    * @return the fields
    */
-  public Map<String, SchemaField> getFieldMap() {
+  public Map<String, ProtoSchemaField> getFieldMap() {
     return entryFields;
   }
 

@@ -7,14 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/** The type Schema set merger. */
-public class SchemaSetMerger {
+public class XsdSetMerger {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
-  /** The Schemas. */
-  Map<String, SchemaEntryMap> schemas;
+  Map<String, ProtoSchemaEntryMap> schemas;
 
-  /** Instantiates a new Schema set merger. */
-  public SchemaSetMerger() {
+  public XsdSetMerger() {
     schemas = new HashMap<>();
   }
 
@@ -25,18 +22,12 @@ public class SchemaSetMerger {
    */
   public void addSchema(ProtoSchema schema) {
     String versionAsString = Integer.toString(schema.getVersionNumber());
-    schemas.put(versionAsString, schema.getSchemaEntryMap());
+    schemas.put(versionAsString, schema.getProtoSchemaEntryMap());
   }
 
-  /**
-   * Merge schema definitions that have been added.
-   *
-   * @return the schema entry map
-   * @throws SchemaParseException the schema conversion exception
-   */
-  public ProtoSchema merge() throws SchemaParseException {
+  public ProtoSchema merge() throws XsdParseException {
     List<String> processingOrder = getProcessingOrder();
-    SchemaEntryMap workingEntryMap = schemas.get(processingOrder.get(0));
+    ProtoSchemaEntryMap workingEntryMap = schemas.get(processingOrder.get(0));
 
     if (processingOrder.size() == 1) {
       return new ProtoSchema(workingEntryMap);
@@ -49,20 +40,14 @@ public class SchemaSetMerger {
     return new ProtoSchema(workingEntryMap);
   }
 
-  /**
-   * Merges schema definition between current, and new version.
-   *
-   * @param workingEntryMap current definition - mutated in place
-   * @param nextEntryMap new updated entries to merge into current
-   * @throws SchemaParseException
-   */
-  private void mergeStep(SchemaEntryMap workingEntryMap, SchemaEntryMap nextEntryMap)
-      throws SchemaParseException {
+
+  private void mergeStep(ProtoSchemaEntryMap workingEntryMap, ProtoSchemaEntryMap nextEntryMap)
+      throws XsdParseException {
     if (!workingEntryMap
         .getNamespacePrefixEntryMap()
         .keySet()
         .containsAll(nextEntryMap.getNamespacePrefixEntryMap().keySet())) {
-      throw new SchemaParseException(
+      throw new XsdParseException(
           "Incompatible namespaces in schema merge. "
               + "\n A: "
               + workingEntryMap.getNamespacePrefixes()
@@ -74,42 +59,35 @@ public class SchemaSetMerger {
     workingEntryMap.setRootNamespacePrefix(nextEntryMap.getRootNamespacePrefix());
 
     for (String namespace : nextEntryMap.getNamespacePrefixes()) {
-      Map<String, SchemaAbstractEntry> oldEntries =
+      Map<String, ProtoSchemaAbstractEntry> oldEntries =
           workingEntryMap.getNamespacePrefixEntryMap().get(namespace);
-      Map<String, SchemaAbstractEntry> newEntries =
+      Map<String, ProtoSchemaAbstractEntry> newEntries =
           nextEntryMap.getNamespacePrefixEntryMap().get(namespace);
 
       for (String type : newEntries.keySet()) {
         if (!oldEntries.containsKey(type)) {
           workingEntryMap.addEntry(newEntries.get(type));
         } else {
-          SchemaAbstractEntry oldEntry = oldEntries.get(type);
-          SchemaAbstractEntry newEntry = newEntries.get(type);
-          SchemaAbstractEntry updatedEntry = mergeSingleEntry(oldEntry, newEntry);
+          ProtoSchemaAbstractEntry oldEntry = oldEntries.get(type);
+          ProtoSchemaAbstractEntry newEntry = newEntries.get(type);
+          ProtoSchemaAbstractEntry updatedEntry = mergeSingleEntry(oldEntry, newEntry);
           workingEntryMap.addEntry(updatedEntry);
         }
       }
     }
   }
 
-  /**
-   * Merges entry fields between current, and new definitions.
-   *
-   * @param workingEntry current entry
-   * @param newEntry new updated entry to merge into current
-   * @return SchemaAbstractEntry merged entry
-   * @throws SchemaParseException
-   */
-  private SchemaAbstractEntry mergeSingleEntry(
-      SchemaAbstractEntry workingEntry, SchemaAbstractEntry newEntry)
-      throws SchemaParseException {
+
+  private ProtoSchemaAbstractEntry mergeSingleEntry(
+          ProtoSchemaAbstractEntry workingEntry, ProtoSchemaAbstractEntry newEntry)
+      throws XsdParseException {
     if (!workingEntry.getNamespacePrefix().equals(newEntry.getNamespacePrefix())
         || !workingEntry.getTitle().equals(newEntry.getTitle())) {
-      throw new SchemaParseException("Entry data mismatch.");
+      throw new XsdParseException("Entry data mismatch.");
     }
 
-    Map<String, SchemaField> oldFields = workingEntry.getFieldMap();
-    Map<String, SchemaField> newFields = newEntry.getFieldMap();
+    Map<String, ProtoSchemaField> oldFields = workingEntry.getFieldMap();
+    Map<String, ProtoSchemaField> newFields = newEntry.getFieldMap();
 
     for (String fieldName : newFields.keySet()) {
       if (!oldFields.containsKey(fieldName)) {
@@ -128,11 +106,7 @@ public class SchemaSetMerger {
     return workingEntry;
   }
 
-  /**
-   * Gets processing order.
-   *
-   * @return the processing order
-   */
+
   private List<String> getProcessingOrder() {
     List<String> processingOrder = new ArrayList<>(schemas.keySet());
     processingOrder.sort(String::compareToIgnoreCase);

@@ -572,11 +572,6 @@ message PriceInformationType {
 	optional string enum_value = 1;
 }
 
-/* SchemaConverter generated base level auto field wrapper */
-message PriceType {
-	optional string auto_value = 1;
-}
-
 /* SchemaConverter generated enum replacement message type */
 message ProductType {
 	optional string enum_value = 1;
@@ -812,16 +807,14 @@ message SessionType {
 	optional string enum_value = 1;
 }
 
-/* SchemaConverter generated base level auto field wrapper */
+/* SchemaConverter generated enum replacement message type */
 message SheetMusicCodecType {
-	optional string auto_value = 1;
-	optional string enum_value = 2;
+	optional string enum_value = 1;
 }
 
-/* SchemaConverter generated base level auto field wrapper */
+/* SchemaConverter generated enum replacement message type */
 message SheetMusicType {
-	optional string auto_value = 1;
-	optional string enum_value = 2;
+	optional string enum_value = 1;
 }
 
 /* SchemaConverter generated enum replacement message type */

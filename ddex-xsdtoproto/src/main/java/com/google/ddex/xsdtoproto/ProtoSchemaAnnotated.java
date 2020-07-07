@@ -3,7 +3,7 @@ package com.google.ddex.xsdtoproto;
 import org.apache.ws.commons.schema.XmlSchemaAnnotation;
 
 /** The interface Schema annotated. */
-public interface SchemaAnnotated {
+public interface ProtoSchemaAnnotated {
   /**
    * Gets annotation.
    *

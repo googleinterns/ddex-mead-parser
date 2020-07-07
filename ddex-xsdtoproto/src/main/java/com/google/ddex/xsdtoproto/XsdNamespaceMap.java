@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /** The type Schema namespace map. */
-public class SchemaNamespaceMap {
+public class XsdNamespaceMap {
   private final Map<String, String> prefixToUriMap;
   private final Map<String, String> uriToPrefixMap;
 
   /** Instantiates a new Schema namespace map. */
-  public SchemaNamespaceMap() {
+  public XsdNamespaceMap() {
     prefixToUriMap = new HashMap<>();
     uriToPrefixMap = new HashMap<>();
   }

@@ -6,21 +6,21 @@ import java.util.List;
 import java.util.Map;
 
 /** The type Schema entry map. */
-public class SchemaEntryMap {
+public class ProtoSchemaEntryMap {
   /** The Namespace prefix entry map. */
-  Map<String, Map<String, SchemaAbstractEntry>> namespacePrefixEntryMap;
+  Map<String, Map<String, ProtoSchemaAbstractEntry>> namespacePrefixEntryMap;
   /** The Root namespace prefix. */
   String rootNamespacePrefix;
   /** The Version. */
   int version;
 
   /** The Import registry. */
-  SchemaImportRegistry importRegistry;
+  XsdImportRegistry importRegistry;
 
   /** Instantiates a new Schema entry map. */
-  public SchemaEntryMap() {
+  public ProtoSchemaEntryMap() {
     namespacePrefixEntryMap = new HashMap<>();
-    importRegistry = new SchemaImportRegistry();
+    importRegistry = new XsdImportRegistry();
   }
 
   /**
@@ -28,7 +28,7 @@ public class SchemaEntryMap {
    *
    * @param entry the entry
    */
-  public void addEntry(SchemaAbstractEntry entry) {
+  public void addEntry(ProtoSchemaAbstractEntry entry) {
     String prefix = entry.getNamespacePrefix();
     if (!namespacePrefixEntryMap.containsKey(prefix)) {
       namespacePrefixEntryMap.put(prefix, new HashMap<>());
@@ -96,7 +96,7 @@ public class SchemaEntryMap {
    *
    * @return the namespace prefix entry map
    */
-  public Map<String, Map<String, SchemaAbstractEntry>> getNamespacePrefixEntryMap() {
+  public Map<String, Map<String, ProtoSchemaAbstractEntry>> getNamespacePrefixEntryMap() {
     return namespacePrefixEntryMap;
   }
 
@@ -105,13 +105,13 @@ public class SchemaEntryMap {
    *
    * @return the import registry
    */
-  public SchemaImportRegistry getImportRegistry() {
+  public XsdImportRegistry getImportRegistry() {
     return importRegistry;
   }
 
-  private void registerImportsFromEntry(SchemaAbstractEntry entry) {
-    List<SchemaField> fields = entry.getFields();
-    for (SchemaField field : fields) {
+  private void registerImportsFromEntry(ProtoSchemaAbstractEntry entry) {
+    List<ProtoSchemaField> fields = entry.getFields();
+    for (ProtoSchemaField field : fields) {
       importRegistry.registerImport(entry.getNamespacePrefix(), field.getFieldType().getPrefix());
     }
   }

@@ -8,7 +8,7 @@ import javax.xml.namespace.QName;
 import java.util.Objects;
 
 /** The type Schema field. */
-public class SchemaField implements SchemaAnnotated {
+public class ProtoSchemaField implements ProtoSchemaAnnotated {
   /** The Field value. */
   String fieldValue;
   /** The Field annotation. */
@@ -25,7 +25,7 @@ public class SchemaField implements SchemaAnnotated {
    * @param qName the q name
    * @param repeated the repeated
    */
-  public SchemaField(String value, QName qName, boolean repeated) {
+  public ProtoSchemaField(String value, QName qName, boolean repeated) {
     fieldValue = value;
     fieldQName =
         Objects.requireNonNullElseGet(
@@ -39,7 +39,7 @@ public class SchemaField implements SchemaAnnotated {
    * @param value the value
    * @param qName the q name
    */
-  public SchemaField(String value, QName qName) {
+  public ProtoSchemaField(String value, QName qName) {
     fieldValue = value;
     fieldQName =
         Objects.requireNonNullElseGet(
@@ -53,7 +53,7 @@ public class SchemaField implements SchemaAnnotated {
    * @param value the value
    */
   // Default string QName
-  public SchemaField(String value) {
+  public ProtoSchemaField(String value) {
     fieldValue = value;
     fieldQName = new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
     fieldIsRepeated = false;

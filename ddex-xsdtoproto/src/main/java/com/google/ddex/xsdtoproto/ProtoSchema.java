@@ -16,17 +16,17 @@ public class ProtoSchema {
   private String packageName;
   private int versionNumber;
   private final Map<String, String> schemaStringMap;
-  private SchemaImportRegistry importRegistry;
-  private final SchemaEntryMap schemaEntryMap;
+  private XsdImportRegistry importRegistry;
+  private final ProtoSchemaEntryMap protoSchemaEntryMap;
 
   /**
    * Instantiates a new Proto schema.
    *
    * @param entryMap the entry map
-   * @throws SchemaParseException the schema conversion exception
+   * @throws XsdParseException the schema conversion exception
    */
-  public ProtoSchema(SchemaEntryMap entryMap) throws SchemaParseException {
-    schemaEntryMap = entryMap;
+  public ProtoSchema(ProtoSchemaEntryMap entryMap) throws XsdParseException {
+    protoSchemaEntryMap = entryMap;
     schemaStringMap = new HashMap<>();
     serialize(entryMap);
   }
@@ -72,11 +72,11 @@ public class ProtoSchema {
    *
    * @return the schema entry map
    */
-  public SchemaEntryMap getSchemaEntryMap() {
-    return schemaEntryMap;
+  public ProtoSchemaEntryMap getProtoSchemaEntryMap() {
+    return protoSchemaEntryMap;
   }
 
-  private void serialize(SchemaEntryMap entryMap) throws SchemaParseException {
+  private void serialize(ProtoSchemaEntryMap entryMap) throws XsdParseException {
     versionNumber = entryMap.getVersion();
     rootNamespace = entryMap.getRootNamespacePrefix();
     packageName = rootNamespace + versionNumber;
@@ -85,14 +85,14 @@ public class ProtoSchema {
     importRegistry = entryMap.getImportRegistry();
 
     for (String namespace : namespaces) {
-      List<SchemaAbstractEntry> entries =
+      List<ProtoSchemaAbstractEntry> entries =
           new ArrayList<>(entryMap.getNamespacePrefixEntryMap().get(namespace).values());
       schemaStringMap.put(namespace, serializeNamespace(entries, namespace));
     }
   }
 
-  private String serializeNamespace(List<SchemaAbstractEntry> entries, String namespace)
-      throws SchemaParseException {
+  private String serializeNamespace(List<ProtoSchemaAbstractEntry> entries, String namespace)
+      throws XsdParseException {
 
     StringBuilder namespaceStringBuilder = new StringBuilder();
     namespaceStringBuilder
@@ -102,7 +102,7 @@ public class ProtoSchema {
         .append(packageName)
         .append(" */\n");
 
-    entries.sort(Comparator.comparing(SchemaAbstractEntry::getTitle));
+    entries.sort(Comparator.comparing(ProtoSchemaAbstractEntry::getTitle));
 
     namespaceStringBuilder.append("syntax = \"proto2\";\n");
     namespaceStringBuilder
@@ -113,11 +113,11 @@ public class ProtoSchema {
         .append(";\n\n");
     namespaceStringBuilder.append(serializeImports(namespace));
 
-    for (SchemaAbstractEntry entry : entries) {
-      if (entry instanceof SchemaEnumEntry) {
-        namespaceStringBuilder.append(serializeEnum((SchemaEnumEntry) entry, namespace));
-      } else if (entry instanceof SchemaMessageEntry) {
-        namespaceStringBuilder.append(serializeMessage((SchemaMessageEntry) entry, namespace));
+    for (ProtoSchemaAbstractEntry entry : entries) {
+      if (entry instanceof ProtoSchemaEnumEntry) {
+        namespaceStringBuilder.append(serializeEnum((ProtoSchemaEnumEntry) entry, namespace));
+      } else if (entry instanceof ProtoSchemaMessageEntry) {
+        namespaceStringBuilder.append(serializeMessage((ProtoSchemaMessageEntry) entry, namespace));
       }
     }
 
@@ -138,7 +138,7 @@ public class ProtoSchema {
     return importStringBuilder.toString();
   }
 
-  private String serializeEnum(SchemaEnumEntry entry, String prefix) {
+  private String serializeEnum(ProtoSchemaEnumEntry entry, String prefix) {
     StringBuilder enumStringBuilder = new StringBuilder();
     enumStringBuilder.append(serializeAnnotation(entry));
     enumStringBuilder.append("message ").append(entry.getTitle()).append(" {\n");
@@ -147,8 +147,8 @@ public class ProtoSchema {
     return enumStringBuilder.toString();
   }
 
-  private String serializeMessage(SchemaMessageEntry entry, String prefix)
-      throws SchemaParseException {
+  private String serializeMessage(ProtoSchemaMessageEntry entry, String prefix)
+      throws XsdParseException {
     StringBuilder messageStringBuilder = new StringBuilder();
     messageStringBuilder.append(serializeAnnotation(entry));
     messageStringBuilder.append("message ").append(entry.getTitle()).append(" {\n");
@@ -157,14 +157,14 @@ public class ProtoSchema {
     return messageStringBuilder.toString();
   }
 
-  private String serializeFieldSet(SchemaMessageEntry entry) throws SchemaParseException {
+  private String serializeFieldSet(ProtoSchemaMessageEntry entry) throws XsdParseException {
     StringBuilder fieldSetStringBuilder = new StringBuilder();
 
-    List<SchemaField> fields = entry.getFields();
-    fields.sort(Comparator.comparing(SchemaField::getFieldValue));
+    List<ProtoSchemaField> fields = entry.getFields();
+    fields.sort(Comparator.comparing(ProtoSchemaField::getFieldValue));
 
     int numerator = 1;
-    for (SchemaField field : fields) {
+    for (ProtoSchemaField field : fields) {
       fieldSetStringBuilder.append(serializeAnnotation(field));
       fieldSetStringBuilder.append("\t");
       if (field.isRepeated()) {
@@ -183,7 +183,7 @@ public class ProtoSchema {
     return fieldSetStringBuilder.toString();
   }
 
-  private String serializeAnnotation(SchemaAnnotated annotated) {
+  private String serializeAnnotation(ProtoSchemaAnnotated annotated) {
     String annotation = annotated.getAnnotation();
     if (annotation == null || annotation.isEmpty()) {
       return "";
@@ -191,8 +191,8 @@ public class ProtoSchema {
     return "/* " + annotation + " */\n";
   }
 
-  private String resolveType(SchemaMessageEntry entry, SchemaField field)
-      throws SchemaParseException {
+  private String resolveType(ProtoSchemaMessageEntry entry, ProtoSchemaField field)
+      throws XsdParseException {
     QName fieldType = field.getFieldType();
     String type;
 
@@ -207,7 +207,7 @@ public class ProtoSchema {
     return type;
   }
 
-  private String convertXmlTypeToProto(String xmlType) throws SchemaParseException {
+  private String convertXmlTypeToProto(String xmlType) throws XsdParseException {
     switch (xmlType) {
       case "boolean":
         return "bool";
@@ -232,7 +232,7 @@ public class ProtoSchema {
       case "ID":
         return "string";
       default:
-        throw new SchemaParseException("Unhandled Xml type mapping for: " + xmlType);
+        throw new XsdParseException("Unhandled Xml type mapping for: " + xmlType);
     }
   }
 

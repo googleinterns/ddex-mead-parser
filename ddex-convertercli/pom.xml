@@ -40,7 +40,7 @@
                         <configuration>
                             <protocVersion>3.1.0</protocVersion>
                             <inputDirectories>
-                                <include>../ddex-xsdtoproto/src/main/proto</include>
+                                <include>../proto</include>
                             </inputDirectories>
                         </configuration>
                     </execution>

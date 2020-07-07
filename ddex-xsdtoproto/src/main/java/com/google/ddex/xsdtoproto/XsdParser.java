@@ -41,77 +41,65 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** The type Schema converter. */
-public class SchemaParser {
-  /**
-   * Convert schema entry map.
-   *
-   * @param reader the input xml
-   * @return the schema entry map
-   * @throws SchemaParseException the schema conversion exception
-   */
-  public static ProtoSchema parse(FileReader reader) throws SchemaParseException {
-    SchemaConverterInstance converterInstance = new SchemaConverterInstance(reader);
-    return converterInstance.parse();
+public class XsdParser {
+  private static final FluentLogger logger = FluentLogger.forEnclosingClass();
+
+  public static ProtoSchema parse(Reader reader) throws XsdParseException {
+    XsdParseReporter defaultReporter = new XsdParseReporter();
+    XsdParserInstance xsdParserInstance = new XsdParserInstance(reader, defaultReporter);
+    return xsdParserInstance.parse();
   }
 
-  /** The type Schema converter instance. */
-  private static class SchemaConverterInstance {
-    private static final FluentLogger logger = FluentLogger.forEnclosingClass();
-    private final SchemaEntryMap schemaEntryMap;
-    private final SchemaNamespaceMap namespaceMap;
-    private final StreamSource inputXml;
+  public static ProtoSchema parse(Reader reader, XsdParseReporter reporter) throws XsdParseException {
+    XsdParserInstance xsdParserInstance = new XsdParserInstance(reader, reporter);
+    return xsdParserInstance.parse();
+  }
 
+  private static class XsdParserInstance {
+    private final ProtoSchemaEntryMap protoSchemaEntryMap;
+    private final XsdNamespaceMap namespaceMap;
+    private final Reader inputXml;
+    private XsdParseReporter reporter;
 
-    public SchemaConverterInstance(Reader reader) {
-      schemaEntryMap = new SchemaEntryMap();
-      namespaceMap = new SchemaNamespaceMap();
-      inputXml = new StreamSource(reader);
+    public XsdParserInstance(Reader reader, XsdParseReporter xsdParseReporter) {
+      protoSchemaEntryMap = new ProtoSchemaEntryMap();
+      namespaceMap = new XsdNamespaceMap();
+      inputXml = reader;
+      reporter = xsdParseReporter;
     }
 
-    /**
-     * Convert schema entry map.
-     *
-     * @return the schema entry map
-     * @throws SchemaParseException the schema conversion exception
-     */
-    public ProtoSchema parse() throws SchemaParseException {
+    public ProtoSchema parse() throws XsdParseException {
       populateEntryMap();
-      return new ProtoSchema(schemaEntryMap);
+      return new ProtoSchema(protoSchemaEntryMap);
     }
 
-    private int getMeadVersionNumber(XmlSchema inputSchema) throws SchemaParseException {
+    private int getMeadVersionNumber(XmlSchema inputSchema) throws XsdParseException {
       String schemaLocation = inputSchema.getTargetNamespace();
       try {
         String uri = new URI(schemaLocation).getPath();
         String schemaVersion = uri.substring(uri.lastIndexOf('/') + 1);
         return Integer.parseInt(schemaVersion);
       } catch (URISyntaxException e) {
-        throw new SchemaParseException("Malformed URI for schema location. Could not determine version number", e);
+        throw new XsdParseException("Malformed URI for schema location. Could not determine version number", e);
       }
     }
 
-    /**
-     * Populate entry map.
-     *
-     * @throws SchemaParseException the schema conversion exception
-     */
-    public void populateEntryMap() throws SchemaParseException {
+    private void populateEntryMap() throws XsdParseException {
       XmlSchemaCollection schemaCol = new XmlSchemaCollection();
       XmlSchema inputSchema = schemaCol.read(inputXml);
 
       List<XmlSchema> allSchema = getAllSchema(inputSchema);
       populateNamespaceMap(allSchema);
 
-      schemaEntryMap.setVersion(getMeadVersionNumber(inputSchema));
-      schemaEntryMap.setRootNamespacePrefix(namespaceMap.getPrefix(inputSchema.getTargetNamespace()));
+      protoSchemaEntryMap.setVersion(getMeadVersionNumber(inputSchema));
+      protoSchemaEntryMap.setRootNamespacePrefix(namespaceMap.getPrefix(inputSchema.getTargetNamespace()));
 
       for (XmlSchema schema : allSchema) {
         processSchema(schema);
       }
     }
 
-    private void processSchema(XmlSchema schema) throws SchemaParseException {
+    private void processSchema(XmlSchema schema) throws XsdParseException {
       logger.atInfo().log("Processing schema: " + schema.getTargetNamespace());
 
       String nsPrefix = namespaceMap.getPrefix(schema.getTargetNamespace());
@@ -127,8 +115,8 @@ public class SchemaParser {
     }
 
     private QName processElement(
-            XmlSchemaElement elementItem, String entryName, String nsPrefix, SchemaAbstractEntry parent)
-            throws SchemaParseException {
+            XmlSchemaElement elementItem, String entryName, String nsPrefix, ProtoSchemaAbstractEntry parent)
+            throws XsdParseException {
       if (elementItem.getSchemaType() instanceof XmlSchemaSimpleType) {
         return processSimple(
                 (XmlSchemaSimpleType) elementItem.getSchemaType(),
@@ -142,16 +130,16 @@ public class SchemaParser {
                 nsPrefix,
                 parent);
       } else {
-        throw new SchemaParseException(
+        throw new XsdParseException(
                 "Unable to process element with class: " + elementItem.getClass());
       }
     }
 
     private QName processSimple(
-            XmlSchemaSimpleType simpleItem, String entryName, String nsPrefix, SchemaAbstractEntry parent)
-            throws SchemaParseException {
+            XmlSchemaSimpleType simpleItem, String entryName, String nsPrefix, ProtoSchemaAbstractEntry parent)
+            throws XsdParseException {
       if (entryName == null && simpleItem.getName() == null) {
-        throw new SchemaParseException("Simple element has no name. Cannot create type.");
+        throw new XsdParseException("Simple element has no name. Cannot create type.");
       } else if (entryName == null) {
         entryName = simpleItem.getName();
       }
@@ -163,17 +151,17 @@ public class SchemaParser {
         return processSimpleRestriction(
                 (XmlSchemaSimpleTypeRestriction) simpleItem.getContent(), entryName, nsPrefix, parent);
       } else {
-        throw new SchemaParseException("Unhandled simple type: " + simpleItem.getClass());
+        throw new XsdParseException("Unhandled simple type: " + simpleItem.getClass());
       }
     }
 
     private QName processSimpleUnion(
-            XmlSchemaSimpleTypeUnion union, String entryName, String nsPrefix, SchemaAbstractEntry parent)
-            throws SchemaParseException {
-      SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
+            XmlSchemaSimpleTypeUnion union, String entryName, String nsPrefix, ProtoSchemaAbstractEntry parent)
+            throws XsdParseException {
+      ProtoSchemaMessageEntry messageEntry = new ProtoSchemaMessageEntry(entryName, nsPrefix);
       messageEntry.setAnnotation(union.getAnnotation());
-      messageEntry.addField(new SchemaField("auto_value"));
-      schemaEntryMap.addEntry(messageEntry);
+      messageEntry.addField(new ProtoSchemaField("auto_value"));
+      protoSchemaEntryMap.addEntry(messageEntry);
       return new QName(
               namespaceMap.getUri(messageEntry.getNamespacePrefix()),
               messageEntry.getTitle(),
@@ -184,26 +172,26 @@ public class SchemaParser {
             XmlSchemaSimpleTypeRestriction restriction,
             String entryName,
             String nsPrefix,
-            SchemaAbstractEntry parent)
-            throws SchemaParseException {
+            ProtoSchemaAbstractEntry parent)
+            throws XsdParseException {
       List<XmlSchemaFacet> facets = restriction.getFacets();
 
       if (isEnumFacetList(facets)) {
-        SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
+        ProtoSchemaMessageEntry messageEntry = new ProtoSchemaMessageEntry(entryName, nsPrefix);
         messageEntry.setAnnotation("SchemaConverter generated enum replacement message type");
         QName restrictionQName = getDefaultQName();
-        messageEntry.addField(new SchemaField("enum_value", restrictionQName));
-        schemaEntryMap.addEntry(messageEntry);
+        messageEntry.addField(new ProtoSchemaField("enum_value", restrictionQName));
+        protoSchemaEntryMap.addEntry(messageEntry);
         return new QName(
                 namespaceMap.getUri(messageEntry.getNamespacePrefix()),
                 messageEntry.getTitle(),
                 messageEntry.getNamespacePrefix());
       } else if (parent == null) {
-        SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
+        ProtoSchemaMessageEntry messageEntry = new ProtoSchemaMessageEntry(entryName, nsPrefix);
         messageEntry.setAnnotation("SchemaConverter generated base level auto field wrapper");
         QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
-        messageEntry.addField(new SchemaField("auto_value", restrictionQName));
-        schemaEntryMap.addEntry(messageEntry);
+        messageEntry.addField(new ProtoSchemaField("auto_value", restrictionQName));
+        protoSchemaEntryMap.addEntry(messageEntry);
         return new QName(
                 namespaceMap.getUri(messageEntry.getNamespacePrefix()),
                 messageEntry.getTitle(),
@@ -216,15 +204,15 @@ public class SchemaParser {
             XmlSchemaComplexType complexItem,
             String entryName,
             String nsPrefix,
-            SchemaAbstractEntry parent)
-            throws SchemaParseException {
+            ProtoSchemaAbstractEntry parent)
+            throws XsdParseException {
       if (entryName == null && complexItem.getName() == null) {
-        throw new SchemaParseException("Complex element has no name. Cannot create type.");
+        throw new XsdParseException("Complex element has no name. Cannot create type.");
       }
       if (entryName == null) {
         entryName = complexItem.getName();
       }
-      SchemaMessageEntry messageEntry = new SchemaMessageEntry(entryName, nsPrefix);
+      ProtoSchemaMessageEntry messageEntry = new ProtoSchemaMessageEntry(entryName, nsPrefix);
       messageEntry.setAnnotation(complexItem.getAnnotation());
 
       processAttributes(complexItem.getAttributes(), complexItem.getAnyAttribute(), messageEntry);
@@ -232,7 +220,7 @@ public class SchemaParser {
       processContentModel(complexItem.getContentModel(), messageEntry, parent);
 
       if (messageEntry.isPopulated()) {
-        schemaEntryMap.addEntry(messageEntry);
+        protoSchemaEntryMap.addEntry(messageEntry);
         return new QName(
                 namespaceMap.getUri(messageEntry.getNamespacePrefix()),
                 messageEntry.getTitle(),
@@ -242,8 +230,8 @@ public class SchemaParser {
     }
 
     private void processParticle(
-            XmlSchemaParticle particle, SchemaAbstractEntry entry, SchemaAbstractEntry parent)
-            throws SchemaParseException {
+            XmlSchemaParticle particle, ProtoSchemaAbstractEntry entry, ProtoSchemaAbstractEntry parent)
+            throws XsdParseException {
       if (particle != null) {
         if (particle instanceof XmlSchemaSequence) {
           List<XmlSchemaSequenceMember> items = ((XmlSchemaSequence) particle).getItems();
@@ -270,8 +258,8 @@ public class SchemaParser {
     }
 
     private void processItem(
-            XmlSchemaObjectBase item, SchemaAbstractEntry entry, SchemaAbstractEntry parent)
-            throws SchemaParseException {
+            XmlSchemaObjectBase item, ProtoSchemaAbstractEntry entry, ProtoSchemaAbstractEntry parent)
+            throws XsdParseException {
       if (item instanceof XmlSchemaElement) {
         XmlSchemaType type = ((XmlSchemaElement) item).getSchemaType();
         QName itemType = ((XmlSchemaElement) item).getSchemaTypeName();
@@ -289,33 +277,33 @@ public class SchemaParser {
         String name = ((XmlSchemaElement) item).getName();
         boolean repeated = ((XmlSchemaElement) item).getMaxOccurs() > 1;
 
-        SchemaField field = new SchemaField(name, itemType, repeated);
+        ProtoSchemaField field = new ProtoSchemaField(name, itemType, repeated);
         field.setAnnotation(((XmlSchemaElement) item).getAnnotation());
         entry.addField(field);
       } else if (item instanceof XmlSchemaAny) {
         boolean repeated = ((XmlSchemaAny) item).getMaxOccurs() > 1;
-        entry.addField(new SchemaField("any_value", null, repeated));
+        entry.addField(new ProtoSchemaField("any_value", null, repeated));
       } else {
-        throw new SchemaParseException("Unhandled item: " + item.getClass());
+        throw new XsdParseException("Unhandled item: " + item.getClass());
       }
     }
 
     private void processContentModel(
-            XmlSchemaContentModel contentModel, SchemaAbstractEntry entry, SchemaAbstractEntry parent)
-            throws SchemaParseException {
+            XmlSchemaContentModel contentModel, ProtoSchemaAbstractEntry entry, ProtoSchemaAbstractEntry parent)
+            throws XsdParseException {
       if (contentModel != null) {
         if (contentModel.getContent() instanceof XmlSchemaSimpleContentExtension) {
           XmlSchemaSimpleContentExtension content =
                   (XmlSchemaSimpleContentExtension) contentModel.getContent();
           processAttributes(content.getAttributes(), content.getAnyAttribute(), entry);
-          entry.addField(new SchemaField("ext_value", content.getBaseTypeName()));
+          entry.addField(new ProtoSchemaField("ext_value", content.getBaseTypeName()));
         } else if (contentModel.getContent() instanceof XmlSchemaComplexContentExtension) {
           XmlSchemaComplexContentExtension content =
                   (XmlSchemaComplexContentExtension) contentModel.getContent();
           processParticle(content.getParticle(), entry, parent);
-          entry.addField(new SchemaField("ext_value", content.getBaseTypeName()));
+          entry.addField(new ProtoSchemaField("ext_value", content.getBaseTypeName()));
         } else {
-          throw new SchemaParseException(
+          throw new XsdParseException(
                   "Unhandled content model: " + contentModel.getContent().getClass());
         }
       }
@@ -324,24 +312,24 @@ public class SchemaParser {
     private void processAttributes(
             List<XmlSchemaAttributeOrGroupRef> attributes,
             XmlSchemaAnyAttribute anyAttribute,
-            SchemaAbstractEntry entry)
-            throws SchemaParseException {
+            ProtoSchemaAbstractEntry entry)
+            throws XsdParseException {
       if (attributes != null && attributes.size() > 0) {
         for (XmlSchemaAttributeOrGroupRef attribute : attributes) {
           if (attribute instanceof XmlSchemaAttribute) {
             String name = ((XmlSchemaAttribute) attribute).getName();
             QName attributeType = getAttributeTypeName(((XmlSchemaAttribute) attribute));
-            SchemaField field = new SchemaField(name, attributeType);
+            ProtoSchemaField field = new ProtoSchemaField(name, attributeType);
             field.setAnnotation(attribute.getAnnotation());
             entry.addField(field);
           } else {
-            throw new SchemaParseException("Unhandled attribute: " + attribute.getClass());
+            throw new XsdParseException("Unhandled attribute: " + attribute.getClass());
           }
         }
       }
 
       if (anyAttribute != null) {
-        entry.addField(new SchemaField("any_attribute_value", null, true));
+        entry.addField(new ProtoSchemaField("any_attribute_value", null, true));
       }
     }
 

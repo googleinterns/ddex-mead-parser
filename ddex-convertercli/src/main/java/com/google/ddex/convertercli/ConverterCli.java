@@ -1,9 +1,9 @@
 package com.google.ddex.convertercli;
 
 import com.google.ddex.xsdtoproto.ProtoSchema;
-import com.google.ddex.xsdtoproto.SchemaParseException;
-import com.google.ddex.xsdtoproto.SchemaParser;
-import com.google.ddex.xsdtoproto.SchemaSetMerger;
+import com.google.ddex.xsdtoproto.XsdParseException;
+import com.google.ddex.xsdtoproto.XsdParser;
+import com.google.ddex.xsdtoproto.XsdSetMerger;
 import com.google.ddex.xmltoproto.MessageParseException;
 import com.google.ddex.xmltoproto.MessageParser;
 import com.google.protobuf.Message;
@@ -17,6 +17,7 @@ import java.util.Set;
 
 import com.google.common.flogger.FluentLogger;
 
+/** Command line tool for converting DDEX xsd and xml to Protocol buffer format. */
 public class ConverterCli {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
   private final ConverterOptions runtimeOptions;
@@ -25,13 +26,13 @@ public class ConverterCli {
     try {
       ConverterOptions options = new ConverterOptions(args);
       new ConverterCli(options);
-    } catch (InvalidOptionsException | SchemaParseException | MessageParseException | IOException e) {
+    } catch (InvalidOptionsException | XsdParseException | MessageParseException | IOException e) {
       ConverterOptions.showCommandUsage();
       e.printStackTrace();
     }
   }
 
-  private ConverterCli(ConverterOptions options) throws IOException, SchemaParseException, MessageParseException {
+  private ConverterCli(ConverterOptions options) throws IOException, XsdParseException, MessageParseException, InvalidOptionsException {
     runtimeOptions = options;
     switch (runtimeOptions.inputType) {
       case "message":
@@ -44,35 +45,36 @@ public class ConverterCli {
         parseXsdSet();
         break;
       default:
-        // TODO What to put here
+        throw new InvalidOptionsException("Invalid inputType specified: " + runtimeOptions.inputType);
     }
   }
 
   private void parseXml() throws MessageParseException, IOException {
     logger.atInfo().log("Started message parse on: " + runtimeOptions.inputFile.getName());
+    FileReader fileIn = new FileReader(runtimeOptions.inputFile);
     Message.Builder messageBuilder = MessageBuilderResolver.getBuilder(runtimeOptions.inputFile);
-    Message protoMessage = MessageParser.parse(runtimeOptions.inputFile, messageBuilder);
+    Message protoMessage = MessageParser.parse(fileIn, messageBuilder);
 
     // Write output proto message files
     logger.atInfo().log(protoMessage.toString());
   }
 
-  private void parseXsd() throws SchemaParseException, IOException {
+  private void parseXsd() throws XsdParseException, IOException {
     logger.atInfo().log("Started schema parse on: " + runtimeOptions.inputFile.getName());
     FileReader fileIn = new FileReader(runtimeOptions.inputFile);
-    ProtoSchema protoSchema = SchemaParser.parse(fileIn);
+    ProtoSchema protoSchema = XsdParser.parse(fileIn);
 
     // Write schema to file
     writeSchema(protoSchema);
   }
 
-  private void parseXsdSet() throws SchemaParseException, IOException {
-    SchemaSetMerger schemaSetMerger = new SchemaSetMerger();
+  private void parseXsdSet() throws XsdParseException, IOException {
+    XsdSetMerger schemaSetMerger = new XsdSetMerger();
 
     for (File schemaFile : runtimeOptions.inputFileList) {
       logger.atInfo().log("Started schema set parse on folder: " + schemaFile.getName());
       FileReader fileIn = new FileReader(schemaFile);
-      ProtoSchema schema = SchemaParser.parse(fileIn);
+      ProtoSchema schema = XsdParser.parse(fileIn);
       schemaSetMerger.addSchema(schema);
     }
 
@@ -87,11 +89,11 @@ public class ConverterCli {
     Set<String> namespaces = schema.getSchemaStringMap().keySet();
     for (String namespace : namespaces) {
       // TODO Use output directory?
-      File file = new File("./src/main/proto/" + rootNamespace + "/" + packageName + "/" + namespace + ".proto");
+      File file = new File("./proto/" + rootNamespace + "/" + packageName + "/" + namespace + ".proto");
       file.getParentFile().mkdirs();
-
-      FileWriter writer = new FileWriter(file, false);
-      writer.write(schema.getSchemaStringMap().get(namespace));
+      try (FileWriter writer = new FileWriter(file, false)) {
+        writer.write(schema.getSchemaStringMap().get(namespace));
+      }
     }
   }
 }

@@ -1,13 +1,13 @@
 package com.google.ddex.xsdtoproto;
 
 /** The type Schema conversion exception. */
-public class SchemaParseException extends Exception {
+public class XsdParseException extends Exception {
   /**
    * Instantiates a new Schema conversion exception.
    *
    * @param message the message
    */
-  public SchemaParseException(String message) {
+  public XsdParseException(String message) {
     super(message);
   }
   /**
@@ -16,7 +16,7 @@ public class SchemaParseException extends Exception {
    * @param message the message
    * @param root the root
    */
-  public SchemaParseException(String message, Exception root) {
+  public XsdParseException(String message, Exception root) {
     super(message, root);
   }
 }

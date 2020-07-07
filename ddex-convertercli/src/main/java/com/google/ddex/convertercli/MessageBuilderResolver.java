@@ -36,9 +36,10 @@ public class MessageBuilderResolver {
 
     logger.atInfo().log("Detected message using major version " + majorVersionNumber + ", minor version " + versionNumber);
 
-//    if (majorVersionNumber == 4) {
-//      return ern42.ern.Ern.NewReleaseMessage.newBuilder();
-//    } else if (majorVersionNumber == 3) {
+    if (majorVersionNumber == 4) {
+      return ern42.ern.Ern.NewReleaseMessage.newBuilder();
+    }
+//    else if (majorVersionNumber == 3) {
 //      return ern381.ern.Ern.NewReleaseMessage.newBuilder();
 //    } else {
 //      throw new SchemaConversionException("Unsupported message version " + versionNumber + ". Temporarily blocking issue");
@@ -52,10 +53,10 @@ public class MessageBuilderResolver {
   }
 
   private static Document getDocument(File file) throws IOException {
+    if (!file.exists() || file.isDirectory()) {
+      throw new FileNotFoundException("XML file input does not exist or is a directory.");
+    }
     try {
-      if (!file.exists() || file.isDirectory()) {
-        throw new FileNotFoundException("XML file input does not exist or is a directory.");
-      }
       return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
     } catch (ParserConfigurationException | IOException | SAXException e) {
       throw new IOException("Exception occurred when getting document: " + e.getMessage(), e);

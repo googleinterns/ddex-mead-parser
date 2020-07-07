@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 /** The type Schema import registry. */
-public class SchemaImportRegistry {
+public class XsdImportRegistry {
   /** The Schema import map. */
   Map<String, Map<String, Boolean>> schemaImportMap;
 
   /** Instantiates a new Schema import registry. */
-  public SchemaImportRegistry() {
+  public XsdImportRegistry() {
     schemaImportMap = new HashMap<>();
   }
 
