@@ -12,4 +12,28 @@
     <artifactId>ddex-xmltoproto</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.os72</groupId>
+                <artifactId>protoc-jar-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <protocVersion>3.1.0</protocVersion>
+                            <inputDirectories>
+                                <include>../proto</include>
+                            </inputDirectories>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

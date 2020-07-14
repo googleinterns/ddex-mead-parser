@@ -140,7 +140,7 @@ public class ProtoSchema {
 
   private String serializeEnum(ProtoSchemaEnumEntry entry, String prefix) {
     StringBuilder enumStringBuilder = new StringBuilder();
-    enumStringBuilder.append(serializeVersion(entry));
+    enumStringBuilder.append(serializeMessageVersion(entry));
     enumStringBuilder.append(serializeAnnotation(entry));
     enumStringBuilder.append("message ").append(entry.getTitle()).append(" {\n");
     enumStringBuilder.append("\toptional string enum_value = 1;\n");
@@ -151,7 +151,7 @@ public class ProtoSchema {
   private String serializeMessage(ProtoSchemaMessageEntry entry, String prefix)
       throws XsdParseException {
     StringBuilder messageStringBuilder = new StringBuilder();
-    messageStringBuilder.append(serializeVersion(entry));
+    messageStringBuilder.append(serializeMessageVersion(entry));
     messageStringBuilder.append(serializeAnnotation(entry));
     messageStringBuilder.append("message ").append(entry.getTitle()).append(" {\n");
     messageStringBuilder.append(serializeFieldSet(entry));
@@ -167,10 +167,14 @@ public class ProtoSchema {
 
     int numerator = 1;
     for (ProtoSchemaField field : fields) {
-      fieldSetStringBuilder.append("\t");
-      fieldSetStringBuilder.append(serializeVersion(field));
-      fieldSetStringBuilder.append("\t");
-      fieldSetStringBuilder.append(serializeAnnotation(field));
+      if (field.getVersion() != null && !field.getVersion().isEmpty()) {
+        fieldSetStringBuilder.append("\t");
+        fieldSetStringBuilder.append(serializeFieldVersion(field));
+      }
+      if (field.getAnnotation() != null && !field.getAnnotation().isEmpty()) {
+        fieldSetStringBuilder.append("\t");
+        fieldSetStringBuilder.append(serializeAnnotation(field));
+      }
       fieldSetStringBuilder.append("\t");
       if (field.isRepeated()) {
         fieldSetStringBuilder.append("repeated ");
@@ -194,12 +198,20 @@ public class ProtoSchema {
     return fieldSetStringBuilder.toString();
   }
 
-  private String serializeVersion(ProtoSchemaAnnotated annotated) {
+  private String serializeMessageVersion(ProtoSchemaAnnotated annotated) {
     String version = annotated.getVersion();
     if (version == null || version.isEmpty()) {
       return "";
     }
-    return "/* Source: " + version + " */\n";
+    return "/* Defined in: " + version + " */\n";
+  }
+
+  private String serializeFieldVersion(ProtoSchemaAnnotated annotated) {
+    String version = annotated.getVersion();
+    if (version == null || version.isEmpty()) {
+      return "";
+    }
+    return "/* First defined in: " + version + " */\n";
   }
 
   private String serializeAnnotation(ProtoSchemaAnnotated annotated) {

@@ -6,11 +6,11 @@
    xmlns:iso3166a2="http://ddex.net/xml/20121219/iso3166a2"
    targetNamespace="http://ddex.net/xml/ern/351" elementFormDefault="unqualified"
    attributeFormDefault="unqualified">
-   <xs:import namespace="http://ddex.net/xml/20121219/ddexC" schemaLocation="src/main/resources/ern35/ddexC.xsd"/>
-   <xs:import namespace="http://ddex.net/xml/20121219/ddex" schemaLocation="src/main/resources/ern35/ddex.xsd"/>
-   <xs:import namespace="http://ddex.net/xml/20121219/iso639a2" schemaLocation="src/main/resources/ern35/iso639a2.xsd"/>
-   <xs:import namespace="http://ddex.net/xml/20121219/iso4217a" schemaLocation="src/main/resources/ern35/iso4217a.xsd"/>
-   <xs:import namespace="http://ddex.net/xml/20121219/iso3166a2" schemaLocation="src/main/resources/ern35/iso3166a2.xsd"/>
+   <xs:import namespace="http://ddex.net/xml/20121219/ddexC" schemaLocation="ddex-convertercli/src/main/resources/ern35/ddexC.xsd"/>
+   <xs:import namespace="http://ddex.net/xml/20121219/ddex" schemaLocation="ddex-convertercli/src/main/resources/ern35/ddex.xsd"/>
+   <xs:import namespace="http://ddex.net/xml/20121219/iso639a2" schemaLocation="ddex-convertercli/src/main/resources/ern35/iso639a2.xsd"/>
+   <xs:import namespace="http://ddex.net/xml/20121219/iso4217a" schemaLocation="ddex-convertercli/src/main/resources/ern35/iso4217a.xsd"/>
+   <xs:import namespace="http://ddex.net/xml/20121219/iso3166a2" schemaLocation="ddex-convertercli/src/main/resources/ern35/iso3166a2.xsd"/>
    <xs:annotation>
       <xs:documentation>© 2006-2012 Digital Data Exchange, LLC (DDEX)</xs:documentation>
    </xs:annotation>

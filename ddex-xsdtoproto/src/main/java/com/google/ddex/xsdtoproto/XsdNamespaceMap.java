@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /** The type Schema namespace map. */
-public class XsdNamespaceMap {
+class XsdNamespaceMap {
   private final Map<String, String> prefixToUriMap;
   private final Map<String, String> uriToPrefixMap;
 
   /** Instantiates a new Schema namespace map. */
-  public XsdNamespaceMap() {
+  XsdNamespaceMap() {
     prefixToUriMap = new HashMap<>();
     uriToPrefixMap = new HashMap<>();
   }
@@ -21,7 +21,7 @@ public class XsdNamespaceMap {
    *
    * @param prefixList the prefix list
    */
-  public void populateFromContext(NamespacePrefixList prefixList) {
+  void populateFromContext(NamespacePrefixList prefixList) {
     for (String prefix : prefixList.getDeclaredPrefixes()) {
       prefixToUriMap.put(prefix, prefixList.getNamespaceURI(prefix));
       uriToPrefixMap.put(prefixList.getNamespaceURI(prefix), prefix);
@@ -34,7 +34,7 @@ public class XsdNamespaceMap {
    * @param assumedUri the assumed uri
    * @return the prefix
    */
-  public String getPrefix(String assumedUri) {
+  String getPrefix(String assumedUri) {
     if (uriToPrefixMap.containsKey(assumedUri)) {
       return uriToPrefixMap.get(assumedUri);
     } else if (prefixToUriMap.containsKey(assumedUri)) {
@@ -49,7 +49,7 @@ public class XsdNamespaceMap {
    * @param assumedPrefix the assumed prefix
    * @return the uri
    */
-  public String getUri(String assumedPrefix) {
+  String getUri(String assumedPrefix) {
     if (prefixToUriMap.containsKey(assumedPrefix)) {
       return prefixToUriMap.get(assumedPrefix);
     } else if (uriToPrefixMap.containsKey(assumedPrefix)) {

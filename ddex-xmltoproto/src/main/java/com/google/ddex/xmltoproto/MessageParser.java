@@ -75,10 +75,8 @@ public class MessageParser {
     private void mergeMessage(Document document, Node node, Message.Builder messageBuilder) {
       Descriptors.Descriptor messageDescriptor = messageBuilder.getDescriptorForType();
 
-      shiftToExtField(document, node, messageDescriptor);
-      shiftToAutoField(document, node, messageDescriptor);
-      shiftToEnumField(document, node, messageDescriptor);
-      shiftNodeAttributes(document, node);
+      nestParserGeneratedXmlTags(document, node, messageDescriptor);
+      nestNodeAttributes(document, node);
 
       NodeList nodes = node.getChildNodes();
       for (int i = 0, len = nodes.getLength(); i < len; i++) {
@@ -102,58 +100,32 @@ public class MessageParser {
       }
     }
 
-    private boolean shouldShiftExtValue(Descriptors.Descriptor messageDescriptor) {
-      if (messageDescriptor == null) {
-        return false;
-      }
-      Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName("ext_value");
-      return field != null;
-    }
+    /**
+     * Extract text content from a tag, and add it back as a child of the original tag. This is to allow for additional tags
+     * such as attributes to be included in the original tag. The purpose of this flattening is to accommodate for the Protobuf schema
+     * not supporting "attributes", requiring the attributes to be expressed as siblings of the original text content
+     */
+    private void nestParserGeneratedXmlTags(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
+      if (messageDescriptor == null) return;
 
-    private boolean shouldShiftAutoValue(Descriptors.Descriptor messageDescriptor) {
-      if (messageDescriptor == null) {
-        return false;
+      String parserGeneratedTag = "";
+      if (messageDescriptor.findFieldByName("ext_value") != null) {
+        parserGeneratedTag = "ext_value";
+      } else if (messageDescriptor.findFieldByName("auto_value") != null) {
+        parserGeneratedTag = "auto_value";
+      } else if (messageDescriptor.findFieldByName("enum_value") != null) {
+        parserGeneratedTag = "enum_value";
       }
-      Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName("auto_value");
-      return field != null;
-    }
 
-    private boolean shouldShiftEnumValue(Descriptors.Descriptor messageDescriptor) {
-      if (messageDescriptor == null) {
-        return false;
-      }
-      Descriptors.FieldDescriptor field = messageDescriptor.findFieldByName("enum_value");
-      return field != null;
-    }
-
-    private void shiftToExtField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
-      if (shouldShiftExtValue(messageDescriptor)) {
-        Element attr_to_append = document.createElement("ext_value");
+      if (!parserGeneratedTag.isEmpty()) {
+        Element attr_to_append = document.createElement(parserGeneratedTag);
         attr_to_append.setTextContent(node.getTextContent());
         node.setTextContent("");
         node.appendChild(attr_to_append);
       }
     }
 
-    private void shiftToAutoField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
-      if (shouldShiftAutoValue(messageDescriptor)) {
-        Element attr_to_append = document.createElement("auto_value");
-        attr_to_append.setTextContent(node.getTextContent());
-        node.setTextContent("");
-        node.appendChild(attr_to_append);
-      }
-    }
-
-    private void shiftToEnumField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
-      if (shouldShiftEnumValue(messageDescriptor)) {
-        Element attr_to_append = document.createElement("enum_value");
-        attr_to_append.setTextContent(node.getTextContent());
-        node.setTextContent("");
-        node.appendChild(attr_to_append);
-      }
-    }
-
-    private void shiftNodeAttributes(Document document, Node node) {
+    private void nestNodeAttributes(Document document, Node node) {
       NamedNodeMap attributes = node.getAttributes();
       if (attributes != null) {
         while (attributes.getLength() > 0) {

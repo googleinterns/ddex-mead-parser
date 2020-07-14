@@ -40,6 +40,11 @@ public class XsdSetMerger {
     return new ProtoSchema(workingEntryMap);
   }
 
+  private List<String> getProcessingOrder() {
+    List<String> processingOrder = new ArrayList<>(schemas.keySet());
+    processingOrder.sort(String::compareToIgnoreCase);
+    return processingOrder;
+  }
 
   private void mergeStep(ProtoSchemaEntryMap workingEntryMap, ProtoSchemaEntryMap nextEntryMap)
       throws XsdParseException {
@@ -125,18 +130,9 @@ public class XsdSetMerger {
     return workingEntry;
   }
 
-
   private ProtoSchemaField setDeprecatedField(ProtoSchemaField deprecatedField, String deprecatedAt) {
     deprecatedField.setVersion(deprecatedField.getVersion() + " -> Removed in " + deprecatedAt);
     deprecatedField.markDeprecated();
     return deprecatedField;
-  }
-
-
-
-  private List<String> getProcessingOrder() {
-    List<String> processingOrder = new ArrayList<>(schemas.keySet());
-    processingOrder.sort(String::compareToIgnoreCase);
-    return processingOrder;
   }
 }

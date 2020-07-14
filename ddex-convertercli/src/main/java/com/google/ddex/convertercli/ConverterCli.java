@@ -1,5 +1,6 @@
 package com.google.ddex.convertercli;
 
+import com.google.ddex.xmltoproto.MessageBuilderResolver;
 import com.google.ddex.xsdtoproto.ProtoSchema;
 import com.google.ddex.xsdtoproto.XsdParseException;
 import com.google.ddex.xsdtoproto.XsdParser;
@@ -22,11 +23,6 @@ public class ConverterCli {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
   private final ConverterOptions runtimeOptions;
 
-  /**
-   * The entry point of application.
-   *
-   * @param args the input arguments
-   */
   public static void main(String[] args) {
     try {
       ConverterOptions options = new ConverterOptions(args);

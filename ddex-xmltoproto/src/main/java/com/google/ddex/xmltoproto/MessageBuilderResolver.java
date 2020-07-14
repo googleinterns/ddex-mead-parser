@@ -1,6 +1,5 @@
-package com.google.ddex.convertercli;
+package com.google.ddex.xmltoproto;
 
-import com.google.ddex.xmltoproto.MessageParseException;
 import com.google.protobuf.Message;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -20,15 +19,27 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-/** The MessageBuilderResolver is responsible for returning an instance of the appropriate Protocol Buffer Message Builder. */
+/**
+ * The MessageBuilderResolver is responsible for returning an appropriate message builder for given DDEX message input.
+ */
 public class MessageBuilderResolver {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
+
   /**
-   * Gets builder.
+   * Default constructor.
+   */
+  public MessageBuilderResolver() { }
+
+  /**
+   * Returns the appropriate message builder for the supplied document.
+   * This method loads the generated protocol buffer classes using reflection.
+   * For example, an input XML message with the version "ern411" would resolve to the generated Protocol Buffer
+   * builder compatible with all of ern's major version 4
    *
-   * @param document the document
-   * @return the builder
-   * @throws MessageParseException the mead conversion exception
+   * @param document The Document representing a DDEX XML message
+   * @return the corresponding message builder
+   * @throws MessageParseException if there was a problem loading a builder for the DDEX message, either there is no builder that is compatible with the supplied DDEX message,
+   * or an issue occurred when trying to load a class with reflection.
    */
   public static Message.Builder getBuilder(Document document) throws MessageParseException {
     Node root = getRootNode(document);
@@ -56,11 +67,14 @@ public class MessageBuilderResolver {
   }
 
   /**
-   * Gets builder.
+   * Returns the appropriate message builder for the supplied file.
+   * @see MessageBuilderResolver#getBuilder(Document)
    *
-   * @param document the document
-   * @return the builder
-   * @throws MessageParseException the mead conversion exception
+   * @param file The XML file containing the DDEX message.
+   * @return the corresponding message builder
+   * @throws MessageParseException if there was a problem loading a builder for the DDEX message, either there is no builder that is compatible with the supplied DDEX message,
+   * or an issue occurred when trying to load a class with reflection.
+   * @throws IOException if any IO error occurs handling the File
    */
   public static Message.Builder getBuilder(File file) throws MessageParseException, IOException {
     Document document = getDocument(file);
@@ -69,7 +83,7 @@ public class MessageBuilderResolver {
 
   private static Message.Builder dynamicBuilderLoader(String baseClass, String innerClass, String methodName) throws MessageParseException {
     try {
-      Class<?> classRef = Class.forName(baseClass);
+      Class<?> classRef =  Class.forName(baseClass);
       Class<?> inner = classRef.getClassLoader().loadClass(classRef.getName() + "$" + innerClass);
       Method m = inner.getDeclaredMethod(methodName);return (Message.Builder) m.invoke(inner);
     } catch (ClassNotFoundException | NoSuchMethodException e) {

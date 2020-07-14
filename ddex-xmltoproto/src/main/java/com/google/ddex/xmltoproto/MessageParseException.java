@@ -1,6 +1,6 @@
 package com.google.ddex.xmltoproto;
 
-/** The type Mead conversion exception. */
+/** Thrown when a fatal error occurs trying to convert an XML message to a Protocol Buffer message. */
 public class MessageParseException extends Exception {
   /**
    * Instantiates a new Mead conversion exception.
@@ -14,7 +14,7 @@ public class MessageParseException extends Exception {
    * Instantiates a new Mead conversion exception.
    *
    * @param message the message
-   * @param root the root
+   * @param root the root cause of the MessageParseException
    */
   public MessageParseException(String message, Exception root) {
     super(message, root);

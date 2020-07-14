@@ -12,7 +12,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConverterOptions {
+class ConverterOptions {
   public File outputDirectory = null;
   public File inputFile = null;
   public List<File> inputFileList = new ArrayList<>();
