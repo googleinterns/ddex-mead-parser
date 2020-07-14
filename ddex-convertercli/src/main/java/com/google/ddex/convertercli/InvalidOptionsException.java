@@ -7,7 +7,7 @@ public class InvalidOptionsException extends Exception {
    *
    * @param message the message
    */
-  public InvalidOptionsException(String message) {
+public InvalidOptionsException(String message) {
     super(message);
   }
   /**
@@ -16,7 +16,7 @@ public class InvalidOptionsException extends Exception {
    * @param message the message
    * @param root the root
    */
-  public InvalidOptionsException(String message, Exception root) {
+public InvalidOptionsException(String message, Exception root) {
     super(message, root);
   }
 }

@@ -74,18 +74,30 @@ public class XsdSetMerger {
           workingEntryMap.addEntry(updatedEntry);
         }
       }
+
+      for (String type : oldEntries.keySet()) {
+        if (!newEntries.containsKey(type)) {
+          ProtoSchemaAbstractEntry deprecatedEntry = setDeprecatedEntry(oldEntries.get(type), nextEntryMap.getRootNamespacePrefix() + nextEntryMap.getVersion());
+          workingEntryMap.addEntry(deprecatedEntry);
+        }
+      }
     }
   }
 
+  private ProtoSchemaAbstractEntry setDeprecatedEntry(ProtoSchemaAbstractEntry deprecatedEntry, String deprecatedAt) {
+    deprecatedEntry.setVersion(deprecatedEntry.getVersion() + " -> Removed in " + deprecatedAt);
+    return deprecatedEntry;
+  }
 
   private ProtoSchemaAbstractEntry mergeSingleEntry(
           ProtoSchemaAbstractEntry workingEntry, ProtoSchemaAbstractEntry newEntry)
       throws XsdParseException {
     if (!workingEntry.getNamespacePrefix().equals(newEntry.getNamespacePrefix())
         || !workingEntry.getTitle().equals(newEntry.getTitle())) {
-      throw new XsdParseException("Entry data mismatch.");
+      throw new XsdParseException("Entry mismatch.");
     }
 
+    workingEntry.setVersion(workingEntry.getVersion() + " -> " + newEntry.getVersion());
     Map<String, ProtoSchemaField> oldFields = workingEntry.getFieldMap();
     Map<String, ProtoSchemaField> newFields = newEntry.getFieldMap();
 
@@ -96,15 +108,30 @@ public class XsdSetMerger {
         String localPartOld = oldFields.get(fieldName).getFieldType().getLocalPart();
         String localPartNew = newFields.get(fieldName).getFieldType().getLocalPart();
         if (!localPartNew.equals(localPartOld)) {
-          logger.atInfo().log("Field: " + fieldName + " Different types "
+          logger.atInfo().log("Field: " + fieldName + " type updated... "
                   + localPartOld + " -> " + localPartNew + " in type " + workingEntry.getTitle());
           workingEntry.addField(newEntry.getFieldMap().get(fieldName));
         }
       }
     }
 
+    for (String fieldName : oldFields.keySet()) {
+      if (!newFields.containsKey(fieldName)) {
+        ProtoSchemaField deprecatedField = setDeprecatedField(oldFields.get(fieldName), newEntry.getVersion());
+        workingEntry.addField(deprecatedField);
+      }
+    }
+
     return workingEntry;
   }
+
+
+  private ProtoSchemaField setDeprecatedField(ProtoSchemaField deprecatedField, String deprecatedAt) {
+    deprecatedField.setVersion(deprecatedField.getVersion() + " -> Removed in " + deprecatedAt);
+    deprecatedField.markDeprecated();
+    return deprecatedField;
+  }
+
 
 
   private List<String> getProcessingOrder() {

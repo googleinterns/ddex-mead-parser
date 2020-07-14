@@ -17,11 +17,16 @@ import java.util.Set;
 
 import com.google.common.flogger.FluentLogger;
 
-/** Command line tool for converting DDEX xsd and xml to Protocol buffer format. */
+/** Command line tool for converting DDEX XSD and XML to Protocol Buffer. */
 public class ConverterCli {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
   private final ConverterOptions runtimeOptions;
 
+  /**
+   * The entry point of application.
+   *
+   * @param args the input arguments
+   */
   public static void main(String[] args) {
     try {
       ConverterOptions options = new ConverterOptions(args);
@@ -55,7 +60,6 @@ public class ConverterCli {
     Message.Builder messageBuilder = MessageBuilderResolver.getBuilder(runtimeOptions.inputFile);
     Message protoMessage = MessageParser.parse(fileIn, messageBuilder);
 
-    // Write output proto message files
     logger.atInfo().log(protoMessage.toString());
   }
 
@@ -64,7 +68,6 @@ public class ConverterCli {
     FileReader fileIn = new FileReader(runtimeOptions.inputFile);
     ProtoSchema protoSchema = XsdParser.parse(fileIn);
 
-    // Write schema to file
     writeSchema(protoSchema);
   }
 
@@ -88,7 +91,6 @@ public class ConverterCli {
 
     Set<String> namespaces = schema.getSchemaStringMap().keySet();
     for (String namespace : namespaces) {
-      // TODO Use output directory?
       File file = new File("./proto/" + rootNamespace + "/" + packageName + "/" + namespace + ".proto");
       file.getParentFile().mkdirs();
       try (FileWriter writer = new FileWriter(file, false)) {

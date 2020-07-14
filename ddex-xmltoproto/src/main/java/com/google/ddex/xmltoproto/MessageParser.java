@@ -126,8 +126,7 @@ public class MessageParser {
       return field != null;
     }
 
-    private void shiftToExtField(
-        Document document, Node node, Descriptors.Descriptor messageDescriptor) {
+    private void shiftToExtField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
       if (shouldShiftExtValue(messageDescriptor)) {
         Element attr_to_append = document.createElement("ext_value");
         attr_to_append.setTextContent(node.getTextContent());
@@ -136,8 +135,7 @@ public class MessageParser {
       }
     }
 
-    private void shiftToAutoField(
-        Document document, Node node, Descriptors.Descriptor messageDescriptor) {
+    private void shiftToAutoField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
       if (shouldShiftAutoValue(messageDescriptor)) {
         Element attr_to_append = document.createElement("auto_value");
         attr_to_append.setTextContent(node.getTextContent());
@@ -146,8 +144,7 @@ public class MessageParser {
       }
     }
 
-    private void shiftToEnumField(
-        Document document, Node node, Descriptors.Descriptor messageDescriptor) {
+    private void shiftToEnumField(Document document, Node node, Descriptors.Descriptor messageDescriptor) {
       if (shouldShiftEnumValue(messageDescriptor)) {
         Element attr_to_append = document.createElement("enum_value");
         attr_to_append.setTextContent(node.getTextContent());

@@ -18,6 +18,10 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
   /** The Field is repeated. */
   boolean fieldIsRepeated;
 
+  String version;
+
+  boolean deprecated;
+
   /**
    * Instantiates a new Schema field.
    *
@@ -31,6 +35,7 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
         Objects.requireNonNullElseGet(
             qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
     fieldIsRepeated = repeated;
+    deprecated = false;
   }
 
   /**
@@ -45,6 +50,7 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
         Objects.requireNonNullElseGet(
             qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
     fieldIsRepeated = false;
+    deprecated = false;
   }
 
   /**
@@ -58,6 +64,11 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
     fieldQName = new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
     fieldIsRepeated = false;
     fieldAnnotation = null;
+    deprecated = false;
+  }
+
+  public void setVersion(String v) {
+    version = v;
   }
 
   public void setAnnotation(String annotation) {
@@ -77,6 +88,10 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
       }
     }
     fieldAnnotation = annotationStringBuilder.toString();
+  }
+
+  public String getVersion() {
+    return version;
   }
 
   public String getAnnotation() {
@@ -117,5 +132,12 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
    */
   public boolean isXmlType() {
     return fieldQName.getPrefix().equals("xs");
+  }
+
+  public boolean isDeprecated() {
+    return deprecated;
+  }
+  public void markDeprecated() {
+    deprecated = true;
   }
 }
