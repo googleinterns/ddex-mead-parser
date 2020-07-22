@@ -92,6 +92,7 @@ class ConverterOptions {
       File meadXml = new File(args[0]);
       if (meadXml.exists()) {
         inputFile = meadXml;
+        inputFileList.add(meadXml);
       } else {
         throw new InvalidOptionsException(meadXml.getAbsolutePath() + " XML file input does not exist.");
       }

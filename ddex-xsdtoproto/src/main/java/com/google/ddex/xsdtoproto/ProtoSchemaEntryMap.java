@@ -5,16 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/** The type Schema entry map. */
+/**
+ * The ProtoSchemaEntryMap is the underlying representation of the types parsed from the DDEX XSD. Stores schema metadata and
+ * individual Protocol Buffer message type definitions ({@link ProtoSchemaAbstractEntry}'s)
+ */
 public class ProtoSchemaEntryMap {
-  /** The Namespace prefix entry map. */
   Map<String, Map<String, ProtoSchemaAbstractEntry>> namespacePrefixEntryMap;
-  /** The Root namespace prefix. */
   String rootNamespacePrefix;
-  /** The Version. */
   int version;
-
-  /** The Import registry. */
   XsdImportRegistry importRegistry;
 
   /** Instantiates a new Schema entry map. */
@@ -24,9 +22,9 @@ public class ProtoSchemaEntryMap {
   }
 
   /**
-   * Add entry.
+   * Add entry. Each entry will correspond to a message type in the final .proto schema output.
    *
-   * @param entry the entry
+   * @param entry The entry
    */
   public void addEntry(ProtoSchemaAbstractEntry entry) {
     String prefix = entry.getNamespacePrefix();
@@ -38,27 +36,30 @@ public class ProtoSchemaEntryMap {
   }
 
   /**
-   * Sets version.
+   * Sets version. The version number refers to the version of the DDEX schema - ERN version 4.1.1
+   * would be * "411".
    *
-   * @param version the version
+   * @param version The version number
    */
   public void setVersion(String version) {
     this.version = Integer.parseInt(version);
   }
 
   /**
-   * Sets version.
+   * Sets version. The version number refers to the version of the DDEX schema - ERN version 4.1.1
+   * would be * "411".
    *
-   * @param version the version
+   * @param version The version number
    */
   public void setVersion(int version) {
     this.version = version;
   }
 
   /**
-   * Sets root namespace prefix.
+   * Sets root namespace prefix. In a set of XSD files with their own unique namespaces ("mead" +
+   * "avs") * we need to define the "mead" namespace as the root/entry point of the schema
    *
-   * @param rootNamespacePrefix the root namespace prefix
+   * @param rootNamespacePrefix The root namespace prefix
    */
   public void setRootNamespacePrefix(String rootNamespacePrefix) {
     this.rootNamespacePrefix = rootNamespacePrefix;
@@ -67,7 +68,7 @@ public class ProtoSchemaEntryMap {
   /**
    * Gets root namespace prefix.
    *
-   * @return the root namespace prefix
+   * @return The root namespace prefix
    */
   public String getRootNamespacePrefix() {
     return rootNamespacePrefix;
@@ -76,40 +77,36 @@ public class ProtoSchemaEntryMap {
   /**
    * Gets version.
    *
-   * @return the version
+   * @return The version
    */
   public int getVersion() {
     return version;
   }
 
   /**
-   * Gets namespace prefixes.
+   * Gets a list of the namespaces in the schema.
    *
-   * @return the namespace prefixes
+   * @return The namespace prefixes
    */
   public List<String> getNamespacePrefixes() {
     return new ArrayList<>(namespacePrefixEntryMap.keySet());
   }
 
   /**
-   * Gets namespace prefix entry map.
+   * Gets a nested Map of all the entries in the schema. The top level maps the namespaces to the second level map.
+   * The second level maps entry names to the {@link ProtoSchemaAbstractEntry}'s themselves
    *
-   * @return the namespace prefix entry map
+   * @return The namespace prefix entry map
    */
   public Map<String, Map<String, ProtoSchemaAbstractEntry>> getNamespacePrefixEntryMap() {
     return namespacePrefixEntryMap;
   }
 
-  /**
-   * Gets import registry.
-   *
-   * @return the import registry
-   */
-  public XsdImportRegistry getImportRegistry() {
+  XsdImportRegistry getImportRegistry() {
     return importRegistry;
   }
 
-  private void registerImportsFromEntry(ProtoSchemaAbstractEntry entry) {
+  void registerImportsFromEntry(ProtoSchemaAbstractEntry entry) {
     List<ProtoSchemaField> fields = entry.getFields();
     for (ProtoSchemaField field : fields) {
       importRegistry.registerImport(entry.getNamespacePrefix(), field.getFieldType().getPrefix());

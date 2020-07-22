@@ -1,6 +1,6 @@
 package com.google.ddex.xsdtoproto;
 
-/** The type Schema conversion exception. */
+/** Thrown when a fatal error occurs trying to convert an XSD schema to a Protocol Buffer schema. */
 public class XsdParseException extends Exception {
   /**
    * Instantiates a new Schema conversion exception.

@@ -26,7 +26,7 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   /** The Entry is extension. */
   boolean entryIsExtension;
 
-  String version;
+  String versionAnnotation;
 
   /**
    * Instantiates a new Schema abstract entry.
@@ -54,8 +54,8 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
     }
   }
 
-  public void setVersion(String v) {
-    version = v;
+  public void setVersionAnnotation(String v) {
+    versionAnnotation = v;
   }
 
   public void setAnnotation(String annotation) {
@@ -77,8 +77,8 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
     entryAnnotation = annotationStringBuilder.toString();
   }
 
-  public String getVersion() {
-    return version;
+  public String getVersionAnnotation() {
+    return versionAnnotation;
   }
 
   public String getAnnotation() {

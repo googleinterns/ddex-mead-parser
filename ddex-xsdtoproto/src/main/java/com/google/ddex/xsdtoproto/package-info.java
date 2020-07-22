@@ -1,4 +1,4 @@
 /**
- * Contains classes responsible for converting a DDEX XSD to a Protocol Buffer schema format
+ * Contains classes responsible for converting DDEX XSD to Protocol Buffer schemas
  */
 package com.google.ddex.xsdtoproto;

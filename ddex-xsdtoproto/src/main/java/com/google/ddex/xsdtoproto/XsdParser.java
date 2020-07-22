@@ -39,16 +39,37 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+/** The XsdParser handles conversion from DDEX XSD to Protocol Buffer schemas. */
 public class XsdParser {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
+  /**
+   * Default constructor.
+   */
+  public XsdParser() {}
+
+  /**
+   * Parse DDEX XSD (schema).
+   * @param reader The reader for the input DDEX XSD
+   * @return The {@link com.google.ddex.xsdtoproto.ProtoSchema} representation of the XSD.
+   * @throws XsdParseException If any problem occurred parsing the DDEX XSD
+   */
   public static ProtoSchema parse(Reader reader) throws XsdParseException {
     XsdParseReporter defaultReporter = new XsdParseReporter();
     XsdParserInstance xsdParserInstance = new XsdParserInstance(reader, defaultReporter);
     return xsdParserInstance.parse();
   }
 
-  public static ProtoSchema parse(Reader reader, XsdParseReporter reporter) throws XsdParseException {
+  /**
+   * Parse DDEX XSD (schema).
+   *
+   * @param reader The reader for the input DDEX XSD.
+   * @param reporter Reference to a XsdParseReporter, which will store namespaces processed and warnings generated during parse.
+   * @return The {@link com.google.ddex.xsdtoproto.ProtoSchema} representation of the XSD.
+   * @throws XsdParseException If any problem occurred parsing the DDEX XSD
+   */
+  public static ProtoSchema parse(Reader reader, XsdParseReporter reporter)
+      throws XsdParseException {
     XsdParserInstance xsdParserInstance = new XsdParserInstance(reader, reporter);
     return xsdParserInstance.parse();
   }
@@ -158,7 +179,7 @@ public class XsdParser {
             throws XsdParseException {
       ProtoSchemaMessageEntry messageEntry = new ProtoSchemaMessageEntry(entryName, nsPrefix);
       messageEntry.setAnnotation(union.getAnnotation());
-      messageEntry.setVersion(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
+      messageEntry.setVersionAnnotation(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
       messageEntry.addField(new ProtoSchemaField("auto_value"));
       protoSchemaEntryMap.addEntry(messageEntry);
       return new QName(
@@ -179,7 +200,7 @@ public class XsdParser {
         ProtoSchemaMessageEntry messageEntry = new ProtoSchemaMessageEntry(entryName, nsPrefix);
         QName restrictionQName = getDefaultQName();
         messageEntry.setAnnotation("SchemaConverter generated enum replacement message type");
-        messageEntry.setVersion(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
+        messageEntry.setVersionAnnotation(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
         messageEntry.addField(new ProtoSchemaField("enum_value", restrictionQName));
         protoSchemaEntryMap.addEntry(messageEntry);
         return new QName(
@@ -190,7 +211,7 @@ public class XsdParser {
         ProtoSchemaMessageEntry messageEntry = new ProtoSchemaMessageEntry(entryName, nsPrefix);
         QName restrictionQName = restriction.getBaseTypeName(); // Always a STRING restriction
         messageEntry.setAnnotation("SchemaConverter generated base level auto field wrapper");
-        messageEntry.setVersion(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
+        messageEntry.setVersionAnnotation(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
         messageEntry.addField(new ProtoSchemaField("auto_value", restrictionQName));
         protoSchemaEntryMap.addEntry(messageEntry);
         return new QName(
@@ -221,7 +242,7 @@ public class XsdParser {
       processContentModel(complexItem.getContentModel(), messageEntry, parent);
 
       if (messageEntry.isPopulated()) {
-        messageEntry.setVersion(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
+        messageEntry.setVersionAnnotation(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
         protoSchemaEntryMap.addEntry(messageEntry);
         return new QName(
                 namespaceMap.getUri(messageEntry.getNamespacePrefix()),
@@ -280,7 +301,7 @@ public class XsdParser {
         boolean repeated = ((XmlSchemaElement) item).getMaxOccurs() > 1;
 
         ProtoSchemaField field = new ProtoSchemaField(name, itemType, repeated);
-        field.setVersion(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
+        field.setVersionAnnotation(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
         field.setAnnotation(((XmlSchemaElement) item).getAnnotation());
         entry.addField(field);
       } else if (item instanceof XmlSchemaAny) {
@@ -323,7 +344,7 @@ public class XsdParser {
             QName attributeType = getAttributeTypeName(((XmlSchemaAttribute) attribute));
             ProtoSchemaField field = new ProtoSchemaField(name, attributeType);
             field.setAnnotation(attribute.getAnnotation());
-            field.setVersion(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
+            field.setVersionAnnotation(protoSchemaEntryMap.getRootNamespacePrefix() + protoSchemaEntryMap.getVersion());
             entry.addField(field);
           } else {
             throw new XsdParseException("Unhandled attribute: " + attribute.getClass());

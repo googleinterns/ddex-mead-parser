@@ -20,21 +20,46 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.Reader;
 
-import java.time.OffsetDateTime;
-import java.time.ZonedDateTime;
-
 import com.google.common.flogger.FluentLogger;
 
+/** The MessageParser handles conversion from DDEX XML to Protocol Buffer messages. */
 public class MessageParser {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
-  public static Message parse(Reader reader, Message.Builder messageBuilder) throws MessageParseException {
+  /**
+   * Default constructor.
+   */
+  public MessageParser() { }
+
+  /**
+   * Parse DDEX XML message.
+   *
+   * @param reader The reader for the input DDEX XML
+   * @param messageBuilder The protobuf message builder, which can be generated using the MessageBuilder resolver, or
+   *                       manually provided.
+   * @return The protobuf message
+   * @throws MessageParseException If any problem occurred parsing the DDEX XML
+   */
+  public static Message parse(Reader reader, Message.Builder messageBuilder)
+      throws MessageParseException {
     MessageParseReporter defaultReporter = new MessageParseReporter();
     MessageParserInstance messageParserInstance = new MessageParserInstance(reader, messageBuilder, defaultReporter);
     return messageParserInstance.parse();
   }
 
-  public static Message parse(Reader reader, Message.Builder messageBuilder, MessageParseReporter reporter) throws MessageParseException {
+  /**
+   * Parse DDEX XML message.
+   *
+   * @param reader The reader for the input DDEX XML
+   * @param messageBuilder The protobuf message builder, which can be generated using the MessageBuilder resolver, or
+   *                       manually provided.
+   * @param reporter Reference to a MessageParseReporter, which will store all warnings generated while parsing the DDEX message
+   * @return The protobuf message
+   * @throws MessageParseException If any problem occurred parsing the DDEX XML
+   */
+  public static Message parse(
+      Reader reader, Message.Builder messageBuilder, MessageParseReporter reporter)
+      throws MessageParseException {
     MessageParserInstance messageParserInstance = new MessageParserInstance(reader, messageBuilder, reporter);
     return messageParserInstance.parse();
   }
@@ -44,7 +69,8 @@ public class MessageParser {
     private final Message.Builder baseBuilder;
     private final MessageParseReporter reporter;
 
-    public MessageParserInstance(Reader reader, Message.Builder builder, MessageParseReporter messageParseReporter) {
+    public MessageParserInstance(
+        Reader reader, Message.Builder builder, MessageParseReporter messageParseReporter) {
       inputXml = reader;
       baseBuilder = builder;
       reporter = messageParseReporter;
@@ -168,9 +194,6 @@ public class MessageParser {
       Descriptors.FieldDescriptor.JavaType fieldType = field.getJavaType();
       String textContent = node.getTextContent();
       switch (fieldType) {
-        case ENUM:
-          logger.atWarning().log("Encountered unexpected enum field: " + field.getFullName());
-          return null;
         case BOOLEAN:
           return Boolean.parseBoolean(textContent);
         case INT:
@@ -182,23 +205,12 @@ public class MessageParser {
         case BYTE_STRING:
           return ByteString.copyFromUtf8(textContent);
         case LONG:
-          return handleDateText(textContent);
+          return Long.parseLong(textContent);
         case STRING:
           return textContent;
-      }
-      return null;
-    }
-
-    private long handleDateText(String textContent) {
-      if (textContent.endsWith("Z")) {
-        ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent);
-        return zonedDateTime.toInstant().toEpochMilli();
-      } else if (textContent.contains("+")) {
-        OffsetDateTime offsetDateTime = OffsetDateTime.parse(textContent);
-        return offsetDateTime.toInstant().toEpochMilli();
-      } else {
-        ZonedDateTime zonedDateTime = ZonedDateTime.parse(textContent + "Z");
-        return zonedDateTime.toInstant().toEpochMilli();
+        default:
+          logger.atWarning().log("Encountered unexpected enum field: " + field.getFullName());
+          return null;
       }
     }
   }

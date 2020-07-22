@@ -7,10 +7,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The XsdSetMerger allows for multiple {@link com.google.ddex.xsdtoproto.ProtoSchema}'s of the same major version to be parsed and merged into a super schema.
+ * This super schema will contain all the fields from every included version.
+ */
 public class XsdSetMerger {
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
   Map<String, ProtoSchemaEntryMap> schemas;
 
+  /**
+   * Constructor.
+   */
   public XsdSetMerger() {
     schemas = new HashMap<>();
   }
@@ -18,13 +25,18 @@ public class XsdSetMerger {
   /**
    * Add schema definition to set merger before calling merge.
    *
-   * @param schema the schema
+   * @param schema A schema
    */
   public void addSchema(ProtoSchema schema) {
     String versionAsString = Integer.toString(schema.getVersionNumber());
     schemas.put(versionAsString, schema.getProtoSchemaEntryMap());
   }
 
+  /**
+   * Merge the added schemas to build the super schema.
+   * @return The super schema
+   * @throws XsdParseException If any problem occurred when merging schemas
+   */
   public ProtoSchema merge() throws XsdParseException {
     List<String> processingOrder = getProcessingOrder();
     ProtoSchemaEntryMap workingEntryMap = schemas.get(processingOrder.get(0));
@@ -90,7 +102,7 @@ public class XsdSetMerger {
   }
 
   private ProtoSchemaAbstractEntry setDeprecatedEntry(ProtoSchemaAbstractEntry deprecatedEntry, String deprecatedAt) {
-    deprecatedEntry.setVersion(deprecatedEntry.getVersion() + " -> Removed in " + deprecatedAt);
+    deprecatedEntry.setVersionAnnotation(deprecatedEntry.getVersionAnnotation() + " -> Removed in " + deprecatedAt);
     return deprecatedEntry;
   }
 
@@ -102,7 +114,7 @@ public class XsdSetMerger {
       throw new XsdParseException("Entry mismatch.");
     }
 
-    workingEntry.setVersion(workingEntry.getVersion() + " -> " + newEntry.getVersion());
+    workingEntry.setVersionAnnotation(workingEntry.getVersionAnnotation() + " -> " + newEntry.getVersionAnnotation());
     Map<String, ProtoSchemaField> oldFields = workingEntry.getFieldMap();
     Map<String, ProtoSchemaField> newFields = newEntry.getFieldMap();
 
@@ -113,16 +125,17 @@ public class XsdSetMerger {
         String localPartOld = oldFields.get(fieldName).getFieldType().getLocalPart();
         String localPartNew = newFields.get(fieldName).getFieldType().getLocalPart();
         if (!localPartNew.equals(localPartOld)) {
-          logger.atInfo().log("Field: " + fieldName + " type updated... "
-                  + localPartOld + " -> " + localPartNew + " in type " + workingEntry.getTitle());
-          workingEntry.addField(newEntry.getFieldMap().get(fieldName));
+          logger.atInfo().log("Field: " + fieldName + " type updated: " + localPartOld + " -> " + localPartNew + " in type " + workingEntry.getTitle());
+          ProtoSchemaField updatedField = newEntry.getFieldMap().get(fieldName);
+          updatedField.setVersionAnnotation(updatedField.getVersionAnnotation() + " -> Updated in " + newEntry.getVersionAnnotation());
+          workingEntry.addField(updatedField);
         }
       }
     }
 
     for (String fieldName : oldFields.keySet()) {
       if (!newFields.containsKey(fieldName)) {
-        ProtoSchemaField deprecatedField = setDeprecatedField(oldFields.get(fieldName), newEntry.getVersion());
+        ProtoSchemaField deprecatedField = setDeprecatedField(oldFields.get(fieldName), newEntry.getVersionAnnotation());
         workingEntry.addField(deprecatedField);
       }
     }
@@ -131,7 +144,7 @@ public class XsdSetMerger {
   }
 
   private ProtoSchemaField setDeprecatedField(ProtoSchemaField deprecatedField, String deprecatedAt) {
-    deprecatedField.setVersion(deprecatedField.getVersion() + " -> Removed in " + deprecatedAt);
+    deprecatedField.setVersionAnnotation(deprecatedField.getVersionAnnotation() + " -> Removed in " + deprecatedAt);
     deprecatedField.markDeprecated();
     return deprecatedField;
   }

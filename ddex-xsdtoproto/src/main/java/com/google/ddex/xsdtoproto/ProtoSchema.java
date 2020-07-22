@@ -10,7 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 
-/** The type Proto schema. */
+/**
+ * Internal representation of a Protocol Buffer schema. This class acts as wrapper on top of a {@link ProtoSchemaEntryMap} to preserve schema metadata and
+ * to serialize the entries to a .proto format string.
+ */
 public class ProtoSchema {
   private String rootNamespace;
   private String packageName;
@@ -20,10 +23,10 @@ public class ProtoSchema {
   private final ProtoSchemaEntryMap protoSchemaEntryMap;
 
   /**
-   * Instantiates a new Proto schema.
+   * Instantiates a new ProtoSchema using a {@link ProtoSchemaEntryMap}.
    *
-   * @param entryMap the entry map
-   * @throws XsdParseException the schema conversion exception
+   * @param entryMap The entry map
+   * @throws XsdParseException If any problems occur attempting to serialize the entryMap
    */
   public ProtoSchema(ProtoSchemaEntryMap entryMap) throws XsdParseException {
     protoSchemaEntryMap = entryMap;
@@ -32,45 +35,49 @@ public class ProtoSchema {
   }
 
   /**
-   * Gets root namespace.
+   * Gets root namespace. In a set of XSD files with their own unique namespaces ("mead" + "avs")
+   * we need to define the "mead" namespace as the root/entry point of the ProtoSchema
    *
-   * @return the root namespace
+   * @return The DDEX schema's root namespace
    */
   public String getRootNamespace() {
     return rootNamespace;
   }
 
   /**
-   * Gets package name.
+   * Gets package name. The package name is a custom identifier consisting of the
+   * rootNamespace+versionNumber (mead101) that is used to separate the different schema's usage at runtime in the
+   * {@link com.google.ddex.xmltoproto.MessageBuilderResolver}
    *
-   * @return the package name
+   * @return The DDEX schema's package name
    */
   public String getPackageName() {
     return packageName;
   }
 
   /**
-   * Gets version number.
+   * Gets version number. The version number refers to the version of the DDEX schema - ERN version 4.1.1 would be
+   * "411"
    *
-   * @return the version number
+   * @return The DDEX schema's version number
    */
   public int getVersionNumber() {
     return versionNumber;
   }
 
   /**
-   * Gets schema string.
+   * Gets a map of all the .proto schemas in string format. Each entry can be written to a file as a .proto.
    *
-   * @return the schema string
+   * @return A Map of all the serialized .proto files as strings.
    */
   public Map<String, String> getSchemaStringMap() {
     return schemaStringMap;
   }
 
   /**
-   * Gets schema entry map.
+   * Gets schema entry map. Allows the original {@link ProtoSchemaEntryMap} to be accessed.
    *
-   * @return the schema entry map
+   * @return The original entry map
    */
   public ProtoSchemaEntryMap getProtoSchemaEntryMap() {
     return protoSchemaEntryMap;
@@ -167,7 +174,7 @@ public class ProtoSchema {
 
     int numerator = 1;
     for (ProtoSchemaField field : fields) {
-      if (field.getVersion() != null && !field.getVersion().isEmpty()) {
+      if (field.getVersionAnnotation() != null && !field.getVersionAnnotation().isEmpty()) {
         fieldSetStringBuilder.append("\t");
         fieldSetStringBuilder.append(serializeFieldVersion(field));
       }
@@ -199,7 +206,7 @@ public class ProtoSchema {
   }
 
   private String serializeMessageVersion(ProtoSchemaAnnotated annotated) {
-    String version = annotated.getVersion();
+    String version = annotated.getVersionAnnotation();
     if (version == null || version.isEmpty()) {
       return "";
     }
@@ -207,7 +214,7 @@ public class ProtoSchema {
   }
 
   private String serializeFieldVersion(ProtoSchemaAnnotated annotated) {
-    String version = annotated.getVersion();
+    String version = annotated.getVersionAnnotation();
     if (version == null || version.isEmpty()) {
       return "";
     }
@@ -248,11 +255,10 @@ public class ProtoSchema {
         return "int32";
       case "decimal":
         return "double";
-      case "dateTime":
-        return "uint64";
       case "positiveInteger":
       case "gYear":
         return "uint32";
+      case "dateTime":
       case "string":
       case "anyURI":
       case "NMTOKEN":

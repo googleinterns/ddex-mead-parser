@@ -37,8 +37,8 @@ public class MessageBuilderResolver {
    * builder compatible with all of ern's major version 4
    *
    * @param document The Document representing a DDEX XML message
-   * @return the corresponding message builder
-   * @throws MessageParseException if there was a problem loading a builder for the DDEX message, either there is no builder that is compatible with the supplied DDEX message,
+   * @return The corresponding message builder
+   * @throws MessageParseException If there was a problem loading a builder for the DDEX message, either there is no builder that is compatible with the supplied DDEX message,
    * or an issue occurred when trying to load a class with reflection.
    */
   public static Message.Builder getBuilder(Document document) throws MessageParseException {
@@ -51,13 +51,13 @@ public class MessageBuilderResolver {
 
     if (namespace.equals("ern")) {
       if (majorVersionNumber == 4) {
-        return dynamicBuilderLoader("ern42.ern.Ern", "NewReleaseMessage", "newBuilder");
+        return dynamicBuilderLoader("ern42.ern.Ern$NewReleaseMessage", "newBuilder");
       } else if (majorVersionNumber == 3) {
-        return dynamicBuilderLoader("ern382.ern.Ern", "NewReleaseMessage", "newBuilder");
+        return dynamicBuilderLoader("ern382.ern.Ern$NewReleaseMessage", "newBuilder");
       }
     } else if (namespace.equals("mead")) {
       if (majorVersionNumber == 1) {
-        return dynamicBuilderLoader("mead101.mead.Mead", "MeadMessage", "newBuilder");
+        return dynamicBuilderLoader("mead101.mead.Mead$MeadMessage",  "newBuilder");
       }
     } else {
       throw new MessageParseException("Unsupported message namespace: " + namespace + ", version: " + versionNumber);
@@ -71,21 +71,21 @@ public class MessageBuilderResolver {
    * @see MessageBuilderResolver#getBuilder(Document)
    *
    * @param file The XML file containing the DDEX message.
-   * @return the corresponding message builder
-   * @throws MessageParseException if there was a problem loading a builder for the DDEX message, either there is no builder that is compatible with the supplied DDEX message,
+   * @return The corresponding message builder
+   * @throws MessageParseException If there was a problem loading a builder for the DDEX message, either there is no builder that is compatible with the supplied DDEX message,
    * or an issue occurred when trying to load a class with reflection.
-   * @throws IOException if any IO error occurs handling the File
+   * @throws IOException If any IO error occurs handling the File
    */
   public static Message.Builder getBuilder(File file) throws MessageParseException, IOException {
     Document document = getDocument(file);
     return getBuilder(document);
   }
 
-  private static Message.Builder dynamicBuilderLoader(String baseClass, String innerClass, String methodName) throws MessageParseException {
+  private static Message.Builder dynamicBuilderLoader(String className, String methodName) throws MessageParseException {
     try {
-      Class<?> classRef =  Class.forName(baseClass);
-      Class<?> inner = classRef.getClassLoader().loadClass(classRef.getName() + "$" + innerClass);
-      Method m = inner.getDeclaredMethod(methodName);return (Message.Builder) m.invoke(inner);
+      Class<?> classRef =  Class.forName(className);
+      Method m = classRef.getDeclaredMethod(methodName);
+      return (Message.Builder) m.invoke(classRef);
     } catch (ClassNotFoundException | NoSuchMethodException e) {
       throw new MessageParseException("Could not load builder constructor", e);
     } catch (IllegalAccessException | InvocationTargetException e) {

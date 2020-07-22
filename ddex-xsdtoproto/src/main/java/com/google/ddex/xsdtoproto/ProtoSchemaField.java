@@ -67,7 +67,7 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
     deprecated = false;
   }
 
-  public void setVersion(String v) {
+  public void setVersionAnnotation(String v) {
     version = v;
   }
 
@@ -90,7 +90,7 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
     fieldAnnotation = annotationStringBuilder.toString();
   }
 
-  public String getVersion() {
+  public String getVersionAnnotation() {
     return version;
   }
 

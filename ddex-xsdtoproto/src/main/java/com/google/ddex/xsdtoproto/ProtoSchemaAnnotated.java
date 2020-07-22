@@ -10,7 +10,7 @@ public interface ProtoSchemaAnnotated {
    * @return the annotation
    */
   String getAnnotation();
-  String getVersion();
+  String getVersionAnnotation();
 
   /**
    * Sets annotation.
@@ -25,5 +25,5 @@ public interface ProtoSchemaAnnotated {
    */
   void setAnnotation(XmlSchemaAnnotation annotation);
 
-  void setVersion(String version);
+  void setVersionAnnotation(String version);
 }
