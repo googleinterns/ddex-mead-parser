@@ -11,7 +11,7 @@ import java.util.Map;
 
 
 /**
- * Internal representation of a Protocol Buffer schema. This class acts as wrapper on top of a {@link ProtoSchemaEntryMap} to preserve schema metadata and
+ * The ProtoSchema is an internal representation of a Protocol Buffer schema. This class acts as wrapper on top of a {@link ProtoSchemaEntryMap} to preserve schema metadata and
  * to serialize the entries to a .proto format string.
  */
 public class ProtoSchema {

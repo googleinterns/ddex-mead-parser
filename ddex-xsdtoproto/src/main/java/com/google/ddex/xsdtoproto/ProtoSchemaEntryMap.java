@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The ProtoSchemaEntryMap is the underlying representation of the types parsed from the DDEX XSD. Stores schema metadata and
+ * The ProtoSchemaEntryMap is the container for the types parsed from the DDEX XSD. Stores schema metadata and
  * individual Protocol Buffer message type definitions ({@link ProtoSchemaAbstractEntry}'s)
  */
 public class ProtoSchemaEntryMap {

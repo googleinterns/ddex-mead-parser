@@ -9,30 +9,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/** The type Schema abstract entry. */
+/**
+ * The ProtoSchemaAbstractEntry represents a type defined in the DDEX XSD. Each entry is output as a Message type definition
+ * in the final .proto schema.
+ */
 public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
-  /** The Entry title. */
   String entryTitle;
-
-  /** The Entry namespace prefix. */
   String entryNamespacePrefix;
-
-  /** The Entry annotation. */
   String entryAnnotation;
-
-  /** The Entry fields. */
   Map<String, ProtoSchemaField> entryFields;
-
-  /** The Entry is extension. */
   boolean entryIsExtension;
-
   String versionAnnotation;
 
   /**
-   * Instantiates a new Schema abstract entry.
+   * Instantiates a new Schema abstract entry by entry name and the containing namespace.
    *
-   * @param title the title
-   * @param namespacePrefix the namespace prefix
+   * @param title The name of the entry
+   * @param namespacePrefix The namespace prefix that contains this entry
    */
   public ProtoSchemaAbstractEntry(String title, String namespacePrefix) {
     entryTitle = title;
@@ -43,9 +36,9 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   }
 
   /**
-   * Add field.
+   * Adds a field to the ProtoSchemaAbstractEntry.
    *
-   * @param entryField the entry field
+   * @param entryField The field
    */
   public void addField(ProtoSchemaField entryField) {
     entryFields.put(entryField.getFieldValue(), entryField);
@@ -54,14 +47,29 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
     }
   }
 
-  public void setVersionAnnotation(String v) {
-    versionAnnotation = v;
+  /**
+   * Sets version annotation.
+   *
+   * @param annotation The annotation
+   */
+  public void setVersionAnnotation(String annotation) {
+    versionAnnotation = annotation;
   }
 
+  /**
+   * Sets annotation.
+   *
+   * @param annotation The annotation
+   */
   public void setAnnotation(String annotation) {
     entryAnnotation = annotation;
   }
 
+  /**
+   * Sets annotation.
+   *
+   * @param annotation The annotation
+   */
   public void setAnnotation(XmlSchemaAnnotation annotation) {
     StringBuilder annotationStringBuilder = new StringBuilder();
     if (annotation == null || annotation.getItems() == null) return;
@@ -77,10 +85,20 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
     entryAnnotation = annotationStringBuilder.toString();
   }
 
+  /**
+   * Gets version annotation. This annotation pertains to the versioning of each entry and field.
+   *
+   * @return The version annotation
+   */
   public String getVersionAnnotation() {
     return versionAnnotation;
   }
 
+  /**
+   * Gets annotation. This annotation stores extracted XML annotations found in the original DDEX XSD.
+   *
+   * @return The annotation
+   */
   public String getAnnotation() {
     return entryAnnotation;
   }
@@ -122,7 +140,7 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   }
 
   /**
-   * Is extension boolean.
+   * Entry is an extension flag.
    *
    * @return the boolean
    */
@@ -131,7 +149,7 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   }
 
   /**
-   * Is populated boolean.
+   * Entry is populated flag.
    *
    * @return the boolean
    */
@@ -140,7 +158,7 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   }
 
   /**
-   * Is enum boolean.
+   * Entry is an enum flag.
    *
    * @return the boolean
    */
@@ -149,7 +167,7 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   }
 
   /**
-   * Is message boolean.
+   * Entry is a message flag.
    *
    * @return the boolean
    */

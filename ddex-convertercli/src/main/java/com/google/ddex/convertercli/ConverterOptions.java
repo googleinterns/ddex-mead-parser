@@ -105,6 +105,8 @@ class ConverterOptions {
           throw new InvalidOptionsException("XML file input does not exist.");
         }
       }
+    } else {
+      throw new InvalidOptionsException("Missing arguments.");
     }
   }
 
