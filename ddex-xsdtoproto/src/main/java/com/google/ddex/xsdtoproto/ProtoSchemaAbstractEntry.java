@@ -14,8 +14,8 @@ import java.util.Map;
  * in the final .proto schema.
  */
 public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
-  String entryTitle;
-  String entryNamespacePrefix;
+  final String entryTitle;
+  final String entryNamespacePrefix;
   String entryAnnotation;
   Map<String, ProtoSchemaField> entryFields;
   boolean entryIsExtension;
@@ -72,7 +72,9 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
    */
   public void setAnnotation(XmlSchemaAnnotation annotation) {
     StringBuilder annotationStringBuilder = new StringBuilder();
-    if (annotation == null || annotation.getItems() == null) return;
+    if (annotation == null || annotation.getItems() == null) {
+      return;
+    }
 
     for (int i = 0; i < annotation.getItems().size(); i++) {
       XmlSchemaDocumentation documentation = (XmlSchemaDocumentation) annotation.getItems().get(i);

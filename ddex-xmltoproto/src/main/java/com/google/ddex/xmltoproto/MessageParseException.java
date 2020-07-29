@@ -14,9 +14,9 @@ public class MessageParseException extends Exception {
    * Instantiates a new Mead conversion exception.
    *
    * @param message the message
-   * @param root the root cause of the MessageParseException
+   * @param cause the root cause of the MessageParseException
    */
-  public MessageParseException(String message, Exception root) {
-    super(message, root);
+  public MessageParseException(String message, Throwable cause) {
+    super(message, cause);
   }
 }

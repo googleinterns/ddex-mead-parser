@@ -1,5 +1,6 @@
 package com.google.ddex.convertercli;
 
+import com.google.common.collect.ImmutableSet;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -13,13 +14,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 class ConverterOptions {
-  public File outputDirectory = null;
-  public File inputFile = null;
-  public List<File> inputFileList = new ArrayList<>();
-  public boolean inputIsDirectory = false;
-  public String inputType = null;
-
+  private File outputDirectory = null;
+  private File inputFile = null;
+  private List<File> inputFileList = new ArrayList<>();
+  private boolean inputIsDirectory = false;
+  private String inputType = null;
   private CommandLine commandLineInput;
+
+  private static final ImmutableSet<String> VALID_INPUT_TYPES = ImmutableSet.of("message", "schema", "schema_set");
+  private static final Options DEFAULT_COMMAND_OPTIONS =
+      new Options()
+          .addOption(
+              Option.builder("o")
+                  .longOpt("outputDirectory")
+                  .hasArg()
+                  .argName("path")
+                  .required(false)
+                  .desc("the output directory of the serialized protobuf message(s)")
+                  .build())
+          .addOption(
+              Option.builder("d")
+                  .longOpt("directory")
+                  .desc("specify this option if the input argument is a directory of input_files")
+                  .build())
+          .addOption(
+              Option.builder()
+                  .longOpt("inputType")
+                  .hasArg()
+                  .argName("type")
+                  .required(true)
+                  .desc("message | schema | schema_set")
+                  .build());
+
+
+  public static void showCommandUsage() {
+    final String HELP_CMD_SYNTAX = "ConverterCli [OPTIONS] input_file";
+    final String HELP_HEADER = "Convert input DDEX XML formats to ProtoBuf";
+
+    HelpFormatter formatter = new HelpFormatter();
+    formatter.printHelp(HELP_CMD_SYNTAX, HELP_HEADER, DEFAULT_COMMAND_OPTIONS, null);
+  }
 
   public ConverterOptions(String[] args) throws InvalidOptionsException {
     setCommandLineInput(args);
@@ -27,49 +61,42 @@ class ConverterOptions {
     validateOptions();
   }
 
-  public static void showCommandUsage() {
-    Options commandOptions = buildCommandOptions();
-    final String HELP_CMD_SYNTAX = "ConverterCli [OPTIONS] input_file";
-    final String HELP_HEADER = "Convert input DDEX XML formats to ProtoBuf";
+  File getOutputDirectory() {
+    return outputDirectory;
+  }
 
-    HelpFormatter formatter = new HelpFormatter();
-    formatter.printHelp(HELP_CMD_SYNTAX, HELP_HEADER, commandOptions, null);
+  File getInputFile() {
+    return inputFile;
+  }
+
+  List<File> getInputFileList() {
+    return inputFileList;
+  }
+
+  boolean isInputIsDirectory() {
+    return inputIsDirectory;
+  }
+
+  String getInputType() {
+    return inputType;
   }
 
   private void setCommandLineInput(String[] args) throws InvalidOptionsException {
     try {
-      Options commandOptions = buildCommandOptions();
       CommandLineParser commandParser = new DefaultParser();
-      commandLineInput = commandParser.parse(commandOptions, args);
+      commandLineInput = commandParser.parse(DEFAULT_COMMAND_OPTIONS, args);
     } catch (ParseException e) {
       throw new InvalidOptionsException("Error trying to parse command input.", e);
     }
   }
 
-  private static Options buildCommandOptions() {
-    Options options = new Options();
-    options.addOption(
-            Option.builder("o")
-                    .longOpt("outputDirectory")
-                    .hasArg()
-                    .argName("path")
-                    .required(false)
-                    .desc("the output directory of the serialized protobuf message(s)")
-                    .build());
-    options.addOption(
-            Option.builder("d")
-                    .longOpt("directory")
-                    .desc("specify this option if the input argument is a directory of input_files")
-                    .build());
-    options.addOption(
-            Option.builder()
-                    .longOpt("inputType")
-                    .hasArg()
-                    .argName("type")
-                    .required(true)
-                    .desc("message | schema | schema_set")
-                    .build());
-    return options;
+  private File getFile(String pathName) throws InvalidOptionsException {
+    File ddexFile = new File(pathName);
+    if (ddexFile.exists()) {
+      return ddexFile;
+    } else {
+      throw new InvalidOptionsException("XML file input does not exist.");
+    }
   }
 
   private void populateOptions() throws InvalidOptionsException {
@@ -83,39 +110,26 @@ class ConverterOptions {
     }
     if (commandLineInput.hasOption("inputType")) {
       inputType = commandLineInput.getOptionValue("inputType");
-    } else {
-      throw new InvalidOptionsException("Invalid or missing inputType.");
     }
 
     String[] args = commandLineInput.getArgs();
     if (args.length == 1) {
-      File meadXml = new File(args[0]);
-      if (meadXml.exists()) {
-        inputFile = meadXml;
-        inputFileList.add(meadXml);
-      } else {
-        throw new InvalidOptionsException(meadXml.getAbsolutePath() + " XML file input does not exist.");
-      }
+      File ddexFile = getFile(args[0]);
+      inputFile = ddexFile;
+      inputFileList.add(ddexFile);
     } else if (args.length > 1) {
       for (String arg : args) {
-        File meadXsd = new File(arg);
-        if (meadXsd.exists()) {
-          inputFileList.add(meadXsd);
-        } else {
-          throw new InvalidOptionsException("XML file input does not exist.");
-        }
+        File ddexFile = getFile(arg);
+        inputFileList.add(ddexFile);
       }
     } else {
       throw new InvalidOptionsException("Missing arguments.");
     }
   }
 
-  private void validateOptions() throws InvalidOptionsException {
-    if (inputFile == null && inputFileList.size() == 0) {
-      throw new InvalidOptionsException("No input files or folder specified.");
-    }
 
-    if (!inputType.equals("message") && !inputType.equals("schema") && !inputType.equals("schema_set")) {
+  private void validateOptions() throws InvalidOptionsException {
+    if (!VALID_INPUT_TYPES.contains(inputType)) {
       throw new InvalidOptionsException("Invalid inputType specified: " + inputType);
     }
   }

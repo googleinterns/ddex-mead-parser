@@ -14,9 +14,9 @@ public class InvalidOptionsException extends Exception {
      * Instantiates a new Invalid options exception.
      *
      * @param message the message
-     * @param root the root cause of the InvalidOptionsException
+     * @param cause the root cause of the InvalidOptionsException
      */
-    public InvalidOptionsException(String message, Exception root) {
-        super(message, root);
+    public InvalidOptionsException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

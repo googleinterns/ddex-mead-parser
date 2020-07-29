@@ -3,6 +3,7 @@ package com.google.ddex.xsdtoproto;
 import org.apache.ws.commons.schema.utils.NamespacePrefixList;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /** The type Schema namespace map. */
@@ -11,9 +12,16 @@ class XsdNamespaceMap {
   private final Map<String, String> uriToPrefixMap;
 
   /** Instantiates a new Schema namespace map. */
-  XsdNamespaceMap() {
+  XsdNamespaceMap(List<NamespacePrefixList> allPrefixList) {
     prefixToUriMap = new HashMap<>();
     uriToPrefixMap = new HashMap<>();
+
+    for (NamespacePrefixList prefixList : allPrefixList) {
+      for (String prefix : prefixList.getDeclaredPrefixes()) {
+        prefixToUriMap.put(prefix, prefixList.getNamespaceURI(prefix));
+        uriToPrefixMap.put(prefixList.getNamespaceURI(prefix), prefix);
+      }
+    }
   }
 
   /**
@@ -31,14 +39,12 @@ class XsdNamespaceMap {
   /**
    * Gets prefix.
    *
-   * @param assumedUri the assumed uri
+   * @param uri the assumed uri
    * @return the prefix
    */
-  String getPrefix(String assumedUri) {
-    if (uriToPrefixMap.containsKey(assumedUri)) {
-      return uriToPrefixMap.get(assumedUri);
-    } else if (prefixToUriMap.containsKey(assumedUri)) {
-      return assumedUri;
+  String getPrefix(String uri) {
+    if (uriToPrefixMap.containsKey(uri)) {
+      return uriToPrefixMap.get(uri);
     }
     return "";
   }
@@ -46,14 +52,12 @@ class XsdNamespaceMap {
   /**
    * Gets uri.
    *
-   * @param assumedPrefix the assumed prefix
+   * @param prefix the assumed prefix
    * @return the uri
    */
-  String getUri(String assumedPrefix) {
-    if (prefixToUriMap.containsKey(assumedPrefix)) {
-      return prefixToUriMap.get(assumedPrefix);
-    } else if (uriToPrefixMap.containsKey(assumedPrefix)) {
-      return assumedPrefix;
+  String getUri(String prefix) {
+    if (prefixToUriMap.containsKey(prefix)) {
+      return prefixToUriMap.get(prefix);
     }
     return "";
   }

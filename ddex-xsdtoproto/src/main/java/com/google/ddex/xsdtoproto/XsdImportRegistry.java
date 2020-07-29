@@ -8,7 +8,7 @@ import java.util.Map;
 /** The type Schema import registry. */
 class XsdImportRegistry {
   /** The Schema import map. */
-  Map<String, Map<String, Boolean>> schemaImportMap;
+  final Map<String, Map<String, Boolean>> schemaImportMap;
 
   /** Instantiates a new Schema import registry. */
   XsdImportRegistry() {
@@ -35,7 +35,7 @@ class XsdImportRegistry {
    * @return the imports for namespace
    */
   List<String> getImportsForNamespace(String namespace) {
-    Map<String, Boolean> importSet = schemaImportMap.get(namespace);
+    Map<String, Boolean> importSet = schemaImportMap.getOrDefault(namespace, null);
     if (importSet == null) return null;
     return new ArrayList<>(importSet.keySet());
   }

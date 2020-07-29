@@ -30,7 +30,7 @@
                             <inputDirectories>
                                 <include>../proto</include>
                             </inputDirectories>
-                            <outputDirectory>src/main/java</outputDirectory>
+                            <outputDirectory>src/main/java/generated</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>

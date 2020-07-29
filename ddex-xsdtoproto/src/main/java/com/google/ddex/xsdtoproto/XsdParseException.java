@@ -14,9 +14,9 @@ public class XsdParseException extends Exception {
    * Instantiates a new Schema conversion exception.
    *
    * @param message the message
-   * @param root the root
+   * @param cause the root cause of the XsdParseException
    */
-  public XsdParseException(String message, Exception root) {
-    super(message, root);
+  public XsdParseException(String message, Throwable cause) {
+    super(message, cause);
   }
 }

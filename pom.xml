@@ -35,6 +35,18 @@
                     <excludePackageNames>*.ern:*.avs:*mead</excludePackageNames>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <configLocation>google_checks.xml</configLocation>
+                    <excludes>ddex-xmltoproto/src/main/java/generated/**</excludes>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
