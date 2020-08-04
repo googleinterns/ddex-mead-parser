@@ -1,12 +1,15 @@
 package com.google.ddex.xsdtoproto;
 
-/** The type Schema enum entry. */
+/**
+ * The ProtoSchemaEnumEntry extends the {@link ProtoSchemaAbstractEntry} class to represent all
+ * defined enum types.
+ */
 public class ProtoSchemaEnumEntry extends ProtoSchemaAbstractEntry {
   /**
-   * Instantiates a new Schema enum entry.
+   * Instantiates a new enum type by name and the containing namespace.
    *
-   * @param title the title
-   * @param namespace the namespace
+   * @param title The name of the enum type.
+   * @param namespace The namespace prefix that contains this entry.
    */
   public ProtoSchemaEnumEntry(String title, String namespace) {
     super(title, namespace);

@@ -1,99 +1,120 @@
 package com.google.ddex.xsdtoproto;
 
+import java.util.Objects;
+import javax.xml.namespace.QName;
 import org.apache.ws.commons.schema.XmlSchemaAnnotation;
 import org.apache.ws.commons.schema.XmlSchemaDocumentation;
 import org.w3c.dom.NodeList;
 
-import javax.xml.namespace.QName;
-import java.util.Objects;
-
-/** The type Schema field. */
+/**
+ * The ProtoSchemaField represents a field defined within a {@link ProtoSchemaAbstractEntry}.
+ */
 public class ProtoSchemaField implements ProtoSchemaAnnotated {
-  /** The Field value. */
-  String fieldValue;
-  /** The Field annotation. */
+  private static final QName DEFAULT_QNAME =
+      new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
+
+  String fieldName;
+  QName fieldType;
   String fieldAnnotation;
-  /** The Field q name. */
-  QName fieldQName;
-  /** The Field is repeated. */
-  boolean fieldIsRepeated;
-
   String version;
-
+  boolean fieldIsRepeated;
   boolean deprecated;
 
   /**
-   * Instantiates a new Schema field.
+   * Instantiates a new field with a specified type and repeated flag.
    *
-   * @param value the value
-   * @param qName the q name
-   * @param repeated the repeated
+   * @param name The field name.
+   * @param type The field type.
+   * @param repeated The flag .
    */
-  public ProtoSchemaField(String value, QName qName, boolean repeated) {
-    fieldValue = value;
-    fieldQName =
-        Objects.requireNonNullElseGet(
-            qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
+  public ProtoSchemaField(String name, QName type, boolean repeated) {
+    fieldName = name;
+    fieldType = Objects.requireNonNullElse(type, DEFAULT_QNAME);
     fieldIsRepeated = repeated;
     deprecated = false;
   }
 
   /**
-   * Instantiates a new Schema field.
+   * Instantiates a new field with a specified type.
    *
-   * @param value the value
-   * @param qName the q name
+   * @param name The field name.
+   * @param type The field type.
    */
-  public ProtoSchemaField(String value, QName qName) {
-    fieldValue = value;
-    fieldQName =
-        Objects.requireNonNullElseGet(
-            qName, () -> new QName("http://www.w3.org/2001/XMLSchema", "string", "xs"));
+  public ProtoSchemaField(String name, QName type) {
+    fieldName = name;
+    fieldType = Objects.requireNonNullElse(type, DEFAULT_QNAME);
     fieldIsRepeated = false;
     deprecated = false;
   }
 
   /**
-   * Instantiates a new Schema field.
+   * Instantiates a new field.
    *
-   * @param value the value
+   * @param name The field name.
    */
-  // Default string QName
-  public ProtoSchemaField(String value) {
-    fieldValue = value;
-    fieldQName = new QName("http://www.w3.org/2001/XMLSchema", "string", "xs");
-    fieldIsRepeated = false;
-    fieldAnnotation = null;
+  public ProtoSchemaField(String name) {
+    fieldName = name;
+    fieldType = DEFAULT_QNAME;
     deprecated = false;
   }
 
-  public void setVersionAnnotation(String v) {
-    version = v;
+  /**
+   * Sets the version annotation property. The annotation will be printed as a comment
+   * in the .proto schema.
+   *
+   * @param versionAnnotation The annotation specific to schema versioning
+   */
+  public void setVersionAnnotation(String versionAnnotation) {
+    version = versionAnnotation;
   }
 
+  /**
+   * Sets the annotation property. The annotation will be printed as a comment in the
+   * .proto schema.
+   *
+   * @param annotation The annotation
+   */
   public void setAnnotation(String annotation) {
     fieldAnnotation = annotation;
   }
 
+  /**
+   * Sets the annotation. The annotation will be printed as a comment in the
+   * .proto schema.
+   *
+   * @param annotation The annotation
+   */
   public void setAnnotation(XmlSchemaAnnotation annotation) {
     StringBuilder annotationStringBuilder = new StringBuilder();
-    if (annotation == null || annotation.getItems() == null) return;
+    if (annotation == null || annotation.getItems() == null) {
+      return;
+    }
 
     for (int i = 0; i < annotation.getItems().size(); i++) {
       XmlSchemaDocumentation documentation = (XmlSchemaDocumentation) annotation.getItems().get(i);
       NodeList markup = documentation.getMarkup();
       for (int j = 0; j < markup.getLength(); j++) {
         annotationStringBuilder.append(markup.item(j).getTextContent());
-        if (j != markup.getLength() - 1) annotationStringBuilder.append('\n');
+        if (j != markup.getLength() - 1) {
+          annotationStringBuilder.append('\n');
+        }
       }
     }
     fieldAnnotation = annotationStringBuilder.toString();
   }
 
+  /**
+   * Gets the versioning annotation.
+   * @return Version annotation.
+   */
   public String getVersionAnnotation() {
     return version;
   }
 
+  /**
+   * Gets the annotation.
+   * @return Annotation.
+   */
   public String getAnnotation() {
     return fieldAnnotation;
   }
@@ -103,8 +124,8 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
    *
    * @return the field value
    */
-  public String getFieldValue() {
-    return fieldValue;
+  public String getFieldName() {
+    return fieldName;
   }
 
   /**
@@ -113,7 +134,7 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
    * @return the field type
    */
   public QName getFieldType() {
-    return fieldQName;
+    return fieldType;
   }
 
   /**
@@ -131,13 +152,24 @@ public class ProtoSchemaField implements ProtoSchemaAnnotated {
    * @return the boolean
    */
   public boolean isXmlType() {
-    return fieldQName.getPrefix().equals("xs");
+    return fieldType.getPrefix().equals("xs");
   }
 
+  /**
+   * Gets the deprecated status of the field.
+   *
+   * @return The deprecated status.
+   */
   public boolean isDeprecated() {
     return deprecated;
   }
-  public void markDeprecated() {
-    deprecated = true;
+
+  /**
+   * Sets the deprecated status of the field.
+   *
+   * @param flag The status to set the field to.
+   */
+  public void setDeprecated(boolean flag) {
+    deprecated = flag;
   }
 }

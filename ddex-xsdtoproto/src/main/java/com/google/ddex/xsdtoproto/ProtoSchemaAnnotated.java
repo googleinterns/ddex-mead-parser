@@ -3,11 +3,13 @@ package com.google.ddex.xsdtoproto;
 import org.apache.ws.commons.schema.XmlSchemaAnnotation;
 
 /**
- * The ProtoSchemaAnnotated interface defines annotation getters and setters for schema entries and fields.
+ * The ProtoSchemaAnnotated interface defines annotation getters and setters for schema entries and
+ * fields.
  */
 public interface ProtoSchemaAnnotated {
   /**
-   * Gets annotation. This annotation stores extracted XML annotations found in the original DDEX XSD.
+   * Gets annotation. This annotation stores extracted XML annotations found in the original DDEX
+   * XSD.
    *
    * @return The annotation
    */

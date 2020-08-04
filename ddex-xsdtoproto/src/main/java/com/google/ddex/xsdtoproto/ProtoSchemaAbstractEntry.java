@@ -1,17 +1,16 @@
 package com.google.ddex.xsdtoproto;
 
-import org.apache.ws.commons.schema.XmlSchemaAnnotation;
-import org.apache.ws.commons.schema.XmlSchemaDocumentation;
-import org.w3c.dom.NodeList;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.ws.commons.schema.XmlSchemaAnnotation;
+import org.apache.ws.commons.schema.XmlSchemaDocumentation;
+import org.w3c.dom.NodeList;
 
 /**
- * The ProtoSchemaAbstractEntry represents a type defined in the DDEX XSD. Each entry is output as a Message type definition
- * in the final .proto schema.
+ * The ProtoSchemaAbstractEntry represents a type defined in the DDEX XSD. Each entry is output as a
+ * Message type definition in the final .proto schema.
  */
 public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   final String entryTitle;
@@ -38,11 +37,11 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   /**
    * Adds a field to the ProtoSchemaAbstractEntry.
    *
-   * @param entryField The field
+   * @param entryField The field to be added to an entry
    */
   public void addField(ProtoSchemaField entryField) {
-    entryFields.put(entryField.getFieldValue(), entryField);
-    if (entryField.getFieldValue().equals("ext_value")) {
+    entryFields.put(entryField.getFieldName(), entryField);
+    if (entryField.getFieldName().equals("ext_value")) {
       entryIsExtension = true;
     }
   }
@@ -81,7 +80,9 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
       NodeList markup = documentation.getMarkup();
       for (int j = 0; j < markup.getLength(); j++) {
         annotationStringBuilder.append(markup.item(j).getTextContent());
-        if (j != markup.getLength() - 1) annotationStringBuilder.append('\n');
+        if (j != markup.getLength() - 1) {
+          annotationStringBuilder.append('\n');
+        }
       }
     }
     entryAnnotation = annotationStringBuilder.toString();
@@ -97,7 +98,8 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   }
 
   /**
-   * Gets annotation. This annotation stores extracted XML annotations found in the original DDEX XSD.
+   * Gets annotation. This annotation stores extracted XML annotations found in the original DDEX
+   * XSD.
    *
    * @return The annotation
    */
@@ -126,7 +128,7 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   /**
    * Gets fields.
    *
-   * @return the fields
+   * @return A list of the fields in this entry.
    */
   public List<ProtoSchemaField> getFields() {
     return new ArrayList<>(entryFields.values());
@@ -135,7 +137,7 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   /**
    * Gets fields.
    *
-   * @return the fields
+   * @return A map of the fields in this entry. The map keys are the names of the entries.
    */
   public Map<String, ProtoSchemaField> getFieldMap() {
     return entryFields;
@@ -144,7 +146,8 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   /**
    * Entry is an extension flag.
    *
-   * @return the boolean
+   * @return Boolean value that represents whether the entry is based off an XSD extension type. In
+   *     this case, the type will contain an "ext_value" field.
    */
   public boolean isExtension() {
     return entryIsExtension;
@@ -153,7 +156,8 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   /**
    * Entry is populated flag.
    *
-   * @return the boolean
+   * @return Boolean value that represents whether the entry is populated by any {@link
+   *     ProtoSchemaField}'s
    */
   public boolean isPopulated() {
     return entryFields.size() > 0;
@@ -162,7 +166,7 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   /**
    * Entry is an enum flag.
    *
-   * @return the boolean
+   * @return Boolean value that represents whether the entry is an enum type or not
    */
   public boolean isEnum() {
     return false;
@@ -171,7 +175,7 @@ public abstract class ProtoSchemaAbstractEntry implements ProtoSchemaAnnotated {
   /**
    * Entry is a message flag.
    *
-   * @return the boolean
+   * @return Boolean value that represents whether the entry is a message type or not
    */
   public boolean isMessage() {
     return false;

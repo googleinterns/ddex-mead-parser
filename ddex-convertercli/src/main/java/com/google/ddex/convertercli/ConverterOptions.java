@@ -1,6 +1,9 @@
 package com.google.ddex.convertercli;
 
 import com.google.common.collect.ImmutableSet;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -8,10 +11,6 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 class ConverterOptions {
   private File outputDirectory = null;
@@ -21,7 +20,8 @@ class ConverterOptions {
   private String inputType = null;
   private CommandLine commandLineInput;
 
-  private static final ImmutableSet<String> VALID_INPUT_TYPES = ImmutableSet.of("message", "schema", "schema_set");
+  private static final ImmutableSet<String> VALID_INPUT_TYPES =
+      ImmutableSet.of("message", "schema", "schema_set");
   private static final Options DEFAULT_COMMAND_OPTIONS =
       new Options()
           .addOption(
@@ -46,13 +46,12 @@ class ConverterOptions {
                   .desc("message | schema | schema_set")
                   .build());
 
-
   public static void showCommandUsage() {
-    final String HELP_CMD_SYNTAX = "ConverterCli [OPTIONS] input_file";
-    final String HELP_HEADER = "Convert input DDEX XML formats to ProtoBuf";
+    final String helpCmdSyntax = "ConverterCli [OPTIONS] input_file";
+    final String helpHeader = "Convert input DDEX XML formats to ProtoBuf";
 
     HelpFormatter formatter = new HelpFormatter();
-    formatter.printHelp(HELP_CMD_SYNTAX, HELP_HEADER, DEFAULT_COMMAND_OPTIONS, null);
+    formatter.printHelp(helpCmdSyntax, helpHeader, DEFAULT_COMMAND_OPTIONS, null);
   }
 
   public ConverterOptions(String[] args) throws InvalidOptionsException {
@@ -102,8 +101,6 @@ class ConverterOptions {
   private void populateOptions() throws InvalidOptionsException {
     if (commandLineInput.hasOption("outputDirectory")) {
       outputDirectory = new File(commandLineInput.getOptionValue("outputDirectory"));
-    } else {
-      outputDirectory = new File("output");
     }
     if (commandLineInput.hasOption("directory")) {
       inputIsDirectory = true;
@@ -126,7 +123,6 @@ class ConverterOptions {
       throw new InvalidOptionsException("Missing arguments.");
     }
   }
-
 
   private void validateOptions() throws InvalidOptionsException {
     if (!VALID_INPUT_TYPES.contains(inputType)) {

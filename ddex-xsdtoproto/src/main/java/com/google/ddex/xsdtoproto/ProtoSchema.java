@@ -1,18 +1,17 @@
 package com.google.ddex.xsdtoproto;
 
 import com.google.common.base.CaseFormat;
-
-import javax.xml.namespace.QName;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import javax.xml.namespace.QName;
 
 /**
- * The ProtoSchema is an internal representation of a Protocol Buffer schema. This class acts as wrapper on top of a {@link ProtoSchemaEntryMap} to preserve schema metadata and
- * to serialize the entries to a .proto format string.
+ * The ProtoSchema is an internal representation of a Protocol Buffer schema. This class acts as
+ * wrapper on top of a {@link ProtoSchemaEntryMap} to preserve schema metadata and to serialize the
+ * entries to a .proto format string.
  */
 public class ProtoSchema {
   private String rootNamespace;
@@ -35,8 +34,8 @@ public class ProtoSchema {
   }
 
   /**
-   * Gets root namespace. In a set of XSD files with their own unique namespaces ("mead" + "avs")
-   * we need to define the "mead" namespace as the root/entry point of the ProtoSchema
+   * Gets root namespace. In a set of XSD files with their own unique namespaces ("mead" + "avs") we
+   * need to define the "mead" namespace as the root/entry point of the ProtoSchema
    *
    * @return The DDEX schema's root namespace
    */
@@ -46,8 +45,8 @@ public class ProtoSchema {
 
   /**
    * Gets package name. The package name is a custom identifier consisting of the
-   * rootNamespace+versionNumber (mead101) that is used to separate the different schema's usage at runtime in the
-   * {@link com.google.ddex.xmltoproto.MessageBuilderResolver}
+   * rootNamespace+versionNumber (mead101) that is used to separate the different schema's usage at
+   * runtime in the {@link com.google.ddex.xmltoproto.MessageBuilderResolver}
    *
    * @return The DDEX schema's package name
    */
@@ -56,8 +55,8 @@ public class ProtoSchema {
   }
 
   /**
-   * Gets version number. The version number refers to the version of the DDEX schema - ERN version 4.1.1 would be
-   * "411"
+   * Gets version number. The version number refers to the version of the DDEX schema - ERN version
+   * 4.1.1 would be "411"
    *
    * @return The DDEX schema's version number
    */
@@ -66,7 +65,8 @@ public class ProtoSchema {
   }
 
   /**
-   * Gets a map of all the .proto schemas in string format. Each entry can be written to a file as a .proto.
+   * Gets a map of all the .proto schemas in string format. Each entry can be written to a file as a
+   * .proto.
    *
    * @return A Map of all the serialized .proto files as strings.
    */
@@ -170,7 +170,7 @@ public class ProtoSchema {
     StringBuilder fieldSetStringBuilder = new StringBuilder();
 
     List<ProtoSchemaField> fields = entry.getFields();
-    fields.sort(Comparator.comparing(ProtoSchemaField::getFieldValue));
+    fields.sort(Comparator.comparing(ProtoSchemaField::getFieldName));
 
     int numerator = 1;
     for (ProtoSchemaField field : fields) {
@@ -191,7 +191,7 @@ public class ProtoSchema {
       fieldSetStringBuilder.append(resolveType(entry, field)).append(' ');
       String fieldName =
           sanitizeProtoName(
-              CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getFieldValue()));
+              CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getFieldName()));
       fieldSetStringBuilder.append(fieldName).append(" = ").append(numerator);
 
       if (field.isDeprecated()) {

@@ -1,0 +1,2352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ernm:NewReleaseMessage
+MessageSchemaVersionId="ern/37" LanguageAndScriptCode="en" 
+ReleaseProfileVersionId="CommonReleaseTypes/12/AudioAlbum"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ernm="http://ddex.net/xml/ern/37" xmlns:avs="http://ddex.net/xml/avs/avs" xsi:schemaLocation="http://ddex.net/xml/ern/37 http://ddex.net/xml/ern/37/release-notification.xsd">
+<MessageHeader>
+   <MessageThreadId>c0ee317f-ca01-4e76-8425-755ea8fea161</MessageThreadId>
+   <MessageId>UG2570026</MessageId>
+   <MessageSender>
+      <PartyId>PADPIDA2013042401U</PartyId>
+      <PartyName>
+         <FullName>Universal Music Group</FullName>
+      </PartyName>
+   </MessageSender>
+   <MessageRecipient>
+      <PartyId>PADPIDA2010120902Y</PartyId>
+      <PartyName>
+         <FullName>Training_Google</FullName>
+      </PartyName>
+   </MessageRecipient>
+   <MessageCreatedDateTime>2020-07-20T18:16:15+01:00</MessageCreatedDateTime>
+</MessageHeader>
+<ResourceList>  
+<SoundRecording>
+<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType><SoundRecordingId>
+<ISRC>USUM71804534</ISRC></SoundRecordingId> 
+<ResourceReference>A1</ResourceReference><ReferenceTitle><TitleText>Two Miles of Bad Road</TitleText></ReferenceTitle><LanguageOfPerformance>en</LanguageOfPerformance><Duration>PT3M</Duration><CreationDate TerritoryCode="US">2018-01-01</CreationDate><SoundRecordingDetailsByTerritory>     
+<TerritoryCode>Worldwide</TerritoryCode><Title TitleType="FormalTitle"><TitleText>Two Miles of Bad Road</TitleText></Title>                <Title TitleType="DisplayTitle">
+<TitleText>Two Miles of Bad Road</TitleText>                </Title>
+            <DisplayArtist SequenceNumber="1">
+<PartyName><FullName>Backfire Betty &amp; The Mufflers</FullName><KeyName>Backfire Betty &amp; The Mufflers</KeyName></PartyName><ArtistRole>MainArtist</ArtistRole>          </DisplayArtist>
+        <IndirectResourceContributor SequenceNumber="1">
+<PartyName><FullName>John Smith</FullName><NamesBeforeKeyName>John</NamesBeforeKeyName><KeyName>Smith</KeyName></PartyName><IndirectResourceContributorRole>ComposerLyricist</IndirectResourceContributorRole>      </IndirectResourceContributor>
+<PLine><Year>2018</Year><PLineCompany>Interscope Records</PLineCompany><PLineText>℗ 2018 Interscope Records</PLineText></PLine><Genre>
+  <GenreText>Alternative</GenreText>
+</Genre>
+<ParentalWarningType>NotExplicit</ParentalWarningType></SoundRecordingDetailsByTerritory>
+</SoundRecording>    
+<SoundRecording>
+<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType><SoundRecordingId>
+<ISRC>USUM71804535</ISRC></SoundRecordingId> 
+<ResourceReference>A2</ResourceReference><ReferenceTitle><TitleText>Radiator Moonshine</TitleText></ReferenceTitle><LanguageOfPerformance>en</LanguageOfPerformance><Duration>PT3M</Duration><CreationDate TerritoryCode="US">2018-01-01</CreationDate><SoundRecordingDetailsByTerritory>     
+<TerritoryCode>Worldwide</TerritoryCode><Title TitleType="FormalTitle"><TitleText>Radiator Moonshine</TitleText></Title>                <Title TitleType="DisplayTitle">
+<TitleText>Radiator Moonshine</TitleText>                </Title>
+            <DisplayArtist SequenceNumber="1">
+<PartyName><FullName>Backfire Betty &amp; The Mufflers</FullName><KeyName>Backfire Betty &amp; The Mufflers</KeyName></PartyName><ArtistRole>MainArtist</ArtistRole>          </DisplayArtist>
+        <IndirectResourceContributor SequenceNumber="1">
+<PartyName><FullName>John Smith</FullName><NamesBeforeKeyName>John</NamesBeforeKeyName><KeyName>Smith</KeyName></PartyName><IndirectResourceContributorRole>ComposerLyricist</IndirectResourceContributorRole>      </IndirectResourceContributor>
+<PLine><Year>2018</Year><PLineCompany>Interscope Records</PLineCompany><PLineText>℗ 2018 Interscope Records</PLineText></PLine><Genre>
+  <GenreText>Alternative</GenreText>
+</Genre>
+<ParentalWarningType>NotExplicit</ParentalWarningType></SoundRecordingDetailsByTerritory>
+</SoundRecording>    
+<SoundRecording>
+<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType><SoundRecordingId>
+<ISRC>USUM71804536</ISRC></SoundRecordingId> 
+<ResourceReference>A3</ResourceReference><ReferenceTitle><TitleText>Unsafe at Any Speed</TitleText></ReferenceTitle><LanguageOfPerformance>en</LanguageOfPerformance><Duration>PT3M</Duration><CreationDate TerritoryCode="US">2018-01-01</CreationDate><SoundRecordingDetailsByTerritory>     
+<TerritoryCode>Worldwide</TerritoryCode><Title TitleType="FormalTitle"><TitleText>Unsafe at Any Speed</TitleText></Title>                <Title TitleType="DisplayTitle">
+<TitleText>Unsafe at Any Speed</TitleText>                </Title>
+            <DisplayArtist SequenceNumber="1">
+<PartyName><FullName>Backfire Betty &amp; The Mufflers</FullName><KeyName>Backfire Betty &amp; The Mufflers</KeyName></PartyName><ArtistRole>MainArtist</ArtistRole>          </DisplayArtist>
+        <IndirectResourceContributor SequenceNumber="1">
+<PartyName><FullName>John Smith</FullName><NamesBeforeKeyName>John</NamesBeforeKeyName><KeyName>Smith</KeyName></PartyName><IndirectResourceContributorRole>ComposerLyricist</IndirectResourceContributorRole>      </IndirectResourceContributor>
+<PLine><Year>2018</Year><PLineCompany>Interscope Records</PLineCompany><PLineText>℗ 2018 Interscope Records</PLineText></PLine><Genre>
+  <GenreText>Alternative</GenreText>
+</Genre>
+<ParentalWarningType>NotExplicit</ParentalWarningType></SoundRecordingDetailsByTerritory>
+</SoundRecording>    
+<SoundRecording>
+<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType><SoundRecordingId>
+<ISRC>USUM71804537</ISRC></SoundRecordingId> 
+<ResourceReference>A4</ResourceReference><ReferenceTitle><TitleText>Flatbed Hot Tub Party</TitleText></ReferenceTitle><LanguageOfPerformance>en</LanguageOfPerformance><Duration>PT3M</Duration><CreationDate TerritoryCode="US">2018-01-01</CreationDate><SoundRecordingDetailsByTerritory>     
+<TerritoryCode>Worldwide</TerritoryCode><Title TitleType="FormalTitle"><TitleText>Flatbed Hot Tub Party</TitleText></Title>                <Title TitleType="DisplayTitle">
+<TitleText>Flatbed Hot Tub Party</TitleText>                </Title>
+            <DisplayArtist SequenceNumber="1">
+<PartyName><FullName>Backfire Betty &amp; The Mufflers</FullName><KeyName>Backfire Betty &amp; The Mufflers</KeyName></PartyName><ArtistRole>MainArtist</ArtistRole>          </DisplayArtist>
+        <IndirectResourceContributor SequenceNumber="1">
+<PartyName><FullName>John Smith</FullName><NamesBeforeKeyName>John</NamesBeforeKeyName><KeyName>Smith</KeyName></PartyName><IndirectResourceContributorRole>ComposerLyricist</IndirectResourceContributorRole>      </IndirectResourceContributor>
+<PLine><Year>2018</Year><PLineCompany>Interscope Records</PLineCompany><PLineText>℗ 2018 Interscope Records</PLineText></PLine><Genre>
+  <GenreText>Alternative</GenreText>
+</Genre>
+<ParentalWarningType>NotExplicit</ParentalWarningType></SoundRecordingDetailsByTerritory>
+</SoundRecording>    
+  <Image>
+<ImageType>FrontCoverImage</ImageType>          <ImageId> 
+<ProprietaryId Namespace="DPID:PADPIDA2013042401U">18UMGIM00169</ProprietaryId>          </ImageId>
+<ResourceReference>A5</ResourceReference>    <ImageDetailsByTerritory>      
+<TerritoryCode>Worldwide</TerritoryCode><Title TitleType="FormalTitle"><TitleText>The Best of Betty</TitleText></Title>                <Title TitleType="DisplayTitle">
+<TitleText>The Best of Betty</TitleText>                </Title>
+        <ResourceContributor SequenceNumber="1">
+<PartyName><FullName>Backfire Betty &amp; The Mufflers</FullName><KeyName>Backfire Betty &amp; The Mufflers</KeyName></PartyName><ResourceContributorRole>MainArtist</ResourceContributorRole>      </ResourceContributor>
+<CLine><Year>2018</Year><CLineCompany>Interscope Records</CLineCompany><CLineText>© 2018 Interscope Records</CLineText></CLine><ParentalWarningType>NotExplicit</ParentalWarningType>    </ImageDetailsByTerritory>
+    </Image>    
+         <Text>
+            <TextType Namespace="PADPIDA2013042401U" UserDefinedValue="MeadMessage">UserDefined</TextType>
+            <TextId>
+                <ProprietaryId Namespace="DPID:PADPIDA2013042401U">USUM71804534</ProprietaryId>
+            </TextId>           
+            <ResourceReference>A6</ResourceReference>
+            <TextDetailsByTerritory>
+                <TerritoryCode>Worldwide</TerritoryCode>
+                  <TechnicalTextDetails>
+                    <TechnicalResourceDetailsReference>T1</TechnicalResourceDetailsReference>
+                      <File>
+                      <URL>https://demo-ucs-gsc.umusic.com/mead/v1/USUM71804534</URL>
+                      </File>
+                  </TechnicalTextDetails>
+            </TextDetailsByTerritory>
+        </Text>        
+         <Text>
+            <TextType Namespace="PADPIDA2013042401U" UserDefinedValue="MeadMessage">UserDefined</TextType>
+            <TextId>
+                <ProprietaryId Namespace="DPID:PADPIDA2013042401U">USUM71804535</ProprietaryId>
+            </TextId>           
+            <ResourceReference>A7</ResourceReference>
+            <TextDetailsByTerritory>
+                <TerritoryCode>Worldwide</TerritoryCode>
+                  <TechnicalTextDetails>
+                    <TechnicalResourceDetailsReference>T2</TechnicalResourceDetailsReference>
+                      <File>
+                      <URL>https://demo-ucs-gsc.umusic.com/mead/v1/USUM71804535</URL>
+                      </File>
+                  </TechnicalTextDetails>
+            </TextDetailsByTerritory>
+        </Text>        
+         <Text>
+            <TextType Namespace="PADPIDA2013042401U" UserDefinedValue="MeadMessage">UserDefined</TextType>
+            <TextId>
+                <ProprietaryId Namespace="DPID:PADPIDA2013042401U">USUM71804536</ProprietaryId>
+            </TextId>           
+            <ResourceReference>A8</ResourceReference>
+            <TextDetailsByTerritory>
+                <TerritoryCode>Worldwide</TerritoryCode>
+                  <TechnicalTextDetails>
+                    <TechnicalResourceDetailsReference>T3</TechnicalResourceDetailsReference>
+                      <File>
+                      <URL>https://demo-ucs-gsc.umusic.com/mead/v1/USUM71804536</URL>
+                      </File>
+                  </TechnicalTextDetails>
+            </TextDetailsByTerritory>
+        </Text>        
+         <Text>
+            <TextType Namespace="PADPIDA2013042401U" UserDefinedValue="MeadMessage">UserDefined</TextType>
+            <TextId>
+                <ProprietaryId Namespace="DPID:PADPIDA2013042401U">USUM71804537</ProprietaryId>
+            </TextId>           
+            <ResourceReference>A9</ResourceReference>
+            <TextDetailsByTerritory>
+                <TerritoryCode>Worldwide</TerritoryCode>
+                  <TechnicalTextDetails>
+                    <TechnicalResourceDetailsReference>T4</TechnicalResourceDetailsReference>
+                      <File>
+                      <URL>https://demo-ucs-gsc.umusic.com/mead/v1/USUM71804537</URL>
+                      </File>
+                  </TechnicalTextDetails>
+            </TextDetailsByTerritory>
+        </Text>        
+</ResourceList>
+<ReleaseList>  
+  <Release IsMainRelease="true">
+  <ReleaseId>
+<ICPN IsEan="false">00602557190298</ICPN>  </ReleaseId>
+<ReleaseReference>R0</ReleaseReference><ReferenceTitle><TitleText>The Best of Betty</TitleText></ReferenceTitle>  <ReleaseResourceReferenceList>
+<ReleaseResourceReference ReleaseResourceType="PrimaryResource">A1</ReleaseResourceReference><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A2</ReleaseResourceReference><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A3</ReleaseResourceReference><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A4</ReleaseResourceReference><ReleaseResourceReference ReleaseResourceType="SecondaryResource">A5</ReleaseResourceReference>            <ReleaseResourceReference ReleaseResourceType="SecondaryResource">A6</ReleaseResourceReference>
+            <ReleaseResourceReference ReleaseResourceType="SecondaryResource">A7</ReleaseResourceReference>
+            <ReleaseResourceReference ReleaseResourceType="SecondaryResource">A8</ReleaseResourceReference>
+            <ReleaseResourceReference ReleaseResourceType="SecondaryResource">A9</ReleaseResourceReference>
+  </ReleaseResourceReferenceList>    
+<ReleaseType>Album</ReleaseType>  <ReleaseDetailsByTerritory>
+<TerritoryCode>Worldwide</TerritoryCode><LabelName>Interscope</LabelName><Title TitleType="FormalTitle"><TitleText>The Best of Betty</TitleText></Title>                <Title TitleType="DisplayTitle">
+<TitleText>The Best of Betty</TitleText>                </Title>
+            <DisplayArtist SequenceNumber="1">
+<PartyName><FullName>Backfire Betty &amp; The Mufflers</FullName><KeyName>Backfire Betty &amp; The Mufflers</KeyName></PartyName><ArtistRole>MainArtist</ArtistRole>          </DisplayArtist>
+<IsMultiArtistCompilation>false</IsMultiArtistCompilation><ParentalWarningType>NotExplicit</ParentalWarningType>    <ResourceGroup>
+        <ResourceGroup>
+<SequenceNumber>1</SequenceNumber>    <ResourceGroupContentItem>
+<SequenceNumber>1</SequenceNumber><ResourceType>SoundRecording</ResourceType><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A1</ReleaseResourceReference>      <LinkedReleaseResourceReference LinkDescription="MeadMessage">A6</LinkedReleaseResourceReference>
+<ResourceGroupContentItemReleaseReference>R1</ResourceGroupContentItemReleaseReference><IsInstantGratificationResource>false</IsInstantGratificationResource>    </ResourceGroupContentItem>
+    <ResourceGroupContentItem>
+<SequenceNumber>2</SequenceNumber><ResourceType>SoundRecording</ResourceType><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A2</ReleaseResourceReference>      <LinkedReleaseResourceReference LinkDescription="MeadMessage">A7</LinkedReleaseResourceReference>
+<ResourceGroupContentItemReleaseReference>R2</ResourceGroupContentItemReleaseReference><IsInstantGratificationResource>false</IsInstantGratificationResource>    </ResourceGroupContentItem>
+    <ResourceGroupContentItem>
+<SequenceNumber>3</SequenceNumber><ResourceType>SoundRecording</ResourceType><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A3</ReleaseResourceReference>      <LinkedReleaseResourceReference LinkDescription="MeadMessage">A8</LinkedReleaseResourceReference>
+<ResourceGroupContentItemReleaseReference>R3</ResourceGroupContentItemReleaseReference><IsInstantGratificationResource>false</IsInstantGratificationResource>    </ResourceGroupContentItem>
+    <ResourceGroupContentItem>
+<SequenceNumber>4</SequenceNumber><ResourceType>SoundRecording</ResourceType><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A4</ReleaseResourceReference>      <LinkedReleaseResourceReference LinkDescription="MeadMessage">A9</LinkedReleaseResourceReference>
+<ResourceGroupContentItemReleaseReference>R4</ResourceGroupContentItemReleaseReference><IsInstantGratificationResource>false</IsInstantGratificationResource>    </ResourceGroupContentItem>
+        </ResourceGroup>
+        <ResourceGroupContentItem>
+<ResourceType>Image</ResourceType><ReleaseResourceReference ReleaseResourceType="SecondaryResource">A5</ReleaseResourceReference>        </ResourceGroupContentItem>
+    </ResourceGroup>
+<Genre>
+  <GenreText>Alternative</GenreText>
+</Genre>
+<PLine><Year>2018</Year><PLineCompany>Interscope Records</PLineCompany><PLineText>℗ 2018 Interscope Records</PLineText></PLine><CLine><Year>2018</Year><CLineCompany>Interscope Records</CLineCompany><CLineText>© 2018 Interscope Records</CLineText></CLine><OriginalReleaseDate>2018-01-01</OriginalReleaseDate>  </ReleaseDetailsByTerritory>
+<Duration>PT12M48S</Duration><GlobalReleaseDate>2018-02-09</GlobalReleaseDate></Release>    
+  <Release>
+  <ReleaseId>
+<ProprietaryId Namespace="DPID:PADPIDA2013042401U">00602557190298_USUM71804534_R1</ProprietaryId>  </ReleaseId>
+<ReleaseReference>R1</ReleaseReference><ReferenceTitle><TitleText>Two Miles of Bad Road</TitleText></ReferenceTitle>  <ReleaseResourceReferenceList>
+<ReleaseResourceReference ReleaseResourceType="PrimaryResource">A1</ReleaseResourceReference>            <ReleaseResourceReference ReleaseResourceType="SecondaryResource">A6</ReleaseResourceReference>
+  </ReleaseResourceReferenceList>    
+<ReleaseType>TrackRelease</ReleaseType>  <ReleaseDetailsByTerritory>
+<TerritoryCode>Worldwide</TerritoryCode><Title TitleType="FormalTitle"><TitleText>Two Miles of Bad Road</TitleText></Title>                <Title TitleType="DisplayTitle">
+<TitleText>Two Miles of Bad Road</TitleText>                </Title>
+            <DisplayArtist SequenceNumber="1">
+<PartyName><FullName>Backfire Betty &amp; The Mufflers</FullName><KeyName>Backfire Betty &amp; The Mufflers</KeyName></PartyName><ArtistRole>MainArtist</ArtistRole>          </DisplayArtist>
+<ParentalWarningType>NotExplicit</ParentalWarningType>    <ResourceGroup>
+        <ResourceGroupContentItem>
+<ResourceType>SoundRecording</ResourceType><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A1</ReleaseResourceReference>            <LinkedReleaseResourceReference LinkDescription="MeadMessage">A6</LinkedReleaseResourceReference>
+        </ResourceGroupContentItem>
+    </ResourceGroup>
+<Genre>
+  <GenreText>Alternative</GenreText>
+</Genre>
+<PLine><Year>2018</Year><PLineCompany>Interscope Records</PLineCompany><PLineText>℗ 2018 Interscope Records</PLineText></PLine>  </ReleaseDetailsByTerritory>
+<Duration>PT3M12S</Duration></Release>    
+  <Release>
+  <ReleaseId>
+<ProprietaryId Namespace="DPID:PADPIDA2013042401U">00602557190298_USUM71804535_R2</ProprietaryId>  </ReleaseId>
+<ReleaseReference>R2</ReleaseReference><ReferenceTitle><TitleText>Radiator Moonshine</TitleText></ReferenceTitle>  <ReleaseResourceReferenceList>
+<ReleaseResourceReference ReleaseResourceType="PrimaryResource">A2</ReleaseResourceReference>            <ReleaseResourceReference ReleaseResourceType="SecondaryResource">A7</ReleaseResourceReference>
+  </ReleaseResourceReferenceList>    
+<ReleaseType>TrackRelease</ReleaseType>  <ReleaseDetailsByTerritory>
+<TerritoryCode>Worldwide</TerritoryCode><Title TitleType="FormalTitle"><TitleText>Radiator Moonshine</TitleText></Title>                <Title TitleType="DisplayTitle">
+<TitleText>Radiator Moonshine</TitleText>                </Title>
+            <DisplayArtist SequenceNumber="1">
+<PartyName><FullName>Backfire Betty &amp; The Mufflers</FullName><KeyName>Backfire Betty &amp; The Mufflers</KeyName></PartyName><ArtistRole>MainArtist</ArtistRole>          </DisplayArtist>
+<ParentalWarningType>NotExplicit</ParentalWarningType>    <ResourceGroup>
+        <ResourceGroupContentItem>
+<ResourceType>SoundRecording</ResourceType><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A2</ReleaseResourceReference>            <LinkedReleaseResourceReference LinkDescription="MeadMessage">A7</LinkedReleaseResourceReference>
+        </ResourceGroupContentItem>
+    </ResourceGroup>
+<Genre>
+  <GenreText>Alternative</GenreText>
+</Genre>
+<PLine><Year>2018</Year><PLineCompany>Interscope Records</PLineCompany><PLineText>℗ 2018 Interscope Records</PLineText></PLine>  </ReleaseDetailsByTerritory>
+<Duration>PT3M12S</Duration></Release>    
+  <Release>
+  <ReleaseId>
+<ProprietaryId Namespace="DPID:PADPIDA2013042401U">00602557190298_USUM71804536_R3</ProprietaryId>  </ReleaseId>
+<ReleaseReference>R3</ReleaseReference><ReferenceTitle><TitleText>Unsafe at Any Speed</TitleText></ReferenceTitle>  <ReleaseResourceReferenceList>
+<ReleaseResourceReference ReleaseResourceType="PrimaryResource">A3</ReleaseResourceReference>            <ReleaseResourceReference ReleaseResourceType="SecondaryResource">A8</ReleaseResourceReference>
+  </ReleaseResourceReferenceList>    
+<ReleaseType>TrackRelease</ReleaseType>  <ReleaseDetailsByTerritory>
+<TerritoryCode>Worldwide</TerritoryCode><Title TitleType="FormalTitle"><TitleText>Unsafe at Any Speed</TitleText></Title>                <Title TitleType="DisplayTitle">
+<TitleText>Unsafe at Any Speed</TitleText>                </Title>
+            <DisplayArtist SequenceNumber="1">
+<PartyName><FullName>Backfire Betty &amp; The Mufflers</FullName><KeyName>Backfire Betty &amp; The Mufflers</KeyName></PartyName><ArtistRole>MainArtist</ArtistRole>          </DisplayArtist>
+<ParentalWarningType>NotExplicit</ParentalWarningType>    <ResourceGroup>
+        <ResourceGroupContentItem>
+<ResourceType>SoundRecording</ResourceType><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A3</ReleaseResourceReference>            <LinkedReleaseResourceReference LinkDescription="MeadMessage">A8</LinkedReleaseResourceReference>
+        </ResourceGroupContentItem>
+    </ResourceGroup>
+<Genre>
+  <GenreText>Alternative</GenreText>
+</Genre>
+<PLine><Year>2018</Year><PLineCompany>Interscope Records</PLineCompany><PLineText>℗ 2018 Interscope Records</PLineText></PLine>  </ReleaseDetailsByTerritory>
+<Duration>PT3M12S</Duration></Release>    
+  <Release>
+  <ReleaseId>
+<ProprietaryId Namespace="DPID:PADPIDA2013042401U">00602557190298_USUM71804537_R4</ProprietaryId>  </ReleaseId>
+<ReleaseReference>R4</ReleaseReference><ReferenceTitle><TitleText>Flatbed Hot Tub Party</TitleText></ReferenceTitle>  <ReleaseResourceReferenceList>
+<ReleaseResourceReference ReleaseResourceType="PrimaryResource">A4</ReleaseResourceReference>            <ReleaseResourceReference ReleaseResourceType="SecondaryResource">A9</ReleaseResourceReference>
+  </ReleaseResourceReferenceList>    
+<ReleaseType>TrackRelease</ReleaseType>  <ReleaseDetailsByTerritory>
+<TerritoryCode>Worldwide</TerritoryCode><Title TitleType="FormalTitle"><TitleText>Flatbed Hot Tub Party</TitleText></Title>                <Title TitleType="DisplayTitle">
+<TitleText>Flatbed Hot Tub Party</TitleText>                </Title>
+            <DisplayArtist SequenceNumber="1">
+<PartyName><FullName>Backfire Betty &amp; The Mufflers</FullName><KeyName>Backfire Betty &amp; The Mufflers</KeyName></PartyName><ArtistRole>MainArtist</ArtistRole>          </DisplayArtist>
+<ParentalWarningType>NotExplicit</ParentalWarningType>    <ResourceGroup>
+        <ResourceGroupContentItem>
+<ResourceType>SoundRecording</ResourceType><ReleaseResourceReference ReleaseResourceType="PrimaryResource">A4</ReleaseResourceReference>            <LinkedReleaseResourceReference LinkDescription="MeadMessage">A9</LinkedReleaseResourceReference>
+        </ResourceGroupContentItem>
+    </ResourceGroup>
+<Genre>
+  <GenreText>Alternative</GenreText>
+</Genre>
+<PLine><Year>2018</Year><PLineCompany>Interscope Records</PLineCompany><PLineText>℗ 2018 Interscope Records</PLineText></PLine>  </ReleaseDetailsByTerritory>
+<Duration>PT3M12S</Duration></Release>    
+</ReleaseList>
+<DealList><ReleaseDeal>
+<DealReleaseReference>R0</DealReleaseReference>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+</Usage>
+<TerritoryCode>AD</TerritoryCode>
+<TerritoryCode>AE</TerritoryCode>
+<TerritoryCode>AF</TerritoryCode>
+<TerritoryCode>AG</TerritoryCode>
+<TerritoryCode>AI</TerritoryCode>
+<TerritoryCode>AL</TerritoryCode>
+<TerritoryCode>AM</TerritoryCode>
+<TerritoryCode>AO</TerritoryCode>
+<TerritoryCode>AQ</TerritoryCode>
+<TerritoryCode>AR</TerritoryCode>
+<TerritoryCode>AS</TerritoryCode>
+<TerritoryCode>AU</TerritoryCode>
+<TerritoryCode>AW</TerritoryCode>
+<TerritoryCode>AZ</TerritoryCode>
+<TerritoryCode>BA</TerritoryCode>
+<TerritoryCode>BB</TerritoryCode>
+<TerritoryCode>BD</TerritoryCode>
+<TerritoryCode>BF</TerritoryCode>
+<TerritoryCode>BG</TerritoryCode>
+<TerritoryCode>BH</TerritoryCode>
+<TerritoryCode>BI</TerritoryCode>
+<TerritoryCode>BJ</TerritoryCode>
+<TerritoryCode>BL</TerritoryCode>
+<TerritoryCode>BM</TerritoryCode>
+<TerritoryCode>BN</TerritoryCode>
+<TerritoryCode>BO</TerritoryCode>
+<TerritoryCode>BQ</TerritoryCode>
+<TerritoryCode>BR</TerritoryCode>
+<TerritoryCode>BS</TerritoryCode>
+<TerritoryCode>BT</TerritoryCode>
+<TerritoryCode>BV</TerritoryCode>
+<TerritoryCode>BW</TerritoryCode>
+<TerritoryCode>BY</TerritoryCode>
+<TerritoryCode>BZ</TerritoryCode>
+<TerritoryCode>CC</TerritoryCode>
+<TerritoryCode>CD</TerritoryCode>
+<TerritoryCode>CF</TerritoryCode>
+<TerritoryCode>CG</TerritoryCode>
+<TerritoryCode>CH</TerritoryCode>
+<TerritoryCode>CI</TerritoryCode>
+<TerritoryCode>CK</TerritoryCode>
+<TerritoryCode>CL</TerritoryCode>
+<TerritoryCode>CM</TerritoryCode>
+<TerritoryCode>CN</TerritoryCode>
+<TerritoryCode>CO</TerritoryCode>
+<TerritoryCode>CR</TerritoryCode>
+<TerritoryCode>CU</TerritoryCode>
+<TerritoryCode>CV</TerritoryCode>
+<TerritoryCode>CW</TerritoryCode>
+<TerritoryCode>CX</TerritoryCode>
+<TerritoryCode>CZ</TerritoryCode>
+<TerritoryCode>DJ</TerritoryCode>
+<TerritoryCode>DM</TerritoryCode>
+<TerritoryCode>DO</TerritoryCode>
+<TerritoryCode>DZ</TerritoryCode>
+<TerritoryCode>EC</TerritoryCode>
+<TerritoryCode>EG</TerritoryCode>
+<TerritoryCode>EH</TerritoryCode>
+<TerritoryCode>ER</TerritoryCode>
+<TerritoryCode>ET</TerritoryCode>
+<TerritoryCode>FJ</TerritoryCode>
+<TerritoryCode>FK</TerritoryCode>
+<TerritoryCode>FM</TerritoryCode>
+<TerritoryCode>FO</TerritoryCode>
+<TerritoryCode>GA</TerritoryCode>
+<TerritoryCode>GB</TerritoryCode>
+<TerritoryCode>GD</TerritoryCode>
+<TerritoryCode>GE</TerritoryCode>
+<TerritoryCode>GF</TerritoryCode>
+<TerritoryCode>GG</TerritoryCode>
+<TerritoryCode>GH</TerritoryCode>
+<TerritoryCode>GI</TerritoryCode>
+<TerritoryCode>GL</TerritoryCode>
+<TerritoryCode>GM</TerritoryCode>
+<TerritoryCode>GN</TerritoryCode>
+<TerritoryCode>GQ</TerritoryCode>
+<TerritoryCode>GS</TerritoryCode>
+<TerritoryCode>GT</TerritoryCode>
+<TerritoryCode>GU</TerritoryCode>
+<TerritoryCode>GW</TerritoryCode>
+<TerritoryCode>GY</TerritoryCode>
+<TerritoryCode>HK</TerritoryCode>
+<TerritoryCode>HM</TerritoryCode>
+<TerritoryCode>HN</TerritoryCode>
+<TerritoryCode>HR</TerritoryCode>
+<TerritoryCode>HT</TerritoryCode>
+<TerritoryCode>HU</TerritoryCode>
+<TerritoryCode>IL</TerritoryCode>
+<TerritoryCode>IM</TerritoryCode>
+<TerritoryCode>IN</TerritoryCode>
+<TerritoryCode>IQ</TerritoryCode>
+<TerritoryCode>IR</TerritoryCode>
+<TerritoryCode>IS</TerritoryCode>
+<TerritoryCode>JE</TerritoryCode>
+<TerritoryCode>JM</TerritoryCode>
+<TerritoryCode>JO</TerritoryCode>
+<TerritoryCode>JP</TerritoryCode>
+<TerritoryCode>KE</TerritoryCode>
+<TerritoryCode>KG</TerritoryCode>
+<TerritoryCode>KH</TerritoryCode>
+<TerritoryCode>KI</TerritoryCode>
+<TerritoryCode>KM</TerritoryCode>
+<TerritoryCode>KN</TerritoryCode>
+<TerritoryCode>KP</TerritoryCode>
+<TerritoryCode>KR</TerritoryCode>
+<TerritoryCode>KW</TerritoryCode>
+<TerritoryCode>KY</TerritoryCode>
+<TerritoryCode>KZ</TerritoryCode>
+<TerritoryCode>LA</TerritoryCode>
+<TerritoryCode>LB</TerritoryCode>
+<TerritoryCode>LC</TerritoryCode>
+<TerritoryCode>LI</TerritoryCode>
+<TerritoryCode>LK</TerritoryCode>
+<TerritoryCode>LR</TerritoryCode>
+<TerritoryCode>LS</TerritoryCode>
+<TerritoryCode>LY</TerritoryCode>
+<TerritoryCode>MA</TerritoryCode>
+<TerritoryCode>MC</TerritoryCode>
+<TerritoryCode>MD</TerritoryCode>
+<TerritoryCode>ME</TerritoryCode>
+<TerritoryCode>MF</TerritoryCode>
+<TerritoryCode>MG</TerritoryCode>
+<TerritoryCode>MH</TerritoryCode>
+<TerritoryCode>MK</TerritoryCode>
+<TerritoryCode>ML</TerritoryCode>
+<TerritoryCode>MM</TerritoryCode>
+<TerritoryCode>MN</TerritoryCode>
+<TerritoryCode>MO</TerritoryCode>
+<TerritoryCode>MP</TerritoryCode>
+<TerritoryCode>MQ</TerritoryCode>
+<TerritoryCode>MR</TerritoryCode>
+<TerritoryCode>MS</TerritoryCode>
+<TerritoryCode>MU</TerritoryCode>
+<TerritoryCode>MV</TerritoryCode>
+<TerritoryCode>MW</TerritoryCode>
+<TerritoryCode>MZ</TerritoryCode>
+<TerritoryCode>NA</TerritoryCode>
+<TerritoryCode>NC</TerritoryCode>
+<TerritoryCode>NE</TerritoryCode>
+<TerritoryCode>NF</TerritoryCode>
+<TerritoryCode>NG</TerritoryCode>
+<TerritoryCode>NI</TerritoryCode>
+<TerritoryCode>NP</TerritoryCode>
+<TerritoryCode>NR</TerritoryCode>
+<TerritoryCode>NU</TerritoryCode>
+<TerritoryCode>OM</TerritoryCode>
+<TerritoryCode>PA</TerritoryCode>
+<TerritoryCode>PE</TerritoryCode>
+<TerritoryCode>PF</TerritoryCode>
+<TerritoryCode>PG</TerritoryCode>
+<TerritoryCode>PH</TerritoryCode>
+<TerritoryCode>PK</TerritoryCode>
+<TerritoryCode>PM</TerritoryCode>
+<TerritoryCode>PN</TerritoryCode>
+<TerritoryCode>PS</TerritoryCode>
+<TerritoryCode>PW</TerritoryCode>
+<TerritoryCode>PY</TerritoryCode>
+<TerritoryCode>QA</TerritoryCode>
+<TerritoryCode>RE</TerritoryCode>
+<TerritoryCode>RO</TerritoryCode>
+<TerritoryCode>RS</TerritoryCode>
+<TerritoryCode>RU</TerritoryCode>
+<TerritoryCode>RW</TerritoryCode>
+<TerritoryCode>SA</TerritoryCode>
+<TerritoryCode>SB</TerritoryCode>
+<TerritoryCode>SC</TerritoryCode>
+<TerritoryCode>SD</TerritoryCode>
+<TerritoryCode>SG</TerritoryCode>
+<TerritoryCode>SH</TerritoryCode>
+<TerritoryCode>SJ</TerritoryCode>
+<TerritoryCode>SL</TerritoryCode>
+<TerritoryCode>SM</TerritoryCode>
+<TerritoryCode>SN</TerritoryCode>
+<TerritoryCode>SO</TerritoryCode>
+<TerritoryCode>SR</TerritoryCode>
+<TerritoryCode>SS</TerritoryCode>
+<TerritoryCode>ST</TerritoryCode>
+<TerritoryCode>SV</TerritoryCode>
+<TerritoryCode>SX</TerritoryCode>
+<TerritoryCode>SY</TerritoryCode>
+<TerritoryCode>SZ</TerritoryCode>
+<TerritoryCode>TC</TerritoryCode>
+<TerritoryCode>TD</TerritoryCode>
+<TerritoryCode>TF</TerritoryCode>
+<TerritoryCode>TG</TerritoryCode>
+<TerritoryCode>TJ</TerritoryCode>
+<TerritoryCode>TK</TerritoryCode>
+<TerritoryCode>TL</TerritoryCode>
+<TerritoryCode>TM</TerritoryCode>
+<TerritoryCode>TN</TerritoryCode>
+<TerritoryCode>TO</TerritoryCode>
+<TerritoryCode>TR</TerritoryCode>
+<TerritoryCode>TT</TerritoryCode>
+<TerritoryCode>TV</TerritoryCode>
+<TerritoryCode>TW</TerritoryCode>
+<TerritoryCode>TZ</TerritoryCode>
+<TerritoryCode>UA</TerritoryCode>
+<TerritoryCode>UG</TerritoryCode>
+<TerritoryCode>UM</TerritoryCode>
+<TerritoryCode>UY</TerritoryCode>
+<TerritoryCode>UZ</TerritoryCode>
+<TerritoryCode>VA</TerritoryCode>
+<TerritoryCode>VC</TerritoryCode>
+<TerritoryCode>VE</TerritoryCode>
+<TerritoryCode>VG</TerritoryCode>
+<TerritoryCode>VN</TerritoryCode>
+<TerritoryCode>VU</TerritoryCode>
+<TerritoryCode>WF</TerritoryCode>
+<TerritoryCode>WS</TerritoryCode>
+<TerritoryCode>YE</TerritoryCode>
+<TerritoryCode>YT</TerritoryCode>
+<TerritoryCode>ZA</TerritoryCode>
+<TerritoryCode>ZM</TerritoryCode>
+<TerritoryCode>ZW</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TMSP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+</Usage>
+<TerritoryCode>AT</TerritoryCode>
+<TerritoryCode>BE</TerritoryCode>
+<TerritoryCode>DE</TerritoryCode>
+<TerritoryCode>FI</TerritoryCode>
+<TerritoryCode>FR</TerritoryCode>
+<TerritoryCode>IT</TerritoryCode>
+<TerritoryCode>LU</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TMSC</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+</Usage>
+<TerritoryCode>CY</TerritoryCode>
+<TerritoryCode>EE</TerritoryCode>
+<TerritoryCode>ES</TerritoryCode>
+<TerritoryCode>GR</TerritoryCode>
+<TerritoryCode>ID</TerritoryCode>
+<TerritoryCode>LT</TerritoryCode>
+<TerritoryCode>LV</TerritoryCode>
+<TerritoryCode>MT</TerritoryCode>
+<TerritoryCode>NZ</TerritoryCode>
+<TerritoryCode>PT</TerritoryCode>
+<TerritoryCode>SI</TerritoryCode>
+<TerritoryCode>SK</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">STSP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+</Usage>
+<TerritoryCode>DK</TerritoryCode>
+<TerritoryCode>IE</TerritoryCode>
+<TerritoryCode>SE</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">STMSC</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+</Usage>
+<TerritoryCode>MY</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TSP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+</Usage>
+<TerritoryCode>NO</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">STMSP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+</Usage>
+<TerritoryCode>PL</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">MP(2)</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+</Usage>
+<TerritoryCode>TH</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">CMC(8)</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+</Usage>
+<TerritoryCode>US</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TL4</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>AD</TerritoryCode>
+<TerritoryCode>AE</TerritoryCode>
+<TerritoryCode>AF</TerritoryCode>
+<TerritoryCode>AG</TerritoryCode>
+<TerritoryCode>AI</TerritoryCode>
+<TerritoryCode>AL</TerritoryCode>
+<TerritoryCode>AM</TerritoryCode>
+<TerritoryCode>AO</TerritoryCode>
+<TerritoryCode>AQ</TerritoryCode>
+<TerritoryCode>AR</TerritoryCode>
+<TerritoryCode>AS</TerritoryCode>
+<TerritoryCode>AU</TerritoryCode>
+<TerritoryCode>AW</TerritoryCode>
+<TerritoryCode>AZ</TerritoryCode>
+<TerritoryCode>BA</TerritoryCode>
+<TerritoryCode>BB</TerritoryCode>
+<TerritoryCode>BD</TerritoryCode>
+<TerritoryCode>BF</TerritoryCode>
+<TerritoryCode>BG</TerritoryCode>
+<TerritoryCode>BH</TerritoryCode>
+<TerritoryCode>BI</TerritoryCode>
+<TerritoryCode>BJ</TerritoryCode>
+<TerritoryCode>BL</TerritoryCode>
+<TerritoryCode>BM</TerritoryCode>
+<TerritoryCode>BN</TerritoryCode>
+<TerritoryCode>BO</TerritoryCode>
+<TerritoryCode>BQ</TerritoryCode>
+<TerritoryCode>BR</TerritoryCode>
+<TerritoryCode>BS</TerritoryCode>
+<TerritoryCode>BT</TerritoryCode>
+<TerritoryCode>BV</TerritoryCode>
+<TerritoryCode>BW</TerritoryCode>
+<TerritoryCode>BY</TerritoryCode>
+<TerritoryCode>BZ</TerritoryCode>
+<TerritoryCode>CC</TerritoryCode>
+<TerritoryCode>CD</TerritoryCode>
+<TerritoryCode>CF</TerritoryCode>
+<TerritoryCode>CG</TerritoryCode>
+<TerritoryCode>CH</TerritoryCode>
+<TerritoryCode>CI</TerritoryCode>
+<TerritoryCode>CK</TerritoryCode>
+<TerritoryCode>CL</TerritoryCode>
+<TerritoryCode>CM</TerritoryCode>
+<TerritoryCode>CN</TerritoryCode>
+<TerritoryCode>CO</TerritoryCode>
+<TerritoryCode>CR</TerritoryCode>
+<TerritoryCode>CU</TerritoryCode>
+<TerritoryCode>CV</TerritoryCode>
+<TerritoryCode>CW</TerritoryCode>
+<TerritoryCode>CX</TerritoryCode>
+<TerritoryCode>CZ</TerritoryCode>
+<TerritoryCode>DJ</TerritoryCode>
+<TerritoryCode>DM</TerritoryCode>
+<TerritoryCode>DO</TerritoryCode>
+<TerritoryCode>DZ</TerritoryCode>
+<TerritoryCode>EC</TerritoryCode>
+<TerritoryCode>EG</TerritoryCode>
+<TerritoryCode>EH</TerritoryCode>
+<TerritoryCode>ER</TerritoryCode>
+<TerritoryCode>ET</TerritoryCode>
+<TerritoryCode>FJ</TerritoryCode>
+<TerritoryCode>FK</TerritoryCode>
+<TerritoryCode>FM</TerritoryCode>
+<TerritoryCode>FO</TerritoryCode>
+<TerritoryCode>GA</TerritoryCode>
+<TerritoryCode>GB</TerritoryCode>
+<TerritoryCode>GD</TerritoryCode>
+<TerritoryCode>GE</TerritoryCode>
+<TerritoryCode>GF</TerritoryCode>
+<TerritoryCode>GG</TerritoryCode>
+<TerritoryCode>GH</TerritoryCode>
+<TerritoryCode>GI</TerritoryCode>
+<TerritoryCode>GL</TerritoryCode>
+<TerritoryCode>GM</TerritoryCode>
+<TerritoryCode>GN</TerritoryCode>
+<TerritoryCode>GQ</TerritoryCode>
+<TerritoryCode>GS</TerritoryCode>
+<TerritoryCode>GT</TerritoryCode>
+<TerritoryCode>GU</TerritoryCode>
+<TerritoryCode>GW</TerritoryCode>
+<TerritoryCode>GY</TerritoryCode>
+<TerritoryCode>HK</TerritoryCode>
+<TerritoryCode>HM</TerritoryCode>
+<TerritoryCode>HN</TerritoryCode>
+<TerritoryCode>HR</TerritoryCode>
+<TerritoryCode>HT</TerritoryCode>
+<TerritoryCode>HU</TerritoryCode>
+<TerritoryCode>IL</TerritoryCode>
+<TerritoryCode>IM</TerritoryCode>
+<TerritoryCode>IN</TerritoryCode>
+<TerritoryCode>IQ</TerritoryCode>
+<TerritoryCode>IR</TerritoryCode>
+<TerritoryCode>IS</TerritoryCode>
+<TerritoryCode>JE</TerritoryCode>
+<TerritoryCode>JM</TerritoryCode>
+<TerritoryCode>JO</TerritoryCode>
+<TerritoryCode>JP</TerritoryCode>
+<TerritoryCode>KE</TerritoryCode>
+<TerritoryCode>KG</TerritoryCode>
+<TerritoryCode>KH</TerritoryCode>
+<TerritoryCode>KI</TerritoryCode>
+<TerritoryCode>KM</TerritoryCode>
+<TerritoryCode>KN</TerritoryCode>
+<TerritoryCode>KP</TerritoryCode>
+<TerritoryCode>KR</TerritoryCode>
+<TerritoryCode>KW</TerritoryCode>
+<TerritoryCode>KY</TerritoryCode>
+<TerritoryCode>KZ</TerritoryCode>
+<TerritoryCode>LA</TerritoryCode>
+<TerritoryCode>LB</TerritoryCode>
+<TerritoryCode>LC</TerritoryCode>
+<TerritoryCode>LI</TerritoryCode>
+<TerritoryCode>LK</TerritoryCode>
+<TerritoryCode>LR</TerritoryCode>
+<TerritoryCode>LS</TerritoryCode>
+<TerritoryCode>LY</TerritoryCode>
+<TerritoryCode>MA</TerritoryCode>
+<TerritoryCode>MC</TerritoryCode>
+<TerritoryCode>MD</TerritoryCode>
+<TerritoryCode>ME</TerritoryCode>
+<TerritoryCode>MF</TerritoryCode>
+<TerritoryCode>MG</TerritoryCode>
+<TerritoryCode>MH</TerritoryCode>
+<TerritoryCode>MK</TerritoryCode>
+<TerritoryCode>ML</TerritoryCode>
+<TerritoryCode>MM</TerritoryCode>
+<TerritoryCode>MN</TerritoryCode>
+<TerritoryCode>MO</TerritoryCode>
+<TerritoryCode>MP</TerritoryCode>
+<TerritoryCode>MQ</TerritoryCode>
+<TerritoryCode>MR</TerritoryCode>
+<TerritoryCode>MS</TerritoryCode>
+<TerritoryCode>MU</TerritoryCode>
+<TerritoryCode>MV</TerritoryCode>
+<TerritoryCode>MW</TerritoryCode>
+<TerritoryCode>MZ</TerritoryCode>
+<TerritoryCode>NA</TerritoryCode>
+<TerritoryCode>NC</TerritoryCode>
+<TerritoryCode>NE</TerritoryCode>
+<TerritoryCode>NF</TerritoryCode>
+<TerritoryCode>NG</TerritoryCode>
+<TerritoryCode>NI</TerritoryCode>
+<TerritoryCode>NP</TerritoryCode>
+<TerritoryCode>NR</TerritoryCode>
+<TerritoryCode>NU</TerritoryCode>
+<TerritoryCode>OM</TerritoryCode>
+<TerritoryCode>PA</TerritoryCode>
+<TerritoryCode>PE</TerritoryCode>
+<TerritoryCode>PF</TerritoryCode>
+<TerritoryCode>PG</TerritoryCode>
+<TerritoryCode>PH</TerritoryCode>
+<TerritoryCode>PK</TerritoryCode>
+<TerritoryCode>PM</TerritoryCode>
+<TerritoryCode>PN</TerritoryCode>
+<TerritoryCode>PS</TerritoryCode>
+<TerritoryCode>PW</TerritoryCode>
+<TerritoryCode>PY</TerritoryCode>
+<TerritoryCode>QA</TerritoryCode>
+<TerritoryCode>RE</TerritoryCode>
+<TerritoryCode>RO</TerritoryCode>
+<TerritoryCode>RS</TerritoryCode>
+<TerritoryCode>RU</TerritoryCode>
+<TerritoryCode>RW</TerritoryCode>
+<TerritoryCode>SA</TerritoryCode>
+<TerritoryCode>SB</TerritoryCode>
+<TerritoryCode>SC</TerritoryCode>
+<TerritoryCode>SD</TerritoryCode>
+<TerritoryCode>SG</TerritoryCode>
+<TerritoryCode>SH</TerritoryCode>
+<TerritoryCode>SJ</TerritoryCode>
+<TerritoryCode>SL</TerritoryCode>
+<TerritoryCode>SM</TerritoryCode>
+<TerritoryCode>SN</TerritoryCode>
+<TerritoryCode>SO</TerritoryCode>
+<TerritoryCode>SR</TerritoryCode>
+<TerritoryCode>SS</TerritoryCode>
+<TerritoryCode>ST</TerritoryCode>
+<TerritoryCode>SV</TerritoryCode>
+<TerritoryCode>SX</TerritoryCode>
+<TerritoryCode>SY</TerritoryCode>
+<TerritoryCode>SZ</TerritoryCode>
+<TerritoryCode>TC</TerritoryCode>
+<TerritoryCode>TD</TerritoryCode>
+<TerritoryCode>TF</TerritoryCode>
+<TerritoryCode>TG</TerritoryCode>
+<TerritoryCode>TJ</TerritoryCode>
+<TerritoryCode>TK</TerritoryCode>
+<TerritoryCode>TL</TerritoryCode>
+<TerritoryCode>TM</TerritoryCode>
+<TerritoryCode>TN</TerritoryCode>
+<TerritoryCode>TO</TerritoryCode>
+<TerritoryCode>TR</TerritoryCode>
+<TerritoryCode>TT</TerritoryCode>
+<TerritoryCode>TV</TerritoryCode>
+<TerritoryCode>TW</TerritoryCode>
+<TerritoryCode>TZ</TerritoryCode>
+<TerritoryCode>UA</TerritoryCode>
+<TerritoryCode>UG</TerritoryCode>
+<TerritoryCode>UM</TerritoryCode>
+<TerritoryCode>UY</TerritoryCode>
+<TerritoryCode>UZ</TerritoryCode>
+<TerritoryCode>VA</TerritoryCode>
+<TerritoryCode>VC</TerritoryCode>
+<TerritoryCode>VE</TerritoryCode>
+<TerritoryCode>VG</TerritoryCode>
+<TerritoryCode>VN</TerritoryCode>
+<TerritoryCode>VU</TerritoryCode>
+<TerritoryCode>WF</TerritoryCode>
+<TerritoryCode>WS</TerritoryCode>
+<TerritoryCode>YE</TerritoryCode>
+<TerritoryCode>YT</TerritoryCode>
+<TerritoryCode>ZA</TerritoryCode>
+<TerritoryCode>ZM</TerritoryCode>
+<TerritoryCode>ZW</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TMSP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>AT</TerritoryCode>
+<TerritoryCode>BE</TerritoryCode>
+<TerritoryCode>DE</TerritoryCode>
+<TerritoryCode>FI</TerritoryCode>
+<TerritoryCode>FR</TerritoryCode>
+<TerritoryCode>IT</TerritoryCode>
+<TerritoryCode>LU</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TMSC</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>CY</TerritoryCode>
+<TerritoryCode>EE</TerritoryCode>
+<TerritoryCode>ES</TerritoryCode>
+<TerritoryCode>GR</TerritoryCode>
+<TerritoryCode>ID</TerritoryCode>
+<TerritoryCode>LT</TerritoryCode>
+<TerritoryCode>LV</TerritoryCode>
+<TerritoryCode>MT</TerritoryCode>
+<TerritoryCode>NZ</TerritoryCode>
+<TerritoryCode>PT</TerritoryCode>
+<TerritoryCode>SI</TerritoryCode>
+<TerritoryCode>SK</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">STSP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>DK</TerritoryCode>
+<TerritoryCode>IE</TerritoryCode>
+<TerritoryCode>SE</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">STMSC</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>MY</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TSP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>NO</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">STMSP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>PL</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">MP(2)</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>TH</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">CMC(8)</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>US</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TL4</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>SubscriptionModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+</Usage>
+<TerritoryCode>AD</TerritoryCode>
+<TerritoryCode>AE</TerritoryCode>
+<TerritoryCode>AF</TerritoryCode>
+<TerritoryCode>AG</TerritoryCode>
+<TerritoryCode>AI</TerritoryCode>
+<TerritoryCode>AL</TerritoryCode>
+<TerritoryCode>AM</TerritoryCode>
+<TerritoryCode>AO</TerritoryCode>
+<TerritoryCode>AQ</TerritoryCode>
+<TerritoryCode>AR</TerritoryCode>
+<TerritoryCode>AS</TerritoryCode>
+<TerritoryCode>AT</TerritoryCode>
+<TerritoryCode>AU</TerritoryCode>
+<TerritoryCode>AW</TerritoryCode>
+<TerritoryCode>AZ</TerritoryCode>
+<TerritoryCode>BA</TerritoryCode>
+<TerritoryCode>BB</TerritoryCode>
+<TerritoryCode>BD</TerritoryCode>
+<TerritoryCode>BE</TerritoryCode>
+<TerritoryCode>BF</TerritoryCode>
+<TerritoryCode>BG</TerritoryCode>
+<TerritoryCode>BH</TerritoryCode>
+<TerritoryCode>BI</TerritoryCode>
+<TerritoryCode>BJ</TerritoryCode>
+<TerritoryCode>BL</TerritoryCode>
+<TerritoryCode>BM</TerritoryCode>
+<TerritoryCode>BN</TerritoryCode>
+<TerritoryCode>BO</TerritoryCode>
+<TerritoryCode>BQ</TerritoryCode>
+<TerritoryCode>BR</TerritoryCode>
+<TerritoryCode>BS</TerritoryCode>
+<TerritoryCode>BT</TerritoryCode>
+<TerritoryCode>BV</TerritoryCode>
+<TerritoryCode>BW</TerritoryCode>
+<TerritoryCode>BY</TerritoryCode>
+<TerritoryCode>BZ</TerritoryCode>
+<TerritoryCode>CC</TerritoryCode>
+<TerritoryCode>CD</TerritoryCode>
+<TerritoryCode>CF</TerritoryCode>
+<TerritoryCode>CG</TerritoryCode>
+<TerritoryCode>CH</TerritoryCode>
+<TerritoryCode>CI</TerritoryCode>
+<TerritoryCode>CK</TerritoryCode>
+<TerritoryCode>CL</TerritoryCode>
+<TerritoryCode>CM</TerritoryCode>
+<TerritoryCode>CN</TerritoryCode>
+<TerritoryCode>CO</TerritoryCode>
+<TerritoryCode>CR</TerritoryCode>
+<TerritoryCode>CU</TerritoryCode>
+<TerritoryCode>CV</TerritoryCode>
+<TerritoryCode>CW</TerritoryCode>
+<TerritoryCode>CX</TerritoryCode>
+<TerritoryCode>CY</TerritoryCode>
+<TerritoryCode>CZ</TerritoryCode>
+<TerritoryCode>DE</TerritoryCode>
+<TerritoryCode>DJ</TerritoryCode>
+<TerritoryCode>DK</TerritoryCode>
+<TerritoryCode>DM</TerritoryCode>
+<TerritoryCode>DO</TerritoryCode>
+<TerritoryCode>DZ</TerritoryCode>
+<TerritoryCode>EC</TerritoryCode>
+<TerritoryCode>EE</TerritoryCode>
+<TerritoryCode>EG</TerritoryCode>
+<TerritoryCode>EH</TerritoryCode>
+<TerritoryCode>ER</TerritoryCode>
+<TerritoryCode>ES</TerritoryCode>
+<TerritoryCode>ET</TerritoryCode>
+<TerritoryCode>FI</TerritoryCode>
+<TerritoryCode>FJ</TerritoryCode>
+<TerritoryCode>FK</TerritoryCode>
+<TerritoryCode>FM</TerritoryCode>
+<TerritoryCode>FO</TerritoryCode>
+<TerritoryCode>FR</TerritoryCode>
+<TerritoryCode>GA</TerritoryCode>
+<TerritoryCode>GB</TerritoryCode>
+<TerritoryCode>GD</TerritoryCode>
+<TerritoryCode>GE</TerritoryCode>
+<TerritoryCode>GF</TerritoryCode>
+<TerritoryCode>GG</TerritoryCode>
+<TerritoryCode>GH</TerritoryCode>
+<TerritoryCode>GI</TerritoryCode>
+<TerritoryCode>GL</TerritoryCode>
+<TerritoryCode>GM</TerritoryCode>
+<TerritoryCode>GN</TerritoryCode>
+<TerritoryCode>GQ</TerritoryCode>
+<TerritoryCode>GR</TerritoryCode>
+<TerritoryCode>GS</TerritoryCode>
+<TerritoryCode>GT</TerritoryCode>
+<TerritoryCode>GU</TerritoryCode>
+<TerritoryCode>GW</TerritoryCode>
+<TerritoryCode>GY</TerritoryCode>
+<TerritoryCode>HK</TerritoryCode>
+<TerritoryCode>HM</TerritoryCode>
+<TerritoryCode>HN</TerritoryCode>
+<TerritoryCode>HR</TerritoryCode>
+<TerritoryCode>HT</TerritoryCode>
+<TerritoryCode>HU</TerritoryCode>
+<TerritoryCode>ID</TerritoryCode>
+<TerritoryCode>IE</TerritoryCode>
+<TerritoryCode>IL</TerritoryCode>
+<TerritoryCode>IM</TerritoryCode>
+<TerritoryCode>IN</TerritoryCode>
+<TerritoryCode>IQ</TerritoryCode>
+<TerritoryCode>IR</TerritoryCode>
+<TerritoryCode>IS</TerritoryCode>
+<TerritoryCode>IT</TerritoryCode>
+<TerritoryCode>JE</TerritoryCode>
+<TerritoryCode>JM</TerritoryCode>
+<TerritoryCode>JO</TerritoryCode>
+<TerritoryCode>JP</TerritoryCode>
+<TerritoryCode>KE</TerritoryCode>
+<TerritoryCode>KG</TerritoryCode>
+<TerritoryCode>KH</TerritoryCode>
+<TerritoryCode>KI</TerritoryCode>
+<TerritoryCode>KM</TerritoryCode>
+<TerritoryCode>KN</TerritoryCode>
+<TerritoryCode>KP</TerritoryCode>
+<TerritoryCode>KR</TerritoryCode>
+<TerritoryCode>KW</TerritoryCode>
+<TerritoryCode>KY</TerritoryCode>
+<TerritoryCode>KZ</TerritoryCode>
+<TerritoryCode>LA</TerritoryCode>
+<TerritoryCode>LB</TerritoryCode>
+<TerritoryCode>LC</TerritoryCode>
+<TerritoryCode>LI</TerritoryCode>
+<TerritoryCode>LK</TerritoryCode>
+<TerritoryCode>LR</TerritoryCode>
+<TerritoryCode>LS</TerritoryCode>
+<TerritoryCode>LT</TerritoryCode>
+<TerritoryCode>LU</TerritoryCode>
+<TerritoryCode>LV</TerritoryCode>
+<TerritoryCode>LY</TerritoryCode>
+<TerritoryCode>MA</TerritoryCode>
+<TerritoryCode>MC</TerritoryCode>
+<TerritoryCode>MD</TerritoryCode>
+<TerritoryCode>ME</TerritoryCode>
+<TerritoryCode>MF</TerritoryCode>
+<TerritoryCode>MG</TerritoryCode>
+<TerritoryCode>MH</TerritoryCode>
+<TerritoryCode>MK</TerritoryCode>
+<TerritoryCode>ML</TerritoryCode>
+<TerritoryCode>MM</TerritoryCode>
+<TerritoryCode>MN</TerritoryCode>
+<TerritoryCode>MO</TerritoryCode>
+<TerritoryCode>MP</TerritoryCode>
+<TerritoryCode>MQ</TerritoryCode>
+<TerritoryCode>MR</TerritoryCode>
+<TerritoryCode>MS</TerritoryCode>
+<TerritoryCode>MT</TerritoryCode>
+<TerritoryCode>MU</TerritoryCode>
+<TerritoryCode>MV</TerritoryCode>
+<TerritoryCode>MW</TerritoryCode>
+<TerritoryCode>MY</TerritoryCode>
+<TerritoryCode>MZ</TerritoryCode>
+<TerritoryCode>NA</TerritoryCode>
+<TerritoryCode>NC</TerritoryCode>
+<TerritoryCode>NE</TerritoryCode>
+<TerritoryCode>NF</TerritoryCode>
+<TerritoryCode>NG</TerritoryCode>
+<TerritoryCode>NI</TerritoryCode>
+<TerritoryCode>NO</TerritoryCode>
+<TerritoryCode>NP</TerritoryCode>
+<TerritoryCode>NR</TerritoryCode>
+<TerritoryCode>NU</TerritoryCode>
+<TerritoryCode>NZ</TerritoryCode>
+<TerritoryCode>OM</TerritoryCode>
+<TerritoryCode>PA</TerritoryCode>
+<TerritoryCode>PE</TerritoryCode>
+<TerritoryCode>PF</TerritoryCode>
+<TerritoryCode>PG</TerritoryCode>
+<TerritoryCode>PH</TerritoryCode>
+<TerritoryCode>PK</TerritoryCode>
+<TerritoryCode>PL</TerritoryCode>
+<TerritoryCode>PM</TerritoryCode>
+<TerritoryCode>PN</TerritoryCode>
+<TerritoryCode>PS</TerritoryCode>
+<TerritoryCode>PT</TerritoryCode>
+<TerritoryCode>PW</TerritoryCode>
+<TerritoryCode>PY</TerritoryCode>
+<TerritoryCode>QA</TerritoryCode>
+<TerritoryCode>RE</TerritoryCode>
+<TerritoryCode>RO</TerritoryCode>
+<TerritoryCode>RS</TerritoryCode>
+<TerritoryCode>RU</TerritoryCode>
+<TerritoryCode>RW</TerritoryCode>
+<TerritoryCode>SA</TerritoryCode>
+<TerritoryCode>SB</TerritoryCode>
+<TerritoryCode>SC</TerritoryCode>
+<TerritoryCode>SD</TerritoryCode>
+<TerritoryCode>SE</TerritoryCode>
+<TerritoryCode>SG</TerritoryCode>
+<TerritoryCode>SH</TerritoryCode>
+<TerritoryCode>SI</TerritoryCode>
+<TerritoryCode>SJ</TerritoryCode>
+<TerritoryCode>SK</TerritoryCode>
+<TerritoryCode>SL</TerritoryCode>
+<TerritoryCode>SM</TerritoryCode>
+<TerritoryCode>SN</TerritoryCode>
+<TerritoryCode>SO</TerritoryCode>
+<TerritoryCode>SR</TerritoryCode>
+<TerritoryCode>SS</TerritoryCode>
+<TerritoryCode>ST</TerritoryCode>
+<TerritoryCode>SV</TerritoryCode>
+<TerritoryCode>SX</TerritoryCode>
+<TerritoryCode>SY</TerritoryCode>
+<TerritoryCode>SZ</TerritoryCode>
+<TerritoryCode>TC</TerritoryCode>
+<TerritoryCode>TD</TerritoryCode>
+<TerritoryCode>TF</TerritoryCode>
+<TerritoryCode>TG</TerritoryCode>
+<TerritoryCode>TH</TerritoryCode>
+<TerritoryCode>TJ</TerritoryCode>
+<TerritoryCode>TK</TerritoryCode>
+<TerritoryCode>TL</TerritoryCode>
+<TerritoryCode>TM</TerritoryCode>
+<TerritoryCode>TN</TerritoryCode>
+<TerritoryCode>TO</TerritoryCode>
+<TerritoryCode>TR</TerritoryCode>
+<TerritoryCode>TT</TerritoryCode>
+<TerritoryCode>TV</TerritoryCode>
+<TerritoryCode>TW</TerritoryCode>
+<TerritoryCode>TZ</TerritoryCode>
+<TerritoryCode>UA</TerritoryCode>
+<TerritoryCode>UG</TerritoryCode>
+<TerritoryCode>UM</TerritoryCode>
+<TerritoryCode>US</TerritoryCode>
+<TerritoryCode>UY</TerritoryCode>
+<TerritoryCode>UZ</TerritoryCode>
+<TerritoryCode>VA</TerritoryCode>
+<TerritoryCode>VC</TerritoryCode>
+<TerritoryCode>VE</TerritoryCode>
+<TerritoryCode>VG</TerritoryCode>
+<TerritoryCode>VN</TerritoryCode>
+<TerritoryCode>VU</TerritoryCode>
+<TerritoryCode>WF</TerritoryCode>
+<TerritoryCode>WS</TerritoryCode>
+<TerritoryCode>YE</TerritoryCode>
+<TerritoryCode>YT</TerritoryCode>
+<TerritoryCode>ZA</TerritoryCode>
+<TerritoryCode>ZM</TerritoryCode>
+<TerritoryCode>ZW</TerritoryCode>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+</ReleaseDeal>
+<ReleaseDeal>
+<DealReleaseReference>R1</DealReleaseReference>
+<DealReleaseReference>R2</DealReleaseReference>
+<DealReleaseReference>R3</DealReleaseReference>
+<DealReleaseReference>R4</DealReleaseReference>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+<UseType>Stream</UseType>
+</Usage>
+<TerritoryCode>AD</TerritoryCode>
+<TerritoryCode>AE</TerritoryCode>
+<TerritoryCode>AF</TerritoryCode>
+<TerritoryCode>AG</TerritoryCode>
+<TerritoryCode>AI</TerritoryCode>
+<TerritoryCode>AL</TerritoryCode>
+<TerritoryCode>AO</TerritoryCode>
+<TerritoryCode>AQ</TerritoryCode>
+<TerritoryCode>AR</TerritoryCode>
+<TerritoryCode>AW</TerritoryCode>
+<TerritoryCode>BB</TerritoryCode>
+<TerritoryCode>BH</TerritoryCode>
+<TerritoryCode>BJ</TerritoryCode>
+<TerritoryCode>BL</TerritoryCode>
+<TerritoryCode>BM</TerritoryCode>
+<TerritoryCode>BN</TerritoryCode>
+<TerritoryCode>BO</TerritoryCode>
+<TerritoryCode>BQ</TerritoryCode>
+<TerritoryCode>BR</TerritoryCode>
+<TerritoryCode>BS</TerritoryCode>
+<TerritoryCode>BT</TerritoryCode>
+<TerritoryCode>BV</TerritoryCode>
+<TerritoryCode>BW</TerritoryCode>
+<TerritoryCode>CC</TerritoryCode>
+<TerritoryCode>CD</TerritoryCode>
+<TerritoryCode>CF</TerritoryCode>
+<TerritoryCode>CG</TerritoryCode>
+<TerritoryCode>CI</TerritoryCode>
+<TerritoryCode>CM</TerritoryCode>
+<TerritoryCode>CN</TerritoryCode>
+<TerritoryCode>CR</TerritoryCode>
+<TerritoryCode>CU</TerritoryCode>
+<TerritoryCode>CW</TerritoryCode>
+<TerritoryCode>CX</TerritoryCode>
+<TerritoryCode>DJ</TerritoryCode>
+<TerritoryCode>DM</TerritoryCode>
+<TerritoryCode>DO</TerritoryCode>
+<TerritoryCode>DZ</TerritoryCode>
+<TerritoryCode>EC</TerritoryCode>
+<TerritoryCode>EE</TerritoryCode>
+<TerritoryCode>EH</TerritoryCode>
+<TerritoryCode>ER</TerritoryCode>
+<TerritoryCode>ET</TerritoryCode>
+<TerritoryCode>FK</TerritoryCode>
+<TerritoryCode>FO</TerritoryCode>
+<TerritoryCode>GA</TerritoryCode>
+<TerritoryCode>GD</TerritoryCode>
+<TerritoryCode>GE</TerritoryCode>
+<TerritoryCode>GF</TerritoryCode>
+<TerritoryCode>GG</TerritoryCode>
+<TerritoryCode>GI</TerritoryCode>
+<TerritoryCode>GL</TerritoryCode>
+<TerritoryCode>GN</TerritoryCode>
+<TerritoryCode>GQ</TerritoryCode>
+<TerritoryCode>GR</TerritoryCode>
+<TerritoryCode>GS</TerritoryCode>
+<TerritoryCode>GT</TerritoryCode>
+<TerritoryCode>GU</TerritoryCode>
+<TerritoryCode>HM</TerritoryCode>
+<TerritoryCode>HN</TerritoryCode>
+<TerritoryCode>HT</TerritoryCode>
+<TerritoryCode>IL</TerritoryCode>
+<TerritoryCode>IM</TerritoryCode>
+<TerritoryCode>IQ</TerritoryCode>
+<TerritoryCode>IR</TerritoryCode>
+<TerritoryCode>IS</TerritoryCode>
+<TerritoryCode>JE</TerritoryCode>
+<TerritoryCode>JM</TerritoryCode>
+<TerritoryCode>KM</TerritoryCode>
+<TerritoryCode>KN</TerritoryCode>
+<TerritoryCode>KP</TerritoryCode>
+<TerritoryCode>KR</TerritoryCode>
+<TerritoryCode>KW</TerritoryCode>
+<TerritoryCode>KY</TerritoryCode>
+<TerritoryCode>LC</TerritoryCode>
+<TerritoryCode>LI</TerritoryCode>
+<TerritoryCode>LR</TerritoryCode>
+<TerritoryCode>LS</TerritoryCode>
+<TerritoryCode>LT</TerritoryCode>
+<TerritoryCode>LV</TerritoryCode>
+<TerritoryCode>LY</TerritoryCode>
+<TerritoryCode>MA</TerritoryCode>
+<TerritoryCode>MC</TerritoryCode>
+<TerritoryCode>MF</TerritoryCode>
+<TerritoryCode>MG</TerritoryCode>
+<TerritoryCode>ML</TerritoryCode>
+<TerritoryCode>MO</TerritoryCode>
+<TerritoryCode>MQ</TerritoryCode>
+<TerritoryCode>MR</TerritoryCode>
+<TerritoryCode>MS</TerritoryCode>
+<TerritoryCode>MT</TerritoryCode>
+<TerritoryCode>MU</TerritoryCode>
+<TerritoryCode>MV</TerritoryCode>
+<TerritoryCode>MW</TerritoryCode>
+<TerritoryCode>NC</TerritoryCode>
+<TerritoryCode>NF</TerritoryCode>
+<TerritoryCode>NI</TerritoryCode>
+<TerritoryCode>OM</TerritoryCode>
+<TerritoryCode>PA</TerritoryCode>
+<TerritoryCode>PK</TerritoryCode>
+<TerritoryCode>PM</TerritoryCode>
+<TerritoryCode>PN</TerritoryCode>
+<TerritoryCode>PS</TerritoryCode>
+<TerritoryCode>PY</TerritoryCode>
+<TerritoryCode>RE</TerritoryCode>
+<TerritoryCode>RW</TerritoryCode>
+<TerritoryCode>SA</TerritoryCode>
+<TerritoryCode>SC</TerritoryCode>
+<TerritoryCode>SD</TerritoryCode>
+<TerritoryCode>SG</TerritoryCode>
+<TerritoryCode>SH</TerritoryCode>
+<TerritoryCode>SI</TerritoryCode>
+<TerritoryCode>SJ</TerritoryCode>
+<TerritoryCode>SK</TerritoryCode>
+<TerritoryCode>SL</TerritoryCode>
+<TerritoryCode>SM</TerritoryCode>
+<TerritoryCode>SN</TerritoryCode>
+<TerritoryCode>SO</TerritoryCode>
+<TerritoryCode>SR</TerritoryCode>
+<TerritoryCode>SS</TerritoryCode>
+<TerritoryCode>ST</TerritoryCode>
+<TerritoryCode>SV</TerritoryCode>
+<TerritoryCode>SX</TerritoryCode>
+<TerritoryCode>SY</TerritoryCode>
+<TerritoryCode>TC</TerritoryCode>
+<TerritoryCode>TF</TerritoryCode>
+<TerritoryCode>TG</TerritoryCode>
+<TerritoryCode>TT</TerritoryCode>
+<TerritoryCode>TW</TerritoryCode>
+<TerritoryCode>UM</TerritoryCode>
+<TerritoryCode>UY</TerritoryCode>
+<TerritoryCode>VA</TerritoryCode>
+<TerritoryCode>VC</TerritoryCode>
+<TerritoryCode>VE</TerritoryCode>
+<TerritoryCode>VG</TerritoryCode>
+<TerritoryCode>WF</TerritoryCode>
+<TerritoryCode>YT</TerritoryCode>
+<TerritoryCode>ZM</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+<UseType>Stream</UseType>
+</Usage>
+<TerritoryCode>AM</TerritoryCode>
+<TerritoryCode>BD</TerritoryCode>
+<TerritoryCode>BF</TerritoryCode>
+<TerritoryCode>BI</TerritoryCode>
+<TerritoryCode>BY</TerritoryCode>
+<TerritoryCode>FM</TerritoryCode>
+<TerritoryCode>GH</TerritoryCode>
+<TerritoryCode>GM</TerritoryCode>
+<TerritoryCode>GW</TerritoryCode>
+<TerritoryCode>KE</TerritoryCode>
+<TerritoryCode>KG</TerritoryCode>
+<TerritoryCode>KI</TerritoryCode>
+<TerritoryCode>MD</TerritoryCode>
+<TerritoryCode>MH</TerritoryCode>
+<TerritoryCode>MM</TerritoryCode>
+<TerritoryCode>MZ</TerritoryCode>
+<TerritoryCode>NE</TerritoryCode>
+<TerritoryCode>NG</TerritoryCode>
+<TerritoryCode>NP</TerritoryCode>
+<TerritoryCode>NR</TerritoryCode>
+<TerritoryCode>NU</TerritoryCode>
+<TerritoryCode>PG</TerritoryCode>
+<TerritoryCode>SB</TerritoryCode>
+<TerritoryCode>TD</TerritoryCode>
+<TerritoryCode>TJ</TerritoryCode>
+<TerritoryCode>TK</TerritoryCode>
+<TerritoryCode>TL</TerritoryCode>
+<TerritoryCode>TM</TerritoryCode>
+<TerritoryCode>TO</TerritoryCode>
+<TerritoryCode>TV</TerritoryCode>
+<TerritoryCode>TZ</TerritoryCode>
+<TerritoryCode>UA</TerritoryCode>
+<TerritoryCode>UG</TerritoryCode>
+<TerritoryCode>UZ</TerritoryCode>
+<TerritoryCode>VU</TerritoryCode>
+<TerritoryCode>WS</TerritoryCode>
+<TerritoryCode>YE</TerritoryCode>
+<TerritoryCode>ZW</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">BAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+<UseType>Stream</UseType>
+</Usage>
+<TerritoryCode>AS</TerritoryCode>
+<TerritoryCode>AZ</TerritoryCode>
+<TerritoryCode>BA</TerritoryCode>
+<TerritoryCode>BZ</TerritoryCode>
+<TerritoryCode>CK</TerritoryCode>
+<TerritoryCode>CV</TerritoryCode>
+<TerritoryCode>EG</TerritoryCode>
+<TerritoryCode>FJ</TerritoryCode>
+<TerritoryCode>GY</TerritoryCode>
+<TerritoryCode>HR</TerritoryCode>
+<TerritoryCode>JO</TerritoryCode>
+<TerritoryCode>KH</TerritoryCode>
+<TerritoryCode>KZ</TerritoryCode>
+<TerritoryCode>LA</TerritoryCode>
+<TerritoryCode>LB</TerritoryCode>
+<TerritoryCode>LK</TerritoryCode>
+<TerritoryCode>ME</TerritoryCode>
+<TerritoryCode>MK</TerritoryCode>
+<TerritoryCode>MN</TerritoryCode>
+<TerritoryCode>MP</TerritoryCode>
+<TerritoryCode>NA</TerritoryCode>
+<TerritoryCode>PF</TerritoryCode>
+<TerritoryCode>PW</TerritoryCode>
+<TerritoryCode>RS</TerritoryCode>
+<TerritoryCode>SZ</TerritoryCode>
+<TerritoryCode>TN</TerritoryCode>
+<TerritoryCode>VN</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">MAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+<UseType>Stream</UseType>
+</Usage>
+<TerritoryCode>AT</TerritoryCode>
+<TerritoryCode>AU</TerritoryCode>
+<TerritoryCode>BE</TerritoryCode>
+<TerritoryCode>CH</TerritoryCode>
+<TerritoryCode>DE</TerritoryCode>
+<TerritoryCode>DK</TerritoryCode>
+<TerritoryCode>ES</TerritoryCode>
+<TerritoryCode>FI</TerritoryCode>
+<TerritoryCode>FR</TerritoryCode>
+<TerritoryCode>GB</TerritoryCode>
+<TerritoryCode>HK</TerritoryCode>
+<TerritoryCode>ID</TerritoryCode>
+<TerritoryCode>IE</TerritoryCode>
+<TerritoryCode>IN</TerritoryCode>
+<TerritoryCode>IT</TerritoryCode>
+<TerritoryCode>JP</TerritoryCode>
+<TerritoryCode>LU</TerritoryCode>
+<TerritoryCode>NO</TerritoryCode>
+<TerritoryCode>NZ</TerritoryCode>
+<TerritoryCode>PT</TerritoryCode>
+<TerritoryCode>RU</TerritoryCode>
+<TerritoryCode>SE</TerritoryCode>
+<TerritoryCode>TH</TerritoryCode>
+<TerritoryCode>ZA</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">STAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+<UseType>Stream</UseType>
+</Usage>
+<TerritoryCode>BG</TerritoryCode>
+<TerritoryCode>CL</TerritoryCode>
+<TerritoryCode>CO</TerritoryCode>
+<TerritoryCode>CZ</TerritoryCode>
+<TerritoryCode>HU</TerritoryCode>
+<TerritoryCode>MY</TerritoryCode>
+<TerritoryCode>PE</TerritoryCode>
+<TerritoryCode>PH</TerritoryCode>
+<TerritoryCode>PL</TerritoryCode>
+<TerritoryCode>QA</TerritoryCode>
+<TerritoryCode>RO</TerritoryCode>
+<TerritoryCode>TR</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">STAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2020-07-17</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+<UseType>Stream</UseType>
+</Usage>
+<TerritoryCode>CY</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">CMAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+<UseType>Stream</UseType>
+</Usage>
+<TerritoryCode>US</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TRA</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>AD</TerritoryCode>
+<TerritoryCode>AE</TerritoryCode>
+<TerritoryCode>AF</TerritoryCode>
+<TerritoryCode>AG</TerritoryCode>
+<TerritoryCode>AI</TerritoryCode>
+<TerritoryCode>AL</TerritoryCode>
+<TerritoryCode>AO</TerritoryCode>
+<TerritoryCode>AQ</TerritoryCode>
+<TerritoryCode>AR</TerritoryCode>
+<TerritoryCode>AW</TerritoryCode>
+<TerritoryCode>BB</TerritoryCode>
+<TerritoryCode>BH</TerritoryCode>
+<TerritoryCode>BJ</TerritoryCode>
+<TerritoryCode>BL</TerritoryCode>
+<TerritoryCode>BM</TerritoryCode>
+<TerritoryCode>BN</TerritoryCode>
+<TerritoryCode>BO</TerritoryCode>
+<TerritoryCode>BQ</TerritoryCode>
+<TerritoryCode>BR</TerritoryCode>
+<TerritoryCode>BS</TerritoryCode>
+<TerritoryCode>BT</TerritoryCode>
+<TerritoryCode>BV</TerritoryCode>
+<TerritoryCode>BW</TerritoryCode>
+<TerritoryCode>CC</TerritoryCode>
+<TerritoryCode>CD</TerritoryCode>
+<TerritoryCode>CF</TerritoryCode>
+<TerritoryCode>CG</TerritoryCode>
+<TerritoryCode>CI</TerritoryCode>
+<TerritoryCode>CM</TerritoryCode>
+<TerritoryCode>CN</TerritoryCode>
+<TerritoryCode>CR</TerritoryCode>
+<TerritoryCode>CU</TerritoryCode>
+<TerritoryCode>CW</TerritoryCode>
+<TerritoryCode>CX</TerritoryCode>
+<TerritoryCode>DJ</TerritoryCode>
+<TerritoryCode>DM</TerritoryCode>
+<TerritoryCode>DO</TerritoryCode>
+<TerritoryCode>DZ</TerritoryCode>
+<TerritoryCode>EC</TerritoryCode>
+<TerritoryCode>EE</TerritoryCode>
+<TerritoryCode>EH</TerritoryCode>
+<TerritoryCode>ER</TerritoryCode>
+<TerritoryCode>ET</TerritoryCode>
+<TerritoryCode>FK</TerritoryCode>
+<TerritoryCode>FO</TerritoryCode>
+<TerritoryCode>GA</TerritoryCode>
+<TerritoryCode>GD</TerritoryCode>
+<TerritoryCode>GE</TerritoryCode>
+<TerritoryCode>GF</TerritoryCode>
+<TerritoryCode>GG</TerritoryCode>
+<TerritoryCode>GI</TerritoryCode>
+<TerritoryCode>GL</TerritoryCode>
+<TerritoryCode>GN</TerritoryCode>
+<TerritoryCode>GQ</TerritoryCode>
+<TerritoryCode>GR</TerritoryCode>
+<TerritoryCode>GS</TerritoryCode>
+<TerritoryCode>GT</TerritoryCode>
+<TerritoryCode>GU</TerritoryCode>
+<TerritoryCode>HM</TerritoryCode>
+<TerritoryCode>HN</TerritoryCode>
+<TerritoryCode>HT</TerritoryCode>
+<TerritoryCode>IL</TerritoryCode>
+<TerritoryCode>IM</TerritoryCode>
+<TerritoryCode>IQ</TerritoryCode>
+<TerritoryCode>IR</TerritoryCode>
+<TerritoryCode>IS</TerritoryCode>
+<TerritoryCode>JE</TerritoryCode>
+<TerritoryCode>JM</TerritoryCode>
+<TerritoryCode>KM</TerritoryCode>
+<TerritoryCode>KN</TerritoryCode>
+<TerritoryCode>KP</TerritoryCode>
+<TerritoryCode>KR</TerritoryCode>
+<TerritoryCode>KW</TerritoryCode>
+<TerritoryCode>KY</TerritoryCode>
+<TerritoryCode>LC</TerritoryCode>
+<TerritoryCode>LI</TerritoryCode>
+<TerritoryCode>LR</TerritoryCode>
+<TerritoryCode>LS</TerritoryCode>
+<TerritoryCode>LT</TerritoryCode>
+<TerritoryCode>LV</TerritoryCode>
+<TerritoryCode>LY</TerritoryCode>
+<TerritoryCode>MA</TerritoryCode>
+<TerritoryCode>MC</TerritoryCode>
+<TerritoryCode>MF</TerritoryCode>
+<TerritoryCode>MG</TerritoryCode>
+<TerritoryCode>ML</TerritoryCode>
+<TerritoryCode>MO</TerritoryCode>
+<TerritoryCode>MQ</TerritoryCode>
+<TerritoryCode>MR</TerritoryCode>
+<TerritoryCode>MS</TerritoryCode>
+<TerritoryCode>MT</TerritoryCode>
+<TerritoryCode>MU</TerritoryCode>
+<TerritoryCode>MV</TerritoryCode>
+<TerritoryCode>MW</TerritoryCode>
+<TerritoryCode>NC</TerritoryCode>
+<TerritoryCode>NF</TerritoryCode>
+<TerritoryCode>NI</TerritoryCode>
+<TerritoryCode>OM</TerritoryCode>
+<TerritoryCode>PA</TerritoryCode>
+<TerritoryCode>PK</TerritoryCode>
+<TerritoryCode>PM</TerritoryCode>
+<TerritoryCode>PN</TerritoryCode>
+<TerritoryCode>PS</TerritoryCode>
+<TerritoryCode>PY</TerritoryCode>
+<TerritoryCode>RE</TerritoryCode>
+<TerritoryCode>RW</TerritoryCode>
+<TerritoryCode>SA</TerritoryCode>
+<TerritoryCode>SC</TerritoryCode>
+<TerritoryCode>SD</TerritoryCode>
+<TerritoryCode>SG</TerritoryCode>
+<TerritoryCode>SH</TerritoryCode>
+<TerritoryCode>SI</TerritoryCode>
+<TerritoryCode>SJ</TerritoryCode>
+<TerritoryCode>SK</TerritoryCode>
+<TerritoryCode>SL</TerritoryCode>
+<TerritoryCode>SM</TerritoryCode>
+<TerritoryCode>SN</TerritoryCode>
+<TerritoryCode>SO</TerritoryCode>
+<TerritoryCode>SR</TerritoryCode>
+<TerritoryCode>SS</TerritoryCode>
+<TerritoryCode>ST</TerritoryCode>
+<TerritoryCode>SV</TerritoryCode>
+<TerritoryCode>SX</TerritoryCode>
+<TerritoryCode>SY</TerritoryCode>
+<TerritoryCode>TC</TerritoryCode>
+<TerritoryCode>TF</TerritoryCode>
+<TerritoryCode>TG</TerritoryCode>
+<TerritoryCode>TT</TerritoryCode>
+<TerritoryCode>TW</TerritoryCode>
+<TerritoryCode>UM</TerritoryCode>
+<TerritoryCode>UY</TerritoryCode>
+<TerritoryCode>VA</TerritoryCode>
+<TerritoryCode>VC</TerritoryCode>
+<TerritoryCode>VE</TerritoryCode>
+<TerritoryCode>VG</TerritoryCode>
+<TerritoryCode>WF</TerritoryCode>
+<TerritoryCode>YT</TerritoryCode>
+<TerritoryCode>ZM</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>AM</TerritoryCode>
+<TerritoryCode>BD</TerritoryCode>
+<TerritoryCode>BF</TerritoryCode>
+<TerritoryCode>BI</TerritoryCode>
+<TerritoryCode>BY</TerritoryCode>
+<TerritoryCode>FM</TerritoryCode>
+<TerritoryCode>GH</TerritoryCode>
+<TerritoryCode>GM</TerritoryCode>
+<TerritoryCode>GW</TerritoryCode>
+<TerritoryCode>KE</TerritoryCode>
+<TerritoryCode>KG</TerritoryCode>
+<TerritoryCode>KI</TerritoryCode>
+<TerritoryCode>MD</TerritoryCode>
+<TerritoryCode>MH</TerritoryCode>
+<TerritoryCode>MM</TerritoryCode>
+<TerritoryCode>MZ</TerritoryCode>
+<TerritoryCode>NE</TerritoryCode>
+<TerritoryCode>NG</TerritoryCode>
+<TerritoryCode>NP</TerritoryCode>
+<TerritoryCode>NR</TerritoryCode>
+<TerritoryCode>NU</TerritoryCode>
+<TerritoryCode>PG</TerritoryCode>
+<TerritoryCode>SB</TerritoryCode>
+<TerritoryCode>TD</TerritoryCode>
+<TerritoryCode>TJ</TerritoryCode>
+<TerritoryCode>TK</TerritoryCode>
+<TerritoryCode>TL</TerritoryCode>
+<TerritoryCode>TM</TerritoryCode>
+<TerritoryCode>TO</TerritoryCode>
+<TerritoryCode>TV</TerritoryCode>
+<TerritoryCode>TZ</TerritoryCode>
+<TerritoryCode>UA</TerritoryCode>
+<TerritoryCode>UG</TerritoryCode>
+<TerritoryCode>UZ</TerritoryCode>
+<TerritoryCode>VU</TerritoryCode>
+<TerritoryCode>WS</TerritoryCode>
+<TerritoryCode>YE</TerritoryCode>
+<TerritoryCode>ZW</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">BAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>AS</TerritoryCode>
+<TerritoryCode>AZ</TerritoryCode>
+<TerritoryCode>BA</TerritoryCode>
+<TerritoryCode>BZ</TerritoryCode>
+<TerritoryCode>CK</TerritoryCode>
+<TerritoryCode>CV</TerritoryCode>
+<TerritoryCode>EG</TerritoryCode>
+<TerritoryCode>FJ</TerritoryCode>
+<TerritoryCode>GY</TerritoryCode>
+<TerritoryCode>HR</TerritoryCode>
+<TerritoryCode>JO</TerritoryCode>
+<TerritoryCode>KH</TerritoryCode>
+<TerritoryCode>KZ</TerritoryCode>
+<TerritoryCode>LA</TerritoryCode>
+<TerritoryCode>LB</TerritoryCode>
+<TerritoryCode>LK</TerritoryCode>
+<TerritoryCode>ME</TerritoryCode>
+<TerritoryCode>MK</TerritoryCode>
+<TerritoryCode>MN</TerritoryCode>
+<TerritoryCode>MP</TerritoryCode>
+<TerritoryCode>NA</TerritoryCode>
+<TerritoryCode>PF</TerritoryCode>
+<TerritoryCode>PW</TerritoryCode>
+<TerritoryCode>RS</TerritoryCode>
+<TerritoryCode>SZ</TerritoryCode>
+<TerritoryCode>TN</TerritoryCode>
+<TerritoryCode>VN</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">MAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>AT</TerritoryCode>
+<TerritoryCode>AU</TerritoryCode>
+<TerritoryCode>BE</TerritoryCode>
+<TerritoryCode>CH</TerritoryCode>
+<TerritoryCode>DE</TerritoryCode>
+<TerritoryCode>DK</TerritoryCode>
+<TerritoryCode>ES</TerritoryCode>
+<TerritoryCode>FI</TerritoryCode>
+<TerritoryCode>FR</TerritoryCode>
+<TerritoryCode>GB</TerritoryCode>
+<TerritoryCode>HK</TerritoryCode>
+<TerritoryCode>ID</TerritoryCode>
+<TerritoryCode>IE</TerritoryCode>
+<TerritoryCode>IN</TerritoryCode>
+<TerritoryCode>IT</TerritoryCode>
+<TerritoryCode>JP</TerritoryCode>
+<TerritoryCode>LU</TerritoryCode>
+<TerritoryCode>NO</TerritoryCode>
+<TerritoryCode>NZ</TerritoryCode>
+<TerritoryCode>PT</TerritoryCode>
+<TerritoryCode>RU</TerritoryCode>
+<TerritoryCode>SE</TerritoryCode>
+<TerritoryCode>TH</TerritoryCode>
+<TerritoryCode>ZA</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">STAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>BG</TerritoryCode>
+<TerritoryCode>CL</TerritoryCode>
+<TerritoryCode>CO</TerritoryCode>
+<TerritoryCode>CZ</TerritoryCode>
+<TerritoryCode>HU</TerritoryCode>
+<TerritoryCode>MY</TerritoryCode>
+<TerritoryCode>PE</TerritoryCode>
+<TerritoryCode>PH</TerritoryCode>
+<TerritoryCode>PL</TerritoryCode>
+<TerritoryCode>QA</TerritoryCode>
+<TerritoryCode>RO</TerritoryCode>
+<TerritoryCode>TR</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">STAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2020-07-17</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>CY</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">CMAP</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>PayAsYouGoModel</CommercialModelType>
+<Usage>
+<UseType>PermanentDownload</UseType>
+</Usage>
+<TerritoryCode>US</TerritoryCode>
+<PriceInformation>
+<PriceType Namespace="DPID:PADPIDA2013042401U">TRA</PriceType>
+</PriceInformation>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+<Deal>
+<DealTerms>
+<CommercialModelType>SubscriptionModel</CommercialModelType>
+<Usage>
+<UseType>ConditionalDownload</UseType>
+<UseType>Stream</UseType>
+</Usage>
+<TerritoryCode>AD</TerritoryCode>
+<TerritoryCode>AE</TerritoryCode>
+<TerritoryCode>AF</TerritoryCode>
+<TerritoryCode>AG</TerritoryCode>
+<TerritoryCode>AI</TerritoryCode>
+<TerritoryCode>AL</TerritoryCode>
+<TerritoryCode>AM</TerritoryCode>
+<TerritoryCode>AO</TerritoryCode>
+<TerritoryCode>AQ</TerritoryCode>
+<TerritoryCode>AR</TerritoryCode>
+<TerritoryCode>AS</TerritoryCode>
+<TerritoryCode>AT</TerritoryCode>
+<TerritoryCode>AU</TerritoryCode>
+<TerritoryCode>AW</TerritoryCode>
+<TerritoryCode>AZ</TerritoryCode>
+<TerritoryCode>BA</TerritoryCode>
+<TerritoryCode>BB</TerritoryCode>
+<TerritoryCode>BD</TerritoryCode>
+<TerritoryCode>BE</TerritoryCode>
+<TerritoryCode>BF</TerritoryCode>
+<TerritoryCode>BG</TerritoryCode>
+<TerritoryCode>BH</TerritoryCode>
+<TerritoryCode>BI</TerritoryCode>
+<TerritoryCode>BJ</TerritoryCode>
+<TerritoryCode>BL</TerritoryCode>
+<TerritoryCode>BM</TerritoryCode>
+<TerritoryCode>BN</TerritoryCode>
+<TerritoryCode>BO</TerritoryCode>
+<TerritoryCode>BQ</TerritoryCode>
+<TerritoryCode>BR</TerritoryCode>
+<TerritoryCode>BS</TerritoryCode>
+<TerritoryCode>BT</TerritoryCode>
+<TerritoryCode>BV</TerritoryCode>
+<TerritoryCode>BW</TerritoryCode>
+<TerritoryCode>BY</TerritoryCode>
+<TerritoryCode>BZ</TerritoryCode>
+<TerritoryCode>CC</TerritoryCode>
+<TerritoryCode>CD</TerritoryCode>
+<TerritoryCode>CF</TerritoryCode>
+<TerritoryCode>CG</TerritoryCode>
+<TerritoryCode>CH</TerritoryCode>
+<TerritoryCode>CI</TerritoryCode>
+<TerritoryCode>CK</TerritoryCode>
+<TerritoryCode>CL</TerritoryCode>
+<TerritoryCode>CM</TerritoryCode>
+<TerritoryCode>CN</TerritoryCode>
+<TerritoryCode>CO</TerritoryCode>
+<TerritoryCode>CR</TerritoryCode>
+<TerritoryCode>CU</TerritoryCode>
+<TerritoryCode>CV</TerritoryCode>
+<TerritoryCode>CW</TerritoryCode>
+<TerritoryCode>CX</TerritoryCode>
+<TerritoryCode>CY</TerritoryCode>
+<TerritoryCode>CZ</TerritoryCode>
+<TerritoryCode>DE</TerritoryCode>
+<TerritoryCode>DJ</TerritoryCode>
+<TerritoryCode>DK</TerritoryCode>
+<TerritoryCode>DM</TerritoryCode>
+<TerritoryCode>DO</TerritoryCode>
+<TerritoryCode>DZ</TerritoryCode>
+<TerritoryCode>EC</TerritoryCode>
+<TerritoryCode>EE</TerritoryCode>
+<TerritoryCode>EG</TerritoryCode>
+<TerritoryCode>EH</TerritoryCode>
+<TerritoryCode>ER</TerritoryCode>
+<TerritoryCode>ES</TerritoryCode>
+<TerritoryCode>ET</TerritoryCode>
+<TerritoryCode>FI</TerritoryCode>
+<TerritoryCode>FJ</TerritoryCode>
+<TerritoryCode>FK</TerritoryCode>
+<TerritoryCode>FM</TerritoryCode>
+<TerritoryCode>FO</TerritoryCode>
+<TerritoryCode>FR</TerritoryCode>
+<TerritoryCode>GA</TerritoryCode>
+<TerritoryCode>GB</TerritoryCode>
+<TerritoryCode>GD</TerritoryCode>
+<TerritoryCode>GE</TerritoryCode>
+<TerritoryCode>GF</TerritoryCode>
+<TerritoryCode>GG</TerritoryCode>
+<TerritoryCode>GH</TerritoryCode>
+<TerritoryCode>GI</TerritoryCode>
+<TerritoryCode>GL</TerritoryCode>
+<TerritoryCode>GM</TerritoryCode>
+<TerritoryCode>GN</TerritoryCode>
+<TerritoryCode>GQ</TerritoryCode>
+<TerritoryCode>GR</TerritoryCode>
+<TerritoryCode>GS</TerritoryCode>
+<TerritoryCode>GT</TerritoryCode>
+<TerritoryCode>GU</TerritoryCode>
+<TerritoryCode>GW</TerritoryCode>
+<TerritoryCode>GY</TerritoryCode>
+<TerritoryCode>HK</TerritoryCode>
+<TerritoryCode>HM</TerritoryCode>
+<TerritoryCode>HN</TerritoryCode>
+<TerritoryCode>HR</TerritoryCode>
+<TerritoryCode>HT</TerritoryCode>
+<TerritoryCode>HU</TerritoryCode>
+<TerritoryCode>ID</TerritoryCode>
+<TerritoryCode>IE</TerritoryCode>
+<TerritoryCode>IL</TerritoryCode>
+<TerritoryCode>IM</TerritoryCode>
+<TerritoryCode>IN</TerritoryCode>
+<TerritoryCode>IQ</TerritoryCode>
+<TerritoryCode>IR</TerritoryCode>
+<TerritoryCode>IS</TerritoryCode>
+<TerritoryCode>IT</TerritoryCode>
+<TerritoryCode>JE</TerritoryCode>
+<TerritoryCode>JM</TerritoryCode>
+<TerritoryCode>JO</TerritoryCode>
+<TerritoryCode>JP</TerritoryCode>
+<TerritoryCode>KE</TerritoryCode>
+<TerritoryCode>KG</TerritoryCode>
+<TerritoryCode>KH</TerritoryCode>
+<TerritoryCode>KI</TerritoryCode>
+<TerritoryCode>KM</TerritoryCode>
+<TerritoryCode>KN</TerritoryCode>
+<TerritoryCode>KP</TerritoryCode>
+<TerritoryCode>KR</TerritoryCode>
+<TerritoryCode>KW</TerritoryCode>
+<TerritoryCode>KY</TerritoryCode>
+<TerritoryCode>KZ</TerritoryCode>
+<TerritoryCode>LA</TerritoryCode>
+<TerritoryCode>LB</TerritoryCode>
+<TerritoryCode>LC</TerritoryCode>
+<TerritoryCode>LI</TerritoryCode>
+<TerritoryCode>LK</TerritoryCode>
+<TerritoryCode>LR</TerritoryCode>
+<TerritoryCode>LS</TerritoryCode>
+<TerritoryCode>LT</TerritoryCode>
+<TerritoryCode>LU</TerritoryCode>
+<TerritoryCode>LV</TerritoryCode>
+<TerritoryCode>LY</TerritoryCode>
+<TerritoryCode>MA</TerritoryCode>
+<TerritoryCode>MC</TerritoryCode>
+<TerritoryCode>MD</TerritoryCode>
+<TerritoryCode>ME</TerritoryCode>
+<TerritoryCode>MF</TerritoryCode>
+<TerritoryCode>MG</TerritoryCode>
+<TerritoryCode>MH</TerritoryCode>
+<TerritoryCode>MK</TerritoryCode>
+<TerritoryCode>ML</TerritoryCode>
+<TerritoryCode>MM</TerritoryCode>
+<TerritoryCode>MN</TerritoryCode>
+<TerritoryCode>MO</TerritoryCode>
+<TerritoryCode>MP</TerritoryCode>
+<TerritoryCode>MQ</TerritoryCode>
+<TerritoryCode>MR</TerritoryCode>
+<TerritoryCode>MS</TerritoryCode>
+<TerritoryCode>MT</TerritoryCode>
+<TerritoryCode>MU</TerritoryCode>
+<TerritoryCode>MV</TerritoryCode>
+<TerritoryCode>MW</TerritoryCode>
+<TerritoryCode>MY</TerritoryCode>
+<TerritoryCode>MZ</TerritoryCode>
+<TerritoryCode>NA</TerritoryCode>
+<TerritoryCode>NC</TerritoryCode>
+<TerritoryCode>NE</TerritoryCode>
+<TerritoryCode>NF</TerritoryCode>
+<TerritoryCode>NG</TerritoryCode>
+<TerritoryCode>NI</TerritoryCode>
+<TerritoryCode>NO</TerritoryCode>
+<TerritoryCode>NP</TerritoryCode>
+<TerritoryCode>NR</TerritoryCode>
+<TerritoryCode>NU</TerritoryCode>
+<TerritoryCode>NZ</TerritoryCode>
+<TerritoryCode>OM</TerritoryCode>
+<TerritoryCode>PA</TerritoryCode>
+<TerritoryCode>PE</TerritoryCode>
+<TerritoryCode>PF</TerritoryCode>
+<TerritoryCode>PG</TerritoryCode>
+<TerritoryCode>PH</TerritoryCode>
+<TerritoryCode>PK</TerritoryCode>
+<TerritoryCode>PL</TerritoryCode>
+<TerritoryCode>PM</TerritoryCode>
+<TerritoryCode>PN</TerritoryCode>
+<TerritoryCode>PS</TerritoryCode>
+<TerritoryCode>PT</TerritoryCode>
+<TerritoryCode>PW</TerritoryCode>
+<TerritoryCode>PY</TerritoryCode>
+<TerritoryCode>QA</TerritoryCode>
+<TerritoryCode>RE</TerritoryCode>
+<TerritoryCode>RO</TerritoryCode>
+<TerritoryCode>RS</TerritoryCode>
+<TerritoryCode>RU</TerritoryCode>
+<TerritoryCode>RW</TerritoryCode>
+<TerritoryCode>SA</TerritoryCode>
+<TerritoryCode>SB</TerritoryCode>
+<TerritoryCode>SC</TerritoryCode>
+<TerritoryCode>SD</TerritoryCode>
+<TerritoryCode>SE</TerritoryCode>
+<TerritoryCode>SG</TerritoryCode>
+<TerritoryCode>SH</TerritoryCode>
+<TerritoryCode>SI</TerritoryCode>
+<TerritoryCode>SJ</TerritoryCode>
+<TerritoryCode>SK</TerritoryCode>
+<TerritoryCode>SL</TerritoryCode>
+<TerritoryCode>SM</TerritoryCode>
+<TerritoryCode>SN</TerritoryCode>
+<TerritoryCode>SO</TerritoryCode>
+<TerritoryCode>SR</TerritoryCode>
+<TerritoryCode>SS</TerritoryCode>
+<TerritoryCode>ST</TerritoryCode>
+<TerritoryCode>SV</TerritoryCode>
+<TerritoryCode>SX</TerritoryCode>
+<TerritoryCode>SY</TerritoryCode>
+<TerritoryCode>SZ</TerritoryCode>
+<TerritoryCode>TC</TerritoryCode>
+<TerritoryCode>TD</TerritoryCode>
+<TerritoryCode>TF</TerritoryCode>
+<TerritoryCode>TG</TerritoryCode>
+<TerritoryCode>TH</TerritoryCode>
+<TerritoryCode>TJ</TerritoryCode>
+<TerritoryCode>TK</TerritoryCode>
+<TerritoryCode>TL</TerritoryCode>
+<TerritoryCode>TM</TerritoryCode>
+<TerritoryCode>TN</TerritoryCode>
+<TerritoryCode>TO</TerritoryCode>
+<TerritoryCode>TR</TerritoryCode>
+<TerritoryCode>TT</TerritoryCode>
+<TerritoryCode>TV</TerritoryCode>
+<TerritoryCode>TW</TerritoryCode>
+<TerritoryCode>TZ</TerritoryCode>
+<TerritoryCode>UA</TerritoryCode>
+<TerritoryCode>UG</TerritoryCode>
+<TerritoryCode>UM</TerritoryCode>
+<TerritoryCode>US</TerritoryCode>
+<TerritoryCode>UY</TerritoryCode>
+<TerritoryCode>UZ</TerritoryCode>
+<TerritoryCode>VA</TerritoryCode>
+<TerritoryCode>VC</TerritoryCode>
+<TerritoryCode>VE</TerritoryCode>
+<TerritoryCode>VG</TerritoryCode>
+<TerritoryCode>VN</TerritoryCode>
+<TerritoryCode>VU</TerritoryCode>
+<TerritoryCode>WF</TerritoryCode>
+<TerritoryCode>WS</TerritoryCode>
+<TerritoryCode>YE</TerritoryCode>
+<TerritoryCode>YT</TerritoryCode>
+<TerritoryCode>ZA</TerritoryCode>
+<TerritoryCode>ZM</TerritoryCode>
+<TerritoryCode>ZW</TerritoryCode>
+<ValidityPeriod>
+<StartDate>2018-02-09</StartDate>
+</ValidityPeriod>
+<ReleaseDisplayStartDate>2018-02-09</ReleaseDisplayStartDate>
+<TrackListingPreviewStartDate>2018-02-09</TrackListingPreviewStartDate>
+<CoverArtPreviewStartDate>2018-02-09</CoverArtPreviewStartDate>
+<ClipPreviewStartDate>2018-02-09</ClipPreviewStartDate>
+</DealTerms>
+</Deal>
+</ReleaseDeal>
+</DealList></ernm:NewReleaseMessage>

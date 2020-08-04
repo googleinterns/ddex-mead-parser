@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The ProtoSchemaEntryMap is the container for the types parsed from the DDEX XSD. Stores schema metadata and
- * individual Protocol Buffer message type definitions ({@link ProtoSchemaAbstractEntry}'s)
+ * The ProtoSchemaEntryMap is the container for the types parsed from the DDEX XSD. Stores schema
+ * metadata and individual Protocol Buffer message type definitions ({@link
+ * ProtoSchemaAbstractEntry}'s)
  */
 public class ProtoSchemaEntryMap {
   Map<String, Map<String, ProtoSchemaAbstractEntry>> namespacePrefixEntryMap;
@@ -93,8 +94,9 @@ public class ProtoSchemaEntryMap {
   }
 
   /**
-   * Gets a nested Map of all the entries in the schema. The top level maps the namespaces to the second level map.
-   * The second level maps entry names to the {@link ProtoSchemaAbstractEntry}'s themselves
+   * Gets a nested Map of all the entries in the schema. The top level maps the namespaces to the
+   * second level map. The second level maps entry names to the {@link ProtoSchemaAbstractEntry}'s
+   * themselves
    *
    * @return The namespace prefix entry map
    */

@@ -1,12 +1,10 @@
 ddexmeadparser.iml
+.idea/
 
 target/
 proto/
-.idea/
+message/
 output/
-
-ddex-xsdtoproto/main/resources/avs
-ddex-xsdtoproto/main/resources/mead
 
 ddex-convertercli/target
 ddex-xmltoproto/target
