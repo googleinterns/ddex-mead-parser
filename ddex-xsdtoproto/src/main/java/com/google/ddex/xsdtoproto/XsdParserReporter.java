@@ -16,6 +16,11 @@ public interface XsdParserReporter {
 
   void addLog(String log);
 
+
+  /**
+   * Default implementation of the {@link XsdParserReporter} interface. Simply records and logs
+   * all reports.
+   */
   public static class DefaultXsdParserReporter implements XsdParserReporter {
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
@@ -23,7 +28,7 @@ public interface XsdParserReporter {
     List<String> warnings;
     List<String> logs;
 
-    /** Constructor. */
+    /** Instantiates a new DefaultXsdParserReporter. */
     public DefaultXsdParserReporter() {
       processedSchemaNamespaces = new ArrayList<>();
       warnings = new ArrayList<>();
