@@ -1,0 +1,4 @@
+/bazel-bin
+/bazel-ddex-mead-parser
+/bazel-out
+/bazel-testlogs
