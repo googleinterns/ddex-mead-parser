@@ -1,0 +1,130 @@
+<!--Created by Liquid XML Data Binding Libraries (www.liquid-technologies.com) for Universal Music Group International -->
+<mead:MeadMessage xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns:r2="http://r2.umusic.net" xmlns:core="http://schemas.umusic.com/umg.eai.core.v1" xmlns:tagging="http://schemas.umusic.com/umg.eai.tagging-messages.v1" xmlns:enhance="http://schemas.umusic.com/umg.eai.enhance-messages.v1" xmlns:mead="http://ddex.net/xml/mead/101" xmlns:avs="http://ddex.net/xml/avs/avs" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:AA="http://www.w3.org/1999/xhtml">
+    <MessageHeader>
+        <MessageId>97e0e9bd-c19d-49fb-a258-6f18379fbce7</MessageId>
+        <MessageSender>
+            <PartyId>PADPIDA2013042401U</PartyId>
+            <PartyName>
+                <FullName>Universal Music Group</FullName>
+            </PartyName>
+        </MessageSender>
+        <MessageRecipient>
+            <PartyId>PADPIDA2013042401U</PartyId>
+            <PartyName>
+                <FullName>Universal Music Group</FullName>
+            </PartyName>
+        </MessageRecipient>
+        <MessageCreatedDateTime>2020-07-21T17:04:07.868Z</MessageCreatedDateTime>
+    </MessageHeader>
+    <ResourceInformationList>
+        <ResourceInformation>
+            <ResourceSummary>
+                <ResourceId>
+                    <ISRC>USUM71804537</ISRC>
+                </ResourceId>
+                <DisplayTitle LanguageAndScriptCode="en">
+                    <TitleText>
+                        <Title>Flatbed Hot Tub Party</Title>
+                    </TitleText>
+                </DisplayTitle>
+                <DisplayArtist>
+                    <FullName>
+                        <Name>Backfire Betty &amp; The Mufflers</Name>
+                    </FullName>
+                    <KeyName>
+                        <Name>Backfire Betty &amp; The Mufflers</Name>
+                    </KeyName>
+                </DisplayArtist>
+            </ResourceSummary>
+            <GenreCategory>
+                <Value>Pop</Value>
+            </GenreCategory>
+            <GenreCategory>
+                <Value>HipHop</Value>
+            </GenreCategory>
+            <SubGenreCategory>
+                <Value>PopRap</Value>
+                <Value>AlternativePop</Value>
+                <Value>ElectronicPop</Value>
+            </SubGenreCategory>
+            <VocalRegister>
+                <Value>Baritone</Value>
+            </VocalRegister>
+            <TimeSignature>
+                <Tempo Namespace="PADPIDA2013042401U" UserDefinedValue="Medium Fast">UserDefined</Tempo>
+            </TimeSignature>
+            <InstrumentUsed>
+                <Value>PercussionSection</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>Guitar</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>Bass</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>DrumMachine</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>Synthesizer</Value>
+            </InstrumentUsed>
+            <InstrumentUsed IsFeatured="true">
+                <Value>Keyboard</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>ElectricGuitar</Value>
+            </InstrumentUsed>
+            <InstrumentUsed IsFeatured="true">
+                <Value>ElectricPiano</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>SynthBass</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>MaleVoice</Value>
+            </InstrumentUsed>
+            <Harmony>
+                <RootChordNote>C</RootChordNote>
+            </Harmony>
+            <Mood>
+                <Value Namespace="PADPIDA2013042401U" UserDefinedValue="Negative" AppliesToLyrics="true">UserDefined</Value>
+            </Mood>
+            <Mood>
+                <Value Namespace="PADPIDA2013042401U" UserDefinedValue="Positive" AppliesToComposition="true">UserDefined</Value>
+            </Mood>
+            <Mood>
+                <Value AppliesToComposition="true">Confident</Value>
+            </Mood>
+            <Mood>
+                <Value AppliesToLyrics="true">Angry</Value>
+            </Mood>
+            <Mood>
+                <Value Namespace="PADPIDA2013042401U" UserDefinedValue="Exciting" AppliesToComposition="true">UserDefined</Value>
+            </Mood>
+            <ProgrammaticTheme>
+                <Value Namespace="PADPIDA2013042401U" UserDefinedValue="Life">UserDefined</Value>
+            </ProgrammaticTheme>
+            <ProgrammaticTheme>
+                <Value>Beauty</Value>
+            </ProgrammaticTheme>
+            <ProgrammaticTheme>
+                <Value>Love</Value>
+            </ProgrammaticTheme>
+            <ProgrammaticTheme>
+                <Value>Attractive</Value>
+            </ProgrammaticTheme>
+            <ProgrammaticTheme>
+                <Value>Eternity</Value>
+            </ProgrammaticTheme>
+            <LyricTheme>
+                <Value>Feelings</Value>
+            </LyricTheme>
+            <LyricTheme>
+                <Value>Intention</Value>
+            </LyricTheme>
+            <LyricTheme>
+                <Value>Cool</Value>
+            </LyricTheme>
+        </ResourceInformation>
+    </ResourceInformationList>
+</mead:MeadMessage>

@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+<!-- 
+	(c) 2012 Digital Data Exchange, LLC (DDEX)
+	This file forms part of the DDEX Standard defining Release Profiles for Common Release Types
+	
+-->
+<ern:NewReleaseMessage 
+	xmlns:ern="http://ddex.net/xml/ern/35"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+	xs:schemaLocation="http://ddex.net/xml/ern/35 release-notification.xsd"
+	MessageSchemaVersionId="ern/35"
+	ReleaseProfileVersionId="CommonReleaseTypes/10/AudioSingle" LanguageAndScriptCode="en">
+	<MessageHeader>
+		<MessageThreadId>058AF4F5-4B2B-4fb4-A677-D360350D5013</MessageThreadId>
+		<MessageId>058AF4F5-4B2B-4fb4-A677-D360350D5013</MessageId>
+		<MessageFileName>AudioSingle.xml</MessageFileName>
+		<MessageSender>
+			<PartyId>PADPIDA0000000001A</PartyId>
+			<TradingName>Iron Crown Music</TradingName>
+		</MessageSender>
+		<MessageRecipient>
+			<PartyId>PADPIDA0000000002A</PartyId>
+			<TradingName>Lamson Digital Distribution</TradingName>
+		</MessageRecipient>
+		<MessageCreatedDateTime>2010-07-23T00:00:00</MessageCreatedDateTime>
+		<MessageControlType>TestMessage</MessageControlType>
+	</MessageHeader>
+	<UpdateIndicator>UpdateMessage</UpdateIndicator>
+	<ResourceList>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000001</ISRC>
+			</SoundRecordingId>
+			<ResourceReference>A1</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+			</ReferenceTitle>
+			<Duration>PT13M31S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<ExcludedTerritoryCode>MX</ExcludedTerritoryCode>
+				<Title TitleType="FormalTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</Title>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ArtistRole>MainArtist</ArtistRole>
+				</DisplayArtist>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Iron Crown Music</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Metal</GenreText>
+					<SubGenre>Progressive Metal</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T1</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000001X_01_01.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>MX</TerritoryCode>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw (UK)</FullName>
+					</PartyName>
+					<ArtistRole>MainArtist</ArtistRole>
+				</DisplayArtist>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+		<Image>
+			<ImageType>FrontCoverImage</ImageType>
+			<ImageId>
+				<ProprietaryId Namespace="DPID:PADPIDA0000000001A">PId0001</ProprietaryId>
+			</ImageId>
+			<ResourceReference>A2</ResourceReference>
+			<ImageDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<TechnicalImageDetails>
+					<TechnicalResourceDetailsReference>T2</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000001X.jpeg</FileName>
+					</File>
+				</TechnicalImageDetails>
+			</ImageDetailsByTerritory>
+		</Image>
+	</ResourceList>
+	<ReleaseList>
+		<Release IsMainRelease="true">
+			<ReleaseId>
+				<GRid>A1UCASE0000000001X</GRid>
+				<ISRC>CASE00000001</ISRC>
+			</ReleaseId>
+			<ReleaseReference>R0</ReleaseReference>
+			<ReferenceTitle>
+				<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+			</ReferenceTitle>
+			<ReleaseResourceReferenceList>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A1</ReleaseResourceReference>
+				<ReleaseResourceReference ReleaseResourceType="SecondaryResource"
+					>A2</ReleaseResourceReference>
+			</ReleaseResourceReferenceList>
+			<ReleaseType>Single</ReleaseType>
+			<ReleaseDetailsByTerritory>
+				<ExcludedTerritoryCode>MX</ExcludedTerritoryCode>
+				<DisplayArtistName>Monkey Claw</DisplayArtistName>
+				<LabelName>Iron Crown Music</LabelName>
+				<Title TitleType="FormalTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</Title>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ArtistRole>MainArtist</ArtistRole>
+				</DisplayArtist>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<ResourceGroup>
+					<ResourceGroup>
+						<Title TitleType="GroupingTitle">
+							<TitleText>Component 1</TitleText>
+						</Title>
+						<SequenceNumber>1</SequenceNumber>
+						<ResourceGroupContentItem>
+							<SequenceNumber>1</SequenceNumber>
+							<ResourceType>SoundRecording</ResourceType>
+							<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+								>A1</ReleaseResourceReference>
+						</ResourceGroupContentItem>
+					</ResourceGroup>
+					<ResourceGroupContentItem>
+						<ResourceType>Image</ResourceType>
+						<ReleaseResourceReference ReleaseResourceType="SecondaryResource"
+							>A2</ReleaseResourceReference>
+					</ResourceGroupContentItem>
+				</ResourceGroup>
+				<Genre>
+					<GenreText>Metal</GenreText>
+					<SubGenre>Progressive Metal</SubGenre>
+				</Genre>
+			</ReleaseDetailsByTerritory>
+			<ReleaseDetailsByTerritory>
+				<TerritoryCode>MX</TerritoryCode>
+				<DisplayArtistName>Monkey Claw (UK)</DisplayArtistName>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw (UK)</FullName>
+					</PartyName>
+					<ArtistRole>MainArtist</ArtistRole>
+				</DisplayArtist>
+			</ReleaseDetailsByTerritory>
+			<PLine>
+				<Year>2010</Year>
+				<PLineText>(P) 2010 Iron Crown Music</PLineText>
+			</PLine>
+			<CLine>
+				<Year>2010</Year>
+				<CLineText>(C) 2010 Iron Crown Music</CLineText>
+			</CLine>
+			<GlobalOriginalReleaseDate>1955-01-01</GlobalOriginalReleaseDate>
+		</Release>
+		<Release>
+			<ReleaseId>
+				<GRid>A1UCASE0000000001X</GRid>
+				<ISRC>CASE00000001</ISRC>
+			</ReleaseId>
+			<ReleaseReference>R1</ReleaseReference>
+			<ReferenceTitle>
+				<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+			</ReferenceTitle>
+			<ReleaseResourceReferenceList>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A1</ReleaseResourceReference>
+			</ReleaseResourceReferenceList>
+			<ReleaseType>TrackRelease</ReleaseType>
+			<ReleaseDetailsByTerritory>
+				<ExcludedTerritoryCode>MX</ExcludedTerritoryCode>
+				<DisplayArtistName>Monkey Claw</DisplayArtistName>
+				<LabelName>Iron Crown Music</LabelName>
+				<Title TitleType="FormalTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</Title>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ArtistRole>MainArtist</ArtistRole>
+				</DisplayArtist>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<ResourceGroup>
+					<ResourceGroupContentItem>
+						<SequenceNumber>1</SequenceNumber>
+						<ResourceType>SoundRecording</ResourceType>
+						<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+							>A1</ReleaseResourceReference>
+					</ResourceGroupContentItem>
+				</ResourceGroup>
+				<Genre>
+					<GenreText>Metal</GenreText>
+					<SubGenre>Progressive Metal</SubGenre>
+				</Genre>
+			</ReleaseDetailsByTerritory>
+			<ReleaseDetailsByTerritory>
+				<TerritoryCode>MX</TerritoryCode>
+				<DisplayArtistName>Monkey Claw (UK)</DisplayArtistName>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw (UK)</FullName>
+					</PartyName>
+					<ArtistRole>MainArtist</ArtistRole>
+				</DisplayArtist>
+			</ReleaseDetailsByTerritory>
+			<PLine>
+				<Year>2010</Year>
+				<PLineText>(P) 2010 Iron Crown Music</PLineText>
+			</PLine>
+			<CLine>
+				<Year>2010</Year>
+				<CLineText>(C) 2010 Iron Crown Music</CLineText>
+			</CLine>
+			<GlobalOriginalReleaseDate>1955-01-01</GlobalOriginalReleaseDate>
+			
+		</Release>
+	</ReleaseList>
+</ern:NewReleaseMessage>

@@ -1,0 +1,11 @@
+**.iml
+.idea/
+
+target/
+proto/
+message/
+output/
+
+ddex-convertercli/target
+ddex-xmltoproto/target
+ddex-xsdtoproto/target

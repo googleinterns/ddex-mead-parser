@@ -1,0 +1,121 @@
+<!--Created by Liquid XML Data Binding Libraries (www.liquid-technologies.com) for Universal Music Group International -->
+<mead:MeadMessage xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns:r2="http://r2.umusic.net" xmlns:core="http://schemas.umusic.com/umg.eai.core.v1" xmlns:tagging="http://schemas.umusic.com/umg.eai.tagging-messages.v1" xmlns:enhance="http://schemas.umusic.com/umg.eai.enhance-messages.v1" xmlns:mead="http://ddex.net/xml/mead/101" xmlns:avs="http://ddex.net/xml/avs/avs" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:AA="http://www.w3.org/1999/xhtml">
+    <MessageHeader>
+        <MessageId>51f136c8-c043-4f56-86d5-c432b76d56a6</MessageId>
+        <MessageSender>
+            <PartyId>PADPIDA2013042401U</PartyId>
+            <PartyName>
+                <FullName>Universal Music Group</FullName>
+            </PartyName>
+        </MessageSender>
+        <MessageRecipient>
+            <PartyId>PADPIDA2013042401U</PartyId>
+            <PartyName>
+                <FullName>Universal Music Group</FullName>
+            </PartyName>
+        </MessageRecipient>
+        <MessageCreatedDateTime>2020-07-21T17:04:19.912Z</MessageCreatedDateTime>
+    </MessageHeader>
+    <ResourceInformationList>
+        <ResourceInformation>
+            <ResourceSummary>
+                <ResourceId>
+                    <ISRC>USUM71804536</ISRC>
+                </ResourceId>
+                <DisplayTitle LanguageAndScriptCode="en">
+                    <TitleText>
+                        <Title>Unsafe at Any Speed</Title>
+                    </TitleText>
+                </DisplayTitle>
+                <DisplayArtist>
+                    <FullName>
+                        <Name>Backfire Betty &amp; The Mufflers</Name>
+                    </FullName>
+                    <KeyName>
+                        <Name>Backfire Betty &amp; The Mufflers</Name>
+                    </KeyName>
+                </DisplayArtist>
+            </ResourceSummary>
+            <GenreCategory>
+                <Value>Folk</Value>
+            </GenreCategory>
+            <GenreCategory>
+                <Value>Rock</Value>
+            </GenreCategory>
+            <SubGenreCategory>
+                <Value>AlternativeRock</Value>
+                <Value>PsychedelicRock</Value>
+            </SubGenreCategory>
+            <VocalRegister>
+                <Value>Tenor</Value>
+            </VocalRegister>
+            <TimeSignature>
+                <Tempo Namespace="PADPIDA2013042401U" UserDefinedValue="Slow">UserDefined</Tempo>
+            </TimeSignature>
+            <BeatsPerMinute>
+                <Value>72</Value>
+            </BeatsPerMinute>
+            <InstrumentUsed>
+                <Value>PercussionSection</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>Guitar</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>Bass</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>DrumKit</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>ElectricGuitar</Value>
+            </InstrumentUsed>
+            <InstrumentUsed>
+                <Value>NeutralVoice</Value>
+            </InstrumentUsed>
+            <Harmony>
+                <RootChordNote>D</RootChordNote>
+                <Mode Namespace="PADPIDA2013042401U" UserDefinedValue="Minor">UserDefined</Mode>
+            </Harmony>
+            <IsOriginal>
+                <Value>true</Value>
+            </IsOriginal>
+            <Mood>
+                <Value Namespace="PADPIDA2013042401U" UserDefinedValue="Positive" AppliesToLyrics="true">UserDefined</Value>
+            </Mood>
+            <Mood>
+                <Value Namespace="PADPIDA2013042401U" UserDefinedValue="Dreamy" AppliesToComposition="true">UserDefined</Value>
+            </Mood>
+            <Mood>
+                <Value AppliesToLyrics="true">Peaceful</Value>
+            </Mood>
+            <Mood>
+                <Value AppliesToComposition="true">Inspiring</Value>
+            </Mood>
+            <ProgrammaticTheme>
+                <Value>Love</Value>
+            </ProgrammaticTheme>
+            <ProgrammaticTheme>
+                <Value>Family</Value>
+            </ProgrammaticTheme>
+            <ProgrammaticTheme>
+                <Value>FamilyMember</Value>
+            </ProgrammaticTheme>
+            <ProgrammaticTheme>
+                <Value>Father</Value>
+            </ProgrammaticTheme>
+            <ProgrammaticTheme>
+                <Value>NonRomantic</Value>
+            </ProgrammaticTheme>
+            <ProgrammaticTheme>
+                <Value>Platonic</Value>
+            </ProgrammaticTheme>
+            <LyricTheme>
+                <Value>Substances</Value>
+            </LyricTheme>
+            <LyricTheme>
+                <Value>Drug</Value>
+            </LyricTheme>
+        </ResourceInformation>
+    </ResourceInformationList>
+</mead:MeadMessage>

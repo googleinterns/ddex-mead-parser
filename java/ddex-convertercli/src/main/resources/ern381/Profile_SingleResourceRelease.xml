@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	(c) Digital Data Exchange, LLC (DDEX)
+	This file forms part of the DDEX Standard defining Release Profiles for Common Release Types (Version 1.4) 	
+-->
+<ern:NewReleaseMessage xmlns:ern="http://ddex.net/xml/ern/382"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+	xs:schemaLocation="http://ddex.net/xml/ern/382 http://ddex.net/xml/ern/382/release-notification.xsd"
+	MessageSchemaVersionId="ern/382"
+	ReleaseProfileVersionId="CommonReleaseTypes/14/SingleResourceRelease" LanguageAndScriptCode="en">
+
+	<MessageHeader>
+		<MessageThreadId/>
+		<MessageId/>
+		<MessageSender>
+			<PartyId>DPID_OF_THE_SENDER</PartyId>
+		</MessageSender>
+		<MessageRecipient>
+			<PartyId>DPID_OF_THE_RECIPIENT</PartyId>
+		</MessageRecipient>
+		<MessageCreatedDateTime>2012-12-11T15:50:00+00:00</MessageCreatedDateTime>
+	</MessageHeader>
+
+	<!-- The IsBackfill flag is optional and should only be used for indicating that an XML file is part of
+		a special backfill of a (typically large) catalogue -->
+	<IsBackfill>true</IsBackfill>
+
+	<ResourceList>
+		<SoundRecording>
+			<SoundRecordingType>MusicalWorkSoundRecording</SoundRecordingType>
+			<SoundRecordingId>
+				<ISRC>CASE00000001</ISRC>
+			</SoundRecordingId>
+			<IndirectSoundRecordingId>
+				<ISWC>T1234567890</ISWC>
+			</IndirectSoundRecordingId>
+			<ResourceReference>A1</ResourceReference>
+			<ReferenceTitle>
+				<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+			</ReferenceTitle>
+			<Duration>PT13M31S</Duration>
+			<SoundRecordingDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<Title TitleType="FormalTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</Title>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ArtistRole>MainArtist</ArtistRole>
+				</DisplayArtist>
+				<ResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Steve Albino</FullName>
+					</PartyName>
+					<ResourceContributorRole>Producer</ResourceContributorRole>
+				</ResourceContributor>
+
+				<!-- No DisplayArtistName is shown here as the DisplayArtistName is the same as for the Release -->
+
+				<IndirectResourceContributor SequenceNumber="1">
+					<PartyName>
+						<FullName>Bob Black</FullName>
+					</PartyName>
+					<IndirectResourceContributorRole>Composer</IndirectResourceContributorRole>
+				</IndirectResourceContributor>
+				<ResourceReleaseDate>2011</ResourceReleaseDate>
+				<PLine>
+					<Year>2010</Year>
+					<PLineText>(P) 2010 Iron Crown Music</PLineText>
+				</PLine>
+				<Genre>
+					<GenreText>Metal</GenreText>
+					<SubGenre>Progressive Metal</SubGenre>
+				</Genre>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<!-- TechnicalSoundRecordingDetails are only to be provided when relevant Resource Files are communicated -->
+				<TechnicalSoundRecordingDetails>
+					<TechnicalResourceDetailsReference>T1</TechnicalResourceDetailsReference>
+					<File>
+						<FileName>A1UCASE0000000001X_01_01.wav</FileName>
+					</File>
+				</TechnicalSoundRecordingDetails>
+			</SoundRecordingDetailsByTerritory>
+		</SoundRecording>
+	</ResourceList>
+	<ReleaseList>
+		<Release IsMainRelease="true">
+			<ReleaseId>
+				<GRid>1234567890098</GRid>
+			</ReleaseId>
+			<ReleaseReference>R0</ReleaseReference>
+			<ReferenceTitle>
+				<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+			</ReferenceTitle>
+			<ReleaseResourceReferenceList>
+				<ReleaseResourceReference ReleaseResourceType="PrimaryResource"
+					>A1</ReleaseResourceReference>
+			</ReleaseResourceReferenceList>
+			<ReleaseType>SingleResourceRelease</ReleaseType>
+			<ReleaseDetailsByTerritory>
+				<TerritoryCode>Worldwide</TerritoryCode>
+				<DisplayArtistName>Monkey Claw</DisplayArtistName>
+				<LabelName>Iron Crown Music</LabelName>
+				<Title TitleType="FormalTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</Title>
+				<Title TitleType="DisplayTitle">
+					<TitleText>Can you feel ...the Monkey Claw!</TitleText>
+				</Title>
+				<DisplayArtist SequenceNumber="1">
+					<PartyName>
+						<FullName>Monkey Claw</FullName>
+					</PartyName>
+					<ArtistRole>MainArtist</ArtistRole>
+				</DisplayArtist>
+				<ParentalWarningType>NotExplicit</ParentalWarningType>
+				<Genre>
+					<GenreText>Metal</GenreText>
+					<SubGenre>Progressive Metal</SubGenre>
+				</Genre>
+				<ReleaseDate IsApproximate="true">2010-01-01</ReleaseDate>
+			</ReleaseDetailsByTerritory>
+			<PLine>
+				<Year>2010</Year>
+				<PLineText>(P) 2010 Iron Crown Music</PLineText>
+			</PLine>
+			<CLine>
+				<Year>2010</Year>
+				<CLineText>(C) 2010 Iron Crown Music</CLineText>
+			</CLine>
+			<GlobalOriginalReleaseDate IsApproximate="true">2010-10-01</GlobalOriginalReleaseDate>
+		</Release>
+
+	</ReleaseList>
+	
+	<DealList>
+		<ReleaseDeal>
+			<DealReleaseReference>R0</DealReleaseReference>
+			<Deal>
+				<DealTerms>
+					<CommercialModelType>RightsClaimModel</CommercialModelType>
+					<Usage>
+						<UseType>UserMakeAvailableLabelProvided</UseType>
+						<UseType>UserMakeAvailableUserProvided</UseType>
+					</Usage>
+					<TerritoryCode>Worldwide</TerritoryCode>
+					<ValidityPeriod>
+						<StartDate>2011-01-30</StartDate>
+					</ValidityPeriod>
+					<RightsClaimPolicy>
+						<Condition>
+							<Value>90</Value>
+							<Unit>Percent</Unit>
+							<ReferenceCreation>ReferenceResource</ReferenceCreation>
+							<RelationalRelator>MoreThanOrEqualTo</RelationalRelator>
+						</Condition>
+						<RightsClaimPolicyType>Monetize</RightsClaimPolicyType>
+					</RightsClaimPolicy>
+				</DealTerms>
+			</Deal>
+		</ReleaseDeal>
+	</DealList>
+
+</ern:NewReleaseMessage>
