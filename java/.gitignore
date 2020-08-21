@@ -2,7 +2,6 @@
 .idea/
 
 target/
-proto/
 message/
 output/
 

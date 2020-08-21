@@ -32,7 +32,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <excludePackageNames>*.ern:*.avs:*mead</excludePackageNames>
+                    <excludePackageNames>*.ern:*.avs:*.mead</excludePackageNames>
                 </configuration>
                 <version>3.2.0</version>
             </plugin>

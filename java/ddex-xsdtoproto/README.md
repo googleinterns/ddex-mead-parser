@@ -18,6 +18,8 @@ ProtoSchema schema = XsdParser.parse(fileIn);
 ```
 **Note: If there are imports in the root xsd (which there likely are), the paths of those imports must be changed to be relative to the application, and not the root xsd)**
 
+**If the converter still fails due to a missing import, edit the (ern.xsd/mead.xsd) files' import statements to an absolute path to the associated avs.xsd** <br>
+
 The XsdParser will return a ProtoSchema that can be used to write a .proto schema to file.
 
 ```

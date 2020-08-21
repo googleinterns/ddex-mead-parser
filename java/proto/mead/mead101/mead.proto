@@ -1,0 +1,2954 @@
+/* Generated schema for mead, version mead101 */
+syntax = "proto2";
+package mead101.mead;
+
+import "avs.proto";
+
+/* Defined in: mead101 */
+/* A Composite containing details of an absolute pitch. */
+message AbsolutePitch {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* The value of the absolute pitch of the A above middle C (a’) in Hertz. */
+	optional double value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a TerritoryCode. */
+message AllTerritoryCode {
+	/* First defined in: mead101 */
+	/* A standard used for the TerritoryCode. This is represented in an XML schema as an XML Attribute. If this Attribute is not provided, it is assumed that the code is a TerritoryCode in accordance with ISO 3166-1 or 3166-2 standard (or Worldwide). */
+	optional mead101.avs.TerritoryCodeTypeIncludingDeprecatedCodes identifier_type = 1;
+	optional mead101.avs.AllTerritoryCode ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an AlternativeTitle. */
+message AlternativeTitle {
+	/* First defined in: mead101 */
+	/* The Language and script for the Elements of the Title as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* The Namespace of the TitleType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 3;
+	/* First defined in: mead101 */
+	/* A SubTitle of the Title, including Titles of Versions used to differentiate different versions of the same Title, as required by the GRid and ISRC ReferenceDescriptiveMetadataSets. */
+	optional TitleTextWithPronunciation sub_title = 4;
+	/* First defined in: mead101 */
+	/* The text of the Title.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3F */
+	optional TitleTextWithPronunciation title_text = 5;
+	/* First defined in: mead101 */
+	/* A Type of the Title which defines its origin or the function it fulfils in relation to a Creation. Note: A Title may fulfil more than one role. Example: 'Help' may be both the OriginalTitle and the DisplayTitle for the well-known Beatles song. This is represented in an XML schema as an XML Attribute. */
+	optional mead101.avs.TitleType title_type = 6;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the TitleType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an Annotation, e.g. a Description or a Comment. */
+message Annotation {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* The text of the Annotation. */
+	optional TextWithFormat text = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an artist type. */
+message ArtistType {
+	/* First defined in: mead101 */
+	/* A Territory to which the artist type applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an artist type value. */
+	optional ArtistTypeValue value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an artist type value. */
+message ArtistTypeValue {
+	/* First defined in: mead101 */
+	/* The Namespace of the element. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the element. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.ArtistType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a related Artist that was influenced or that was an influencer. */
+message ArtisticInfluence {
+	/* First defined in: mead101 */
+	/* A Composite containing Description of the relationship. */
+	repeated TextWithFormat description = 1;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the related Party is influenced by the current Party (=true) or not (=false). */
+	optional bool is_influenced = 2;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the related Party has influenced the current Party (=true) or not (=false). */
+	optional bool is_influencer = 3;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Party. */
+	repeated PartyWithNames party = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Release. */
+	repeated Release release = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Resource. */
+	repeated Resource resource = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Work. */
+	repeated Work work = 8;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an award. */
+message Award {
+	/* First defined in: mead101 */
+	/* The Name or Category of the award. */
+	optional NameWithPronunciation award_name = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the awarded Party. */
+	optional PartyWithNames awarded_party = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the awarding body. */
+	optional PartyDescriptor awarding_body = 3;
+	/* First defined in: mead101 */
+	/* A Comment on the award. */
+	repeated TextWithFormat comment = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Date and Place of the award (in ISO 8601:2004 format: YYYY-MM-DD). */
+	optional EventDate date = 5;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the award was won (=true) or whether it was a nomination for the award (=false). */
+	optional bool is_winner = 6;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an award.Explanatory Note: This Composite is named AwardForParty to disambiguate it from the basic Award Composite. */
+message AwardForParty {
+	/* First defined in: mead101 */
+	/* The Name or Category of the award. */
+	optional NameWithPronunciation award_name = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the awarded Party. */
+	optional PartyWithNames awarded_party = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an awarded Release. */
+	optional Release awarded_release = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an awarded Resource. */
+	optional Resource awarded_resource = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an awarded Work. */
+	optional Work awarded_work = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the awarding body. */
+	optional PartyDescriptor awarding_body = 6;
+	/* First defined in: mead101 */
+	/* A Comment on the award. */
+	repeated TextWithFormat comment = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Date and Place of the award (in ISO 8601:2004 format: YYYY-MM-DD). */
+	optional EventDate date = 8;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the award was won (=true) or whether it was a nomination for the award (=false). */
+	optional bool is_winner = 9;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 10;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of beats. */
+message BeatsPerMinute {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a modulation. */
+	repeated Modulation modulation = 2;
+	/* First defined in: mead101 */
+	/* The value of the beats per minute. */
+	optional double value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a biography of a Party. */
+message Biography {
+	/* First defined in: mead101 */
+	/* A Composite containing details of an Author of the biography. */
+	repeated PartyWithNames author = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the biography text. */
+	repeated BiographyText text = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of the biography text. */
+message BiographyText {
+	/* First defined in: mead101 */
+	/* A Territory to which the biography text applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* The format of the biography text. This is represented in an XML schema as an XML Attribute. */
+	optional mead101.avs.TextCodecType format = 2;
+	/* First defined in: mead101 */
+	/* The Language and script for the Elements of the biography text as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 3;
+	/* First defined in: mead101 */
+	/* The Namespace of the Format. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 4;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the Format. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 5;
+	optional string ext_value = 6;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a CatalogNumber. */
+message CatalogNumber {
+	/* First defined in: mead101 */
+	/* The Namespace of the CatalogNumber. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a category. The Atom cagegory construct is defined in section 4.2.2 of the format spec. */
+message Category {
+	repeated string any_attribute_value = 1;
+	/* First defined in: mead101 */
+	/* The label. This is represented in an XML schema as an XML Attribute. */
+	optional string label = 2;
+	/* First defined in: mead101 */
+	/* The scheme. This is represented in an XML schema as an XML Attribute of type AnyURI. */
+	optional string scheme = 3;
+	/* First defined in: mead101 */
+	/* The term. This is represented in an XML schema as an XML Attribute. */
+	optional string term = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an entry in the charts. */
+message ChartEntry {
+	/* First defined in: mead101 */
+	/* A Comment regarding the charts. */
+	repeated TextWithFormat comment = 1;
+	/* First defined in: mead101 */
+	/* The Date of the chart entry (in ISO 8601:2004 format: YYYY-MM-DD). */
+	optional ddex_IsoDate date = 2;
+	/* First defined in: mead101 */
+	/* The Duration for which the Creation or the Party was in this position in the charts. */
+	optional Duration duration = 3;
+	/* First defined in: mead101 */
+	/* The position in the charts. */
+	optional int32 position = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a chart name. */
+message ChartName {
+	/* First defined in: mead101 */
+	/* The Language and script of the ChartName as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 1;
+	/* First defined in: mead101 */
+	/* The Name string.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3F */
+	optional string name = 2;
+	/* First defined in: mead101 */
+	/* The string describing the pronunciation. */
+	repeated Pronunciation pronunciation = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of parents, children and siblings of a Work that is a child. */
+message ChildWorkHierarchy {
+	/* First defined in: mead101 */
+	/* A Composite containing details of parents, children and siblings of the Work. */
+	repeated ChildWorkHierarchy child = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a form of the Work (e.g. Concerto, Aria, 12 bar blues, etc.). */
+	optional Form form = 2;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the hierarchy level is complete (=true) or not (=false). */
+	optional bool is_complete = 3;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether this element of the hierarchy is the Work for which the hierarchy is described (=true) or not (=false). */
+	optional bool is_described_element = 4;
+	/* First defined in: mead101 */
+	/* The number indicating the order of the Work in a group of Works. */
+	optional int32 sequence_number = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a MusicalWorkId. */
+	optional MusicalWorkId work_id = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Title of the Work. */
+	repeated WorkTitle work_title = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a musical period. */
+message ClassicalPeriod {
+	/* First defined in: mead101 */
+	/* A Territory to which the classical musical period applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* The value of the period. */
+	optional PeriodValue name = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a commentary note. */
+message CommentaryNote {
+	/* First defined in: mead101 */
+	/* A Territory to which the commentary note applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* An author of the commentary note. */
+	repeated PartyWithNames author = 2;
+	/* First defined in: mead101 */
+	/* A type of the commentary note. */
+	repeated CommentaryNoteType commentary_note_type = 3;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing the text of the commentary note. */
+	repeated TextWithoutTerritory text = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a commentary note type. */
+message CommentaryNoteType {
+	/* First defined in: mead101 */
+	/* The Namespace of the commentary note type. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the commentary note type. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.CommentaryNoteType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a content. The Atom content construct is defined in section 4.1.3 of the format spec. */
+message Content {
+	repeated string any_attribute_value = 1;
+	repeated string any_value = 2;
+	/* First defined in: mead101 */
+	/* The source. This is represented in an XML schema as an XML Attribute of type AnyURI. */
+	optional string src = 3;
+	/* First defined in: mead101 */
+	/* The type. This is represented in an XML schema as an XML Attribute. */
+	optional string type = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a TerritoryCode. */
+message CurrentTerritoryCode {
+	/* First defined in: mead101 */
+	/* A standard used for the TerritoryCode. This is represented in an XML schema as an XML Attribute. If this Attribute is not provided, it is assumed that the code is a TerritoryCode in accordance with ISO 3166-1 or 3166-2 standard (or Worldwide). */
+	optional mead101.avs.TerritoryCodeType identifier_type = 1;
+	optional mead101.avs.CurrentTerritoryCode ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a dance and rhythm style. */
+message DanceAndRhythmStyle {
+	/* First defined in: mead101 */
+	/* A Territory to which the dance and rhythm style applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing a Description of the dance and rhythm style. */
+	repeated TextWithoutTerritory description = 2;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a dance and rhythm style value. */
+	optional DanceAndRhythmStyleValue value = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a dance and rhythm style value. */
+message DanceAndRhythmStyleValue {
+	/* First defined in: mead101 */
+	/* The Namespace of the element. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the element. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.DanceAndRhythmStyle ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Date. */
+message Date {
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the reported Date is approximate (=true) or exact (=false). This is represented in an XML schema as an XML Attribute.  */
+	optional bool is_approximate = 1;
+	optional ddex_IsoDate ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a published. */
+message DateTime {
+	repeated string any_attribute_value = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Recording of a Work. */
+message DerivedRecording {
+	/* First defined in: mead101 */
+	/* A Composite containing the Name to be used by a DSP when presenting Artist details of the related Resource to a Consumer.Further Reading: https://kb.ddex.net/display/HBK/Communicating+Display+Artist(s)+and+Display+Artist+Name(s) */
+	optional DisplayArtistNameWithDefault display_artist_name = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* A Type of the related Resource. */
+	optional RelatedResourceType related_resource_type = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of ResourceIds for the related Resource. */
+	optional ResourceId resource_id = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Title of the related Resource. */
+	repeated TitleWithPronunciation title = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a HashSum and its governing algorithm.Explanatory Note: This Composite is named DetailedHashSum to disambiguate it from the basic HashSum Composite. */
+message DetailedHashSum {
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Type of HashSumAlgorithm governing the HashSum. */
+	optional HashSumAlgorithmType algorithm = 1;
+	/* First defined in: mead101 */
+	/* The datatype of the HashSum. */
+	optional mead101.avs.BinaryDataType data_type = 2;
+	/* First defined in: mead101 */
+	/* The value of the HashSum. */
+	optional string hash_sum_value = 3;
+	/* First defined in: mead101 */
+	/* A parameter of the HashSumAlgorithm. */
+	optional string parameter = 4;
+	/* First defined in: mead101 */
+	/* The Identifier of the Version of the HashSumAlgorithm. */
+	optional string version = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a PartyId.Explanatory Note: This Composite is named DetailedPartyId to disambiguate it from the basic PartyId Composite. */
+message DetailedPartyId {
+	/* First defined in: mead101 */
+	/* A CISAC Society Identifier, a CISAC standard Identifier for music rights societies. */
+	optional string cisac_society_id = 1;
+	/* First defined in: mead101 */
+	/* An Identifier of a Party according to the DdexPartyId standard DDEX-DPID. */
+	optional string d_p_i_d = 2;
+	/* First defined in: mead101 */
+	/* An International Performer Number, an IPDA Identifier. */
+	optional string i_p_n = 3;
+	/* First defined in: mead101 */
+	/* An International Standard Name Identifier, the ISO 27729 Standard Identifier for names. DDEX will enforce the syntax [0-9]{15}[X0-9] using XML Schema in the future. */
+	optional string i_s_n_i = 4;
+	/* First defined in: mead101 */
+	/* An Interested Party Identifier, a CISAC standard Identifier. An IpiNameNumber comprises 11 digits. */
+	optional string ipi_name_number = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ProprietaryIdentifier of the Party. */
+	repeated ProprietaryId proprietary_id = 6;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a DisplayArtist of a Resource or Release. */
+message DisplayArtist {
+	/* First defined in: mead101 */
+	/* An Identifier of the DisplayArtist according to the DdexPartyId standard DDEX-DPID. */
+	optional string d_p_i_d = 1;
+	/* First defined in: mead101 */
+	/* The Name of the DisplayArtist. */
+	optional string display_artist_name = 2;
+	/* First defined in: mead101 */
+	/* An International Performer Number, an IPDA Identifier, of the DisplayArtist. */
+	optional string i_p_n = 3;
+	/* First defined in: mead101 */
+	/* An International Standard Name Identifier, the ISO 27729 Standard Identifier for names, of the DisplayArtist. DDEX will enforce the syntax [0-9]{15}[X0-9] using XML Schema in the future. */
+	optional string i_s_n_i = 4;
+	/* First defined in: mead101 */
+	/* An Interested Party Identifier, a CISAC standard Identifier, of the DisplayArtist. An IpiNameNumber comprises 11 digits. */
+	optional string ipi_name_number = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ProprietaryIdentifier of the DisplayArtist. */
+	repeated ProprietaryId proprietary_id = 6;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a DisplayArtistName.Explanatory Note: This Composite is named DisplayArtistNameWithDefault to disambiguate it from the basic DisplayArtistName Composite. */
+message DisplayArtistNameWithDefault {
+	/* First defined in: mead101 */
+	/* A Territory to which the Name applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether this Composite provides default values (=true). This Flag should not be set if this is not the case. This is represented in an XML schema as an XML Attribute. */
+	optional bool is_default = 2;
+	/* First defined in: mead101 */
+	/* The Language and script of the Name as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 3;
+	optional string ext_value = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a DisplayArtistName.Explanatory Note: This Composite is named DisplayArtistNameWithPronunciation to disambiguate it from the basic DisplayArtistName Composite. */
+message DisplayArtistNameWithPronunciation {
+	/* First defined in: mead101 */
+	/* The Name string.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3F */
+	optional DisplayArtistNameWithDefault name = 1;
+	/* First defined in: mead101 */
+	/* The string describing the pronunciation. */
+	repeated Pronunciation pronunciation = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a SubTitle.Explanatory Note: This Composite is named DisplaySubTitle to disambiguate it from the basic SubTitle Composite. */
+message DisplaySubTitle {
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the SubTitle is displayed in the Title (=true) or not (=false). This is represented in an XML schema as an XML Attribute.  */
+	optional bool is_displayed_in_title = 1;
+	/* First defined in: mead101 */
+	/* The Namespace of the SubTitleType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 2;
+	/* First defined in: mead101 */
+	/* The string describing the pronunciation. */
+	repeated Pronunciation pronunciation = 3;
+	/* First defined in: mead101 */
+	/* The number indicating the order of the SubTitle in a group of SubTitles. This is represented in an XML schema as an XML Attribute.  */
+	optional int32 sequence_number = 4;
+	/* First defined in: mead101 */
+	/* A Type of the SubTitle which defines its origin or the function it fulfils. This is represented in an XML schema as an XML Attribute. */
+	optional string sub_title_type = 5;
+	/* First defined in: mead101 */
+	/* The Title string. */
+	optional string title = 6;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the SubTitleType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Title as the MessageSender suggests it should be shown to the Consumer. */
+message DisplayTitle {
+	/* First defined in: mead101 */
+	/* A Territory to which the Title applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether this Composite provides default values (=true). This Flag should not be set if this is not the case. This is represented in an XML schema as an XML Attribute. */
+	optional bool is_default = 2;
+	/* First defined in: mead101 */
+	/* The Language and script for the Elements of the Title as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a SubTitle of the Title, including Titles of Versions used to differentiate different versions of the same Title, as required by the GRid and ISRC ReferenceDescriptiveMetadataSets. */
+	repeated DisplaySubTitle sub_title = 4;
+	/* First defined in: mead101 */
+	/* The text of the Title.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3F */
+	optional TitleTextWithPronunciation title_text = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an entry in the charts. */
+message Duration {
+	/* First defined in: mead101 */
+	/* The Namespace of the UnitOfDuration. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* The unit of the Duration. This is represented in an XML schema as an XML Attribute. */
+	optional mead101.avs.UnitOfDuration unit_of_duration = 2;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the UnitOfDuration. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 3;
+	optional string ext_value = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an entry. */
+message Entry {
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Party. This is either the only entity about which the relevant MeadMessage talks or the main one. */
+	optional Party party = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a DDEX Release. This is either the only entity about which the relevant MeadMessage talks or the main one. */
+	optional Release release = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a DDEX Resource. This is either the only entity about which the relevant MeadMessage talks or the main one. */
+	optional Resource resource = 3;
+	/* First defined in: mead101 */
+	/* An Identifier of the subscription to which the Notification is a reply. */
+	optional string subscription_id = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Work. This is either the only entity about which the relevant MeadMessage talks or the main one. */
+	optional Work work = 5;
+	repeated string any_attribute_value = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Name, Identifier and Role(s) of an author of a Resource. */
+	repeated Person author = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a category. */
+	repeated Category category = 8;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a content. */
+	optional Content content = 9;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Name, Identifier and Role(s) of a contributor to a Resource. */
+	repeated Person contributor = 10;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an ID. */
+	optional Id id = 11;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a link. */
+	repeated Link link = 12;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a published. */
+	optional DateTime published = 13;
+	/* First defined in: mead101 */
+	/* A Composite containing details of rights. */
+	optional Text rights = 14;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a source. */
+	optional Source source = 15;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a summary. */
+	optional Text summary = 16;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a title. The title should contain three pieces of information separated by a semicolon and a space character: (1) the DPID of the message sender (without dashes); (2) the subscription ID; and (3) the Date when the entry was added to the feed queue (in the ISO format yyyy-mm-dd). */
+	optional Text title = 17;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an update. */
+	optional DateTime updated = 18;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an epoch in a artist's career. */
+message Epoch {
+	/* First defined in: mead101 */
+	/* A Territory to which the epoch applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* The Date that marks the end of the epoch. It can be represented as a calendar Year, Month or Day (in ISO 8601:2004 format: YYYY, YYYY-MM or YYYY-MM-DD). */
+	optional Date end_date = 2;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a related Artist. */
+	repeated PartyWithNames related_artist = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Creation (a Work, a Release or a Resource) that is part of the epoch. */
+	repeated RelatedCreation related_creation = 5;
+	/* First defined in: mead101 */
+	/* The Date that marks the beginning of the epoch. It can be represented as a calendar Year, Month or Day (in ISO 8601:2004 format: YYYY, YYYY-MM or YYYY-MM-DD). */
+	optional Date start_date = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an epoch name. */
+	repeated Name value = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of the Date and Place of an Event. */
+message EventDate {
+	/* First defined in: mead101 */
+	/* The Territory in which the Event occurred. This is represented in an XML schema as an XML Attribute. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.AllTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the Event being described occurred sometime after the reported Date (=true) or not (=false). This is represented in an XML schema as an XML Attribute. */
+	optional bool is_after = 2;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the reported Date is approximate (=true) or exact (=false). This is represented in an XML schema as an XML Attribute.  */
+	optional bool is_approximate = 3;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the Event being described occurred sometime before the reported Date (=true) or not (=false). This is represented in an XML schema as an XML Attribute. */
+	optional bool is_before = 4;
+	/* First defined in: mead101 */
+	/* The Language and script for the LocationDescription as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 5;
+	/* First defined in: mead101 */
+	/* A Description of the location in which the Event occurred. It offers the opportunity to describe a place more precisely than using the TerritoryCode. This is represented in an XML schema as an XML Attribute. */
+	optional string location_description = 6;
+	optional ddex_IsoDate ext_value = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of the DateTime and Place of an Event. */
+message EventDateTime {
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the Event being described occurred sometime after the reported DateTime (=true) or not (=false). This is represented in an XML schema as an XML Attribute. */
+	optional bool is_after = 1;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the reported DateTime is approximate (=true) or exact (=false). This is represented in an XML schema as an XML Attribute.  */
+	optional bool is_approximate = 2;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the Event being described occurred sometime before the reported DateTime (=true) or not (=false). This is represented in an XML schema as an XML Attribute. */
+	optional bool is_before = 3;
+	/* First defined in: mead101 */
+	/* The Language and script for the LocationDescription as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 4;
+	/* First defined in: mead101 */
+	/* A Description of the location in which the Event occurred. It offers the opportunity to describe a place more precisely than using the TerritoryCode. This is represented in an XML schema as an XML Attribute. */
+	optional string location_description = 5;
+	/* First defined in: mead101 */
+	/* The Territory in which the Event occurred. This is represented in an XML schema as an XML Attribute. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.AllTerritoryCode territory_code = 6;
+	optional string ext_value = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of the Date and Place of an Event.Explanatory Note: This Composite is named EventDateWithoutFlags to disambiguate it from the basic EventDate Composite. */
+message EventDateWithoutFlags {
+	/* First defined in: mead101 */
+	/* The main Territory in which the Event occurred. This is represented in an XML schema as an XML Attribute. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.AllTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the reported Date is approximate (=true) or exact (=false). This is represented in an XML schema as an XML Attribute.  */
+	optional bool is_approximate = 2;
+	/* First defined in: mead101 */
+	/* The Language and script for the LocationDescription as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 3;
+	/* First defined in: mead101 */
+	/* A Description of the location in which the Event occurred. It offers the opportunity to describe a place more precisely than using the TerritoryCode. This is represented in an XML schema as an XML Attribute. */
+	optional string location_description = 4;
+	optional ddex_IsoDate ext_value = 5;
+}
+
+/* Defined in: mead101 */
+message Feed {
+	repeated string any_attribute_value = 1;
+	repeated string any_value = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Name, Identifier and Role(s) of an author of a Resource. */
+	repeated Person author = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a category. */
+	repeated Category category = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Name, Identifier and Role(s) of a contributor to a Resource. */
+	repeated Person contributor = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an entry. */
+	repeated Entry entry = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a generator. */
+	optional Generator generator = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an icon. */
+	optional Icon icon = 8;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an ID. */
+	optional Id id = 9;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a link. */
+	repeated Link link = 10;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a logo. */
+	optional Logo logo = 11;
+	/* First defined in: mead101 */
+	/* A Composite containing details of rights. */
+	optional Text rights = 12;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a subtitle. */
+	optional Text subtitle = 13;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a title. */
+	optional Text title = 14;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an update. */
+	optional DateTime updated = 15;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a File. */
+message File {
+	/* First defined in: mead101 */
+	/* The size of the File in kilobytes. */
+	optional double file_size = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing a HashSum of the File and information about the algorithm with which it has been generated. */
+	optional DetailedHashSum hash_sum = 2;
+	/* First defined in: mead101 */
+	/* A URI of the File (this can be a URL or another type of Identifier using a scheme identifier, e.g. http or ftp, as defined in RFC 3986). */
+	optional string u_r_i = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Flag. */
+message Flag {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* The value of the Flag */
+	optional bool value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a focus track. */
+message FocusTrack {
+	/* First defined in: mead101 */
+	/* A Territory to which the focus track applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* A Comment regarding the focus track. */
+	repeated TextWithoutTerritory comment = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing the Name to be used by a DSP when presenting Artist details of the Release to a Consumer.Further Reading: https://kb.ddex.net/display/HBK/Communicating+Display+Artist(s)+and+Display+Artist+Name(s) */
+	repeated DisplayArtistNameWithPronunciation display_artist_name = 3;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether this Composite provides default values (=true). This Flag should not be set if this is not the case. This is represented in an XML schema as an XML Attribute. */
+	optional bool is_default = 4;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details about a focus track period. StartDate and EndDate are deprecated and StartDateTime/EndDateTime should be used instead. DDEX advises that StartDate and EndDate may be removed at a future date and therefore recommends against using them. */
+	repeated PeriodWithTime period_of_being_focus_track = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of ResourceIds for the Resource. */
+	optional ResourceId resource_id = 7;
+	/* First defined in: mead101 */
+	/* The number indicating the order of the focus Track in a group of Tracks. It should not be provided unless more than one focus track is provided for a specific Artist. */
+	optional int32 sequence_number = 8;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Title of the Work as the MessageSender suggests it should be shown to the Consumer. */
+	repeated TitleWithPronunciation title = 9;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a form of a Work (e.g. Concerto, Aria, 12 bar blues, etc.). */
+message Form {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a form value. */
+	optional FormValue value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a form of a Work. */
+message FormValue {
+	/* First defined in: mead101 */
+	/* The Namespace of the vocal register. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the vocal register. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.Form ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a generator. The Atom generator element is defined in section 4.2.4 of the format spec. */
+message Generator {
+	repeated string any_attribute_value = 1;
+	optional string ext_value = 2;
+	/* First defined in: mead101 */
+	/* The URI. This is represented in an XML schema as an XML Attribute of type AnyURI. */
+	optional string uri = 3;
+	/* First defined in: mead101 */
+	/* The Identifier of the Version of the generator. This is represented in an XML schema as an XML Attribute. */
+	optional string version = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Genre Category. */
+message GenreCategory {
+	/* First defined in: mead101 */
+	/* A Territory to which the Genre Category applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing a Description of the Genre Category. */
+	repeated TextWithoutTerritory description = 2;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Genre Category value. */
+	optional GenreCategoryValue value = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Genre Category value. */
+message GenreCategoryValue {
+	/* First defined in: mead101 */
+	/* The Language and script of this Element as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 1;
+	/* First defined in: mead101 */
+	/* The Namespace of the element. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 2;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the element. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 3;
+	optional mead101.avs.ClassifiedGenre ext_value = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a harmony of a MusicalWork or a Resource. */
+message Harmony {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* A mode, i.e. a type of musical scale coupled with a set of characteristic melodic behaviours. */
+	optional Mode mode = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a harmony modulation. */
+	repeated HarmonyModulation modulation = 3;
+	/* First defined in: mead101 */
+	/* A root chord note. */
+	optional RootChordNote root_chord_note = 4;
+	/* First defined in: mead101 */
+	/* A root chord quality. */
+	optional RootChordQuality root_chord_quality = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of the harmony modulation of a MusicalWork or a Resource. */
+message HarmonyModulation {
+	/* First defined in: mead101 */
+	/* The end point given in bars from the start of the referenced Work. */
+	optional int32 end_bar = 1;
+	/* First defined in: mead101 */
+	/* The end point given in seconds from the start of the referenced Resource. */
+	optional double end_point = 2;
+	/* First defined in: mead101 */
+	/* A mode of the modulation, i.e. a type of musical scale coupled with a set of characteristic melodic behaviours. */
+	optional Mode mode = 3;
+	/* First defined in: mead101 */
+	/* A root chord note of the modulation. */
+	optional RootChordNote root_chord_note = 4;
+	/* First defined in: mead101 */
+	/* A root chord quality of the modulation. */
+	optional RootChordQuality root_chord_quality = 5;
+	/* First defined in: mead101 */
+	/* The start point given in bars from the start of the referenced Work. */
+	optional int32 start_bar = 6;
+	/* First defined in: mead101 */
+	/* The start point given in seconds from the start of the referenced Resource. */
+	optional double start_point = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a HashSumAlgorithmType. */
+message HashSumAlgorithmType {
+	/* First defined in: mead101 */
+	/* The Namespace of the HashSumAlgorithmType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the HashSumAlgorithmType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.HashSumAlgorithmType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of historic charting information. */
+message HistoricChartingInformation {
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Date and Place of the usage (in ISO 8601:2004 format: YYYY-MM-DD). */
+	repeated ChartEntry chart_entry = 1;
+	/* First defined in: mead101 */
+	/* A Name of the charts. */
+	repeated ChartName chart_name = 2;
+	/* First defined in: mead101 */
+	/* A Comment regarding the charts. */
+	repeated TextWithFormat comment = 3;
+	/* First defined in: mead101 */
+	/* The Duration for which the Creation or the Party was in the charts. */
+	optional Duration duration_in_charts = 4;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 5;
+	/* First defined in: mead101 */
+	/* A Territory of the charts. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard. */
+	optional CurrentTerritoryCode territory_code = 6;
+	/* First defined in: mead101 */
+	/* The top position in the charts. */
+	optional int32 top_position = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of historic charting information.Explanatory Note: This Composite is named HistoricChartingInformationForParty to disambiguate it from the basic HistoricChartingInformation Composite. */
+message HistoricChartingInformationForParty {
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Date and Place of the usage (in ISO 8601:2004 format: YYYY-MM-DD). */
+	repeated ChartEntry chart_entry = 1;
+	/* First defined in: mead101 */
+	/* A Name of the charts. */
+	repeated ChartName chart_name = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a charted Release. */
+	optional Release charted_release = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a charted Resource. */
+	optional Resource charted_resource = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a charted Work. */
+	optional Work charted_work = 5;
+	/* First defined in: mead101 */
+	/* A Comment regarding the charts. */
+	repeated TextWithFormat comment = 6;
+	/* First defined in: mead101 */
+	/* The Duration for which the Creation or the Party was in the charts. */
+	optional Duration duration_in_charts = 7;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 8;
+	/* First defined in: mead101 */
+	/* A Territory of the charts. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard. */
+	optional CurrentTerritoryCode territory_code = 9;
+	/* First defined in: mead101 */
+	/* The top position in the charts. */
+	optional int32 top_position = 10;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an icon. The Atom icon construct is defined in section 4.2.5 of the format spec. */
+message Icon {
+	repeated string any_attribute_value = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an ID. The Atom id construct is defined in section 4.2.6 of the format spec. */
+message Id {
+	repeated string any_attribute_value = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an Image. */
+message Image {
+	/* First defined in: mead101 */
+	/* A Composite containing details of a File containing the Image. */
+	optional File file = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Type of the Image. */
+	repeated ImageType image_type = 2;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an ImageType. */
+message ImageType {
+	/* First defined in: mead101 */
+	/* The Namespace of the ImageType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the ImageType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.ImageType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an Instrument. */
+message Instrument {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* The value of the instrument. */
+	optional InstrumentValue value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an Instrument. */
+message InstrumentUsed {
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the Instrument is featured (=true). This is represented in an XML schema as an XML Attribute. */
+	optional bool is_featured = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* The value of the instrument. */
+	optional InstrumentValue value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an Instrument. */
+message InstrumentValue {
+	/* First defined in: mead101 */
+	/* The Namespace of the Instrument. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the Instrument. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.InstrumentType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a link. The Atom link construct is defined in section 3.4 of the format spec. */
+message Link {
+	repeated string any_attribute_value = 1;
+	/* First defined in: mead101 */
+	/* The href. This is represented in an XML schema as an XML Attribute of type AnyURI. */
+	optional string href = 2;
+	/* First defined in: mead101 */
+	/* The href lang. This is represented in an XML schema as an XML Attribute of type NMTOKEN. */
+	optional string hreflang = 3;
+	/* First defined in: mead101 */
+	/* The length. This is represented in an XML schema as an XML Attribute of type PositiveInteger. */
+	optional uint32 length = 4;
+	/* First defined in: mead101 */
+	/* The rel. This is represented in an XML schema as an XML Attribute. */
+	optional string rel = 5;
+	/* First defined in: mead101 */
+	/* The title. This is represented in an XML schema as an XML Attribute. */
+	optional string title = 6;
+	/* First defined in: mead101 */
+	/* The type. This is represented in an XML schema as an XML Attribute. */
+	optional string type = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Session. */
+message LocationAndDateOfSession {
+	/* First defined in: mead101 */
+	/* A Composite containing a human-readable Comment about the Session. */
+	optional TextWithFormat comment = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Contributor. */
+	repeated PartyWithRole contributor = 2;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details about a Period of the Session. Periods are typically described by at least a StartDate or EndDate. */
+	optional Period period = 4;
+	/* First defined in: mead101 */
+	/* The Type of Session. */
+	repeated SessionType session_type = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the venue where the Session took place. */
+	repeated Venue venue = 6;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a logo. The Atom logo construct is defined in section 4.2.8 of the format spec. */
+message Logo {
+	repeated string any_attribute_value = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of Lyrics. */
+message Lyrics {
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the Lyrics are misquoted (=true) or not (=false). */
+	optional bool is_misquoted = 1;
+	/* First defined in: mead101 */
+	/* The Type of the Lyrics. */
+	optional mead101.avs.LyricsType lyrics_type = 2;
+	/* First defined in: mead101 */
+	/* The Namespace of the user defined value for LyricsType. This is represented in an XML schema as an XML Attribute. */
+	optional string lyrics_type_namespace = 3;
+	/* First defined in: mead101 */
+	/* A UserDefined value of LyricsType This is represented in an XML schema as an XML Attribute. */
+	optional string lyrics_type_user_defined_value = 4;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 5;
+	/* First defined in: mead101 */
+	/* The string describing the pronunciation. */
+	repeated Pronunciation pronunciation = 6;
+	/* First defined in: mead101 */
+	/* A number indicating the order of the Lyrics in a group of Lyrics. This is represented in an XML schema as an XML Attribute.  */
+	optional int32 sequence_number = 7;
+	/* First defined in: mead101 */
+	/* The text of the Lyrics. */
+	optional LyricsText text = 8;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of Lyrics. */
+message LyricsText {
+	/* First defined in: mead101 */
+	/* A Territory to which this Element applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* The format of the Lyrics. This is represented in an XML schema as an XML Attribute. */
+	optional mead101.avs.TextCodecType format = 2;
+	/* First defined in: mead101 */
+	/* The Namespace of the Format. This is represented in an XML schema as an XML Attribute. */
+	optional string format_namespace = 3;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the Format. This is represented in an XML schema as an XML Attribute. */
+	optional string format_user_defined_value = 4;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the Lyrics text is complete (=true) or not (=false). */
+	optional bool is_complete = 5;
+	/* First defined in: mead101 */
+	/* The Language and script of the Lyrics as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 6;
+	optional string ext_value = 7;
+}
+
+/* Defined in: mead101 */
+message MeadMessage {
+	/* First defined in: mead101 */
+	/* The Language and script for the Elements of this message as defined in IETF RfC 5646. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 1;
+	/* First defined in: mead101 */
+	/* The MessageHeader for the MeadMessage. */
+	optional MessageHeader message_header = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of one or more Parties that created the metadata. */
+	optional MetadataSourceList metadata_source_list = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing detailed information about one or more Parties. */
+	optional PartyInformationList party_information_list = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing detailed information about one or more Releases. */
+	optional ReleaseInformationList release_information_list = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing detailed information about one or more Resources. */
+	optional ResourceInformationList resource_information_list = 6;
+	/* First defined in: mead101 */
+	/* An Identifier of the subscription. */
+	optional string subscription_id = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing detailed information about one or more Works */
+	optional WorkInformationList work_information_list = 8;
+	repeated string any_value = 9;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing information about Parties in between the original MessageSender and ultimate MessageRecipient. */
+message MessageAuditTrail {
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Party handling the Message and the Time at which the handling took place. */
+	repeated MessageAuditTrailEvent message_audit_trail_event = 1;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Party handling a Message and the Time at which the handling took place. */
+message MessageAuditTrailEvent {
+	/* First defined in: mead101 */
+	/* The DateTime at which the Message was handled by the MessagingParty (the only allowed format is ISO 8601:2004: YYYY-MM-DDThh:mm:ssTZD). */
+	optional string date_time = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a MessagingParty. */
+	optional MessagingPartyWithoutCode messaging_party_descriptor = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite placed at the beginning of each DdexMessage providing information about the Message, such as MessageSender, MessageRecipient and a Message creation time stamp. */
+message MessageHeader {
+	/* First defined in: mead101 */
+	/* A Composite containing information about Parties in between the original MessageSender and ultimate MessageRecipient. */
+	optional MessageAuditTrail message_audit_trail = 1;
+	/* First defined in: mead101 */
+	/* The indicator used to distinguish a live Message from a test Message. */
+	optional mead101.avs.MessageControlType message_control_type = 2;
+	/* First defined in: mead101 */
+	/* The DateTime on which the Message was created (the only allowed format is ISO 8601:2004: YYYY-MM-DDThh:mm:ssTZD). */
+	optional string message_created_date_time = 3;
+	/* First defined in: mead101 */
+	/* The FileName, possibly including the FilePath, of the XML File containing the current Message. */
+	optional string message_file_name = 4;
+	/* First defined in: mead101 */
+	/* A xs:string used to uniquely identify the current Message. The MessageId shall be, in combination with the DdexPartyId (DPID) of the MessageSender, globally unique. Thus, a MessageSender shall never re-use a MessageId. */
+	optional string message_id = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the MessageRecipient. Note that if multiple MessageRecipients are provided, all of them will be able to read this information. */
+	repeated MessagingPartyWithoutCode message_recipient = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the MessageSender. */
+	optional MessagingPartyWithoutCode message_sender = 7;
+	/* First defined in: mead101 */
+	/* A xs:string used to uniquely identify the thread of Messages of which the current Message is a part. The MessageThreadId shall be, in combination with the DdexPartyId (DPID) of the MessageSender, globally unique. Thus, a MessageSender shall never re-use a MessageThreadId. One example of such a 'thread' is the chain of NewReleaseMessages being sent from ReleaseCreator to wholesale ReleaseDistributor 1 to retail DSP when communicating information about the same Release(s). A common MessageThreadId will allow all these messages to be tied together. */
+	optional string message_thread_id = 8;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Party on whose behalf the Message is sent. */
+	optional MessagingPartyWithoutCode sent_on_behalf_of = 9;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a MessagingParty.Explanatory Note: This Composite is named MessagingPartyWithoutCode to disambiguate it from the basic MessagingParty Composite. */
+message MessagingPartyWithoutCode {
+	/* First defined in: mead101 */
+	/* An Identifier of a Party according to the DdexPartyId standard DDEX-DPID. */
+	optional string party_id = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the PartyNames for the Party handling the Message.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3FFurther Reading: https://kb.ddex.net/pages/viewpage.action?pageId=4882788 */
+	optional PartyNameWithoutCode party_name = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing a TradingName for the Party handling the Message.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3F */
+	optional string trading_name = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Party that created metadata. */
+message MetadataSource {
+	/* First defined in: mead101 */
+	/* The Type of the metadata source. */
+	optional MetadataSourceType metadata_source_type = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the PartyId for the metadata source. If no Namespace is given, the Identifier is a DdexPartyId (DPID). Note that DPIDs are not normally used to identify Artists, producers or other Creators. */
+	repeated DetailedPartyId party_id = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the PartyName(s). */
+	repeated PartyNameWithTerritory party_name = 3;
+	/* First defined in: mead101 */
+	/* The Identifier (specific to the Message) of the metadata source. This is a LocalMetadataSourceAnchor starting with the letter U. */
+	optional string source_reference = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of one or more Parties that created the metadata. */
+message MetadataSourceList {
+	/* First defined in: mead101 */
+	/* A Composite containing details of a metadata source. */
+	repeated MetadataSource metadata_source = 1;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a MetadataSourceType. */
+message MetadataSourceType {
+	/* First defined in: mead101 */
+	/* The Namespace of the MetadataSourceType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the MetadataSourceType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.MetadataSourceType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a meter. */
+message Meter {
+	/* First defined in: mead101 */
+	/* The note that is equivalent to one beat. */
+	optional int32 note_equivalent_to_beat = 1;
+	/* First defined in: mead101 */
+	/* The number of beats in a bar. */
+	optional int32 number_of_beats_in_bar = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a mode. */
+message Mode {
+	/* First defined in: mead101 */
+	/* The Namespace of the mode. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the mode. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.Mode ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a modulation. */
+message Modulation {
+	/* First defined in: mead101 */
+	/* The end point given in bars from the start of the referenced Work. */
+	optional int32 end_bar = 1;
+	/* First defined in: mead101 */
+	/* The end point given in seconds from the start of the referenced Resource. */
+	optional double end_point = 2;
+	/* First defined in: mead101 */
+	/* The start point given in bars from the start of the referenced Work. */
+	optional int32 start_bar = 3;
+	/* First defined in: mead101 */
+	/* The start point given in seconds from the start of the referenced Resource. */
+	optional double start_point = 4;
+	/* First defined in: mead101 */
+	/* The value of the beats per minute. */
+	optional double value = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a mood. */
+message Mood {
+	/* First defined in: mead101 */
+	/* A Territory to which the mood applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing a Description of the mood. */
+	repeated TextWithoutTerritory description = 2;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a mood value. */
+	optional MoodValue value = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a mood value. */
+message MoodValue {
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the mood value applies to the composition (=true) or not (=false). */
+	optional bool applies_to_composition = 1;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the mood value applies to the lyrics (=true) or not (=false). */
+	optional bool applies_to_lyrics = 2;
+	/* First defined in: mead101 */
+	/* The Namespace of the element. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 3;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the element. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 4;
+	optional mead101.avs.MoodType ext_value = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a MusicalWorkId. */
+message MusicalWorkId {
+	/* First defined in: mead101 */
+	/* A MusicalWorkId identifying a MusicalWork within the catalog of its Composer (typically of classical music) according to a standardized numbering (e.g. 'K' numbers for Koechel's catalog of Mozart). */
+	repeated string composer_catalog_number = 1;
+	/* First defined in: mead101 */
+	/* The ISWC (International Standard Musical Work Code defined in ISO 15707) identifying the MusicalWork. An ISWC comprises three parts: the letter 'T', followed by nine digits and then one check digit. DDEX will enforce the syntax [a-zA-Z][0-9]{10} using XML Schema in the future. */
+	optional string i_s_w_c = 2;
+	/* First defined in: mead101 */
+	/* The MusicalWorkId identifying the MusicalWork within the catalog of its Composer (typically of classical music) as an opus number. */
+	optional string opus_number = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ProprietaryIdentifier of the MusicalWork. */
+	repeated ProprietaryId proprietary_id = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Name. */
+message Name {
+	/* First defined in: mead101 */
+	/* The Language and script of the Name as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Name and its pronunciation.Explanatory Note: This Composite is named NameWithPronunciation to disambiguate it from the basic Name Composite. */
+message NameWithPronunciation {
+	/* First defined in: mead101 */
+	/* The Name string.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3F */
+	optional string name = 1;
+	/* First defined in: mead101 */
+	/* The string describing the pronunciation. */
+	repeated Pronunciation pronunciation = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Name and its pronunciation.Explanatory Note: This Composite is named NameWithPronunciationAndScriptCode to disambiguate it from the basic Name Composite. */
+message NameWithPronunciationAndScriptCode {
+	/* First defined in: mead101 */
+	/* The Name string.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3F */
+	optional Name name = 1;
+	/* First defined in: mead101 */
+	/* The string describing the pronunciation. */
+	repeated Pronunciation pronunciation = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Party. */
+message Party {
+	/* First defined in: mead101 */
+	/* An Identifier of the Party for which information is provided according to the DdexPartyId standard DDEX-DPID. */
+	optional string d_p_i_d = 1;
+	/* First defined in: mead101 */
+	/* An International Performer Number, an IPDA Identifier, of the Party for which information is provided. */
+	optional string i_p_n = 2;
+	/* First defined in: mead101 */
+	/* An International Standard Name Identifier, the ISO 27729 Standard Identifier for names, of the Party for which information is provided. DDEX will enforce the syntax [0-9]{15}[X0-9] using XML Schema in the future. */
+	optional string i_s_n_i = 3;
+	/* First defined in: mead101 */
+	/* An Interested Party Identifier, a CISAC standard Identifier, of the Party for which information is provided. An IpiNameNumber comprises 11 digits. */
+	optional string ipi_name_number = 4;
+	/* First defined in: mead101 */
+	/* The Name of the Party for which information is provided. */
+	optional string party_name = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ProprietaryIdentifier of the Party for which information is provided. */
+	repeated ProprietaryId proprietary_id = 6;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Party. Parties are typically described through Names and/or Identifiers. */
+message PartyDescriptor {
+	/* First defined in: mead101 */
+	/* A Composite containing details of the PartyId for the Party. If no Namespace is given, the Identifier is a DdexPartyId (DPID). Note that DPIDs are not normally used to identify Artists, producers or other Creators. */
+	repeated DetailedPartyId party_id = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the PartyName(s).Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3FFurther Reading: https://kb.ddex.net/pages/viewpage.action?pageId=4882788 */
+	repeated PartyName party_name = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Party. */
+message PartyInformation {
+	/* First defined in: mead101 */
+	/* A Composite containing details of an Artist type (applicable if the Party is an Artist). This allows saying that the Artist is, for instance, a Mariachi Band. */
+	repeated ArtistType artist_type = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a related Artist that was influenced or that was an influencer (applicable if the Party is an Artist). */
+	repeated ArtisticInfluence artistic_influence = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an award. Recipients are requested to make sure they only trust this information if it is sent from a reputable and, ideally, authoritative source. */
+	repeated AwardForParty award = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a biography of the Party. */
+	repeated Biography biography = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a period of the Party. */
+	optional ClassicalPeriod classical_period = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a commentary note. */
+	repeated CommentaryNote commentary_note = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an epoch in the Artist's career (applicable if the Party is an Artist). */
+	repeated Epoch epoch = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a focus track. */
+	repeated FocusTrack focus_track = 8;
+	/* First defined in: mead101 */
+	/* A Composite containing details of historic charting information. Recipients are requested to make sure they only trust this information if it is sent from a reputable and, ideally, authoritative source. */
+	repeated HistoricChartingInformationForParty historic_charting_information = 9;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an Image of the Party. */
+	repeated Image image = 10;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a similar Party. */
+	repeated SimilarParty is_similar = 11;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Party. */
+	optional PartyWithNames party = 12;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a pseudonym. */
+	repeated Pseudonym pseudonym = 13;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Creation (a Work, a Release or a Resource) to which the Party contributed. */
+	repeated RelatedCreation related_creation = 14;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a vocal register of the Party. */
+	optional VocalRegister vocal_register = 15;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing detailed information about one or more Parties. */
+message PartyInformationList {
+	/* First defined in: mead101 */
+	/* A Composite containing detailed information about a Party. */
+	repeated PartyInformation party_information = 1;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a PartyName. Name details for a Party typically either contain a FullName or a KeyName.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3FFurther Reading: https://kb.ddex.net/pages/viewpage.action?pageId=4882788 */
+message PartyName {
+	/* First defined in: mead101 */
+	/* A Composite containing a short version of the PartyName (e.g. for use on devices with a small display). */
+	optional Name abbreviated_name = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing the complete Name of the Party, in its normal form of presentation (e.g. John H. Smith, Acme Music Inc, the Beatles). */
+	optional Name full_name = 2;
+	/* First defined in: mead101 */
+	/* The FullName transcribed using 7-bit ASCII code. */
+	optional string full_name_ascii_transcribed = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing the complete Name of the Party in the form in which it normally appears in an alphabetic index, with the KeyName first (e.g. Smith, John H.; Beatles, The). */
+	optional Name full_name_indexed = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing the Part of a Name of the Party normally used to index an entry in an alphabetical list, such as 'Smith' (in John Smith) or 'Garcia Marquez' or 'Madonna' or 'Francis de Sales' (in Saint Francis de Sales). For persons, this normally corresponds to the 'family name' or names, which in Western name forms usually comes as a surname at the end of a FullName, and in Asian name forms often at the beginning of a FullName.  */
+	optional Name key_name = 5;
+	/* First defined in: mead101 */
+	/* The Language and script for the Elements of the PartyName as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing the Name(s) following the KeyName. Example:'Ibrahim' (in Anwar Ibrahim). This is common, e.g., in many Asian personal name forms where a FullName begins with the KeyName, which is followed by other names. */
+	optional Name names_after_key_name = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing the Name(s) preceding the KeyName in the FullName (and that is placed after it in a FullNameIndexed). Examples: 'George' in 'George Michael'; 'John Fitzgerald' in 'John Fitzgerald Kennedy'. Not all PartyNames have a NamesBeforeKeyName (e.g. Madonna, EMI Music Inc). */
+	optional Name names_before_key_name = 8;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a PartyName.Explanatory Note: This Composite is named PartyNameWithPronunciation to disambiguate it from the basic PartyName Composite.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3FFurther Reading: https://kb.ddex.net/pages/viewpage.action?pageId=4882788 */
+message PartyNameWithPronunciation {
+	/* First defined in: mead101 */
+	/* A Composite containing a short version of the PartyName (e.g. for use on devices with a small display). */
+	optional NameWithPronunciationAndScriptCode abbreviated_name = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing the complete Name of the Party, in its normal form of presentation (e.g. John H. Smith, Acme Music Inc, the Beatles). */
+	optional NameWithPronunciationAndScriptCode full_name = 2;
+	/* First defined in: mead101 */
+	/* The FullName transcribed using 7-bit ASCII code. */
+	optional NameWithPronunciation full_name_ascii_transcribed = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing the complete Name of the Party in the form in which it normally appears in an alphabetic index, with the KeyName first (e.g. Smith, John H.; Beatles, The). */
+	optional NameWithPronunciationAndScriptCode full_name_indexed = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing the Part of a Name of the Party normally used to index an entry in an alphabetical list, such as 'Smith' (in John Smith) or 'Garcia Marquez' or 'Madonna' or 'Francis de Sales' (in Saint Francis de Sales). For persons, this normally corresponds to the 'family name' or names, which in Western name forms usually comes as a surname at the end of a FullName, and in Asian name forms often at the beginning of a FullName.  */
+	optional NameWithPronunciationAndScriptCode key_name = 5;
+	/* First defined in: mead101 */
+	/* The Language and script for the Elements of the PartyName as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing the Name(s) following the KeyName. Example:'Ibrahim' (in Anwar Ibrahim). This is common, e.g., in many Asian personal name forms where a FullName begins with the KeyName, which is followed by other names. */
+	optional NameWithPronunciationAndScriptCode names_after_key_name = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing the Name(s) preceding the KeyName in the FullName (and that is placed after it in a FullNameIndexed). Examples: 'George' in 'George Michael'; 'John Fitzgerald' in 'John Fitzgerald Kennedy'. Not all PartyNames have a NamesBeforeKeyName (e.g. Madonna, EMI Music Inc). */
+	optional NameWithPronunciationAndScriptCode names_before_key_name = 8;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a PartyName.Explanatory Note: This Composite is named PartyNameWithTerritory to disambiguate it from the basic PartyName Composite. */
+message PartyNameWithTerritory {
+	/* First defined in: mead101 */
+	/* A Composite containing a short version of the PartyName (e.g. for use on devices with a small display). */
+	optional NameWithPronunciationAndScriptCode abbreviated_name = 1;
+	/* First defined in: mead101 */
+	/* A Territory to which the PartyName applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing the complete Name of the Party, in its normal form of presentation (e.g. John H. Smith, Acme Music Inc, the Beatles). */
+	optional NameWithPronunciationAndScriptCode full_name = 3;
+	/* First defined in: mead101 */
+	/* The FullName transcribed using 7-bit ASCII code. */
+	optional NameWithPronunciation full_name_ascii_transcribed = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing the complete Name of the Party in the form in which it normally appears in an alphabetic index, with the KeyName first (e.g. Smith, John H.; Beatles, The). */
+	optional NameWithPronunciationAndScriptCode full_name_indexed = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing the Part of a Name of the Party normally used to index an entry in an alphabetical list, such as 'Smith' (in John Smith) or 'Garcia Marquez' or 'Madonna' or 'Francis de Sales' (in Saint Francis de Sales). For persons, this normally corresponds to the 'family name' or names, which in Western name forms usually comes as a surname at the end of a FullName, and in Asian name forms often at the beginning of a FullName.  */
+	optional NameWithPronunciationAndScriptCode key_name = 6;
+	/* First defined in: mead101 */
+	/* The Language and script for the Elements of the PartyName as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing the Name(s) following the KeyName. Example:'Ibrahim' (in Anwar Ibrahim). This is common, e.g., in many Asian personal name forms where a FullName begins with the KeyName, which is followed by other names. */
+	optional NameWithPronunciationAndScriptCode names_after_key_name = 8;
+	/* First defined in: mead101 */
+	/* A Composite containing the Name(s) preceding the KeyName in the FullName (and that is placed after it in a FullNameIndexed). Examples: 'George' in 'George Michael'; 'John Fitzgerald' in 'John Fitzgerald Kennedy'. Not all PartyNames have a NamesBeforeKeyName (e.g. Madonna, EMI Music Inc). */
+	optional NameWithPronunciationAndScriptCode names_before_key_name = 9;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a PartyName. Name details for a Party typically either contain a FullName or a KeyName.Explanatory Note: This Composite is named PartyNameWithoutCode to disambiguate it from the basic PartyName Composite.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3FFurther Reading: https://kb.ddex.net/pages/viewpage.action?pageId=4882788 */
+message PartyNameWithoutCode {
+	/* First defined in: mead101 */
+	/* A short version of the PartyName (e.g. for use on devices with a small display). */
+	optional string abbreviated_name = 1;
+	/* First defined in: mead101 */
+	/* The complete Name of the Party, in its normal form of presentation (e.g. John H. Smith, Acme Music Inc, the Beatles). */
+	optional string full_name = 2;
+	/* First defined in: mead101 */
+	/* The FullName transcribed using 7-bit ASCII code. */
+	optional string full_name_ascii_transcribed = 3;
+	/* First defined in: mead101 */
+	/* The complete Name of the Party in the form in which it normally appears in an alphabetic index, with the KeyName first (e.g. Smith, John H.; Beatles, The). */
+	optional string full_name_indexed = 4;
+	/* First defined in: mead101 */
+	/* The Part of a Name of the Party normally used to index an entry in an alphabetical list, such as 'Smith' (in John Smith) or 'Garcia Marquez' or 'Madonna' or 'Francis de Sales' (in Saint Francis de Sales). For persons, this normally corresponds to the 'family name' or names, which in Western name forms usually comes as a surname at the end of a FullName, and in Asian name forms often at the beginning of a FullName.  */
+	optional string key_name = 5;
+	/* First defined in: mead101 */
+	/* The Name(s) following the KeyName. Example:'Ibrahim' (in Anwar Ibrahim). This is common, e.g., in many Asian personal name forms where a FullName begins with the KeyName, which is followed by other names. */
+	optional string names_after_key_name = 6;
+	/* First defined in: mead101 */
+	/* The Name(s) preceding the KeyName in the FullName (and that is placed after it in a FullNameIndexed). Examples: 'George' in 'George Michael'; 'John Fitzgerald' in 'John Fitzgerald Kennedy'. Not all PartyNames have a NamesBeforeKeyName (e.g. Madonna, EMI Music Inc). */
+	optional string names_before_key_name = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Party.Explanatory Note: This Composite is named PartyWithNames to disambiguate it from the basic Party Composite. */
+message PartyWithNames {
+	/* First defined in: mead101 */
+	/* An Identifier of the Party for which information is provided according to the DdexPartyId standard DDEX-DPID. */
+	optional string d_p_i_d = 1;
+	/* First defined in: mead101 */
+	/* An International Performer Number, an IPDA Identifier, of the Party for which information is provided. */
+	optional string i_p_n = 2;
+	/* First defined in: mead101 */
+	/* An International Standard Name Identifier, the ISO 27729 Standard Identifier for names, of the Party for which information is provided. DDEX will enforce the syntax [0-9]{15}[X0-9] using XML Schema in the future. */
+	optional string i_s_n_i = 3;
+	/* First defined in: mead101 */
+	/* An Interested Party Identifier, a CISAC standard Identifier, of the Party for which information is provided. An IpiNameNumber comprises 11 digits. */
+	optional string ipi_name_number = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Name of the Party for which information is provided. */
+	repeated PartyNameWithTerritory name = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ProprietaryIdentifier of the Party for which information is provided. */
+	repeated ProprietaryId proprietary_id = 6;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Party.Explanatory Note: This Composite is named PartyWithRole to disambiguate it from the basic Party Composite. */
+message PartyWithRole {
+	/* First defined in: mead101 */
+	/* An Identifier of the Party for which information is provided according to the DdexPartyId standard DDEX-DPID. */
+	optional string d_p_i_d = 1;
+	/* First defined in: mead101 */
+	/* An International Performer Number, an IPDA Identifier, of the Party for which information is provided. */
+	optional string i_p_n = 2;
+	/* First defined in: mead101 */
+	/* An International Standard Name Identifier, the ISO 27729 Standard Identifier for names, of the Party for which information is provided. DDEX will enforce the syntax [0-9]{15}[X0-9] using XML Schema in the future. */
+	optional string i_s_n_i = 3;
+	/* First defined in: mead101 */
+	/* An Interested Party Identifier, a CISAC standard Identifier, of the Party for which information is provided. An IpiNameNumber comprises 11 digits. */
+	optional string ipi_name_number = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Name of the Contributor. */
+	optional PartyNameWithPronunciation party_name = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ProprietaryIdentifier of the Party for which information is provided. */
+	repeated ProprietaryId proprietary_id = 6;
+	/* First defined in: mead101 */
+	/* A Role played by the Contributor. */
+	optional ResourceContributorRole role = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details about a Period of Time. Periods are typically describedby at least a StartDate or EndDate (or StartDateTime or EndDateTime) where the StartDate(Time) and EndDate(Time) are included in the Period. Thus a one-day period can be described by using the same date in the StartDate and EndDate. If two subsequent Periods form a continuum (i.e. with no break in-between) there are two ways to express this: (a) if using dates, the EndDate of the first Period must be one day before the StartDate of the second Period; (b) if using date times, the EndDateTime of the first Period must be the same as the StartDateTime of the second Period. */
+message Period {
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Date and Place of an Event that marks the end of the Period (in ISO 8601:2004 format: YYYY-MM-DD). The EndDate must not be earlier than the StartDate if both are provided. */
+	optional EventDate end_date = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the DateTime and Place of an Event that marks the end of the Period (in ISO 8601:2004 format: YYYY-MM-DDThh:mm:ss). The EndDateTime must not be earlier than the StartDateTime if both are provided. */
+	optional EventDateTime end_date_time = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Date and Place of an Event that marks the beginning of the Period (in ISO 8601:2004 format: YYYY-MM-DD). The StartDate must be no later than the EndDate if both are provided. */
+	optional EventDate start_date = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the DateTime and Place of an Event that marks the beginning of the Period (in ISO 8601:2004 format: YYYY-MM-DDThh:mm:ss). The StartDateTime must be no later than the EndDateTime if both are provided. */
+	optional EventDateTime start_date_time = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a musical period. */
+message PeriodValue {
+	/* First defined in: mead101 */
+	/* The Namespace of the musical period. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the musical period. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.Period ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details about a Period of Time. Periods are typically describedby at least a StartDate or EndDate (or StartDateTime or EndDateTime) where the StartDate(Time) and EndDate(Time) are included in the Period. Thus a one-day period can be described by using the same date in the StartDate and EndDate. If two subsequent Periods form a continuum (i.e. with no break in-between) there are two ways to express this: (a) if using dates, the EndDate of the first Period must be one day before the StartDate of the second Period; (b) if using date times, the EndDateTime of the first Period must be the same as the StartDateTime of the second Period.Explanatory Note: This Composite is named PeriodWithTime to disambiguate it from the basic Period Composite. */
+message PeriodWithTime {
+	/* First defined in: mead101 */
+	/* The DateTime of an Event that marks the end of the Period (in ISO 8601:2004 format: YYYY-MM-DDThh:mm:ss). The EndDateTime must not be earlier than the StartDateTime if both are provided. */
+	optional string end_date_time = 1;
+	/* First defined in: mead101 */
+	/* The DateTime of an Event that marks the beginning of the Period (in ISO 8601:2004 format: YYYY-MM-DDThh:mm:ss). The StartDateTime must be no later than the EndDateTime if both are provided. */
+	optional string start_date_time = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of the Name, Identifier and Role(s) of a Party related to a Resource. The Atom person construct is defined in section 3.2 of the format spec. */
+message Person {
+	repeated string any_attribute_value = 1;
+	optional string any_value = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an Email address. This is a NormalizedString. */
+	optional string email = 3;
+	/* First defined in: mead101 */
+	/* A Name of the person. */
+	optional string name = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a URI. */
+	optional URI uri = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a pronunciation of a Name. */
+message Pronunciation {
+	/* First defined in: mead101 */
+	/* The Namespace of the EncodingType. This is represented in an XML schema as an XML Attribute. */
+	optional string encoding_namespace = 1;
+	/* First defined in: mead101 */
+	/* A Type of encoding system used for the pronunciation respelling. If this attribute is missing, then the International Phonetic Alphabet without opening or closing dashes or brackets is used. */
+	optional mead101.avs.EncodingType encoding_type = 2;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the EncodingType. This is represented in an XML schema as an XML Attribute. */
+	optional string encoding_user_defined_value = 3;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the pronunciation is canonical (=true) or not (=false). This is represented in an XML schema as an XML Attribute. */
+	optional bool is_canonical = 4;
+	/* First defined in: mead101 */
+	/* The Language for which the pronunciation is valid, as defined in IETF RfC 5646. This is provided as lang[-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_code = 5;
+	optional string ext_value = 6;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a ProprietaryIdentifier. */
+message ProprietaryId {
+	/* First defined in: mead101 */
+	/* The Namespace of the ProprietaryIdentifier. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a pseudonym. */
+message Pseudonym {
+	/* First defined in: mead101 */
+	/* A Territory to which the pseudonym applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether this Composite provides default values (=true). This Flag should not be set if this is not the case. This is represented in an XML schema as an XML Attribute. */
+	optional bool is_default = 2;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the pseudonym is authorized (or at least used) by a label and/or artist (=true) or not (=false). */
+	optional bool is_official = 3;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing summary details of a Name. */
+	optional PartyNameWithPronunciation name = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Recording part. */
+message RecordingPart {
+	/* First defined in: mead101 */
+	/* A Comment on the Recording part. */
+	repeated Annotation comment = 1;
+	/* First defined in: mead101 */
+	/* The end point of the recording part measured in the specified unit from the start of the Recording. Seconds may include fractions (e.g. 30.5 seconds would be 30.5). */
+	optional double end_point = 2;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a part of the Recording identified by the cue point. */
+	optional RecordingPartType recording_part_type = 4;
+	/* First defined in: mead101 */
+	/* A number indicating the order of the Recording part in a group of parts. This is represented in an XML schema as an XML Attribute.  */
+	optional int32 sequence_number = 5;
+	/* First defined in: mead101 */
+	/* The start point of the recording part measured in the specified unit from the start of the Recording. Seconds may include fractions (e.g. 30.5 seconds would be 30.5). */
+	optional double start_point = 6;
+	/* First defined in: mead101 */
+	/* A UnitOfMeasure used for the specification of the cue points. */
+	optional mead101.avs.UnitOfCuePoints unit = 7;
+	/* First defined in: mead101 */
+	/* An Annotation providing information on the usage of the Recording. */
+	repeated TextWithFormat usage_information = 8;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a RecordingPartType. */
+message RecordingPartType {
+	/* First defined in: mead101 */
+	/* The Namespace of the RecordingPartType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the RecordingPartType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.RecordingPartType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a related Creation (a Work, a Release or a Resource). */
+message RelatedCreation {
+	/* First defined in: mead101 */
+	/* A Composite containing details of a MusicalWorkId. */
+	optional MusicalWorkId musical_work_id = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ReleaseId. */
+	optional ReleaseId release_id = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ResourceId. */
+	optional ResourceId resource_id = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Title of the Creation. */
+	optional TitleWithPronunciation title = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a related Resource. */
+message RelatedResource {
+	/* First defined in: mead101 */
+	/* A Composite containing details of ResourceIds for the Resource. */
+	optional ResourceId resource_id = 1;
+	/* First defined in: mead101 */
+	/* A Type of relationship between two Resources. */
+	optional ResourceRelationshipType resource_relationship_type = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a RelatedResourceType. */
+message RelatedResourceType {
+	/* First defined in: mead101 */
+	/* The Namespace of the RelatedResourceType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the RelatedResourceType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.RelatedResourceType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a related Work. */
+message RelatedWork {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a MusicalWorkId. */
+	optional MusicalWorkId work_id = 2;
+	/* First defined in: mead101 */
+	/* A Type of relationship between the two Works. */
+	optional WorkRelationshipType work_relationship_type = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Title of the Work. */
+	repeated WorkTitle work_title = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a writer of the Work for which information is provided. */
+	repeated PartyWithNames writer = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a DDEX Release. */
+message Release {
+	/* First defined in: mead101 */
+	/* A Composite containing details of a DisplayArtist of the Release for which information is provided. */
+	repeated DisplayArtist display_artist = 1;
+	/* First defined in: mead101 */
+	/* The GRid identifying the Release for which information is provided. */
+	optional string g_rid = 2;
+	/* First defined in: mead101 */
+	/* The ICPN (bar code) of the Release for which information is provided. */
+	optional string i_c_p_n = 3;
+	/* First defined in: mead101 */
+	/* A ProprietaryIdentifier of the Release for which information is provided. */
+	optional string proprietary_release_id = 4;
+	/* First defined in: mead101 */
+	/* The Title of the Release for which information is provided. */
+	repeated ReleaseTitle release_title = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a ReleaseId. If available, a GRid should always to be used. If the Release contains only one SoundRecording, the ISRC of the SoundRecording may be used instead. If the Release is an abstraction of a complete PhysicalProduct (such as a CD Album), the ICPN of the PhysicalProduct may be used instead. */
+message ReleaseId {
+	/* First defined in: mead101 */
+	/* A Composite containing details of the CatalogNumber of the Release. */
+	optional CatalogNumber catalog_number = 1;
+	/* First defined in: mead101 */
+	/* The GRid identifying the Release. This is the preferred Element and is mandatory if a GRid is available. A GRid comprises four parts: the xs:string 'A1', followed by five alphanumeric characters, ten alphanumeric characters and and one alphanumeric character. DDEX will enforce the syntax [a-zA-Z0-9]{18} using XML Schema in the future. */
+	optional string g_rid = 2;
+	/* First defined in: mead101 */
+	/* An ICPN used as proxy for identification of the Release. Only applicable when the Release is an abstraction of a complete PhysicalProduct. An ICPN comprises 12 or 13 digits, depending whether it is an EAN (13) or a UPC (12). DDEX will enforce the syntax [0-9]{12,13} using XML Schema in the future. */
+	optional string i_c_p_n = 3;
+	/* First defined in: mead101 */
+	/* The ISRC (International Standard Recording Code as defined in ISO 3901) used as proxy for identification of the Release. Only applicable when the Release only contains one SoundRecording or one MusicalWorkVideo. An ISRC comprises four parts: two characters, followed by three alphanumeric characters, then two digits and five digits. DDEX will enforce the syntax [a-zA-Z]{2}[a-zA-Z0-9]{3}[0-9]{7} using XML Schema in the future. */
+	optional string i_s_r_c = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ProprietaryIdentifier of the Release. */
+	repeated ProprietaryId proprietary_id = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Release. */
+message ReleaseInformation {
+	/* First defined in: mead101 */
+	/* A Composite containing details of an AlternativeTitle of the Release to aid the recipient to identify the recording by Titles other than the official Title. */
+	repeated AlternativeTitle alternative_title = 1;
+	/* First defined in: mead101 */
+	/* A Territory to which the information applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a related Artist that was influenced or that was an influencer. */
+	repeated ArtisticInfluence artistic_influence = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an award. Recipients are requested to make sure they only trust this information if it is sent from a reputable and, ideally, authoritative source. */
+	repeated Award award = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a commentary note. */
+	repeated CommentaryNote commentary_note = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an epoch in a artist's career which the Release is related to. */
+	repeated Epoch epoch = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Genre Category. */
+	repeated GenreCategory genre_category = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of historic charting information. Recipients are requested to make sure they only trust this information if it is sent from a reputable and, ideally, authoritative source. */
+	repeated HistoricChartingInformation historic_charting_information = 8;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an Image relating to the Release. */
+	repeated Image image = 9;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a similar Release. */
+	repeated SimilarRelease is_similar = 10;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a mood. */
+	repeated Mood mood = 11;
+	/* First defined in: mead101 */
+	/* The EndDate of a Period in which the Release is a priority item. This is a string with the syntax YYYY[-MM[-DD]]. */
+	optional ddex_IsoDate priority_period_end_date = 12;
+	/* First defined in: mead101 */
+	/* The StartDate of a Period in which the Release is a priority item. This is a string with the syntax YYYY[-MM[-DD]]. */
+	optional ddex_IsoDate priority_period_start_date = 13;
+	/* First defined in: mead101 */
+	/* A Composite containing summary details of a Release. */
+	optional ReleaseSummary release_summary = 14;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a sub-genre of the Release. */
+	optional SubGenreCategory sub_genre_category = 15;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a theme. */
+	repeated Theme theme = 16;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing detailed information about one or more Releases. */
+message ReleaseInformationList {
+	/* First defined in: mead101 */
+	/* A Composite containing detailed information about a Release. */
+	repeated ReleaseInformation release_information = 1;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing summary details of a Release. */
+message ReleaseSummary {
+	/* First defined in: mead101 */
+	/* A Composite containing the Name to be used by a DSP when presenting Artist details of the Release to a Consumer.Further Reading: https://kb.ddex.net/display/HBK/Communicating+Display+Artist(s)+and+Display+Artist+Name(s)Further Reading: https://kb.ddex.net/display/HBK/DisplayArtistNames+for+Releases+and+ResourcesFurther Reading: https://kb.ddex.net/display/HBK/DisplayArtist%3F+DisplayArtistName%3F+Contributor%3F+IndirectContributor%3F+What+is+this+all+about%3F */
+	repeated PartyNameWithTerritory display_artist = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Title of the Release as the MessageSender suggests it should be shown to the Consumer. */
+	repeated DisplayTitle display_title = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ReleaseId. */
+	optional ReleaseId release_id = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a ReleaseTitle. */
+message ReleaseTitle {
+	/* First defined in: mead101 */
+	/* The Language and script of the ReleaseTitle as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a DDEX Resource. */
+message Resource {
+	/* First defined in: mead101 */
+	/* The catalogue number of the Resource for which information is provided. */
+	optional string catalog_number = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a DisplayArtist of the Resource for which information is provided. */
+	repeated DisplayArtist display_artist = 2;
+	/* First defined in: mead101 */
+	/* The ISRC of the Resource for which information is provided. */
+	optional string i_s_r_c = 3;
+	/* First defined in: mead101 */
+	/* A ProprietaryIdentifier of the Resource for which information is provided. */
+	optional string proprietary_resource_id = 4;
+	/* First defined in: mead101 */
+	/* The Title of the Resource for which information is provided. */
+	repeated ResourceTitle resource_title = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a StudioRole. */
+message ResourceContributorRole {
+	/* First defined in: mead101 */
+	/* The Namespace of the StudioRole. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the StudioRole. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.ResourceContributorRole ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of ResourceIds. */
+message ResourceId {
+	/* First defined in: mead101 */
+	/* A Composite containing details of the CatalogNumber of the Resource. */
+	optional CatalogNumber catalog_number = 1;
+	/* First defined in: mead101 */
+	/* The ISAN (International Standard Audiovisual Number as defined in ISO 15706) for the Resource. An ISAN comprises four blocks of four hexadecimal charaters followed by a check character. DDEX will enforce the syntax [A-F0-9]{12} using XML Schema in the future. */
+	optional string i_s_a_n = 2;
+	/* First defined in: mead101 */
+	/* The ISBN (International Standard Book Number defined in ISO 2108) for the Resource. An ISBN is a 13-digit number. Pre-2007, ISBNs, which had 10-digits and are now deprecated, are converted by adding the prefix '978' and re-calculating the check character. DDEX will enforce the syntax 97[8-9][0-9]{9}[X0-9] using XML Schema in the future. */
+	optional string i_s_b_n = 3;
+	/* First defined in: mead101 */
+	/* The ISMN (International Standard Music Number defined in ISO 10957) for the Resource. An ISMN is a thirteen-digit number. Pre-2008 ISMNs, which had 10 characters and are now deprecated, are converted by replacing the initial letter ('M') with '979-0'. DDEX will enforce the syntax 979[0-9]{9}[X0-9] using XML Schema in the future. */
+	optional string i_s_m_n = 4;
+	/* First defined in: mead101 */
+	/* The ISRC (International Standard Recording Code as defined in ISO 3901) for the Resource. An ISRC comprises four parts: two characters, followed by three alphanumeric characters, then two digits and five digits. DDEX will enforce the syntax [a-zA-Z]{2}[a-zA-Z0-9]{3}[0-9]{7} using XML Schema in the future. */
+	optional string i_s_r_c = 5;
+	/* First defined in: mead101 */
+	/* The ISSN (International Standard Serial Number defined in ISO 3297) for the Resource. An ISSN comprises two groups of four digits, separated by a hyphen and a control digit. DDEX will enforce the syntax [0-9]{4}-[0-9]{3}[X0-9] using XML Schema in the future. */
+	optional string i_s_s_n = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ProprietaryIdentifier of the Resource. */
+	repeated ProprietaryId proprietary_id = 7;
+	/* First defined in: mead101 */
+	/* The SICI (Serial Item and Contribution Identifier defined in ANSI/NISO Z39.56-199) for the Resource. DDEX will enforce the syntax [0-9]{4}-[0-9]{3}[X0-9].+ using XML Schema in the future. */
+	optional string s_i_c_i = 8;
+	/* First defined in: mead101 */
+	/* The V-ISAN (Version Identifier of a International Standard Audiovisual Number as defined in ISO 15706-2) for the Resource. A V-ISAN comprises four blocks of four hexadecimal charaters followed by a check character, followed by two further blocks of four hexadecimal characters, followed by a further check character. DDEX will enforce the syntax [A-F0-9]{24} using XML Schema in the future. */
+	optional string v_i_s_a_n = 9;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Resource. */
+message ResourceInformation {
+	/* First defined in: mead101 */
+	/* A Composite containing details of the absolute pitch of the Resource. */
+	optional AbsolutePitch absolute_pitch = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an AlternativeTitle of the Resource to aid the recipient to identify the recording by Titles other than the official Title. */
+	repeated AlternativeTitle alternative_title = 2;
+	/* First defined in: mead101 */
+	/* A Territory to which the information applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a related Artist that was influenced or that was an influencer. */
+	repeated ArtisticInfluence artistic_influence = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an award. Recipients are requested to make sure they only trust this information if it is sent from a reputable and, ideally, authoritative source. */
+	repeated Award award = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the beats of the Resource. */
+	optional BeatsPerMinute beats_per_minute = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a commentary note. */
+	repeated CommentaryNote commentary_note = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a dance and rhythm style. */
+	repeated DanceAndRhythmStyle dance_and_rhythm_style = 8;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an epoch in a artist's career which the Resource is related to. */
+	repeated Epoch epoch = 9;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Genre Category. */
+	repeated GenreCategory genre_category = 10;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a harmony of the Resource. */
+	optional Harmony harmony = 11;
+	/* First defined in: mead101 */
+	/* A Composite containing details of historic charting information. Recipients are requested to make sure they only trust this information if it is sent from a reputable and, ideally, authoritative source. */
+	repeated HistoricChartingInformation historic_charting_information = 12;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an Image relating to the Resource. */
+	repeated Image image = 13;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an Instrument relating to the Resource. */
+	repeated InstrumentUsed instrument_used = 14;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the Recording is a Cover (=true) or not (=false). */
+	optional Flag is_cover = 15;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the Recording is an OriginalRecording (=true) or not (=false). */
+	optional Flag is_original = 16;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a similar Resource. */
+	repeated SimilarResource is_similar = 17;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a RecordingSession. */
+	repeated LocationAndDateOfSession location_and_date_of_session = 18;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a theme for the Lyrics. */
+	repeated Theme lyric_theme = 19;
+	/* First defined in: mead101 */
+	/* A Composite containing details of Lyrics. */
+	repeated Lyrics lyrics = 20;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a mood. */
+	repeated Mood mood = 21;
+	/* First defined in: mead101 */
+	/* The EndDate of a Period in which the Resource is a priority item. This is a string with the syntax YYYY[-MM[-DD]]. */
+	optional ddex_IsoDate priority_period_end_date = 22;
+	/* First defined in: mead101 */
+	/* The StartDate of a Period in which the Resource is a priority item. This is a string with the syntax YYYY[-MM[-DD]]. */
+	optional ddex_IsoDate priority_period_start_date = 23;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a theme for the Recording. */
+	repeated Theme programmatic_theme = 24;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Recording Part. */
+	repeated RecordingPart recording_part = 25;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a related Resource. */
+	repeated ResourceRelationship related_resource = 26;
+	/* First defined in: mead101 */
+	/* A Composite containing summary details of a Resource. */
+	optional ResourceSummary resource_summary = 27;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a sample. */
+	repeated Sample sample = 28;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a sub-genre of the Resource. */
+	optional SubGenreCategory sub_genre_category = 29;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a time signature of the Resource. */
+	optional TimeSignature time_signature = 30;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Context in which the Resource has been used. */
+	repeated Usage usage = 31;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a MusicalWork that has been used in the recording. */
+	repeated UsedMusicalWork used_musical_work = 32;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a vocal register of the Resource. */
+	optional VocalRegister vocal_register = 33;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing detailed information about one or more Resources. */
+message ResourceInformationList {
+	/* First defined in: mead101 */
+	/* A Composite containing detailed information about a Resource. */
+	repeated ResourceInformation resource_information = 1;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a related Resource. */
+message ResourceRelationship {
+	/* First defined in: mead101 */
+	/* A Composite containing the Name to be used by a DSP when presenting Artist details of the related Resource to a Consumer.Further Reading: https://kb.ddex.net/display/HBK/Communicating+Display+Artist(s)+and+Display+Artist+Name(s) */
+	optional DisplayArtistNameWithDefault display_artist_name = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* A Type of the related Resource. */
+	optional RelatedResourceType related_resource_type = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of ResourceIds for the related Resource. */
+	optional ResourceId resource_id = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Title of the related Resource. */
+	repeated TitleWithPronunciation title = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a ResourceRelationshipType. */
+message ResourceRelationshipType {
+	/* First defined in: mead101 */
+	/* The Namespace of the ResourceRelationshipType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the ResourceRelationshipType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.ResourceRelationshipType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing summary details of a Resource. */
+message ResourceSummary {
+	/* First defined in: mead101 */
+	/* A Composite containing the Name to be used by a DSP when presenting Artist details of the Resource to a Consumer.Further Reading: https://kb.ddex.net/display/HBK/Communicating+Display+Artist(s)+and+Display+Artist+Name(s)Further Reading: https://kb.ddex.net/display/HBK/DisplayArtistNames+for+Releases+and+ResourcesFurther Reading: https://kb.ddex.net/display/HBK/DisplayArtist%3F+DisplayArtistName%3F+Contributor%3F+IndirectContributor%3F+What+is+this+all+about%3F */
+	repeated PartyNameWithTerritory display_artist = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Title of the Resource as the MessageSender suggests it should be shown to the Consumer. */
+	repeated DisplayTitle display_title = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a ResourceId. */
+	optional ResourceId resource_id = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a ResourceTitle. */
+message ResourceTitle {
+	/* First defined in: mead101 */
+	/* The Language and script of the ResourceTitle as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a root chord note. */
+message RootChordNote {
+	/* First defined in: mead101 */
+	/* The Namespace of the root chord note. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the root chord note. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.RootChordNote ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a root chord quality. */
+message RootChordQuality {
+	/* First defined in: mead101 */
+	/* The Namespace of the root chord quality. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the root chord quality. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.RootChordQuality ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a sample. */
+message Sample {
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the SoundRecording contains samples (=true) or not (=false). */
+	optional bool contains_samples = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing a Description of the sample. */
+	repeated TextWithFormat description = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a StartTime and a Duration of a host Resource. */
+	repeated Timing host_timing = 3;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether the SoundRecording is contained in a sample (=true) or not (=false). */
+	optional bool is_contained_in_sample = 4;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a related Resource. */
+	optional ResourceSummary related_resource = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing a Description of a sample feature. */
+	repeated SampleFeature sample_feature = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a StartTime and a Duration of a sample Resource. */
+	repeated Timing sample_timing = 8;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a sample feature. */
+message SampleFeature {
+	/* First defined in: mead101 */
+	/* The Language and script of the sample feature as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a SessionType. */
+message SessionType {
+	/* First defined in: mead101 */
+	/* The Namespace of the SessionType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the SessionType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.SessionType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a similar Party. */
+message SimilarParty {
+	/* First defined in: mead101 */
+	/* A Composite containing a Description of the similarity. */
+	repeated Annotation description = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Party. */
+	optional PartyWithNames party = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a similar Release. */
+message SimilarRelease {
+	/* First defined in: mead101 */
+	/* A Composite containing a Description of the similarity. */
+	repeated Annotation description = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Release. */
+	optional Release release = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a similar Resource. */
+message SimilarResource {
+	/* First defined in: mead101 */
+	/* A Composite containing a Description of the similarity. */
+	repeated Annotation description = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Resource. */
+	optional Resource resource = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a similar Work. */
+message SimilarWork {
+	/* First defined in: mead101 */
+	/* A Composite containing a Description of the similarity. */
+	repeated Annotation description = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Work. */
+	optional Work work = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a source. The Atom source construct is defined in section 4.2.11 of the format spec. */
+message Source {
+	repeated string any_attribute_value = 1;
+	repeated string any_value = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Name, Identifier and Role(s) of an author of a Resource. */
+	repeated Person author = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a category. */
+	repeated Category category = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Name, Identifier and Role(s) of a contributor to a Resource. */
+	repeated Person contributor = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a generator. */
+	optional Generator generator = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an icon. */
+	optional Icon icon = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an ID. */
+	optional Id id = 8;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a link. */
+	repeated Link link = 9;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a logo. */
+	optional Logo logo = 10;
+	/* First defined in: mead101 */
+	/* A Composite containing details of rights. */
+	optional Text rights = 11;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a subtitle. */
+	optional Text subtitle = 12;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a title. */
+	optional Text title = 13;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an update. */
+	optional DateTime updated = 14;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a sub-genre within the classical genre. */
+message SubGenreCategory {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* The text of the sub-genre. */
+	repeated SubGenreCategoryValue value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a sub-genre within the classical genre. */
+message SubGenreCategoryValue {
+	/* First defined in: mead101 */
+	/* The Namespace of the classical sub-genre. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the vocal register. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.SubGenre ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a tempo. */
+message Tempo {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* The value of the tempo. */
+	optional TempoValue value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a tempo. */
+message TempoValue {
+	/* First defined in: mead101 */
+	/* The Namespace of the tempo. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the tempo. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.Tempo ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a text. The Atom text construct is defined in section 3.1 of the format spec. */
+message Text {
+	repeated string any_attribute_value = 1;
+	optional string any_value = 2;
+	/* First defined in: mead101 */
+	/* The type. This is represented in an XML schema as an XML Attribute. */
+	optional mead101.avs.TextType_ATOM type = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an Annotation, e.g. a Description or a Comment. */
+message TextWithFormat {
+	/* First defined in: mead101 */
+	/* A Territory to which the Annotation applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* The format of the Annotation. This is represented in an XML schema as an XML Attribute. */
+	optional mead101.avs.TextCodecType format = 2;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether this Composite provides default values (=true). This Flag should not be set if this is not the case. This is represented in an XML schema as an XML Attribute. */
+	optional bool is_default = 3;
+	/* First defined in: mead101 */
+	/* The Language and script of the Annotation as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 4;
+	/* First defined in: mead101 */
+	/* The Namespace of the Format. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 5;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the Format. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 6;
+	optional string ext_value = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of an Annotation, e.g. a Description or a Comment.Explanatory Note: This Composite is named TextWithoutTerritory to disambiguate it from the basic TextWithFormat Composite. */
+message TextWithoutTerritory {
+	/* First defined in: mead101 */
+	/* A Territory to which the Annotation applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* The format of the Annotation. This is represented in an XML schema as an XML Attribute. */
+	optional mead101.avs.TextCodecType format = 2;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether this Composite provides default values (=true). This Flag should not be set if this is not the case. This is represented in an XML schema as an XML Attribute. */
+	optional bool is_default = 3;
+	/* First defined in: mead101 */
+	/* The Language and script of the Annotation as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 4;
+	/* First defined in: mead101 */
+	/* The Namespace of the Format. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 5;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the Format. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 6;
+	optional string ext_value = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a theme. */
+message Theme {
+	/* First defined in: mead101 */
+	/* A Territory to which the theme applies. The use of ISO TerritoryCodes (or the term 'Worldwide') is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard.  */
+	optional mead101.avs.CurrentTerritoryCode applicable_territory_code = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing a Description of the theme. */
+	repeated TextWithoutTerritory description = 2;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a theme value. */
+	optional ThemeValue value = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a theme value. */
+message ThemeValue {
+	/* First defined in: mead101 */
+	/* The Namespace of the element. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the element. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.Theme ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a time signature. */
+message TimeSignature {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a meter. */
+	optional Meter meter = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a time signature modulation. */
+	repeated TimeSignatureModulation modulation = 3;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether a meter was not available (=true) or whether it was (=false). */
+	optional bool no_meter_available = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a tempo. */
+	optional TempoValue tempo = 5;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether there are too many tempi to provide any information (=true) or not (=false). */
+	optional bool too_many_tempi = 6;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a time signature modulation. */
+message TimeSignatureModulation {
+	/* First defined in: mead101 */
+	/* The end point given in bars from the start of the referenced Work. */
+	optional int32 end_bar = 1;
+	/* First defined in: mead101 */
+	/* The end point given in seconds from the start of the referenced Resource. */
+	optional double end_point = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a meter of the modulation. */
+	optional Meter meter = 3;
+	/* First defined in: mead101 */
+	/* A Flag indicating whether a meter was not available (=true) or whether it was (=false). */
+	optional bool no_meter_available = 4;
+	/* First defined in: mead101 */
+	/* The start point given in bars from the start of the referenced Work. */
+	optional int32 start_bar = 5;
+	/* First defined in: mead101 */
+	/* The start point given in seconds from the start of the referenced Resource. */
+	optional double start_point = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a tempo of the modulation. */
+	optional Tempo tempo = 7;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a StartTime and a Duration of a Resource. */
+message Timing {
+	/* First defined in: mead101 */
+	/* The total Duration of the related Resource that has been used (this may be less than the total Duration of the Resource) (using the ISO 8601:2004 PT[[hhH]mmM]ssS format, where lower case characters indicate variables, upper case characters are part of the xs:string, e.g. one hour, two minutes and three seconds would be PT1H2M3S). The seconds section ss may include fractions (e.g. one minute and 30.5 seconds would be PT1M30.5S). */
+	optional string duration_used = 1;
+	/* First defined in: mead101 */
+	/* The start point of the related Resource from the start of the referencing Resource (using the ISO 8601:2004 PT[[hhH]mmM]ssS format, where lower case characters indicate variables, upper case characters are part of the xs:string, e.g. one hour, two minutes and three seconds would be PT1H2M3S). The seconds section ss may include fractions (e.g. one minute and 30.5 seconds would be PT1M30.5S). */
+	optional string start_point = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Title and its pronunciation.Explanatory Note: This Composite is named TitleTextWithPronunciation to disambiguate it from the basic Title Composite. */
+message TitleTextWithPronunciation {
+	/* First defined in: mead101 */
+	/* The string describing the pronunciation. */
+	repeated Pronunciation pronunciation = 1;
+	/* First defined in: mead101 */
+	/* The Title string. */
+	optional string title = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Title.Explanatory Note: This Composite is named TitleWithPronunciation to disambiguate it from the basic Title Composite. */
+message TitleWithPronunciation {
+	/* First defined in: mead101 */
+	/* The Language and script for the Elements of the Title as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 1;
+	/* First defined in: mead101 */
+	/* The Namespace of the TitleType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 2;
+	/* First defined in: mead101 */
+	/* A SubTitle of the Title, including Titles of Versions used to differentiate different versions of the same Title, as required by the GRid and ISRC ReferenceDescriptiveMetadataSets. */
+	optional TitleTextWithPronunciation sub_title = 3;
+	/* First defined in: mead101 */
+	/* The text of the Title.Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3F */
+	optional TitleTextWithPronunciation title_text = 4;
+	/* First defined in: mead101 */
+	/* A Type of the Title which defines its origin or the function it fulfils in relation to a Creation. Note: A Title may fulfil more than one role. Example: 'Help' may be both the OriginalTitle and the DisplayTitle for the well-known Beatles song. This is represented in an XML schema as an XML Attribute. */
+	optional mead101.avs.TitleType title_type = 5;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the TitleType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 6;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a URI. */
+message URI {
+	repeated string any_attribute_value = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Context in which a Work or Resource has been used. */
+message Usage {
+	/* First defined in: mead101 */
+	/* A Composite containing a textual Description of the usage, e.g. 'Woodstock festival' or 'advert' or 'theme song from movie XYZ'. */
+	repeated TextWithFormat description = 1;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a relevant Resource. */
+	repeated RelatedResource relevant_resource = 3;
+	/* First defined in: mead101 */
+	/* The number indicating the order of the usage in a group of usages. */
+	optional int32 sequence_number = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Date and Place of the usage (in ISO 8601:2004 format: YYYY-MM-DD). */
+	repeated EventDate usage_date = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details about the Period of Time for which a usage is reported. */
+	repeated UsagePeriod usage_period = 6;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details about a Period of Time. Periods are typically describedby at least a StartDate or EndDate (or StartDateTime or EndDateTime) where the StartDate(Time) and EndDate(Time) are included in the Period. Thus a one-day period can be described by using the same date in the StartDate and EndDate. If two subsequent Periods form a continuum (i.e. with no break in-between) there are two ways to express this: (a) if using dates, the EndDate of the first Period must be one day before the StartDate of the second Period; (b) if using date times, the EndDateTime of the first Period must be the same as the StartDateTime of the second Period. */
+message UsagePeriod {
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Date and Place of an Event that marks the end of the Period (in ISO 8601:2004 format: YYYY-MM-DD). The EndDate must not be earlier than the StartDate if both are provided. */
+	optional EventDateWithoutFlags end_date = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the Date and Place of an Event that marks the beginning of the Period (in ISO 8601:2004 format: YYYY-MM-DD). The StartDate must be no later than the EndDate if both are provided. */
+	optional EventDateWithoutFlags start_date = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a MusicalWork that has been used in a recording. */
+message UsedMusicalWork {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* A Reference for the MusicalWork (specific to this Message). This is a LocalMusicalWorkAnchorReference starting with the letter W. */
+	repeated string resource_musical_work_reference = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a venue. */
+message Venue {
+	/* First defined in: mead101 */
+	/* An UN/Locode of the venue. */
+	optional string location_code = 1;
+	/* First defined in: mead101 */
+	/* A Territory of the VenueAddress. The use of ISO TerritoryCodes is strongly encouraged; TIS TerritoryCodes should only be used if both MessageSender and MessageRecipient are familiar with this standard. */
+	optional AllTerritoryCode territory_code = 2;
+	/* First defined in: mead101 */
+	/* The Address of the venue. The level of description may be more or less granular, possibly including only the name of the city. */
+	optional string venue_address = 3;
+	/* First defined in: mead101 */
+	/* The Name of the venue. */
+	optional string venue_name = 4;
+	/* First defined in: mead101 */
+	/* A specific studio of the venue where a Session took place. */
+	optional string venue_room = 5;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a vocal register. */
+message VocalRegister {
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 1;
+	/* First defined in: mead101 */
+	/* The value of the vocal register. */
+	optional VocalRegisterValue value = 2;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a vocal register. */
+message VocalRegisterValue {
+	/* First defined in: mead101 */
+	/* The Namespace of the vocal register. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the vocal register. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.VocalRegister ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Work. */
+message Work {
+	/* First defined in: mead101 */
+	/* The ISWC of the Work for which information is provided. */
+	optional string i_s_w_c = 1;
+	/* First defined in: mead101 */
+	/* A ProprietaryIdentifier of the Work for which information is provided. */
+	optional string proprietary_work_id = 2;
+	/* First defined in: mead101 */
+	/* The Title of the Work for which information is provided. */
+	repeated WorkTitle work_title = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a writer of the Work for which information is provided. */
+	repeated PartyWithNames writer = 4;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of parents, children and siblings of a Work. */
+message WorkHierarchy {
+	/* First defined in: mead101 */
+	/* A Composite containing details of parents, children and siblings of the Work. */
+	repeated ChildWorkHierarchy child = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a form of the Work (e.g. Concerto, Aria, 12 bar blues, etc.). */
+	optional Form form = 2;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether the hierarchy level is complete (=true) or not (=false). */
+	optional bool is_complete = 3;
+	/* First defined in: mead101 */
+	/* The Flag indicating whether this element of the hierarchy is the Work for which the hierarchy is described (=true) or not (=false). */
+	optional bool is_described_element = 4;
+	/* First defined in: mead101 */
+	/* A Reference for a Party (specific to this Message) that is the author of this metadata. This is a LocalMetadataSourceAnchorReference starting with the letter U. */
+	repeated string metadata_source_reference = 5;
+	/* First defined in: mead101 */
+	/* The number indicating the order of the Work in a group of Works. */
+	optional int32 sequence_number = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a MusicalWorkId. */
+	optional MusicalWorkId work_id = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Title of the Work. */
+	repeated WorkTitle work_title = 8;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a Work. */
+message WorkInformation {
+	/* First defined in: mead101 */
+	/* A Composite containing details of an AlternativeTitle of the Work to aid the recipient to identify the recording by Titles other than the official Title. */
+	repeated AlternativeTitle alternative_title = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a related Artist that was influenced or that was an influencer. */
+	repeated ArtisticInfluence artistic_influence = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an award. Recipients are requested to make sure they only trust this information if it is sent from a reputable and, ideally, authoritative source. */
+	repeated Award award = 3;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a period of the Work. */
+	optional ClassicalPeriod classical_period = 4;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a commentary note. */
+	repeated CommentaryNote commentary_note = 5;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a dance and rhythm style. */
+	repeated DanceAndRhythmStyle dance_and_rhythm_style = 6;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Recording of the Work. */
+	repeated DerivedRecording derived_recording = 7;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an epoch in a artist's career which the Work is related to. */
+	repeated Epoch epoch = 8;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a form of the Work (e.g. Concerto, Aria, 12 bar blues, etc.). */
+	optional Form form = 9;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a harmony of the Work. */
+	optional Harmony harmony = 10;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a similar Work. */
+	repeated SimilarWork is_similar = 11;
+	/* First defined in: mead101 */
+	/* A Composite containing details of Lyrics. */
+	repeated Lyrics lyrics = 12;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Mood created by the lyrics of the Work. */
+	repeated Mood lyrics_mood = 13;
+	/* First defined in: mead101 */
+	/* The Identifier (specific to the Message) of the MusicalWork. This is a LocalMusicalWorkAnchor starting with the letter W. This element is only needed if and when a ResourceInformation composite that provides musical-work level information is used in the same MEAD message. */
+	optional string musical_work_reference = 14;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Work relating to the Work. */
+	repeated RelatedWork related_work = 15;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a sub-genre of the Work. */
+	optional SubGenreCategory sub_genre_category = 16;
+	/* First defined in: mead101 */
+	/* A Composite containing details of an Instrument relating to the Work. */
+	repeated Instrument target_instrument = 17;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a theme. */
+	repeated Theme theme = 18;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a time signature of the Work. */
+	optional TimeSignature time_signature = 19;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a vocal register of the Work. */
+	optional VocalRegister vocal_register = 20;
+	/* First defined in: mead101 */
+	/* A Composite containing details of parents, children and siblings of the Work. */
+	repeated WorkHierarchy work_hierarchy = 21;
+	/* First defined in: mead101 */
+	/* A Composite containing summary details of the Work. */
+	optional WorkSummary work_summary = 22;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing detailed information about one or more Works */
+message WorkInformationList {
+	/* First defined in: mead101 */
+	/* A Composite containing detailed information about a Work. */
+	repeated WorkInformation work_information = 1;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a WorkRelationshipType. */
+message WorkRelationshipType {
+	/* First defined in: mead101 */
+	/* The Namespace of the WorkRelationshipType. This is represented in an XML schema as an XML Attribute. */
+	optional string namespace = 1;
+	/* First defined in: mead101 */
+	/* A UserDefined value of the WorkRelationshipType. This is represented in an XML schema as an XML Attribute. */
+	optional string user_defined_value = 2;
+	optional mead101.avs.WorkRelationshipType ext_value = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing summary details of a Work. */
+message WorkSummary {
+	/* First defined in: mead101 */
+	/* A Composite containing details of a MusicalWorkId. */
+	optional MusicalWorkId musical_work_id = 1;
+	/* First defined in: mead101 */
+	/* A Composite containing details of a Title of the Work as the MessageSender suggests it should be shown to the Consumer. */
+	repeated TitleWithPronunciation work_title = 2;
+	/* First defined in: mead101 */
+	/* A Composite containing details of the PartyName(s).Further Reading: https://kb.ddex.net/display/HBK/How+long+can+artist+names+and+titles+be%3FFurther Reading: https://kb.ddex.net/pages/viewpage.action?pageId=4882788 */
+	repeated PartyNameWithTerritory writer = 3;
+}
+
+/* Defined in: mead101 */
+/* A Composite containing details of a WorkTitle. */
+message WorkTitle {
+	/* First defined in: mead101 */
+	/* The Language and script of the WorkTitle as defined in IETF RfC 5646. The default is the same as indicated for the containing composite. Language and Script are provided as lang[-script][-region][-variant]. This is represented in an XML schema as an XML Attribute. */
+	optional string language_and_script_code = 1;
+	optional string ext_value = 2;
+}
+
+/* Defined in: mead101 */
+/* SchemaConverter generated base level auto field wrapper */
+message ddex_IsoDate {
+	optional string auto_value = 1;
+}
+
