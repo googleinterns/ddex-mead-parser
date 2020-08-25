@@ -22,4 +22,5 @@ Run `mvn checkstyle:checkstyle-aggregate` in the root directory
 ### More Information
 Using the Java DDEX Converter CLI: [ddex-convertercli/README.md](ddex-convertercli/README.md)<br>
 Using the Java Xml to Proto Message Package: [ddex-xmltoproto/README.md](ddex-xmltoproto/README.md)<br>
-Using the Java Xsd to Proto Schema Package: [ddex-xsdtoproto/README.md](ddex-xsdtoproto/README.md)
+Using the Java Xsd to Proto Schema Package: [ddex-xsdtoproto/README.md](ddex-xsdtoproto/README.md)<br>
+Adding support for new versions of DDEX Standards: [UPGRADE.md](UPGRADE.md)

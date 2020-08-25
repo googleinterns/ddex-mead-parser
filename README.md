@@ -37,6 +37,8 @@ A successful conversion from XSD to Protocol Buffer will yield a folder containi
 These `.proto` schema files can be compiled to either Java or C++ classes by the `protoc`compiler 
 (refer [here](https://github.com/protocolbuffers/protobuf/blob/master/README.md) for instruction on how to install and use the `protoc` compiler). 
 
+More information about the generated .proto in comparison to the original XSD: [SCHEMA.md](SCHEMA.md)
+
 ### Converting XML Messages to Protocol Buffer
 Given an ERN or MEAD XML message, both the C++ and Java tools can be used to convert the message to 
 Protocol Buffer. <br/>

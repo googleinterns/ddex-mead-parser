@@ -7,7 +7,7 @@ The command line tool has three modes of operation
 2. Parse a DDEX XSD schema
 3. Parse a set of DDEX XSD schema (of the same major version of a standard)
 
-*Maven outputs two jar files. As a standalone application, use the `-with-dependencies` version.*
+*Maven outputs two .jar files. As a standalone application, use the `-with-dependencies` .jar.*
 
 To use:
 ```
@@ -47,4 +47,25 @@ java -jar ddex-convertercli --inputType=schema_set INPUT_FILE1 INPUTFILE2 ...
 Each input file should be an XSD defining the ERN or MEAD standard. These XSD files contain imports for associated 
 avs.xsd files. 
 
-**If the converter fails due to a missing import, edit the (ern.xsd/mead.xsd) files' import statements to an absolute path to the associated avs.xsd**
+---
+***Important Note***: The XSD parser requires that the schemaLocation attribute declare the location of the file relative to the 
+location of the .jar. This attribute will likely ***NEED TO BE CHANGED*** manually before using the converter. 
+The file structure of the XSD schema definition is. 
+```
+- parent_folder
+    - ern.xsd
+    - avs.xsd
+```
+
+The standard import statement will declare 
+```xml
+<!-- File: ddex-convertercli/src/main/resources/ern36/ern.xsd  -->
+
+<xs:import namespace="http://ddex.net/xml/avs/avs"
+           schemaLocation="avs.xsd"/>
+```
+Change the schemaLocation attribute to point to the file in one of two way
+- the path of `avs.xsd` relative to the `ddex-convertercli.jar`
+- the absolute system path of `avs.xsd`
+
+---

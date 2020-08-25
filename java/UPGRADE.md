@@ -56,9 +56,9 @@ For example, <br/>
 ### 3. Adding the Java Classes to the XML to Proto Library
 
 #### Option 1. Compile the Java Classes with Maven
-This is the simpler option of the two. Place the `.proto` files in the `proto` directory under the appropriate folder
-The directory structure under `proto` is `namespace/class_packagename`
-More specifically, given two Protocol Buffer schema files `avs.proto` and `ern.proto`
+This is the simpler option of the two. Place the `.proto` files in the `proto` directory under the appropriate folder.
+The appropriate directory structure is `proto/namespace/class_packagename`
+More specifically, given two Protocol Buffer schema files `avs.proto` and `ern.proto` from ERN version 4.2
 
 ```
 \proto

@@ -1,6 +1,5 @@
 package com.google.ddex.xsdtoproto;
 
-import com.google.common.base.CaseFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -189,9 +188,7 @@ public class ProtoSchema {
         fieldSetStringBuilder.append("optional ");
       }
       fieldSetStringBuilder.append(resolveType(entry, field)).append(' ');
-      String fieldName =
-          sanitizeProtoName(
-              CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, field.getFieldName()));
+      String fieldName = sanitizeProtoName(camelToSnake(field.getFieldName()));
       fieldSetStringBuilder.append(fieldName).append(" = ").append(numerator);
 
       if (field.isDeprecated()) {
@@ -284,5 +281,22 @@ public class ProtoSchema {
       }
     }
     return stringBuilder.toString();
+  }
+
+  private String camelToSnake(String in) {
+    StringBuilder snakeString = new StringBuilder();
+    char c;
+    for (int i = 0; i < in.length(); i++) {
+      c = in.charAt(i);
+      if (c >= 'A' && c <= 'Z') {
+        if (i != 0) {
+          snakeString.append("_");
+        }
+        snakeString.append(Character.toLowerCase(c));
+      } else {
+        snakeString.append(c);
+      }
+    }
+    return snakeString.toString();
   }
 }

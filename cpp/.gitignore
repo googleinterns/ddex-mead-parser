@@ -2,3 +2,5 @@
 /bazel-ddex-mead-parser
 /bazel-out
 /bazel-testlogs
+/bazel-cpp
+.vs/

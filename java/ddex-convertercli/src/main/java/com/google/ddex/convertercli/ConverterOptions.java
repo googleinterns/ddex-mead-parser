@@ -48,7 +48,7 @@ class ConverterOptions {
 
   public static void showCommandUsage() {
     final String helpCmdSyntax = "ConverterCli [OPTIONS] input_file";
-    final String helpHeader = "Convert input DDEX XML formats to ProtoBuf";
+    final String helpHeader = "Convert input DDEX XML formats to Protobuf";
 
     HelpFormatter formatter = new HelpFormatter();
     formatter.printHelp(helpCmdSyntax, helpHeader, DEFAULT_COMMAND_OPTIONS, null);

@@ -7,10 +7,10 @@ Instructions on how to do so can be found [here](../UPGRADE.md)*
 
 To parse a DDEX message (ERN/MEAD), use the MessageParser class. 
 
-Provide a Reader for XML message (message.xml) to MessageParser.parse().
+Pass a `Reader` for XML message (message.xml) to MessageParser.parse().
 
 ```
-File messageFile = // get File
+File messageFile = new File("/path/to/message.xml");
 FileReader fileIn = new FileReader(messageFile);
 Message protoMessage = MessageParser.parse(fileIn);
 ```

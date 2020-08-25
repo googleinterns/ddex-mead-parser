@@ -1,6 +1,5 @@
 package com.google.ddex.xmltoproto;
 
-import com.google.common.base.CaseFormat;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
@@ -101,8 +100,7 @@ public class MessageParser {
       Node child = nodes.item(i);
       if (child.getNodeType() == Node.ELEMENT_NODE) {
         Descriptors.FieldDescriptor field =
-            messageDescriptor.findFieldByName(
-                CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, child.getNodeName()));
+            messageDescriptor.findFieldByName(camelToSnake(child.getNodeName()));
         if (field != null) {
           reporter.addLog("Handling field: " + field.getFullName());
           Object content = handleNode(document, child, field, messageBuilder);
@@ -155,8 +153,7 @@ public class MessageParser {
         Node attr = attributes.item(0);
         if (!attr.getNodeName().contains(":")) {
           Element attrToAppend =
-              document.createElement(
-                  CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, attr.getNodeName()));
+              document.createElement(camelToSnake(attr.getNodeName()));
           attrToAppend.setTextContent(attr.getNodeValue());
           node.appendChild(attrToAppend);
         }
@@ -209,5 +206,22 @@ public class MessageParser {
         reporter.addWarning("Encountered unexpected enum field: " + field.getFullName());
         return null;
     }
+  }
+
+  private String camelToSnake(String in) {
+    StringBuilder snakeString = new StringBuilder();
+    char c;
+    for (int i = 0; i < in.length(); i++) {
+      c = in.charAt(i);
+      if (c >= 'A' && c <= 'Z') {
+        if (i != 0) {
+          snakeString.append("_");
+        }
+        snakeString.append(Character.toLowerCase(c));
+      } else {
+        snakeString.append(c);
+      }
+    }
+    return snakeString.toString();
   }
 }
