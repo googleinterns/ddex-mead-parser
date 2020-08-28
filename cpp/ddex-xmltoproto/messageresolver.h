@@ -2,11 +2,13 @@
 #define DDEX_MEAD_PARSER_MESSAGERESOLVER_H
 
 #include <google/protobuf/message.h>
-#include "lib/pugixml/pugixml.hpp"
-#include "generated/ern42/ern.pb.h"
+#include <pugixml.hpp>
+
+#include "ern42/ern.pb.h"
 
 namespace google {
 namespace ddex {
+
     class MessageResolver {
         MessageResolver();
         ~MessageResolver();

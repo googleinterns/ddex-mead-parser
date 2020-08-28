@@ -1,9 +1,9 @@
 #include <iostream>
 #include <google/protobuf/message.h>
 #include <google/protobuf/descriptor.h>
+#include <pugixml.hpp>
 
 #include "messageparser.h"
-#include "lib/pugixml/pugixml.hpp"
 
 
 namespace google {

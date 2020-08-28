@@ -2,7 +2,7 @@
 #define DDEX_MEAD_PARSER_MESSAGEPARSER_H
 
 #include <google/protobuf/message.h>
-#include "lib/pugixml/pugixml.hpp"
+#include <pugixml.hpp>
 
 namespace google {
 namespace ddex {

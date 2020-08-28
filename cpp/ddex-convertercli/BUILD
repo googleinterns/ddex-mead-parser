@@ -4,6 +4,7 @@ cc_binary(
     includes =  ["*"],
     linkopts = [
         "-lprotobuf",
+        "-lpugixml"
     ],
     deps = [
         "//ddex-xmltoproto:ddex_xmltoproto",

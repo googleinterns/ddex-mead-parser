@@ -1,12 +1,11 @@
 #include <google/protobuf/message.h>
 
 #include "messageresolver.h"
-#include "generated/ern42/ern.pb.h"
-#include "generated/mead101/mead.pb.h"
+#include "ern42/ern.pb.h"
+#include "mead101/mead.pb.h"
 
 namespace google {
 namespace ddex {
-
     MessageResolver::MessageResolver() {}
     MessageResolver::~MessageResolver() {}
 

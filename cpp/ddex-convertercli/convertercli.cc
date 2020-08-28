@@ -5,8 +5,6 @@
 
 #include "ddex-xmltoproto/messageparser.h"
 #include "ddex-xmltoproto/messageresolver.h"
-#include "ddex-xmltoproto/generated/ern42/ern.pb.h"
-
 
 void writeMessage(google::protobuf::Message* message) {
 
@@ -32,7 +30,9 @@ int main(int argc, char** argv) {
             ("h,help", "Print help");
 
     auto result = options.parse(argc, argv);
-//    "/usr/local/google/home/seanliew/Downloads/ERN 4.1.1 Samples/3 MixedMedia.xml"
+//  "/usr/local/google/home/seanliew/Downloads/ERN 4.1.1 Samples/3 MixedMedia.xml"
+
+
     if (result.count("outputDirectory")) {
         std::cout << "specified output directory: " << result["outputDirectory"].as<std::string>() << std::endl;
     }
@@ -40,14 +40,15 @@ int main(int argc, char** argv) {
         std::cout << "specified boolean directory: " << result["directory"].as<bool>() << std::endl;
     }
 
+    std::cout << argc << std::endl;
+    for (int i = 0; i < argc; i++) {
+        std::cout << argv[i] << std::endl;
+    }
 
     // sanitize the filename input, or better yet supply an istream
     parseXml(input_file_path);
 
-    do {
-        std::cout << '\n' << "Press a key to continue...";
-    } while (std::cin.get() != '\n');
-    return 1;
+    return 0;
 }
 
 
